@@ -28,12 +28,12 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: 'Introduction',
-          href: '/docs',
+          href: '/docs/introduction',
           items: [],
         },
         {
           title: 'Install Next.js',
-          href: '/docs/install-nextjs',
+          href: '/docs/nextjs-installation',
           items: [],
         },
       ],

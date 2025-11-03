@@ -25,7 +25,7 @@
       "description": "A mockup of an Android device.",
       "files": [
         {
-          "path": "registry/magicui/android.tsx",
+          "path": "registry/gammaui/android.tsx",
           "type": "registry:ui"
         }
       ]

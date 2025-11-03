@@ -1,0 +1,37 @@
+---
+title: "Install Next.js"
+description: "Install Next.js with Create Next App"
+---
+
+import { CodeBlockCommand } from "@/components/code-block-command"
+import { Dependencies } from "@/components/dependencies"
+import { CodeBlock } from "@/components/code-block"
+
+<Dependencies step={1} title="Create a new project">
+  <CodeBlockCommand
+    __npm__="npx create-next-app@latest"
+    __pnpm__="pnpm dlx create-next-app@latest"
+    __yarn__="yarn create next-app"
+    __bun__="bunx create-next-app@latest"
+  />
+</Dependencies>
+
+<Dependencies step={2} title="As you install, the following prompts will appear:">
+ <CodeBlock code="What is your project named? my-app
+Would you like to use TypeScript? No / Yes
+Would you like to use ESLint? No / Yes
+Would you like to use Tailwind CSS? No / Yes
+Would you like to use `src/` directory? No / Yes
+Would you like to use App Router? (recommended) No / Yes
+Would you like to customize the default import alias (@/*)? No / Yes
+What import alias would you like configured? @/*" />
+</Dependencies>
+
+<Dependencies step={3} title="Start the development server">
+  <CodeBlockCommand
+    __npm__="cd my-app && npm run dev"
+    __pnpm__="cd my-app && pnpm dev"
+    __yarn__="cd my-app && yarn dev"
+    __bun__="cd my-app && bun dev"
+  />
+</Dependencies>

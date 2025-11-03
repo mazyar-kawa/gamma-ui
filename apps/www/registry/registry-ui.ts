@@ -9,7 +9,7 @@ export const ui: Registry["items"] = [
     description: "A mockup of an Android device.",
     files: [
       {
-        path: "magicui/android.tsx",
+        path: "gammaui/android.tsx",
         type: "registry:ui",
       },
     ],

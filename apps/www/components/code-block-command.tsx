@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react"
+
 
 import { useConfig } from "@/hooks/use-config"
 import { Button } from "@/components/ui/button"
@@ -12,6 +12,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { IconCheck, IconClipboard, IconTerminal2 } from '@tabler/icons-react'
 
 export function CodeBlockCommand({
   __npm__,
@@ -68,8 +69,8 @@ export function CodeBlockCommand({
         }}
       >
         <div className="border-border/50 flex items-center gap-2 border-b px-3 py-1">
-          <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
-            <TerminalIcon className="text-code size-3" />
+          <div className="flex size-4 items-center justify-center rounded-[1px] opacity-70">
+            <IconTerminal2 className="text-code" />
           </div>
           <TabsList className="rounded-none bg-transparent p-0">
             {Object.entries(tabs).map(([key]) => {
@@ -112,7 +113,7 @@ export function CodeBlockCommand({
             onClick={copyCommand}
           >
             <span className="sr-only">Copy</span>
-            {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+            {hasCopied ? <IconCheck /> : <IconClipboard />}
           </Button>
         </TooltipTrigger>
         <TooltipContent>
