@@ -1,0 +1,19 @@
+===== COMPONENT: android =====
+Title: Android
+Description: A mockup of an Android device.
+
+
+
+===== EXAMPLE: android-demo =====
+Title: Android Demo
+
+--- file: example/android-demo.tsx ---
+import { Android } from "@/registry/gammaui/android"
+
+export default function AndroidDemo() {
+  return (
+    <div className="relative">
+      <Android className="size-full" />
+    </div>
+  )
+}

@@ -1,0 +1,18 @@
+# Gamma UI
+
+> Beautifully designed landing page components built with React & Tailwind CSS.
+
+This file provides LLM-friendly entry points to documentation and examples.
+
+## Components
+
+- [Android](https://gammaui.design/docs/components/android): A mockup of an Android device.
+
+## Examples
+
+- [Android Demo](https://github.com/gammauidesign/gammaui/blob/main/example/android-demo.tsx): Example usage
+
+## Optional
+
+- [Repository](https://github.com/gammauidesign/gammaui): Source code and issues
+- [Sitemap](https://gammaui.design/sitemap.xml): Indexable pages

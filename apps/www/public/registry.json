@@ -1,0 +1,63 @@
+{
+  "name": "gammaui",
+  "homepage": "https://gammaui.design",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "android",
+      "type": "registry:ui",
+      "title": "Android",
+      "description": "A mockup of an Android device.",
+      "files": [
+        {
+          "path": "registry/magicui/android.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "android-demo",
+      "type": "registry:example",
+      "title": "Android Demo",
+      "description": "Example showing a mockup of an Android device.",
+      "registryDependencies": [
+        "@magicui/android"
+      ],
+      "files": [
+        {
+          "path": "registry/example/android-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}
