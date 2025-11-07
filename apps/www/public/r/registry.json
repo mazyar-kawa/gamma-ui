@@ -19,28 +19,55 @@
       "cssVars": {}
     },
     {
-      "name": "android",
+      "name": "live-waveform",
       "type": "registry:ui",
-      "title": "Android",
-      "description": "A mockup of an Android device.",
+      "title": "Live Waveform",
+      "description": "A customizable live audio waveform visualizer using the Web Audio API.",
       "files": [
         {
-          "path": "registry/gammaui/android.tsx",
+          "path": "registry/gammaui/live-waveform.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "android-demo",
+      "name": "support-box",
+      "type": "registry:ui",
+      "title": "Support Box",
+      "description": "A collapsible animated support widget for quick help actions using Framer Motion.",
+      "files": [
+        {
+          "path": "registry/gammaui/support-box.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "live-waveform-demo",
       "type": "registry:example",
-      "title": "Android Demo",
-      "description": "Example showing a mockup of an Android device.",
+      "title": "Live Waveform Demo",
+      "description": "A customizable live audio waveform visualizer using the Web Audio API.",
       "registryDependencies": [
-        "@magicui/android"
+        "@gammaui/live-waveform"
       ],
       "files": [
         {
-          "path": "registry/example/android-demo.tsx",
+          "path": "registry/example/live-waveform-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "support-box-demo",
+      "type": "registry:example",
+      "title": "Support Box Demo",
+      "description": "An expandable and animated support widget with quick help actions using Framer Motion.",
+      "registryDependencies": [
+        "@gammaui/support-box"
+      ],
+      "files": [
+        {
+          "path": "registry/example/support-box-demo.tsx",
           "type": "registry:example"
         }
       ]

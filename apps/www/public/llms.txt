@@ -6,11 +6,13 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Components
 
-- [Android](https://gammaui.design/docs/components/android): A mockup of an Android device.
+- [Live Waveform](https://gammaui.design/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
+- [Support Box](https://gammaui.design/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
 
 ## Examples
 
-- [Android Demo](https://github.com/gammauidesign/gammaui/blob/main/example/android-demo.tsx): Example usage
+- [Live Waveform Demo](https://github.com/gammauidesign/gammaui/blob/main/example/live-waveform-demo.tsx): Example usage
+- [Support Box Demo](https://github.com/gammauidesign/gammaui/blob/main/example/support-box-demo.tsx): Example usage
 
 ## Optional
 

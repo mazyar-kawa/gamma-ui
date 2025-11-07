@@ -4,9 +4,9 @@ import * as React from "react"
 
 import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
+import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import { CopyButton } from "@/components/copy-button"
-import { getIconForLanguageExtension } from "@/components/icons"
+import ComponentCode from './component-code'
 
 export async function ComponentSource({
   name,
@@ -47,12 +47,14 @@ export async function ComponentSource({
 
   if (!collapsible) {
     return (
-      <ComponentCode
-        code={code}
-        highlightedCode={highlightedCode}
-        language={lang}
-        title={title}
-      />
+      <div className={cn("relative", className)}>
+        <ComponentCode
+          code={code}
+          highlightedCode={highlightedCode}
+          language={lang}
+          title={title}
+        />
+      </div>
     )
   }
 
@@ -68,34 +70,3 @@ export async function ComponentSource({
   )
 }
 
-function ComponentCode({
-  code,
-  highlightedCode,
-  language,
-  title,
-}: {
-  code: string
-  highlightedCode: string
-  language: string
-  title: string | undefined
-}) {
-  return (
-    <figure data-rehype-pretty-code-figure="" className="h-full">
-      {title && (
-        <figcaption
-          data-rehype-pretty-code-title=""
-          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
-          data-language={language}
-        >
-          {getIconForLanguageExtension(language)}
-          {title}
-        </figcaption>
-      )}
-      <CopyButton value={code} />
-      <div
-        dangerouslySetInnerHTML={{ __html: highlightedCode }}
-        className="h-full"
-      />
-    </figure>
-  )
-}

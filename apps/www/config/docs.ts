@@ -13,7 +13,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: 'Templates',
-      href: 'https://pro.magicui.design',
+      href: 'https://pro.gammaui.design',
       event: 'header_cta_clicked',
       label: '',
     },
@@ -110,95 +110,14 @@ export const docsConfig: DocsConfig = {
       title: 'Components',
       items: [
         {
-          title: 'Marquee',
-          href: `/docs/components/marquee`,
+          title: 'Live Waveform',
+          href: `/docs/components/live-waveform`,
           items: [],
         },
-        {
-          title: 'Terminal',
-          href: `/docs/components/terminal`,
+         {
+          title: 'Support Box',
+          href: `/docs/components/support-box`,
           items: [],
-          label: '',
-        },
-        {
-          title: 'Hero Video Dialog',
-          href: `/docs/components/hero-video-dialog`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Bento Grid',
-          href: `/docs/components/bento-grid`,
-          items: [],
-        },
-        {
-          title: 'Animated List',
-          href: `/docs/components/animated-list`,
-          items: [],
-        },
-        {
-          title: 'Dock',
-          href: `/docs/components/dock`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Globe',
-          href: `/docs/components/globe`,
-          items: [],
-        },
-        {
-          title: 'Tweet Card',
-          href: `/docs/components/tweet-card`,
-          items: [],
-        },
-        {
-          title: 'Orbiting Circles',
-          href: `/docs/components/orbiting-circles`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Avatar Circles',
-          href: `/docs/components/avatar-circles`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Icon Cloud',
-          href: `/docs/components/icon-cloud`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Lens',
-          href: `/docs/components/lens`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Pointer',
-          href: `/docs/components/pointer`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Smooth Cursor',
-          href: `/docs/components/smooth-cursor`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Progressive Blur',
-          href: `/docs/components/progressive-blur`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Dotted Map',
-          href: `/docs/components/dotted-map`,
-          items: [],
-          label: 'New',
         },
       ],
     },
@@ -210,45 +129,7 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/animated-beam`,
           items: [],
         },
-        {
-          title: 'Border Beam',
-          href: `/docs/components/border-beam`,
-          items: [],
-        },
-        {
-          title: 'Shine Border',
-          href: `/docs/components/shine-border`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Magic Card',
-          href: `/docs/components/magic-card`,
-          items: [],
-        },
-        {
-          title: 'Meteors',
-          href: `/docs/components/meteors`,
-          items: [],
-        },
-        {
-          title: 'Confetti',
-          href: `/docs/components/confetti`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Particles',
-          href: `/docs/components/particles`,
-          items: [],
-          label: '',
-        },
-        {
-          title: 'Animated Theme Toggler',
-          href: `/docs/components/animated-theme-toggler`,
-          items: [],
-          label: 'New',
-        },
+        
       ],
     },
     {

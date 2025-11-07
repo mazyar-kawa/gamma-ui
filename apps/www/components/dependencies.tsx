@@ -13,7 +13,7 @@ export function Dependencies ({ step, title, children }: SectionProps) {
   return (
     <div className="flex flex-col gap-5">
       <div className="absolute flex h-9 w-9 select-none items-center justify-center rounded-full border-[3px] border-background bg-neutral-300 dark:bg-neutral-800">
-        <span className="font-semibold text-primary">{step}</span>
+        <span className="font-semibold text-black dark:text-white">{step}</span>
       </div>
       <div
         className={cn(
@@ -22,7 +22,7 @@ export function Dependencies ({ step, title, children }: SectionProps) {
         )}
       >
         <div className="space-y-4 pb-8 pl-8 pt-1">
-          <h2 className="font-medium text-primary/90">{title}</h2>
+          <h2 className="font-medium text-black/90 dark:text-white/90">{title}</h2>
           <span className="pl-7">{children}</span>
         </div>
       </div>

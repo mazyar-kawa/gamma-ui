@@ -27,7 +27,7 @@ import { TemplateOpen } from "@/components/template-open"
 import { TemplatePreview } from "@/components/template-preview"
 
 const Android = dynamic(() =>
-  import("@/registry/gammaui/android").then((module) => module.Android)
+  import("@/registry/gammaui/live-waveform").then((module) => module.LiveWaveform)
 )
 
 export const mdxComponents = {

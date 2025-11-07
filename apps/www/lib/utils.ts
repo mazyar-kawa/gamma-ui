@@ -111,7 +111,7 @@ export function constructMetadata({
       creator: "@dillionverma",
     },
     icons: "/favicon.ico",
-    metadataBase: new URL("https://magicui.design"),
+    metadataBase: new URL("https://gammaui.design"),
     authors: [
       {
         name: "dillionverma",

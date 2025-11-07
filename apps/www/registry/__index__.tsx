@@ -15,35 +15,69 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "android": {
-    name: "android",
-    description: "A mockup of an Android device.",
+  "live-waveform": {
+    name: "live-waveform",
+    description: "A customizable live audio waveform visualizer using the Web Audio API.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
-      path: "registry/gammaui/android.tsx",
+      path: "registry/gammaui/live-waveform.tsx",
       type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/gammaui/android.tsx")
+      const mod = await import("@/registry/gammaui/live-waveform.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "android-demo": {
-    name: "android-demo",
-    description: "Example showing a mockup of an Android device.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/android"],
+  "support-box": {
+    name: "support-box",
+    description: "A collapsible animated support widget for quick help actions using Framer Motion.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/android-demo.tsx",
+      path: "registry/gammaui/support-box.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/support-box.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "live-waveform-demo": {
+    name: "live-waveform-demo",
+    description: "A customizable live audio waveform visualizer using the Web Audio API.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/live-waveform"],
+    files: [{
+      path: "registry/example/live-waveform-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/android-demo.tsx")
+      const mod = await import("@/registry/example/live-waveform-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "support-box-demo": {
+    name: "support-box-demo",
+    description: "An expandable and animated support widget with quick help actions using Framer Motion.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/support-box"],
+    files: [{
+      path: "registry/example/support-box-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/support-box-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

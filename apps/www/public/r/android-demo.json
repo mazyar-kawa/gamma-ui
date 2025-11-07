@@ -5,7 +5,7 @@
   "title": "Android Demo",
   "description": "Example showing a mockup of an Android device.",
   "registryDependencies": [
-    "@magicui/android"
+    "@gammaui/android"
   ],
   "files": [
     {
