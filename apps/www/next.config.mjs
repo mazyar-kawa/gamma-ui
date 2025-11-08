@@ -8,6 +8,7 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     inlineCss: true,
+    turbopack: true,
   },
   images: {
     domains: [
