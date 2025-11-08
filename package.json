@@ -13,7 +13,6 @@
   "dependencies": {},
   "devDependencies": {},
   "engines": {
-    "node": ">=22.14.0",
     "bun": ">=1.1.43"
   }
 }
