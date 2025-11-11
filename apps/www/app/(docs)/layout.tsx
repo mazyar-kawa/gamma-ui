@@ -2,6 +2,7 @@ import { DocsSidebar } from '@/components/docs-sidebar'
 import { SiteHeader } from '@/components/site-header'
 import { SidebarProvider } from '@/components/ui/sidebar'
 import { Suspense } from 'react'
+import { Toaster } from 'sonner'
 
 interface MarketingLayoutProps {
   children: React.ReactNode
@@ -19,6 +20,7 @@ export default async function MarketingLayout({
           <div className='h-full w-full'>{children}</div>
         </Suspense>
       </SidebarProvider>
+       <Toaster />
     </div>
   )
 }

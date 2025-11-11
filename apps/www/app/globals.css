@@ -90,6 +90,7 @@
 }
 
 :root {
+  --header-height: 64px;
   --radius: 1.3rem;
   --card: oklch(0.9784 0.0011 197.1387);
   --card-foreground: oklch(0.1884 0.0128 248.5103);
@@ -146,6 +147,7 @@
 }
 
 .dark {
+  --header-height: 64px;
   --background: oklch(0 0 0);
   --foreground: oklch(0.9328 0.0025 228.7857);
   --card: oklch(0.2097 0.0080 274.5332);

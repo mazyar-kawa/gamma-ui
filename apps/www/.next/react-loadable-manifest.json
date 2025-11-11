@@ -2244,7 +2244,7 @@
   "node_modules/shiki/dist/langs.mjs -> @shikijs/langs/cue": {
     "id": 38540,
     "files": [
-      "static/chunks/8540.77bcf2c7c3ede7c6.js"
+      "static/chunks/6159.d4a4863baf1a0d1d.js"
     ]
   },
   "node_modules/shiki/dist/langs.mjs -> @shikijs/langs/cypher": {

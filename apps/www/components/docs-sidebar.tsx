@@ -56,7 +56,7 @@ function DocsSidebarNavItems({
                         </span>
                       )}
                       {item.paid && (
-                        <span className="rounded-md bg-gradient-to-r from-orange-400 to-orange-600 px-1.5 py-0.5 text-xs leading-none text-white no-underline group-hover:no-underline">
+                        <span className="rounded-md bg-linear-to-r from-orange-400 to-orange-600 px-1.5 py-0.5 text-xs leading-none text-white no-underline group-hover:no-underline">
                           Pro
                         </span>
                       )}
@@ -95,7 +95,7 @@ export function DocsSidebar({
 
   return (
     <Sidebar
-      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)+2rem)] bg-transparent lg:flex"
+      className="sticky max-h-screen top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)+2rem)] bg-transparent lg:flex"
       collapsible="none"
       {...props}
     >
