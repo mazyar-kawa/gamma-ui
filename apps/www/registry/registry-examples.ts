@@ -29,6 +29,33 @@ export const examples: Registry["items"] = [
       type: "registry:example",
     },
   ],
+},
+{
+  name: "overlay-button-demo",
+  type: "registry:example",
+  title: "Overlay Button Demo",
+  description: "A looping animated gradient button using Framer Motion’s spring transitions for smooth motion effects.",
+  registryDependencies: ["@gammaui/overlay-button"],
+  files: [
+    {
+      path: "example/overlay-button-demo.tsx",
+      type: "registry:example",
+    },
+  ],
+},
+{
+  name: "border-button-demo",
+  type: "registry:example",
+  title: "Border Button Demo",
+  description: "An interactive button that animates its border dynamically based on cursor position using Framer Motion.",
+  registryDependencies: ["@gammaui/border-button"],
+  files: [
+    {
+      path: "example/border-button-demo.tsx",
+      type: "registry:example",
+    },
+  ],
 }
+
   
 ]

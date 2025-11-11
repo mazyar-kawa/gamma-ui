@@ -49,6 +49,40 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "overlay-button": {
+    name: "overlay-button",
+    description: "An animated gradient button using Framer Motion with looping motion and spring transitions.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/gammaui/overlay-button.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/overlay-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "border-button": {
+    name: "border-button",
+    description: "A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/gammaui/border-button.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/border-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "live-waveform-demo": {
     name: "live-waveform-demo",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
@@ -78,6 +112,40 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/support-box-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "overlay-button-demo": {
+    name: "overlay-button-demo",
+    description: "A looping animated gradient button using Framer Motion’s spring transitions for smooth motion effects.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/overlay-button"],
+    files: [{
+      path: "registry/example/overlay-button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/overlay-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "border-button-demo": {
+    name: "border-button-demo",
+    description: "An interactive button that animates its border dynamically based on cursor position using Framer Motion.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/border-button"],
+    files: [{
+      path: "registry/example/border-button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/border-button-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

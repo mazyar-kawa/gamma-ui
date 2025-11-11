@@ -6,13 +6,17 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Components
 
+- [Border Button](https://gammaui.design/docs/components/border-button): A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.
 - [Live Waveform](https://gammaui.design/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
+- [Overlay Button](https://gammaui.design/docs/components/overlay-button): An animated gradient button using Framer Motion with looping motion and spring transitions.
 - [Support Box](https://gammaui.design/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
 
 ## Examples
 
 - [Live Waveform Demo](https://github.com/gammauidesign/gammaui/blob/main/example/live-waveform-demo.tsx): Example usage
 - [Support Box Demo](https://github.com/gammauidesign/gammaui/blob/main/example/support-box-demo.tsx): Example usage
+- [Overlay Button Demo](https://github.com/gammauidesign/gammaui/blob/main/example/overlay-button-demo.tsx): Example usage
+- [Border Button Demo](https://github.com/gammauidesign/gammaui/blob/main/example/border-button-demo.tsx): Example usage
 
 ## Optional
 

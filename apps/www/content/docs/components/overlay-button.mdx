@@ -1,0 +1,97 @@
+---
+title: Overlay Button
+date: 2025-11-11
+description: An animated gradient button using Framer Motion with spring physics.
+author: mazyar
+published: true
+---
+<ComponentPreview
+  name="overlay-button-demo"
+  title="Overlay Button"
+  description="Animated gradient button with infinite motion loop and interactive scaling."
+/>
+## Installation
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+```bash
+npx shadcn@latest add @gammaui/overlay-button
+```
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+<Step>Install dependencies.</Step>
+```bash
+npx add motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource name="overlay-button" title="components/ui/overlay-button.tsx" />
+
+<Step>Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).</Step>
+```css
+/* Overlay Button Styles */
+.radial-gradient {
+      background: radial-gradient(
+      circle at 50% 0%,
+      rgba(250, 250, 250, 0.05) 0%,
+      transparent 60%
+      )
+      rgba(15, 15, 15, 1);
+      transition: background 0.3s ease-in-out;
+      }
+
+      .radial-gradient:hover {
+      background: radial-gradient(
+      circle at 50% 0%,
+      rgba(250, 250, 250, 0.05) 0%,
+      transparent 60%
+      )
+      rgba(15, 15, 15, 0.5);
+      }
+
+      .linear-mask {
+      mask-image: linear-gradient(
+      -75deg,
+      white calc(var(--x) + 20%),
+      transparent calc(var(--x) + 30%),
+      white calc(var(--x) + 100%)
+      );
+      -webkit-mask-image: linear-gradient(
+      -75deg,
+      white calc(var(--x) + 20%),
+      transparent calc(var(--x) + 30%),
+      white calc(var(--x) + 100%)
+      );
+      }
+
+      .linear-overlay {
+      background-image: linear-gradient(
+      -75deg,
+      rgba(255, 255, 255, 0.1) calc(var(--x) + 20%),
+      rgba(255, 255, 255, 0.5) calc(var(--x) + 25%),
+      rgba(255, 255, 255, 0.1) calc(var(--x) + 100%)
+      );
+      mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
+      -webkit-mask: linear-gradient(black, black) content-box,
+      linear-gradient(black, black);
+      mask-composite: exclude;
+      -webkit-mask-composite: xor;
+      padding: 1px;
+      }
+```
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+
+#### Props
+
+| Prop                  | Type                            | Default    | Description                                    |
+| --------------------- | ------------------------------- | ---------- | ---------------------------------------------- |
+| label                | `string`                       | -    | The text content displayed on the button |

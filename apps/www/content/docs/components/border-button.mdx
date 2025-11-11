@@ -1,0 +1,70 @@
+---
+title: Border Button
+date: 2025-11-11
+description: An animated border button component with interactive hover effects.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="border-button-demo"
+  title="Border Button"
+  description="Animated button with border effects and hover interactions."
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+```bash
+npx shadcn@latest add @gammaui/border-button
+```
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+<Step>Install dependencies.</Step>
+```bash
+npx add motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource name="border-button" title="components/gammaui/border-button.tsx" />
+
+<Step>Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).</Step>
+```css
+/* Overlay Button Styles */
+  .radial-gradient-border-button {
+      background: radial-gradient(
+      circle at 50% 0%,
+      rgba(250, 250, 250, 0.05) 0%,
+      transparent 60%
+      )
+      rgba(15, 15, 15, 1);
+      transition: background 0.3s ease-in-out;
+      }
+```
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import BorderButton from '@/components/gammaui/border-button'
+
+export default function Example() {
+  return <BorderButton label="Gamma UI" />
+}
+```
+
+## Props
+
+| Prop  | Type     | Default | Description                              |
+| ----- | -------- | ------- | ---------------------------------------- |
+| label | `string` | -       | The text content displayed on the button |

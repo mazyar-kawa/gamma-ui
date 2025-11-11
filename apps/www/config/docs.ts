@@ -121,6 +121,32 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
+
+    {
+      title: 'Buttons',
+      items: [
+        {
+          title: 'Overlay Button',
+          href: `/docs/components/overlay-button`,
+          items: [],
+        },
+         {
+          title: 'Border Button',
+          href: `/docs/components/border-button`,
+          items: [],
+        },
+         {
+          title: 'Background Button',
+          href: `/docs/components/background-button`,
+          items: [],
+        },
+         {
+          title: 'Particle Button',
+          href: `/docs/components/particle-button`,
+          items: [],
+        },
+      ],
+    },
     {
       title: 'Special Effects',
       items: [
