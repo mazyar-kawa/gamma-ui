@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-button-demo",
+  "type": "registry:example",
+  "title": "Border Button Demo",
+  "description": "An interactive button that animates its border dynamically based on cursor position using Framer Motion.",
+  "registryDependencies": [
+    "@gammaui/border-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/border-button-demo.tsx",
+      "content": "import BorderButton from '../gammaui/border-button'\n\n\nexport default function BorderButtonDemo() {\n    return <BorderButton label='Gamma UI'/>\n}",
+      "type": "registry:example"
+    }
+  ]
+}

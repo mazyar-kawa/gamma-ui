@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "overlay-button-demo",
+  "type": "registry:example",
+  "title": "Overlay Button Demo",
+  "description": "A looping animated gradient button using Framer Motion’s spring transitions for smooth motion effects.",
+  "registryDependencies": [
+    "@gammaui/overlay-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/overlay-button-demo.tsx",
+      "content": "import OverlayButton from '../gammaui/overlay-button'\n\nexport default function OverlayButtonDemo() {\n    return <OverlayButton label='Gamma UI'/>\n}",
+      "type": "registry:example"
+    }
+  ]
+}

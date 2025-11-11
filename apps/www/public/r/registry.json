@@ -43,6 +43,30 @@
       ]
     },
     {
+      "name": "overlay-button",
+      "type": "registry:ui",
+      "title": "Overlay Button",
+      "description": "An animated gradient button using Framer Motion with looping motion and spring transitions.",
+      "files": [
+        {
+          "path": "registry/gammaui/overlay-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "border-button",
+      "type": "registry:ui",
+      "title": "Border Button",
+      "description": "A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.",
+      "files": [
+        {
+          "path": "registry/gammaui/border-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "live-waveform-demo",
       "type": "registry:example",
       "title": "Live Waveform Demo",
@@ -68,6 +92,36 @@
       "files": [
         {
           "path": "registry/example/support-box-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "overlay-button-demo",
+      "type": "registry:example",
+      "title": "Overlay Button Demo",
+      "description": "A looping animated gradient button using Framer Motion’s spring transitions for smooth motion effects.",
+      "registryDependencies": [
+        "@gammaui/overlay-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/overlay-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "border-button-demo",
+      "type": "registry:example",
+      "title": "Border Button Demo",
+      "description": "An interactive button that animates its border dynamically based on cursor position using Framer Motion.",
+      "registryDependencies": [
+        "@gammaui/border-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/border-button-demo.tsx",
           "type": "registry:example"
         }
       ]

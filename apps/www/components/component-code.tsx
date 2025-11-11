@@ -36,7 +36,8 @@ function ComponentCode({
 
   return (
     <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
-      {title && (
+      <div className='flex items-center justify-between'>
+        {title && (
         <figcaption
           data-rehype-pretty-code-title=""
           className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
@@ -47,6 +48,7 @@ function ComponentCode({
         </figcaption>
       )}
       <CopyButton value={code} />
+      </div>
       <div dangerouslySetInnerHTML={{ __html: highlighted }} />
     </figure>
   )
