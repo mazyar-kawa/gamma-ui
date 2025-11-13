@@ -83,6 +83,74 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "wavy-text-block": {
+    name: "wavy-text-block",
+    description: "A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/gammaui/wavy-text-block.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/wavy-text-block.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "inverted-cursor": {
+    name: "inverted-cursor",
+    description: "A smooth, animated custom cursor component with blend mode effects.",
+    type: "registry:ui",
+    registryDependencies: ["@gammaui/inverted-cursor"],
+    files: [{
+      path: "registry/gammaui/inverted-cursor.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/inverted-cursor.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "pixel-button": {
+    name: "pixel-button",
+    description: "A pixelated button animation effect built with Tailwind CSS and React.",
+    type: "registry:ui",
+    registryDependencies: ["@gammaui/pixel-button"],
+    files: [{
+      path: "registry/gammaui/pixel-button.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/pixel-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "plasma": {
+    name: "plasma",
+    description: "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
+    type: "registry:ui",
+    registryDependencies: ["@gammaui/plasma"],
+    files: [{
+      path: "registry/gammaui/plasma.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/plasma.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "live-waveform-demo": {
     name: "live-waveform-demo",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
@@ -146,6 +214,74 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/border-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "wavy-text-block-demo": {
+    name: "wavy-text-block-demo",
+    description: "An example demonstrating the Wavy Block scroll-triggered animation with multiple text lines.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/wavy-text-block"],
+    files: [{
+      path: "registry/example/wavy-text-block-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/wavy-text-block-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "inverted-cursor-demo": {
+    name: "inverted-cursor-demo",
+    description: "A smooth, animated custom cursor component with blend mode effects.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/inverted-cursor"],
+    files: [{
+      path: "registry/example/inverted-cursor-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/inverted-cursor-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "pixel-button-demo": {
+    name: "pixel-button-demo",
+    description: "A pixelated button animation effect built with Tailwind CSS and React.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/pixel-button"],
+    files: [{
+      path: "registry/example/pixel-button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/pixel-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "plasma-demo": {
+    name: "plasma-demo",
+    description: "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/plasma"],
+    files: [{
+      path: "registry/example/plasma-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/plasma-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

@@ -13,7 +13,7 @@ export function SiteHeader() {
     <header
       className={cn(
         'w-fullt ransition-all sticky top-0 z-50 duration-300',
-        'border-b dark:border-neutral-800/50 dark:bg-neutral-900/40 shadow-lg backdrop-blur-md'
+        'shadow-lg backdrop-blur-md'
       )}
     >
       <div className='container-wrapper 3xl:fixed:px-0 px-6'>

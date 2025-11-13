@@ -50,6 +50,59 @@ export const ui: Registry["items"] = [
       type: "registry:ui",
     },
   ],
+},
+{
+  name: "wavy-text-block",
+  type: "registry:ui",
+  title: "Wavy Text Block",
+  description: "A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.",
+  files: [
+    {
+      path: "gammaui/wavy-text-block.tsx",
+      type: "registry:ui"
+    }
+  ]
+},
+{
+  name: "inverted-cursor",
+  type: "registry:ui",
+  title: "Inverted Cursor",
+  description: "A smooth, animated custom cursor component with blend mode effects.",
+  registryDependencies: ["@gammaui/inverted-cursor"],
+  files: [
+    {
+      path: "gammaui/inverted-cursor.tsx",
+      type: "registry:ui"
+    }
+  ]
+},
+
+{
+  name: "pixel-button",
+  type: "registry:ui",
+  title: "Pixel Button",
+  description: "A pixelated button animation effect built with Tailwind CSS and React.",
+  registryDependencies: ["@gammaui/pixel-button"],
+  files: [
+    {
+      path: "gammaui/pixel-button.tsx",
+      type: "registry:ui"
+    }
+  ]
+},
+
+{
+  name: "plasma",
+  type: "registry:ui",
+  title: "Plasma",
+  description: "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
+  registryDependencies: ["@gammaui/plasma"],
+  files: [
+    {
+      path: "gammaui/plasma.tsx",
+      type: "registry:ui"
+    }
+  ]
 }
  
 ]

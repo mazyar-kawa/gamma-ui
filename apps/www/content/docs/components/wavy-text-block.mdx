@@ -1,0 +1,164 @@
+---
+title: Wavy Block
+date: 2025-11-12
+description: A scroll-triggered wavy text animation component that creates flowing motion effects.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="wavy-text-block-demo"
+  title="Wavy Block"
+  description="Animated text blocks with wave-like scroll-triggered motion effects."
+  justify="start"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+```bash
+npx shadcn@latest add @gammaui/wavy-text-block
+```
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+<Step>Install dependencies.</Step>
+```bash
+npx add motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource name="wavy-block" title="components/gammaui/wavy-block.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+## Usage
+```tsx
+import { WavyBlock, WavyBlockItem } from '@/components/gammaui/wavy-block'
+
+export default function Example() {
+  return (
+    <WavyBlock className="space-y-4">
+      <WavyBlockItem index={0}>
+        <h2>First Line</h2>
+      </WavyBlockItem>
+      <WavyBlockItem index={1}>
+        <h2>Second Line</h2>
+      </WavyBlockItem>
+      <WavyBlockItem index={2}>
+        <h2>Third Line</h2>
+      </WavyBlockItem>
+    </WavyBlock>
+  )
+}
+```
+
+The container component that provides scroll context to child items.
+
+#### Props
+
+| Prop   | Type                    | Default                 | Description                                    |
+| ------ | ----------------------- | ----------------------- | ---------------------------------------------- |
+| offset | `[string, string]`      | `['start end', 'end start']` | Scroll offset range for animation trigger |
+| ...props | `HTMLDivElement` props | - | All standard div props are supported |
+
+### WavyBlockItem
+
+Individual animated items within the WavyBlock.
+
+#### Props
+
+| Prop   | Type                | Default | Description                                           |
+| ------ | ------------------- | ------- | ----------------------------------------------------- |
+| index  | `number`            | -       | **Required.** Index for wave phase calculation        |
+| config | `WavyTextsConfig`   | See below | Configuration object for wave animation              |
+| style  | `React.CSSProperties` | -     | Additional inline styles                              |
+| ...props | `motion.div` props | -      | All Framer Motion div props are supported             |
+
+## Configuration
+
+The `config` prop accepts a `WavyTextsConfig` object with the following properties:
+```tsx
+interface WavyTextsConfig {
+  baseOffsetFactor: number;  // Base horizontal offset multiplier (default: 0.1)
+  baseExtra: number;         // Additional base offset (default: 0)
+  baseAmplitude: number;     // Wave amplitude (default: 160)
+  lengthEffect: number;      // Text length impact on amplitude (default: 0.6)
+  frequency: number;         // Wave frequency (default: 35)
+  progressScale: number;     // Scroll progress multiplier (default: 6)
+  phaseShiftDeg: number;     // Phase shift in degrees (default: -180)
+  spring: SpringOptions;     // Spring animation config
+}
+```
+
+### Default Configuration
+```tsx
+const defaultConfig = {
+  baseOffsetFactor: 0.1,
+  baseExtra: 0,
+  baseAmplitude: 160,
+  lengthEffect: 0.6,
+  frequency: 35,
+  progressScale: 6,
+  phaseShiftDeg: -180,
+  spring: { damping: 22, stiffness: 300 },
+}
+```
+
+## Examples
+
+### Custom Wave Configuration
+```tsx
+<WavyBlock className="space-y-4">
+  <WavyBlockItem 
+    index={0}
+    config={{
+      baseOffsetFactor: 0.15,
+      baseAmplitude: 200,
+      frequency: 45,
+      progressScale: 8,
+      phaseShiftDeg: -90,
+      spring: { damping: 30, stiffness: 400 },
+    }}
+  >
+    <h2>Custom Wave</h2>
+  </WavyBlockItem>
+</WavyBlock>
+```
+
+### Multiple Lines with Different Indices
+```tsx
+<WavyBlock className="space-y-6" offset={['start center', 'end center']}>
+  {['Create', 'Amazing', 'Animations'].map((text, i) => (
+    <WavyBlockItem key={i} index={i}>
+      <h1 className="text-6xl font-bold">{text}</h1>
+    </WavyBlockItem>
+  ))}
+</WavyBlock>
+```
+
+## Features
+
+- **Scroll-Triggered**: Animations activate based on scroll position
+- **Wave Physics**: Mathematical wave calculations for smooth motion
+- **Spring Animations**: Natural, physics-based movement using Framer Motion springs
+- **Responsive**: Automatically adjusts to window width
+- **Reduced Motion Support**: Respects user's motion preferences
+- **Customizable**: Extensive configuration options for wave behavior
+- **Length-Aware**: Automatically adjusts amplitude based on text length
+
+## Tips
+
+- Use sequential indices (0, 1, 2...) for consistent wave patterns
+- Adjust `frequency` to control spacing between wave peaks
+- Modify `baseAmplitude` to increase or decrease horizontal movement
+- Change `phaseShiftDeg` to shift the wave pattern left or right
+- Use `offset` prop to control when the animation starts and ends during scroll

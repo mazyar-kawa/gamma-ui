@@ -7,6 +7,7 @@ import {
   IconBug,
   IconBulb,
 } from '@tabler/icons-react'
+import { toast } from 'sonner'
 
 export default function SupportBoxDemo() {
   const helpItems = [
@@ -14,25 +15,25 @@ export default function SupportBoxDemo() {
       title: 'Contact Support',
       description: 'Chat with our support team for assistance.',
       icon: <IconMessageCircle size={22} stroke={1.5} />,
-      onPress: () => alert('Opening support chat...'),
+      onPress: () => toast('Opening support chat...'),
     },
     {
       title: 'Documentation',
       description: 'Browse our guides and API documentation.',
       icon: <IconBook size={22} stroke={1.5} />,
-      onPress: () => alert('Opening documentation...'),
+      onPress: () => toast('Opening documentation...'),
     },
     {
       title: 'Report a Bug',
       description: 'Found an issue? Let us know!',
       icon: <IconBug size={22} stroke={1.5} />,
-      onPress: () => alert('Redirecting to bug report form...'),
+      onPress: () => toast('Redirecting to bug report form...'),
     },
     {
       title: 'Request a Feature',
       description: 'Suggest improvements or new features.',
       icon: <IconBulb size={22} stroke={1.5} />,
-      onPress: () => alert('Opening feature request page...'),
+      onPress: () => toast('Opening feature request page...'),
     },
   ]
 

@@ -32,7 +32,7 @@ export function CodeCollapsibleWrapper({
       >
         {children}
       </CollapsibleContent>
-      <CollapsibleTrigger className="from-code/70 to-code text-muted-foreground absolute inset-x-0 -bottom-2 flex h-20 items-center justify-center rounded-b-lg bg-linear-to-b to-slate-200 dark:to-black text-sm">
+      <CollapsibleTrigger className="from-code/70 to-code text-muted-foreground absolute inset-x-0 -bottom-2 flex h-20 items-center justify-center bg-linear-to-b to-slate-50 dark:to-black/40 text-sm">
         {isOpened ? "Collapse" : "Expand"}
       </CollapsibleTrigger>
     </Collapsible>

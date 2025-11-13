@@ -1,0 +1,180 @@
+---
+title: Inverted Cursor
+date: 2025-11-12
+description: A smooth, animated custom cursor component with blend mode effects.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="inverted-cursor-demo"
+  title="Inverted Cursor"
+  description="Smooth following cursor with mix-blend-difference effect for visual contrast."
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+```bash
+npx shadcn@latest add @gammaui/inverted-cursor
+```
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource name="inverted-cursor" title="components/gammaui/inverted-cursor.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+## Usage
+
+### Basic Usage
+
+Add the Cursor component to your root layout or main app component:
+```tsx
+import { Cursor } from '@/components/gammaui/inverted-cursor'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <Cursor />
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+### Custom Size
+```tsx
+import { Cursor } from '@/components/gammaui/cursor'
+
+export default function App() {
+  return (
+    <>
+      <Cursor size={80} />
+      {/* Your content */}
+    </>
+  )
+}
+```
+
+## Props
+
+| Prop | Type     | Default | Description                        |
+| ---- | -------- | ------- | ---------------------------------- |
+| size | `number` | `60`    | Diameter of the cursor in pixels   |
+
+## Features
+
+- **Smooth Following**: Uses `requestAnimationFrame` for buttery smooth cursor tracking
+- **Easing Animation**: Natural easing effect (0.2 lerp factor) for delayed follow
+- **Mix Blend Mode**: Uses `mix-blend-difference` for automatic color contrast
+- **Visibility Control**: Automatically shows/hides on mouse enter/leave
+- **Performance Optimized**: Efficient animation loop with proper cleanup
+- **Native Cursor Hidden**: Automatically hides the default system cursor
+- **Accessible**: Includes `aria-hidden` for screen readers
+
+## Customization
+
+### Changing the Easing Speed
+
+Modify the lerp factor in the `animate` function (line 25-26):
+```tsx
+// Faster (0.3 = more responsive)
+const deltaX = (targetX - currentX) * 0.3;
+const deltaY = (targetY - currentY) * 0.3;
+
+// Slower (0.1 = more smooth/laggy)
+const deltaX = (targetX - currentX) * 0.1;
+const deltaY = (targetY - currentY) * 0.1;
+```
+
+### Custom Styling
+
+Override the default styles with Tailwind classes:
+```tsx
+<div
+  ref={cursorRef}
+  className="fixed pointer-events-none rounded-full bg-gradient-to-br from-purple-500 to-pink-500 blur-sm z-50"
+  style={{
+    width: size,
+    height: size,
+    opacity: visible ? 1 : 0,
+  }}
+/>
+```
+
+### Different Blend Modes
+
+Try different mix-blend modes for various effects:
+```tsx
+// Default (inverts colors)
+className="... mix-blend-difference"
+
+// Additive lighting effect
+className="... mix-blend-screen"
+
+// Multiply effect
+className="... mix-blend-multiply"
+
+// Exclusion effect
+className="... mix-blend-exclusion"
+```
+
+## Examples
+
+### Large Cursor with Blur
+```tsx
+<Cursor size={100} />
+
+// In the component, add blur:
+className="... blur-md"
+```
+
+### Dual Cursor Effect
+```tsx
+export default function App() {
+  return (
+    <>
+      <Cursor size={60} /> {/* Outer cursor */}
+      <Cursor size={20} /> {/* Inner cursor - will need className modification */}
+      {/* Your content */}
+    </>
+  )
+}
+```
+
+### Colored Cursor
+```tsx
+// Modify the component's className
+className="fixed pointer-events-none rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-70 z-50"
+```
+
+## Important Notes
+
+- **Desktop Only**: This cursor is designed for desktop experiences with mouse input
+- **Z-Index**: The cursor uses `z-50` by default. Adjust if you have elements with higher z-index
+- **Performance**: Uses `requestAnimationFrame` for optimal performance
+- **Cleanup**: Properly restores the native cursor on unmount
+- **Single Instance**: Only use one Cursor component per page to avoid conflicts
+
+## Browser Support
+
+Works in all modern browsers that support:
+- `mix-blend-difference` CSS property
+- `requestAnimationFrame` API
+- CSS transforms
+
+## Accessibility
+
+The cursor includes `aria-hidden="true"` to prevent screen readers from announcing it, as it's purely decorative.

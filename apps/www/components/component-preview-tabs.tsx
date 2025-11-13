@@ -1,8 +1,6 @@
 "use client"
-
 import * as React from "react"
 import { RotateCcw } from "lucide-react"
-
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -11,6 +9,7 @@ export function ComponentPreviewTabs({
   className,
   name,
   align = "center",
+  justify = "center",
   hideCode = false,
   component,
   source,
@@ -18,6 +17,7 @@ export function ComponentPreviewTabs({
 }: React.ComponentProps<"div"> & {
   name: string
   align?: "center" | "start" | "end"
+  justify?: "center" | "start" | "end"
   hideCode?: boolean
   component: React.ReactNode
   source: React.ReactNode
@@ -56,12 +56,12 @@ export function ComponentPreviewTabs({
       </Tabs>
       <div
         data-tab={tab}
-        className="data-[tab=code]:border-code relative rounded-lg border md:-mx-1"
+        className="data-[tab=code]:border-code relative rounded-lg data-[tab=preview]:border md:-mx-1"
       >
         <div
           data-slot="preview"
           data-active={tab === "preview"}
-          className="invisible overflow-hidden data-[active=true]:visible"
+          className="invisible h-0 overflow-hidden data-[active=true]:visible data-[active=true]:h-auto"
         >
           <div className="flex items-center justify-end gap-2 p-4">
             <Button
@@ -75,8 +75,11 @@ export function ComponentPreviewTabs({
           <div
             key={key}
             data-align={align}
+            data-justify={justify}
             className={cn(
-              "preview flex min-h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start"
+              "preview flex min-h-[450px] w-full",
+              "data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+              "data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=start]:justify-start"
             )}
           >
             {component}
@@ -85,7 +88,7 @@ export function ComponentPreviewTabs({
         <div
           data-slot="code"
           data-active={tab === "code"}
-          className="absolute inset-0 hidden overflow-hidden data-[active=true]:block **:[figure]:m-0! **:[pre]:h-[450px]"
+          className="invisible h-0 overflow-hidden data-[active=true]:visible data-[active=true]:h-auto **:[figure]:m-0! **:[pre]:max-h-[550px]"
         >
           {source}
         </div>

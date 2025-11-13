@@ -67,6 +67,63 @@
       ]
     },
     {
+      "name": "wavy-text-block",
+      "type": "registry:ui",
+      "title": "Wavy Text Block",
+      "description": "A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.",
+      "files": [
+        {
+          "path": "registry/gammaui/wavy-text-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "inverted-cursor",
+      "type": "registry:ui",
+      "title": "Inverted Cursor",
+      "description": "A smooth, animated custom cursor component with blend mode effects.",
+      "registryDependencies": [
+        "@gammaui/inverted-cursor"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/inverted-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pixel-button",
+      "type": "registry:ui",
+      "title": "Pixel Button",
+      "description": "A pixelated button animation effect built with Tailwind CSS and React.",
+      "registryDependencies": [
+        "@gammaui/pixel-button"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/pixel-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "plasma",
+      "type": "registry:ui",
+      "title": "Plasma",
+      "description": "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
+      "registryDependencies": [
+        "@gammaui/plasma"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/plasma.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "live-waveform-demo",
       "type": "registry:example",
       "title": "Live Waveform Demo",
@@ -122,6 +179,66 @@
       "files": [
         {
           "path": "registry/example/border-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "wavy-text-block-demo",
+      "type": "registry:example",
+      "title": "Wavy Text Block Demo",
+      "description": "An example demonstrating the Wavy Block scroll-triggered animation with multiple text lines.",
+      "registryDependencies": [
+        "@gammaui/wavy-text-block"
+      ],
+      "files": [
+        {
+          "path": "registry/example/wavy-text-block-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "inverted-cursor-demo",
+      "type": "registry:example",
+      "title": "Inverted Cursor Demo",
+      "description": "A smooth, animated custom cursor component with blend mode effects.",
+      "registryDependencies": [
+        "@gammaui/inverted-cursor"
+      ],
+      "files": [
+        {
+          "path": "registry/example/inverted-cursor-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "pixel-button-demo",
+      "type": "registry:example",
+      "title": "Pixel Button Demo",
+      "description": "A pixelated button animation effect built with Tailwind CSS and React.",
+      "registryDependencies": [
+        "@gammaui/pixel-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/pixel-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "plasma-demo",
+      "type": "registry:example",
+      "title": "Plasma Demo",
+      "description": "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
+      "registryDependencies": [
+        "@gammaui/plasma"
+      ],
+      "files": [
+        {
+          "path": "registry/example/plasma-demo.tsx",
           "type": "registry:example"
         }
       ]
