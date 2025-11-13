@@ -1,0 +1,82 @@
+---
+title: Plasma
+date: 2025-11-13
+description: A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="plasma-demo"
+  title="Plasma"
+  description="A contained WebGL plasma animation that reacts to time and space, ideal for modern UI backgrounds or previews."
+  justify="center"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/plasma
+````
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="plasma" title="components/gammaui/plasma.tsx" />
+
+<Step>Update the import paths to match your project structure.</Step> 
+</Steps> 
+</TabsContent>
+</CodeTabs>
+
+
+
+The `Plasma` component renders an animated shader background using WebGL.
+It dynamically adapts to the size of its container — making it perfect for embeds, hero sections, or preview boxes.
+
+---
+
+## Props
+
+| Prop     | Type | Default | Description                                                                                                         |
+| -------- | ---- | ------- | ------------------------------------------------------------------------------------------------------------------- |
+| *(none)* | —    | —       | The `Plasma` component currently takes no props. It automatically fits its parent container and adapts to resizing. |
+
+---
+
+## Example Variants
+
+### Fullscreen Background
+
+```tsx
+<div className="fixed inset-0">
+  <Plasma />
+</div>
+```
+
+## Features
+
+* ⚡ **WebGL Shader Animation** — Smooth GPU-accelerated rendering with fluid plasma motion.
+* 📏 **Responsive & Contained** — Scales to any container using `ResizeObserver`.
+* 🎨 **Customizable Colors (via Shader)** — Easily adjustable color palette in the GLSL fragment code.
+* 🧩 **Lightweight** — No external libraries, pure WebGL and React.
+* 🌑 **Dark Mode Friendly** — Looks beautiful in both light and dark environments.
+
+---
+
+## Tips
+
+* Use the component **inside a container** (e.g. `div` with a fixed height) — it auto-fills the available space.
+* You can tweak the shader’s `bgColor1`, `bgColor2`, or `lineColor` inside the fragment shader for unique looks.
+* Great for hero sections, component previews, or subtle animated backdrops.

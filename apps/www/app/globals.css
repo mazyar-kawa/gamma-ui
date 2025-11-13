@@ -212,6 +212,17 @@
   }
 }
 
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+
  .radial-gradient {
       background: radial-gradient(
       circle at 50% 0%,

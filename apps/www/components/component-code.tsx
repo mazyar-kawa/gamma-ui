@@ -35,8 +35,8 @@ function ComponentCode({
   }, [code, language, isDark])
 
   return (
-    <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
-      <div className='flex items-center justify-between'>
+    <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96 bg-white dark:bg-[#24292E] rounded-lg px-2 py-4">
+      <div className={`flex items-center ${title ? 'justify-between' : 'justify-end'}`}>
         {title && (
         <figcaption
           data-rehype-pretty-code-title=""

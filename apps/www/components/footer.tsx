@@ -25,7 +25,7 @@ export default function Footer({ className }: FooterProps) {
   return (
     <footer
       className={cn(
-        'bg-background w-full h-20 p-4 max-w-7xl mx-auto flex items-center justify-center text-sm border-t overflow-hidden',
+        'bg-background w-full h-20 p-4 container mx-auto flex items-center justify-center text-sm border-t overflow-hidden',
         className
       )}
     >

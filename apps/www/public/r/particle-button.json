@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-button",
+  "type": "registry:ui",
+  "title": "Particle Button",
+  "description": "A dynamic particle animation button that emits small particles from the click position using Framer Motion and CSS animations.",
+  "files": [
+    {
+      "path": "registry/gammaui/particle-button.tsx",
+      "content": "'use client'\n\nimport React, { useState } from \"react\";\nimport { motion } from \"motion/react\";\n\n\ninterface Particle {\n  x: number;\n  y: number;\n  key: number;\n}\n\nconst ParticleButton: React.FC = () => {\n  const [particles, setParticles] = useState<Particle[]>([]);\n\n  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {\n    const rect = e.currentTarget.getBoundingClientRect();\n    const x = e.clientX - rect.left;\n    const y = e.clientY - rect.top;\n\n    const newParticles: Particle[] = Array.from({ length: 10 }).map((_, i) => ({\n      x: x + (Math.random() - 0.5) * 20,\n      y: y + (Math.random() - 0.5) * 20,\n      key: Date.now() + i,\n    }));\n\n    setParticles((prevParticles) => [...prevParticles, ...newParticles]);\n\n    // Remove particles after animation ends\n    setTimeout(() => {\n      setParticles((prevParticles) =>\n        prevParticles.filter(\n          (p) => !newParticles.some((np) => np.key === p.key)\n        )\n      );\n    }, 500);\n  };\n\n  return (\n    <motion.button\n      initial={{ scale: 1 }}\n      whileTap={{ scale: 0.95 }}\n      transition={{ type: \"spring\", stiffness: 300, damping: 20 }}\n      className=\"relative rounded-xl overflow-hidden bg-transparent radial-gradient\"\n      onClick={handleClick}\n    >\n      {particles.map((p) => (\n        <span\n          key={p.key}\n          className=\"absolute rounded-full bg-white opacity-50\"\n          style={{\n            width: 100,\n            height: 100,\n            left: p.x,\n            top: p.y,\n            transform: \"scale(0)\",\n            animation: \"particle 0.5s forwards\",\n          }}\n        />\n      ))}\n      <span className=\"relative px-2 py-2 rounded-xl text-neutral-100 font-light\">\n        Motion\n      </span>\n    </motion.button>\n  );\n};\n\nexport default ParticleButton;\n",
+      "type": "registry:ui"
+    }
+  ]
+}
