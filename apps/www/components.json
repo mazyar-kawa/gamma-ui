@@ -19,6 +19,6 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@gammaui": "https://gamma-ui-delta.vercel.app/registry"
+    "@gammaui": "https://gamma-ui-delta.vercel.app/r"
   }
 }
