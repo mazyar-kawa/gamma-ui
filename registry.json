@@ -1,0 +1,229 @@
+{
+  "name": "gammaui",
+  "homepage": "https://gammaui.design",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": ["class-variance-authority", "lucide-react"],
+      "devDependencies": ["tw-animate-css"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "live-waveform",
+      "type": "registry:ui",
+      "title": "Live Waveform",
+      "description": "A customizable live audio waveform visualizer using the Web Audio API.",
+      "files": [
+        {
+          "path": "registry/gammaui/live-waveform.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "support-box",
+      "type": "registry:ui",
+      "title": "Support Box",
+      "description": "A collapsible animated support widget for quick help actions using Framer Motion.",
+      "files": [
+        {
+          "path": "registry/gammaui/support-box.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "overlay-button",
+      "type": "registry:ui",
+      "title": "Overlay Button",
+      "description": "An animated gradient button using Framer Motion with looping motion and spring transitions.",
+      "files": [
+        {
+          "path": "registry/gammaui/overlay-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "border-button",
+      "type": "registry:ui",
+      "title": "Border Button",
+      "description": "A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.",
+      "files": [
+        {
+          "path": "registry/gammaui/border-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wavy-text-block",
+      "type": "registry:ui",
+      "title": "Wavy Text Block",
+      "description": "A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.",
+      "files": [
+        {
+          "path": "registry/gammaui/wavy-text-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "inverted-cursor",
+      "type": "registry:ui",
+      "title": "Inverted Cursor",
+      "description": "A smooth, animated custom cursor component with blend mode effects.",
+      "registryDependencies": ["@gammaui/inverted-cursor"],
+      "files": [
+        {
+          "path": "registry/gammaui/inverted-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pixel-button",
+      "type": "registry:ui",
+      "title": "Pixel Button",
+      "description": "A pixelated button animation effect built with Tailwind CSS and React.",
+      "registryDependencies": ["@gammaui/pixel-button"],
+      "files": [
+        {
+          "path": "registry/gammaui/pixel-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "plasma",
+      "type": "registry:ui",
+      "title": "Plasma",
+      "description": "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
+      "registryDependencies": ["@gammaui/plasma"],
+      "files": [
+        {
+          "path": "registry/gammaui/plasma.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "live-waveform-demo",
+      "type": "registry:example",
+      "title": "Live Waveform Demo",
+      "description": "A customizable live audio waveform visualizer using the Web Audio API.",
+      "registryDependencies": ["@gammaui/live-waveform"],
+      "files": [
+        {
+          "path": "registry/example/live-waveform-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "support-box-demo",
+      "type": "registry:example",
+      "title": "Support Box Demo",
+      "description": "An expandable and animated support widget with quick help actions using Framer Motion.",
+      "registryDependencies": ["@gammaui/support-box"],
+      "files": [
+        {
+          "path": "registry/example/support-box-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "overlay-button-demo",
+      "type": "registry:example",
+      "title": "Overlay Button Demo",
+      "description": "A looping animated gradient button using Framer Motion’s spring transitions for smooth motion effects.",
+      "registryDependencies": ["@gammaui/overlay-button"],
+      "files": [
+        {
+          "path": "registry/example/overlay-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "border-button-demo",
+      "type": "registry:example",
+      "title": "Border Button Demo",
+      "description": "An interactive button that animates its border dynamically based on cursor position using Framer Motion.",
+      "registryDependencies": ["@gammaui/border-button"],
+      "files": [
+        {
+          "path": "registry/example/border-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "wavy-text-block-demo",
+      "type": "registry:example",
+      "title": "Wavy Text Block Demo",
+      "description": "An example demonstrating the Wavy Block scroll-triggered animation with multiple text lines.",
+      "registryDependencies": ["@gammaui/wavy-text-block"],
+      "files": [
+        {
+          "path": "registry/example/wavy-text-block-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "inverted-cursor-demo",
+      "type": "registry:example",
+      "title": "Inverted Cursor Demo",
+      "description": "A smooth, animated custom cursor component with blend mode effects.",
+      "registryDependencies": ["@gammaui/inverted-cursor"],
+      "files": [
+        {
+          "path": "registry/example/inverted-cursor-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "pixel-button-demo",
+      "type": "registry:example",
+      "title": "Pixel Button Demo",
+      "description": "A pixelated button animation effect built with Tailwind CSS and React.",
+      "registryDependencies": ["@gammaui/pixel-button"],
+      "files": [
+        {
+          "path": "registry/example/pixel-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "plasma-demo",
+      "type": "registry:example",
+      "title": "Plasma Demo",
+      "description": "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
+      "registryDependencies": ["@gammaui/plasma"],
+      "files": [
+        {
+          "path": "registry/example/plasma-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

@@ -268,37 +268,14 @@ async function buildLlmsFiles() {
 
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
-    const childProcess = exec(`bunx shadcn build registry.json --output ../www/public/r`)
+    const process = exec(`pnpm shadcn:build`)
 
-    let stdout = ''
-    let stderr = ''
-
-    // Capture stdout
-    childProcess.stdout?.on('data', (data) => {
-      stdout += data
-      process.stdout.write(data) // Also print in real-time
-    })
-
-    // Capture stderr
-    childProcess.stderr?.on('data', (data) => {
-      stderr += data
-      process.stderr.write(data) // Also print in real-time
-    })
-
-    childProcess.on('exit', (code) => {
+    process.on("exit", (code) => {
       if (code === 0) {
         resolve(undefined)
       } else {
-        const error = new Error(`Process exited with code ${code}`)
-        console.error('\n📋 stdout:', stdout)
-        console.error('\n📋 stderr:', stderr)
-        reject(error)
+        reject(new Error(`Process exited with code ${code}`))
       }
-    })
-
-    childProcess.on('error', (err) => {
-      console.error('\n❌ Process error:', err)
-      reject(err)
     })
   })
 }
