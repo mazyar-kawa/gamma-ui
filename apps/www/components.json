@@ -18,8 +18,8 @@
     "hooks": "@/hooks"
   },
   "iconLibrary": "lucide",
-
   "registries": {
-    "@gammaui": "./registry.json"
+    "@gammaui": "https://gamma-ui-delta.vercel.app/r"
   }
+
 }
