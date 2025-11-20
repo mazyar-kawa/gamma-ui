@@ -1,8 +1,40 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "gammaui",
-  "prefix": "@gammaui",
-  "registry": {
-    "ui": "./apps/www/public/r"
-  }
+  "homepage": "https://gamma-ui-delta.vercel.app/",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": ["class-variance-authority", "lucide-react"],
+      "devDependencies": ["tw-animate-css"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "live-waveform",
+      "type": "registry:ui",
+      "title": "Live Waveform",
+      "description": "A customizable live audio waveform visualizer using the Web Audio API.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/gammaui/live-waveform.tsx",
+          "type": "registry:ui",
+          "target": "components/gammaui/magic-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
 }
