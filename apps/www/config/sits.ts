@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Gamma UI',
-  url: 'https://gammaui.design',
-  ogImage: 'https://gammaui.design/og',
+  url: 'https://gamma-ui-delta.vercel.app',
+  ogImage: 'https://gamma-ui-delta.vercel.app/og',
   description:
     'Beautifully designed landing page components built with React & Tailwind CSS.',
   links: {

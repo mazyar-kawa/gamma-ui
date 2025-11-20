@@ -6,14 +6,14 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Components
 
-- [Border Button](https://gammaui.design/docs/components/border-button): A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.
-- [Inverted Cursor](https://gammaui.design/docs/components/inverted-cursor): A smooth, animated custom cursor component with blend mode effects.
-- [Live Waveform](https://gammaui.design/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
-- [Overlay Button](https://gammaui.design/docs/components/overlay-button): An animated gradient button using Framer Motion with looping motion and spring transitions.
-- [Pixel Button](https://gammaui.design/docs/components/pixel-button): A pixelated button animation effect built with Tailwind CSS and React.
-- [Plasma](https://gammaui.design/docs/components/plasma): A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.
-- [Support Box](https://gammaui.design/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
-- [Wavy Text Block](https://gammaui.design/docs/components/wavy-text-block): A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.
+- [Border Button](https://gamma-ui-delta.vercel.app/docs/components/border-button): A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.
+- [Inverted Cursor](https://gamma-ui-delta.vercel.app/docs/components/inverted-cursor): A smooth, animated custom cursor component with blend mode effects.
+- [Live Waveform](https://gamma-ui-delta.vercel.app/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
+- [Overlay Button](https://gamma-ui-delta.vercel.app/docs/components/overlay-button): An animated gradient button using Framer Motion with looping motion and spring transitions.
+- [Pixel Button](https://gamma-ui-delta.vercel.app/docs/components/pixel-button): A pixelated button animation effect built with Tailwind CSS and React.
+- [Plasma](https://gamma-ui-delta.vercel.app/docs/components/plasma): A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.
+- [Support Box](https://gamma-ui-delta.vercel.app/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
+- [Wavy Text Block](https://gamma-ui-delta.vercel.app/docs/components/wavy-text-block): A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.
 
 ## Examples
 
@@ -29,4 +29,4 @@ This file provides LLM-friendly entry points to documentation and examples.
 ## Optional
 
 - [Repository](https://github.com/gammauidesign/gammaui): Source code and issues
-- [Sitemap](https://gammaui.design/sitemap.xml): Indexable pages
+- [Sitemap](https://gamma-ui-delta.vercel.app/sitemap.xml): Indexable pages
