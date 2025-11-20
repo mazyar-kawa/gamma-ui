@@ -66,7 +66,6 @@ var source_config_default = defineConfig({
       plugins.shift();
       plugins.push([
         // TODO: fix the type.
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         rehypePrettyCode,
         {
           theme: {
