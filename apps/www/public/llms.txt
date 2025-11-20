@@ -17,14 +17,14 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
-- [Live Waveform Demo](https://github.com/gammauidesign/gammaui/blob/main/example/live-waveform-demo.tsx): Example usage
-- [Support Box Demo](https://github.com/gammauidesign/gammaui/blob/main/example/support-box-demo.tsx): Example usage
-- [Overlay Button Demo](https://github.com/gammauidesign/gammaui/blob/main/example/overlay-button-demo.tsx): Example usage
-- [Border Button Demo](https://github.com/gammauidesign/gammaui/blob/main/example/border-button-demo.tsx): Example usage
-- [Wavy Text Block Demo](https://github.com/gammauidesign/gammaui/blob/main/example/wavy-text-block-demo.tsx): Example usage
-- [Inverted Cursor Demo](https://github.com/gammauidesign/gammaui/blob/main/example/inverted-cursor-demo.tsx): Example usage
-- [Pixel Button Demo](https://github.com/gammauidesign/gammaui/blob/main/example/pixel-button-demo.tsx): Example usage
-- [Plasma Demo](https://github.com/gammauidesign/gammaui/blob/main/example/plasma-demo.tsx): Example usage
+- [Live Waveform Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/live-waveform-demo.tsx): Example usage
+- [Support Box Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/support-box-demo.tsx): Example usage
+- [Overlay Button Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/overlay-button-demo.tsx): Example usage
+- [Border Button Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/border-button-demo.tsx): Example usage
+- [Wavy Text Block Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/wavy-text-block-demo.tsx): Example usage
+- [Inverted Cursor Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/inverted-cursor-demo.tsx): Example usage
+- [Pixel Button Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/pixel-button-demo.tsx): Example usage
+- [Plasma Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/plasma-demo.tsx): Example usage
 
 ## Optional
 

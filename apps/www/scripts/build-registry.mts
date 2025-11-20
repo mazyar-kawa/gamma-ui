@@ -17,13 +17,17 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {`
   for (const item of registry.items) {
-    const resolveFiles = item.files?.map((file) => `registry/${file.path}`)
+    const resolveFiles = item.files?.map((file) => {
+      const filePath = typeof file === "string" ? file : file.path
+      return `registry/${filePath}`
+    })
+    
     if (!resolveFiles) {
       continue
     }
 
     const componentPath = item.files?.[0]?.path
-      ? `@/registry/${item.files[0].path}`
+      ? `@/registry/${typeof item.files[0] === "string" ? item.files[0] : item.files[0].path}`
       : ""
 
     index += `
@@ -31,55 +35,90 @@ export const Index: Record<string, any> = {`
     name: "${item.name}",
     description: "${item.description ?? ""}",
     type: "${item.type}",
-    registryDependencies: ${JSON.stringify(item.registryDependencies)},
+    registryDependencies: ${JSON.stringify(item.registryDependencies ?? [])},
     files: [${item.files?.map((file) => {
-      const filePath = `registry/${typeof file === "string" ? file : file.path}`
-      const resolvedFilePath = path.resolve(filePath)
-      return typeof file === "string"
-        ? `"${resolvedFilePath}"`
-        : `{
-      path: "${filePath}",
+      const filePath = typeof file === "string" ? file : file.path
+      const fullPath = `registry/${filePath}`
+      const resolvedFilePath = path.resolve(fullPath)
+      
+      if (typeof file === "string") {
+        return `"${resolvedFilePath}"`
+      }
+      
+      return `{
+      path: "${fullPath}",
       type: "${file.type}",
       target: "${file.target ?? ""}"
     }`
-    })}],
+    }).join(",")}],
     component: ${
       componentPath
         ? `React.lazy(async () => {
       const mod = await import("${componentPath}")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${item.name}"
       return { default: mod.default || mod[exportName] }
     })`
         : "null"
     },
-    meta: ${JSON.stringify(item.meta)},
+    meta: ${JSON.stringify(item.meta ?? {})},
   },`
   }
 
   index += `
   }`
 
-  // Write style index.
+  // Write index file
   rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
   await fs.writeFile(path.join(process.cwd(), "registry/__index__.tsx"), index)
 }
 
 async function buildRegistryJsonFile() {
-  // 1. Fix the path for registry items.
+  // 1. Fix the path for registry items and ensure all required fields are present
   const fixedRegistry = {
-    ...registry,
+    $schema: "https://ui.shadcn.com/schema.json",
+    name: registry.name,
+    homepage: registry.homepage,
     items: registry.items.map((item) => {
       const files = item.files?.map((file) => {
+        if (typeof file === "string") {
+          return {
+            path: file.startsWith("registry/") ? file : `registry/${file}`,
+            type: item.type,
+          }
+        }
+        
         return {
-          ...file,
-          path: `registry/${file.path}`,
+          path: file.path.startsWith("registry/") ? file.path : `registry/${file.path}`,
+          type: file.type ?? item.type,
+          target: file.target ?? undefined,
         }
       })
 
-      return {
-        ...item,
-        files,
+      // Build the fixed item
+      const fixedItem: any = {
+        name: item.name,
+        type: item.type,
       }
+
+      // Add optional fields only if they exist
+      if (item.title) fixedItem.title = item.title
+      if (item.description) fixedItem.description = item.description
+      if (item.dependencies && item.dependencies.length > 0) {
+        fixedItem.dependencies = item.dependencies
+      }
+      if (item.devDependencies && item.devDependencies.length > 0) {
+        fixedItem.devDependencies = item.devDependencies
+      }
+      if (item.registryDependencies && item.registryDependencies.length > 0) {
+        fixedItem.registryDependencies = item.registryDependencies
+      }
+      if (files && files.length > 0) {
+        fixedItem.files = files
+      }
+      if (item.cssVars) fixedItem.cssVars = item.cssVars
+      if (item.meta) fixedItem.meta = item.meta
+
+      return fixedItem
     }),
   }
 
@@ -90,18 +129,20 @@ async function buildRegistryJsonFile() {
     JSON.stringify(fixedRegistry, null, 2)
   )
 
-  // 3. Copy the registry.json to the www/public/r directory.
-  await fs.cp(
+  // 3. Copy the registry.json to the www/public/r directory
+  const wwwPublicRPath = path.join(process.cwd(), "../www/public/r")
+  await fs.mkdir(wwwPublicRPath, { recursive: true })
+  await fs.copyFile(
     path.join(process.cwd(), "registry.json"),
-    path.join(process.cwd(), "../www/public/r/registry.json"),
-    { recursive: true }
+    path.join(wwwPublicRPath, "registry.json")
   )
 
-  // 3. Copy the registry.json to the www/public/r directory.
-  await fs.cp(
+  // 4. Copy the registry.json to the www/public directory
+  const wwwPublicPath = path.join(process.cwd(), "../www/public")
+  await fs.mkdir(wwwPublicPath, { recursive: true })
+  await fs.copyFile(
     path.join(process.cwd(), "registry.json"),
-    path.join(process.cwd(), "../www/public/registry.json"),
-    { recursive: true }
+    path.join(wwwPublicPath, "registry.json")
   )
 }
 
@@ -121,12 +162,15 @@ async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
   const contents = await Promise.all(
     paths.map(async (filePath) => {
       try {
+        // Remove 'registry/' prefix if present since we're already in registry dir
+        const cleanPath = filePath.replace(/^registry\//, "")
         const content = await fs.readFile(
-          path.join(process.cwd(), "registry", filePath),
+          path.join(process.cwd(), "registry", cleanPath),
           "utf8"
         )
         return `--- file: ${filePath} ---\n${content.endsWith("\n") ? content : content + "\n"}`
-      } catch {
+      } catch (error) {
+        console.warn(`Warning: Could not read file ${filePath}`)
         return null // Skip missing files
       }
     })
@@ -143,7 +187,8 @@ function getComponentExamples() {
     .filter((item) => item.type === "registry:example")
     .forEach((example) => {
       example.registryDependencies?.forEach((dep) => {
-        const componentName = dep.split("/").pop()
+        // Remove @gammaui/ prefix if present
+        const componentName = dep.replace(/^@gammaui\//, "").split("/").pop()
         if (componentName) {
           if (!examplesByComponent.has(componentName)) {
             examplesByComponent.set(componentName, [])
@@ -176,9 +221,10 @@ async function generateLlmsContent() {
     })
     .map((example) => {
       const title = example.title || example.name
-      const firstFile = example.files?.[0]?.path || ""
-      const url = firstFile
-        ? `${siteConfig.links.github}/blob/main/${firstFile}`
+      const firstFile = example.files?.[0]
+      const filePath = typeof firstFile === "string" ? firstFile : firstFile?.path || ""
+      const url = filePath
+        ? `${siteConfig.links.github}/blob/main/registry/${filePath}`
         : siteConfig.links.github
       return `- [${title}](${url}): Example usage`
     })
@@ -264,40 +310,57 @@ async function buildLlmsFiles() {
     fs.writeFile(path.join(publicDir, "llms.txt"), minContent, "utf8"),
     fs.writeFile(path.join(publicDir, "llms-full.txt"), fullContent, "utf8"),
   ])
+
+  console.log("  📝 Created llms.txt")
+  console.log("  📝 Created llms-full.txt")
 }
 
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
-    const process = exec(`pnpm shadcn:build`)
+    const buildProcess = exec(`pnpm shadcn:build`)
 
-    process.on("exit", (code) => {
+    buildProcess.stdout?.on('data', (data) => {
+      console.log(data.toString().trim())
+    })
+
+    buildProcess.stderr?.on('data', (data) => {
+      console.error(data.toString().trim())
+    })
+
+    buildProcess.on("exit", (code) => {
       if (code === 0) {
         resolve(undefined)
       } else {
         reject(new Error(`Process exited with code ${code}`))
       }
     })
+
+    buildProcess.on("error", (error) => {
+      reject(error)
+    })
   })
 }
 
 try {
-  console.log("��️ Building registry/__index__.tsx...")
+  console.log("🏗️ Building registry/__index__.tsx...")
   await buildRegistryIndex()
   console.log("✅ Registry index built successfully")
 
-  console.log("💅 Building registry.json...")
+  console.log("\n💅 Building registry.json...")
   await buildRegistryJsonFile()
   console.log("✅ Registry JSON file built successfully")
 
-  console.log("🧠 Building llms files...")
+  console.log("\n🧠 Building llms files...")
   await buildLlmsFiles()
-  console.log("✅ llms-min.txt and llms.txt built successfully")
+  console.log("✅ llms files built successfully")
 
-  console.log("🏗️ Building registry...")
+  console.log("\n🔨 Building registry...")
   await buildRegistry()
   console.log("✅ Registry build completed")
+
+  console.log("\n🎉 All build steps completed successfully!")
 } catch (error) {
-  console.error("❌ Build failed with error:")
+  console.error("\n❌ Build failed with error:")
   console.error(error)
   if (error instanceof Error) {
     console.error("Error stack:", error.stack)
