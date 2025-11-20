@@ -13,13 +13,13 @@ export const Index: Record<string, any> = {
     registryDependencies: ["utils"],
     files: [],
     component: null,
-    meta: undefined,
+    meta: {},
   },
   "live-waveform": {
     name: "live-waveform",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/live-waveform.tsx",
       type: "registry:ui",
@@ -27,16 +27,16 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/live-waveform.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "live-waveform"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "support-box": {
     name: "support-box",
     description: "A collapsible animated support widget for quick help actions using Framer Motion.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/support-box.tsx",
       type: "registry:ui",
@@ -44,16 +44,16 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/support-box.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "support-box"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "overlay-button": {
     name: "overlay-button",
     description: "An animated gradient button using Framer Motion with looping motion and spring transitions.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/overlay-button.tsx",
       type: "registry:ui",
@@ -61,16 +61,16 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/overlay-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "overlay-button"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "border-button": {
     name: "border-button",
     description: "A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/border-button.tsx",
       type: "registry:ui",
@@ -78,16 +78,16 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/border-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "border-button"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "wavy-text-block": {
     name: "wavy-text-block",
     description: "A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/wavy-text-block.tsx",
       type: "registry:ui",
@@ -95,10 +95,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/wavy-text-block.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "wavy-text-block"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "inverted-cursor": {
     name: "inverted-cursor",
@@ -112,10 +112,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/inverted-cursor.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "inverted-cursor"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "pixel-button": {
     name: "pixel-button",
@@ -129,10 +129,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/pixel-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pixel-button"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "plasma": {
     name: "plasma",
@@ -146,10 +146,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/plasma.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "plasma"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "live-waveform-demo": {
     name: "live-waveform-demo",
@@ -163,10 +163,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/live-waveform-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "live-waveform-demo"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "support-box-demo": {
     name: "support-box-demo",
@@ -180,10 +180,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/support-box-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "support-box-demo"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "overlay-button-demo": {
     name: "overlay-button-demo",
@@ -197,10 +197,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/overlay-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "overlay-button-demo"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "border-button-demo": {
     name: "border-button-demo",
@@ -214,10 +214,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/border-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "border-button-demo"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "wavy-text-block-demo": {
     name: "wavy-text-block-demo",
@@ -231,10 +231,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/wavy-text-block-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "wavy-text-block-demo"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "inverted-cursor-demo": {
     name: "inverted-cursor-demo",
@@ -248,10 +248,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/inverted-cursor-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "inverted-cursor-demo"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "pixel-button-demo": {
     name: "pixel-button-demo",
@@ -265,10 +265,10 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/pixel-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pixel-button-demo"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "plasma-demo": {
     name: "plasma-demo",
@@ -282,16 +282,16 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/plasma-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "plasma-demo"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   "utils": {
     name: "utils",
     description: "",
     type: "registry:lib",
-    registryDependencies: undefined,
+    registryDependencies: [],
     files: [{
       path: "registry/lib/utils.ts",
       type: "registry:lib",
@@ -299,9 +299,9 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/lib/utils.ts")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "utils"
       return { default: mod.default || mod[exportName] }
     }),
-    meta: undefined,
+    meta: {},
   },
   }
