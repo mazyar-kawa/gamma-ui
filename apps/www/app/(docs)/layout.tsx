@@ -5,13 +5,11 @@ import { SidebarProvider } from "@/components/ui/sidebar"
 import { DocsSidebar } from "@/components/docs-sidebar"
 import { SiteHeader } from "@/components/site-header"
 
-interface MarketingLayoutProps {
+type MarketingLayoutProps = {
   children: React.ReactNode
 }
 
-export default async function MarketingLayout({
-  children,
-}: MarketingLayoutProps) {
+export default function MarketingLayout({ children }: MarketingLayoutProps) {
   return (
     <div className="container mx-auto flex flex-1 flex-col px-2">
       <SiteHeader />
