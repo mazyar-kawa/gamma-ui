@@ -1,6 +1,28 @@
 import { DiscordLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons"
-import { IconAlertTriangle, IconArrowRight, IconCheck, IconChevronLeft, IconClipboardCheck, IconCopy, IconCreditCard, IconDeviceLaptop, IconDots, IconFile, IconFileText, IconHelpCircle, IconImageInPicture, IconLoader2, IconMoon, IconPizza, IconPlus, IconSettings, IconSun, IconTrash, IconUser, IconX } from '@tabler/icons-react'
-
+import {
+  IconAlertTriangle,
+  IconArrowRight,
+  IconCheck,
+  IconChevronLeft,
+  IconClipboardCheck,
+  IconCopy,
+  IconCreditCard,
+  IconDeviceLaptop,
+  IconDots,
+  IconFile,
+  IconFileText,
+  IconHelpCircle,
+  IconImageInPicture,
+  IconLoader2,
+  IconMoon,
+  IconPizza,
+  IconPlus,
+  IconSettings,
+  IconSun,
+  IconTrash,
+  IconUser,
+  IconX,
+} from "@tabler/icons-react"
 
 export type IconProps = React.SVGProps<SVGSVGElement>
 

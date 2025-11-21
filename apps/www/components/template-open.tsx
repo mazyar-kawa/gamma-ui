@@ -2,11 +2,10 @@
 
 import Link from "next/link"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
-
+import { IconArrowRight } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { IconArrowRight } from '@tabler/icons-react'
 
 interface TemplateOpenProps {
   url: string

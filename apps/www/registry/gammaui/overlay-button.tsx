@@ -1,12 +1,12 @@
-'use client'
+"use client"
 
-import { motion } from "motion/react";
+import { motion } from "motion/react"
 
 interface OverlayButtonProps {
-    label: string
+  label: string
 }
 
-export default function OverlayButton({label}: OverlayButtonProps) {
+export default function OverlayButton({ label }: OverlayButtonProps) {
   return (
     <motion.button
       initial={{ "--x": "100%", scale: 1.5 }}
@@ -27,13 +27,12 @@ export default function OverlayButton({label}: OverlayButtonProps) {
           mass: 0.1,
         },
       }}
-      className="px-2 py-1 rounded-xl relative radial-gradient"
+      className="radial-gradient relative rounded-xl px-2 py-1"
     >
-      <span className="absolute top-0 left-0 inset-0 rounded-xl w-full h-full linear-overlay" />
-      <span className="text-neutral-100 font-light h-full w-full block relative linear-mask">
+      <span className="linear-overlay absolute inset-0 top-0 left-0 h-full w-full rounded-xl" />
+      <span className="linear-mask relative block h-full w-full font-light text-neutral-100">
         {label}
       </span>
     </motion.button>
-  );
+  )
 }
-

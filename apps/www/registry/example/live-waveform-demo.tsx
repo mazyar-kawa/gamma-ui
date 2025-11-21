@@ -2,9 +2,8 @@
 
 import { useState } from "react"
 
-
+import { Button } from "@/components/ui/button"
 import { LiveWaveform } from "@/registry/gammaui/live-waveform"
-import { Button } from '@/components/ui/button'
 
 export default function LiveWaveformDemo() {
   const [active, setActive] = useState(false)

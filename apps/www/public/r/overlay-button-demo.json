@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/overlay-button-demo.tsx",
-      "content": "import OverlayButton from '../gammaui/overlay-button'\n\nexport default function OverlayButtonDemo() {\n    return <OverlayButton label='Gamma UI'/>\n}",
+      "content": "import OverlayButton from \"../gammaui/overlay-button\"\n\nexport default function OverlayButtonDemo() {\n  return <OverlayButton label=\"Gamma UI\" />\n}\n",
       "type": "registry:example"
     }
   ]

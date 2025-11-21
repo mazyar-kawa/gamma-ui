@@ -18,8 +18,14 @@ export const transformers: ShikiTransformer[] = [
 
         if (raw.startsWith("npx create-")) {
           node.properties["__npm__"] = raw
-          node.properties["__yarn__"] = raw.replace("npx create-", "yarn create ")
-          node.properties["__pnpm__"] = raw.replace("npx create-", "pnpm create ")
+          node.properties["__yarn__"] = raw.replace(
+            "npx create-",
+            "yarn create "
+          )
+          node.properties["__pnpm__"] = raw.replace(
+            "npx create-",
+            "pnpm create "
+          )
           node.properties["__bun__"] = raw.replace("npx", "bunx --bun")
         }
 
@@ -50,8 +56,8 @@ export const transformers: ShikiTransformer[] = [
 
 export async function highlightCode(
   code: string,
-  language: string = 'tsx',
-  theme: string = 'github-light'
+  language: string = "tsx",
+  theme: string = "github-light"
 ) {
   const html = await codeToHtml(code, {
     lang: language,
@@ -59,15 +65,15 @@ export async function highlightCode(
     transformers: [
       {
         pre(node) {
-          node.properties['class'] =
-            'no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none rounded-lg font-mono'
+          node.properties["class"] =
+            "no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none rounded-lg font-mono"
         },
         code(node) {
-          node.properties['style'] = 'color: inherit'
-          node.properties['data-line-numbers'] = ''
+          node.properties["style"] = "color: inherit"
+          node.properties["data-line-numbers"] = ""
         },
         line(node) {
-          node.properties['data-line'] = ''
+          node.properties["data-line"] = ""
         },
       },
     ],

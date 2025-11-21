@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/plasma-demo.tsx",
-      "content": "import Plasma from \"@/registry/gammaui/plasma\";\n\nexport default function PlasmaDemo() {\n  return (\n    <div className=\"relative w-full h-[600px] overflow-hidden rounded-xl\">\n      <Plasma />\n    </div>\n  );\n}\n",
+      "content": "import Plasma from \"@/registry/gammaui/plasma\"\n\nexport default function PlasmaDemo() {\n  return (\n    <div className=\"relative h-[600px] w-full overflow-hidden rounded-xl\">\n      <Plasma />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

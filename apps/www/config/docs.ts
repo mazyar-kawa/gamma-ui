@@ -1,4 +1,4 @@
-import { NavItem, NavItemWithChildren } from '@/types/index'
+import { NavItem, NavItemWithChildren } from "@/types/index"
 
 interface DocsConfig {
   mainNav: NavItem[]
@@ -8,52 +8,52 @@ interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: 'Components',
-      href: '/components',
+      title: "Components",
+      href: "/components",
     },
     {
-      title: 'Templates',
-      href: 'https://pro.gammaui.design',
-      event: 'header_cta_clicked',
-      label: '',
+      title: "Templates",
+      href: "https://pro.gammaui.design",
+      event: "header_cta_clicked",
+      label: "",
     },
     {
-      title: 'Showcase',
-      href: '/showcase',
+      title: "Showcase",
+      href: "/showcase",
     },
   ],
   sidebarNav: [
     {
-      title: 'Getting Started',
+      title: "Getting Started",
       items: [
         {
-          title: 'Introduction',
-          href: '/docs/introduction',
+          title: "Introduction",
+          href: "/docs/introduction",
           items: [],
         },
         {
-          title: 'Install Next.js',
-          href: '/docs/nextjs-installation',
+          title: "Install Next.js",
+          href: "/docs/nextjs-installation",
           items: [],
         },
       ],
     },
-    
+
     {
-      title: 'Components',
+      title: "Components",
       items: [
         {
-          title: 'Live Waveform',
+          title: "Live Waveform",
           href: `/docs/components/live-waveform`,
           items: [],
         },
-         {
-          title: 'Support Box',
+        {
+          title: "Support Box",
           href: `/docs/components/support-box`,
           items: [],
         },
-         {
-          title: 'Inverted Cursor',
+        {
+          title: "Inverted Cursor",
           href: `/docs/components/inverted-cursor`,
           items: [],
         },
@@ -61,21 +61,21 @@ export const docsConfig: DocsConfig = {
     },
 
     {
-      title: 'Buttons',
+      title: "Buttons",
       items: [
         {
-          title: 'Overlay Button',
+          title: "Overlay Button",
           href: `/docs/components/overlay-button`,
           items: [],
         },
-         {
-          title: 'Border Button',
+        {
+          title: "Border Button",
           href: `/docs/components/border-button`,
           items: [],
         },
 
-         {
-          title: 'Pixel Button',
+        {
+          title: "Pixel Button",
           href: `/docs/components/pixel-button`,
           items: [],
         },
@@ -83,14 +83,13 @@ export const docsConfig: DocsConfig = {
     },
 
     {
-      title: 'Text Animations',
+      title: "Text Animations",
       items: [
         {
-          title: 'Wavy Text Block',
+          title: "Wavy Text Block",
           href: `/docs/components/wavy-text-block`,
           items: [],
         },
-       
       ],
     },
   ],
@@ -98,15 +97,15 @@ export const docsConfig: DocsConfig = {
 
 export const introItems = [
   {
-    name: 'Introduction',
-    href: '/docs/introduction',
+    name: "Introduction",
+    href: "/docs/introduction",
   },
   {
-    name: 'Install Next.js',
-    href: '/docs/install-nextjs',
+    name: "Install Next.js",
+    href: "/docs/install-nextjs",
   },
   {
-    name: 'Install Tailwind CSS',
-    href: '/docs/install-tailwindcss',
+    name: "Install Tailwind CSS",
+    href: "/docs/install-tailwindcss",
   },
 ]

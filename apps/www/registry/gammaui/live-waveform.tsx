@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { useEffect, useRef, type HTMLAttributes } from 'react'
+import { useEffect, useRef, type HTMLAttributes } from "react"
 
 export type LiveWaveformProps = HTMLAttributes<HTMLDivElement> & {
   active?: boolean
@@ -18,7 +18,7 @@ export type LiveWaveformProps = HTMLAttributes<HTMLDivElement> & {
   fftSize?: number
   historySize?: number
   updateRate?: number
-  mode?: 'scrolling' | 'static'
+  mode?: "scrolling" | "static"
   onError?: (error: Error) => void
   onStreamReady?: (stream: MediaStream) => void
   onStreamEnd?: () => void
@@ -40,7 +40,7 @@ export function LiveWaveform({
   fftSize = 256,
   historySize = 60,
   updateRate = 30,
-  mode = 'static',
+  mode = "static",
   onError,
   onStreamReady,
   onStreamEnd,
@@ -64,7 +64,7 @@ export function LiveWaveform({
   const lastWidthRef = useRef(0)
   const currentWidthRef = useRef(0) // Track current width
 
-  const heightStyle = typeof height === 'number' ? `${height}px` : height
+  const heightStyle = typeof height === "number" ? `${height}px` : height
 
   // Handle canvas resizing
   useEffect(() => {
@@ -84,7 +84,7 @@ export function LiveWaveform({
       canvas.style.width = `${containerRef.current?.offsetWidth}px`
       canvas.style.height = `${rect.height}px`
 
-      const ctx = canvas.getContext('2d')
+      const ctx = canvas.getContext("2d")
       if (ctx) {
         ctx.scale(dpr, dpr)
       }
@@ -123,7 +123,7 @@ export function LiveWaveform({
           currentWidthRef.current / (barWidth + barGap)
         )
 
-        if (mode === 'static') {
+        if (mode === "static") {
           const halfCount = Math.floor(barCount / 2)
 
           for (let i = 0; i < barCount; i++) {
@@ -182,7 +182,7 @@ export function LiveWaveform({
           }
         }
 
-        if (mode === 'static') {
+        if (mode === "static") {
           staticBarsRef.current = processingData
         } else {
           historyRef.current = processingData
@@ -202,7 +202,7 @@ export function LiveWaveform({
       }
     } else if (!active && !processing) {
       const hasData =
-        mode === 'static'
+        mode === "static"
           ? staticBarsRef.current.length > 0
           : historyRef.current.length > 0
 
@@ -211,7 +211,7 @@ export function LiveWaveform({
         const fadeToIdle = () => {
           fadeProgress += 0.03
           if (fadeProgress < 1) {
-            if (mode === 'static') {
+            if (mode === "static") {
               staticBarsRef.current = staticBarsRef.current.map(
                 (value) => value * (1 - fadeProgress)
               )
@@ -223,7 +223,7 @@ export function LiveWaveform({
             needsRedrawRef.current = true
             requestAnimationFrame(fadeToIdle)
           } else {
-            if (mode === 'static') {
+            if (mode === "static") {
               staticBarsRef.current = []
             } else {
               historyRef.current = []
@@ -245,7 +245,7 @@ export function LiveWaveform({
       }
       if (
         audioContextRef.current &&
-        audioContextRef.current.state !== 'closed'
+        audioContextRef.current.state !== "closed"
       ) {
         audioContextRef.current.close()
         audioContextRef.current = null
@@ -305,7 +305,7 @@ export function LiveWaveform({
       }
       if (
         audioContextRef.current &&
-        audioContextRef.current.state !== 'closed'
+        audioContextRef.current.state !== "closed"
       ) {
         audioContextRef.current.close()
         audioContextRef.current = null
@@ -330,7 +330,7 @@ export function LiveWaveform({
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext("2d")
     if (!ctx) return
 
     let rafId: number
@@ -350,7 +350,7 @@ export function LiveWaveform({
           )
           analyserRef.current.getByteFrequencyData(dataArray)
 
-          if (mode === 'static') {
+          if (mode === "static") {
             const startFreq = Math.floor(dataArray.length * 0.05)
             const endFreq = Math.floor(dataArray.length * 0.4)
             const relevantData = dataArray.slice(startFreq, endFreq)
@@ -418,21 +418,21 @@ export function LiveWaveform({
         (() => {
           const style = getComputedStyle(canvas)
           const color = style.color
-          return color || '#000'
+          return color || "#000"
         })()
 
       const step = barWidth + barGap
       const barCount = Math.floor(width / step)
       const centerY = rect.height / 2
 
-      if (mode === 'static') {
+      if (mode === "static") {
         const dataToRender = processing
           ? staticBarsRef.current
           : active
-          ? staticBarsRef.current
-          : staticBarsRef.current.length > 0
-          ? staticBarsRef.current
-          : []
+            ? staticBarsRef.current
+            : staticBarsRef.current.length > 0
+              ? staticBarsRef.current
+              : []
 
         for (let i = 0; i < barCount && i < dataToRender.length; i++) {
           const value = dataToRender[i] || 0.1
@@ -477,19 +477,19 @@ export function LiveWaveform({
           const gradient = ctx.createLinearGradient(0, 0, width, 0)
           const fadePercent = Math.min(0.3, fadeWidth / width)
 
-          gradient.addColorStop(0, 'rgba(255,255,255,1)')
-          gradient.addColorStop(fadePercent, 'rgba(255,255,255,0)')
-          gradient.addColorStop(1 - fadePercent, 'rgba(255,255,255,0)')
-          gradient.addColorStop(1, 'rgba(255,255,255,1)')
+          gradient.addColorStop(0, "rgba(255,255,255,1)")
+          gradient.addColorStop(fadePercent, "rgba(255,255,255,0)")
+          gradient.addColorStop(1 - fadePercent, "rgba(255,255,255,0)")
+          gradient.addColorStop(1, "rgba(255,255,255,1)")
 
           gradientCacheRef.current = gradient
           lastWidthRef.current = width
         }
 
-        ctx.globalCompositeOperation = 'destination-out'
+        ctx.globalCompositeOperation = "destination-out"
         ctx.fillStyle = gradientCacheRef.current
         ctx.fillRect(0, 0, width, rect.height)
-        ctx.globalCompositeOperation = 'source-over'
+        ctx.globalCompositeOperation = "source-over"
       }
 
       ctx.globalAlpha = 1
@@ -521,30 +521,29 @@ export function LiveWaveform({
 
   return (
     <div
-      className={`relative h-full w-full ${className || ''}`}
+      className={`relative h-full w-full ${className || ""}`}
       ref={containerRef}
       style={{ height: heightStyle }}
       aria-label={
         active
-          ? 'Live audio waveform'
+          ? "Live audio waveform"
           : processing
-          ? 'Processing audio'
-          : 'Audio waveform idle'
+            ? "Processing audio"
+            : "Audio waveform idle"
       }
-      role='img'
+      role="img"
       {...props}
     >
       {!active && !processing && (
-        <div className='border-muted-foreground/20 absolute top-1/2 right-0 left-0 -translate-y-1/2 border-t-2 border-dotted' />
+        <div className="border-muted-foreground/20 absolute top-1/2 right-0 left-0 -translate-y-1/2 border-t-2 border-dotted" />
       )}
       <canvas
-        className='block h-full w-full'
+        className="block h-full w-full"
         ref={canvasRef}
-        aria-hidden='true'
+        aria-hidden="true"
       />
     </div>
   )
 }
-
 
 export default LiveWaveform

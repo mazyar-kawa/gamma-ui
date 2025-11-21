@@ -1,39 +1,40 @@
-import { docsConfig } from '@/config/docs'
-import { Separator } from '@/components/ui/separator'
-import { CommandMenu } from '@/components/command-menu'
-import { MainNav } from '@/components/main-nav'
-import { MobileNav } from '@/components/mobile-nav'
-import { ModeToggle } from '@/components/mode-toggle'
-import { cn } from '@/lib/utils'
-import { GithubLink } from './github-link'
-import { TwitterLink } from './x-link'
+import { docsConfig } from "@/config/docs"
+import { cn } from "@/lib/utils"
+import { Separator } from "@/components/ui/separator"
+import { CommandMenu } from "@/components/command-menu"
+import { MainNav } from "@/components/main-nav"
+import { MobileNav } from "@/components/mobile-nav"
+import { ModeToggle } from "@/components/mode-toggle"
+
+import { GithubLink } from "./github-link"
+import { TwitterLink } from "./x-link"
 
 export function SiteHeader() {
   return (
     <header
       className={cn(
-        'w-fullt ransition-all sticky top-0 z-50 duration-300',
-        'shadow-lg backdrop-blur-md'
+        "w-fullt ransition-all sticky top-0 z-50 duration-300",
+        "shadow-lg backdrop-blur-md"
       )}
     >
-      <div className='container-wrapper 3xl:fixed:px-0 px-6'>
-        <div className='3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:h-4!'>
-          <MobileNav className='flex lg:hidden' />
+      <div className="container-wrapper 3xl:fixed:px-0 px-6">
+        <div className="3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:h-4!">
+          <MobileNav className="flex lg:hidden" />
           {/* <LogoButton /> */}
-          <MainNav items={docsConfig.mainNav} className='hidden lg:flex' />
-          <div className='flex flex-1 items-center justify-between gap-2 md:justify-end'>
-            <div className='ml-auto flex items-center gap-2 md:flex-1 md:justify-end'>
-              <div className='hidden w-full flex-1 md:flex md:w-auto md:flex-none'>
+          <MainNav items={docsConfig.mainNav} className="hidden lg:flex" />
+          <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
+            <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+              <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
                 <CommandMenu />
               </div>
               <Separator
-                orientation='vertical'
-                className='ml-2 hidden lg:block'
+                orientation="vertical"
+                className="ml-2 hidden lg:block"
               />
               <GithubLink />
-              <Separator orientation='vertical' className='3xl:flex hidden' />
+              <Separator orientation="vertical" className="3xl:flex hidden" />
               <TwitterLink />
-              <Separator orientation='vertical' />
+              <Separator orientation="vertical" />
               <ModeToggle />
             </div>
           </div>

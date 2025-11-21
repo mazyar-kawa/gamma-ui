@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { useEffect, useMemo, useState, type ReactElement } from 'react'
-import { IconTerminal, IconTerminal2 } from '@tabler/icons-react'
+import { useEffect, useMemo, useState, type ReactElement } from "react"
+import { IconTerminal, IconTerminal2 } from "@tabler/icons-react"
 
 type TerminalStep = {
   text: string
@@ -20,22 +20,22 @@ type TerminalProps = {
 function MacControls() {
   return (
     <>
-      <IconTerminal2 className='text-muted-foreground mr-1 size-4' />
-      <div className='h-2 w-2 rounded-full bg-red-500' />
-      <div className='h-2 w-2 rounded-full bg-yellow-500' />
-      <div className='h-2 w-2 rounded-full bg-green-500' />
+      <IconTerminal2 className="text-muted-foreground mr-1 size-4" />
+      <div className="h-2 w-2 rounded-full bg-red-500" />
+      <div className="h-2 w-2 rounded-full bg-yellow-500" />
+      <div className="h-2 w-2 rounded-full bg-green-500" />
     </>
   )
 }
 
 function LocalHost({ title, message }: { title: string; message: string }) {
   return (
-    <div className='hidden sm:block bg-card animate-in fade-in slide-in-from-top-10 absolute right-4 bottom-5 z-10 overflow-hidden rounded-[0.6rem] border shadow-xl'>
-      <div className='bg-muted text-muted-foreground relative flex h-6 flex-row items-center border-b px-4 text-xs'>
-        <IconTerminal className='absolute inset-2 size-3' />
-        <p className='absolute inset-x-0 text-center'>{title}</p>
+    <div className="bg-card animate-in fade-in slide-in-from-top-10 absolute right-4 bottom-5 z-10 hidden overflow-hidden rounded-[0.6rem] border shadow-xl sm:block">
+      <div className="bg-muted text-muted-foreground relative flex h-6 flex-row items-center border-b px-4 text-xs">
+        <IconTerminal className="absolute inset-2 size-3" />
+        <p className="absolute inset-x-0 text-center">{title}</p>
       </div>
-      <div className='text-card-foreground p-4 text-sm'>{message}</div>
+      <div className="text-card-foreground p-4 text-sm">{message}</div>
     </div>
   )
 }
@@ -45,8 +45,8 @@ const Terminal = ({
   steps,
   pulseInterval = 100,
   showLocalhost = true,
-  hostBarTitle = 'localhost:3000',
-  hostMessage = 'New App Created!',
+  hostBarTitle = "localhost:3000",
+  hostMessage = "New App Created!",
 }: TerminalProps) => {
   const typingLen = useMemo(() => command.length, [command])
   const revealLen = useMemo(() => steps.length, [steps])
@@ -67,10 +67,10 @@ const Terminal = ({
   const isTyping = counter < typingLen
 
   elements.push(
-    <span key='command' className='text-foreground'>
+    <span key="command" className="text-foreground">
       {command.substring(0, typedChars)}
       {isTyping && (
-        <div className='bg-foreground inline-block h-3 w-1 animate-pulse' />
+        <div className="bg-foreground inline-block h-3 w-1 animate-pulse" />
       )}
     </span>
   )
@@ -78,7 +78,7 @@ const Terminal = ({
   if (!isTyping) {
     const shownSteps = Math.min(revealLen, counter - typingLen)
     if (shownSteps > 0) {
-      elements.push(<span key='space'> </span>)
+      elements.push(<span key="space"> </span>)
     }
     for (let i = 0; i < shownSteps; i++) {
       const step = steps[i]
@@ -86,7 +86,7 @@ const Terminal = ({
         <span
           key={`step-${i}`}
           className={
-            step.bold ? 'text-foreground font-bold' : 'text-foreground'
+            step.bold ? "text-foreground font-bold" : "text-foreground"
           }
         >
           {step.text}
@@ -99,7 +99,7 @@ const Terminal = ({
 
   return (
     <div
-      className='relative'
+      className="relative"
       onMouseEnter={() => {
         if (counter >= finalCount) {
           setCounter(0)
@@ -110,12 +110,12 @@ const Terminal = ({
         <LocalHost title={hostBarTitle} message={hostMessage} />
       )}
 
-      <pre className='bg-card w-full overflow-hidden rounded-[0.6rem] border text-[11px] shadow-lg sm:min-w-[480px] sm:text-[12px] md:min-w-[400px] md:text-[13px]'>
-        <div className='bg-muted flex flex-row items-center gap-2 border-b px-3 py-2 sm:px-4'>
+      <pre className="bg-card w-full overflow-hidden rounded-[0.6rem] border text-[11px] shadow-lg sm:min-w-[480px] sm:text-[12px] md:min-w-[400px] md:text-[13px]">
+        <div className="bg-muted flex flex-row items-center gap-2 border-b px-3 py-2 sm:px-4">
           <MacControls />
         </div>
-        <div className='from-background to-muted min-h-[150px] bg-linear-to-b sm:min-h-[180px] md:min-h-[200px]'>
-          <div className='grid p-3 whitespace-pre-wrap sm:p-4'>{elements}</div>
+        <div className="from-background to-muted min-h-[150px] bg-linear-to-b sm:min-h-[180px] md:min-h-[200px]">
+          <div className="grid p-3 whitespace-pre-wrap sm:p-4">{elements}</div>
         </div>
       </pre>
     </div>

@@ -4,15 +4,36 @@
   "private": true,
   "type": "module",
   "packageManager": "bun@1.1.43",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "bunx next dev",
-    "build": "bunx next build",
-    "start": "bunx next start",
-    "lint": "bunx next lint"
+    "preinstall": "npx only-allow bun",
+    "dev": "bunx turbo run dev --parallel",
+    "build": "bunx turbo run build",
+    "start": "bunx turbo run start",
+    "lint": "bunx turbo run lint",
+    "lint:fix": "bunx turbo run lint:fix",
+    "typecheck": "bunx turbo run typecheck",
+    "format:fix": "bunx turbo run format:fix",
+    "format:fix:silent": "bunx turbo run format:fix -- --log-level silent",
+    "format:check": "bunx turbo run format:check",
+    "build:docs": "bunx turbo run build:docs --filter=www",
+    "build:registry": "bunx turbo run build:registry --filter=www && bunx turbo run lint:fix --filter=www && bunx turbo run format:fix:silent",
+    "check": "bunx turbo run lint && bunx turbo run typecheck && bunx turbo run format:check"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "lefthook": "^2.0.4"
+  },
   "devDependencies": {},
   "engines": {
     "bun": ">=1.1.43"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

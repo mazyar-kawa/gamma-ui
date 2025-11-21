@@ -6,7 +6,7 @@ export interface NavItem {
   //   icon?: keyof typeof Icons
   label?: string
   paid?: boolean
-  event?: Event['name']
+  event?: Event["name"]
 }
 
 export interface NavItemWithChildren extends NavItem {

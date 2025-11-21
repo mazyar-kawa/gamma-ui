@@ -26,7 +26,9 @@ import { TemplateOpen } from "@/components/template-open"
 import { TemplatePreview } from "@/components/template-preview"
 
 const Android = dynamic(() =>
-  import("@/registry/gammaui/live-waveform").then((module) => module.LiveWaveform)
+  import("@/registry/gammaui/live-waveform").then(
+    (module) => module.LiveWaveform
+  )
 )
 
 export const mdxComponents = {
@@ -99,10 +101,7 @@ export const mdxComponents = {
     />
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
-    <p
-      className={cn("leading-relaxed not-first:mt-6", className)}
-      {...props}
-    />
+    <p className={cn("leading-relaxed not-first:mt-6", className)} {...props} />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <strong className={cn("font-medium", className)} {...props} />
@@ -123,7 +122,6 @@ export const mdxComponents = {
     />
   ),
   img: ({ className, alt, ...props }: React.ComponentProps<"img">) => (
-     
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }: React.ComponentProps<"hr">) => (

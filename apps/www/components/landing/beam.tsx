@@ -1,7 +1,8 @@
-import { cn } from '@/lib/utils'
-import { motion } from 'motion/react'
-import { useTheme } from 'next-themes'
-import { useId } from 'react'
+import { useId } from "react"
+import { motion } from "motion/react"
+import { useTheme } from "next-themes"
+
+import { cn } from "@/lib/utils"
 
 const Beam = ({
   className,
@@ -23,25 +24,25 @@ const Beam = ({
 
   return (
     <motion.svg
-      width={width ?? '600'}
-      height='2'
-      viewBox={`0 0 ${width ?? '600'} 2`}
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      className={cn('absolute inset-x-0 w-full', className)}
+      width={width ?? "600"}
+      height="2"
+      viewBox={`0 0 ${width ?? "600"} 2`}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("absolute inset-x-0 w-full", className)}
       {...svgProps}
     >
       <motion.path
-        d={`M0 1H${width ?? '600'}`}
+        d={`M0 1H${width ?? "600"}`}
         stroke={`url(#svgGradient-${id})`}
-        strokeWidth='2'
-        strokeLinecap='round'
+        strokeWidth="2"
+        strokeLinecap="round"
       />
 
       <defs>
         <motion.linearGradient
           id={`svgGradient-${id}`}
-          gradientUnits='userSpaceOnUse'
+          gradientUnits="userSpaceOnUse"
           initial={{
             x1: -beamLength,
             x2: 0,
@@ -63,29 +64,29 @@ const Beam = ({
           }}
         >
           <stop
-            offset='0%'
-            stopColor={resolvedTheme === 'light' ? '#000' : '#ffffff'}
-            stopOpacity='0'
+            offset="0%"
+            stopColor={resolvedTheme === "light" ? "#000" : "#ffffff"}
+            stopOpacity="0"
           />
           <stop
-            offset='10%'
-            stopColor={resolvedTheme === 'light' ? '#000' : '#ffffff'}
-            stopOpacity='0.3'
+            offset="10%"
+            stopColor={resolvedTheme === "light" ? "#000" : "#ffffff"}
+            stopOpacity="0.3"
           />
           <stop
-            offset='50%'
-            stopColor={resolvedTheme === 'light' ? '#000' : '#ffffff'}
-            stopOpacity='1'
+            offset="50%"
+            stopColor={resolvedTheme === "light" ? "#000" : "#ffffff"}
+            stopOpacity="1"
           />
           <stop
-            offset='90%'
-            stopColor={resolvedTheme === 'light' ? '#000' : '#ffffff'}
-            stopOpacity='0.3'
+            offset="90%"
+            stopColor={resolvedTheme === "light" ? "#000" : "#ffffff"}
+            stopOpacity="0.3"
           />
           <stop
-            offset='100%'
-            stopColor={resolvedTheme === 'light' ? '#000' : '#ffffff'}
-            stopOpacity='0'
+            offset="100%"
+            stopColor={resolvedTheme === "light" ? "#000" : "#ffffff"}
+            stopOpacity="0"
           />
         </motion.linearGradient>
       </defs>
