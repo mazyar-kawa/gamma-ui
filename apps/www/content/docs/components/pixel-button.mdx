@@ -32,7 +32,10 @@ npx shadcn@latest add @gammaui/pixel-button
 <Steps>
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="pixel-button" title="components/gammaui/pixel-button.tsx" />
+<ComponentSource
+  name="pixel-button"
+  title="components/gammaui/pixel-button.tsx"
+/>
 
 <Step>Update the import paths to match your project structure.</Step> 
 </Steps> 
@@ -42,11 +45,11 @@ npx shadcn@latest add @gammaui/pixel-button
 ## Usage
 
 ```tsx
-import { PixelButton } from '@/components/gammaui/pixel-button'
+import { PixelButton } from "@/components/gammaui/pixel-button"
 
 export default function Example() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
       <PixelButton color="#4f46e5">Click Me</PixelButton>
     </div>
   )
@@ -90,17 +93,17 @@ The `PixelButton` dynamically creates a grid of pixel-like elements that fade in
 
 ## Features
 
-* **Dynamic Pixel Generation**: Automatically generates a grid of pixel divs based on button size.
-* **Smooth Transitions**: Each pixel fades in with randomized delay for organic motion.
-* **Fully Responsive**: Adjusts to any button size dynamically.
-* **Customizable Colors**: Change the pixel color with the `color` prop.
-* **Tailwind v4 Ready**: Uses modern Tailwind CSS classes.
+- **Dynamic Pixel Generation**: Automatically generates a grid of pixel divs based on button size.
+- **Smooth Transitions**: Each pixel fades in with randomized delay for organic motion.
+- **Fully Responsive**: Adjusts to any button size dynamically.
+- **Customizable Colors**: Change the pixel color with the `color` prop.
+- **Tailwind v4 Ready**: Uses modern Tailwind CSS classes.
 
 ---
 
 ## Tips
 
-* Use consistent pixel sizes (default 10px) for smooth patterns.
-* Adjust button size using Tailwind utilities (e.g., `w-[180px] h-[60px]`).
-* To create multiple color variations, wrap buttons in themed containers.
-* You can increase pixel density by reducing the pixel size in the code logic.
+- Use consistent pixel sizes (default 10px) for smooth patterns.
+- Adjust button size using Tailwind utilities (e.g., `w-[180px] h-[60px]`).
+- To create multiple color variations, wrap buttons in themed containers.
+- You can increase pixel density by reducing the pixel size in the code logic.

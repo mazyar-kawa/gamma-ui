@@ -39,8 +39,9 @@ npx shadcn@latest add @gammaui/inverted-cursor
 ### Basic Usage
 
 Add the Cursor component to your root layout or main app component:
+
 ```tsx
-import { Cursor } from '@/components/gammaui/inverted-cursor'
+import { Cursor } from "@/components/gammaui/inverted-cursor"
 
 export default function RootLayout({ children }) {
   return (
@@ -55,8 +56,9 @@ export default function RootLayout({ children }) {
 ```
 
 ### Custom Size
+
 ```tsx
-import { Cursor } from '@/components/gammaui/cursor'
+import { Cursor } from "@/components/gammaui/cursor"
 
 export default function App() {
   return (
@@ -70,9 +72,9 @@ export default function App() {
 
 ## Props
 
-| Prop | Type     | Default | Description                        |
-| ---- | -------- | ------- | ---------------------------------- |
-| size | `number` | `60`    | Diameter of the cursor in pixels   |
+| Prop | Type     | Default | Description                      |
+| ---- | -------- | ------- | -------------------------------- |
+| size | `number` | `60`    | Diameter of the cursor in pixels |
 
 ## Features
 
@@ -89,23 +91,25 @@ export default function App() {
 ### Changing the Easing Speed
 
 Modify the lerp factor in the `animate` function (line 25-26):
+
 ```tsx
 // Faster (0.3 = more responsive)
-const deltaX = (targetX - currentX) * 0.3;
-const deltaY = (targetY - currentY) * 0.3;
+const deltaX = (targetX - currentX) * 0.3
+const deltaY = (targetY - currentY) * 0.3
 
 // Slower (0.1 = more smooth/laggy)
-const deltaX = (targetX - currentX) * 0.1;
-const deltaY = (targetY - currentY) * 0.1;
+const deltaX = (targetX - currentX) * 0.1
+const deltaY = (targetY - currentY) * 0.1
 ```
 
 ### Custom Styling
 
 Override the default styles with Tailwind classes:
+
 ```tsx
 <div
   ref={cursorRef}
-  className="fixed pointer-events-none rounded-full bg-gradient-to-br from-purple-500 to-pink-500 blur-sm z-50"
+  className="pointer-events-none fixed z-50 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 blur-sm"
   style={{
     width: size,
     height: size,
@@ -117,37 +121,41 @@ Override the default styles with Tailwind classes:
 ### Different Blend Modes
 
 Try different mix-blend modes for various effects:
+
 ```tsx
 // Default (inverts colors)
-className="... mix-blend-difference"
+className = "... mix-blend-difference"
 
 // Additive lighting effect
-className="... mix-blend-screen"
+className = "... mix-blend-screen"
 
 // Multiply effect
-className="... mix-blend-multiply"
+className = "... mix-blend-multiply"
 
 // Exclusion effect
-className="... mix-blend-exclusion"
+className = "... mix-blend-exclusion"
 ```
 
 ## Examples
 
 ### Large Cursor with Blur
+
 ```tsx
-<Cursor size={100} />
+;<Cursor size={100} />
 
 // In the component, add blur:
-className="... blur-md"
+className = "... blur-md"
 ```
 
 ### Dual Cursor Effect
+
 ```tsx
 export default function App() {
   return (
     <>
       <Cursor size={60} /> {/* Outer cursor */}
-      <Cursor size={20} /> {/* Inner cursor - will need className modification */}
+      <Cursor size={20} />{" "}
+      {/* Inner cursor - will need className modification */}
       {/* Your content */}
     </>
   )
@@ -155,9 +163,11 @@ export default function App() {
 ```
 
 ### Colored Cursor
+
 ```tsx
 // Modify the component's className
-className="fixed pointer-events-none rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-70 z-50"
+className =
+  "fixed pointer-events-none rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-70 z-50"
 ```
 
 ## Important Notes
@@ -171,6 +181,7 @@ className="fixed pointer-events-none rounded-full bg-gradient-to-r from-cyan-500
 ## Browser Support
 
 Works in all modern browsers that support:
+
 - `mix-blend-difference` CSS property
 - `requestAnimationFrame` API
 - CSS transforms

@@ -6,8 +6,8 @@ import {
 } from "fumadocs-mdx/config"
 import rehypePrettyCode from "rehype-pretty-code"
 import { z } from "zod"
-import { transformers } from '@/lib/highlight-code'
 
+import { transformers } from "@/lib/highlight-code"
 
 export default defineConfig({
   mdxOptions: {
@@ -23,7 +23,7 @@ export default defineConfig({
       plugins.shift()
       plugins.push([
         // TODO: fix the type.
-         
+
         rehypePrettyCode as any,
         {
           theme: {

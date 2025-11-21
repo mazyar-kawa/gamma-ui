@@ -6,7 +6,8 @@ import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import ComponentCode from './component-code'
+
+import ComponentCode from "./component-code"
 
 export async function ComponentSource({
   name,
@@ -69,4 +70,3 @@ export async function ComponentSource({
     </CodeCollapsibleWrapper>
   )
 }
-

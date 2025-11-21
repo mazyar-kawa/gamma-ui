@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
+import { MouseEvent, useState } from "react"
 import { motion } from "motion/react"
-import { useState, MouseEvent } from "react"
 
 interface Position {
   x: number
@@ -9,10 +9,10 @@ interface Position {
 }
 
 interface BorderButtonProps {
-    label: string
+  label: string
 }
 
-export default function BorderButton({label}: BorderButtonProps) {
+export default function BorderButton({ label }: BorderButtonProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [positions, setPositions] = useState<Record<number, Position>>({})
   const [opacities, setOpacities] = useState<Record<number, number>>({})
@@ -64,14 +64,14 @@ export default function BorderButton({label}: BorderButtonProps) {
           mass: 0.1,
         },
       }}
-      className="relative rounded-xl bg-transparent overflow-hidden radial-gradient-border-button"
+      className="radial-gradient-border-button relative overflow-hidden rounded-xl bg-transparent"
     >
       <div
         key={i}
         onMouseMove={(e) => handleMouseMove(e, i)}
         onMouseEnter={() => handleMouseEnter(i)}
         onMouseLeave={handleMouseLeave}
-        className="relative px-2 py-1 rounded-xl flex flex-col items-center justify-center"
+        className="relative flex flex-col items-center justify-center rounded-xl px-2 py-1"
       >
         <div
           style={{
@@ -86,17 +86,10 @@ export default function BorderButton({label}: BorderButtonProps) {
             pointerEvents: "none",
             WebkitMaskImage: `radial-gradient(circle 20px at ${positions[i]?.x || 0}px ${positions[i]?.y || 0}px, white 15%, transparent)`,
           }}
-           className={`
-    absolute inset-0 rounded-xl border 
-    transition-opacity duration-500 w-full
-    border-sky-500 dark:border-white/40
-  `}
+          className={`absolute inset-0 w-full rounded-xl border border-sky-500 transition-opacity duration-500 dark:border-white/40`}
         />
-        <p className='text-white'>
-            {label}
-        </p>
+        <p className="text-white">{label}</p>
       </div>
     </motion.button>
   )
 }
-

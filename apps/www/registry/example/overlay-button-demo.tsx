@@ -1,5 +1,5 @@
-import OverlayButton from '../gammaui/overlay-button'
+import OverlayButton from "../gammaui/overlay-button"
 
 export default function OverlayButtonDemo() {
-    return <OverlayButton label='Gamma UI'/>
+  return <OverlayButton label="Gamma UI" />
 }

@@ -13,7 +13,6 @@ import {
 
 export async function copyToClipboardWithMeta(value: string, event?: Event) {
   navigator.clipboard.writeText(value)
-
 }
 
 export function CopyButton({
@@ -41,14 +40,11 @@ export function CopyButton({
           size="icon"
           variant={variant}
           className={cn(
-            "bg-code  z-10 size-7 hover:opacity-100 focus-visible:opacity-100",
+            "bg-code z-10 size-7 hover:opacity-100 focus-visible:opacity-100",
             className
           )}
           onClick={() => {
-            copyToClipboardWithMeta(
-              value,
-            undefined
-            )
+            copyToClipboardWithMeta(value, undefined)
             setHasCopied(true)
           }}
           {...props}

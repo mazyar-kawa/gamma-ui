@@ -1,8 +1,10 @@
-'use client'
+"use client"
 
-import { useEffect, useState } from 'react'
-import { cn } from '@/lib/utils'
-import Beam from './beam'
+import { useEffect, useState } from "react"
+
+import { cn } from "@/lib/utils"
+
+import Beam from "./beam"
 
 const GRID_SIZE = 200
 
@@ -36,8 +38,8 @@ export const AnimatedGridBackground: React.FC<AnimatedGridBackgroundProps> = ({
 }) => {
   const [points, setPoints] = useState<{ x: number; y: number }[]>([])
   const [dimensions, setDimensions] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 0,
-    height: typeof window !== 'undefined' ? window.innerHeight : 0,
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
   })
 
   // Handle window resize
@@ -49,8 +51,8 @@ export const AnimatedGridBackground: React.FC<AnimatedGridBackgroundProps> = ({
       })
     }
 
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   // Update grid points when dimensions change
@@ -95,49 +97,49 @@ export const AnimatedGridBackground: React.FC<AnimatedGridBackgroundProps> = ({
   }
 
   return (
-    <div className={cn('relative overflow-visible', className)}>
+    <div className={cn("relative overflow-visible", className)}>
       {/* --- Background layers (absolute, non-interactive) --- */}
       <div
         // apply opacity / pointer-events to the background wrapper — not the children
-        className='absolute inset-0 pointer-events-none opacity-45'
+        className="pointer-events-none absolute inset-0 opacity-45"
         aria-hidden
       >
         {/* Grid Background */}
         <div
           className={cn(
-            'absolute inset-0',
-            'bg-size-[200px_200px]',
-            'bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]',
-            'dark:bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]',
-            'transition-colors duration-300'
+            "absolute inset-0",
+            "bg-size-[200px_200px]",
+            "bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+            "dark:bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
+            "transition-colors duration-300"
           )}
         />
 
         {/* Grid Dots */}
-        <div className='absolute inset-0 overflow-hidden'>
+        <div className="absolute inset-0 overflow-hidden">
           {points.map((point, i) => (
             <div
               key={i}
-              className='absolute transition-transform duration-300'
+              className="absolute transition-transform duration-300"
               style={{
                 left: `${point.x}px`,
                 top: `${point.y}px`,
-                transform: 'translate(-50%, -50%)',
+                transform: "translate(-50%, -50%)",
               }}
             >
-              <div className='h-6 w-6 rounded-full bg-black/20 dark:bg-neutral-400/20 flex justify-center items-center transition-colors duration-300'>
-                <div className='h-2 w-2 rounded-full bg-black/40 dark:bg-neutral-400/40 shadow-md transition-colors duration-300' />
+              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black/20 transition-colors duration-300 dark:bg-neutral-400/20">
+                <div className="h-2 w-2 rounded-full bg-black/40 shadow-md transition-colors duration-300 dark:bg-neutral-400/40" />
               </div>
             </div>
           ))}
         </div>
 
         {/* Beams between points */}
-        <div className='absolute inset-0'>
+        <div className="absolute inset-0">
           {points.map((_, i) => (
             <div
               key={i}
-              className='absolute inset-0 overflow-hidden pointer-events-none'
+              className="pointer-events-none absolute inset-0 overflow-hidden"
             >
               {generateConnections(i).map((targetIndex) => {
                 const start = points[i]
@@ -147,7 +149,7 @@ export const AnimatedGridBackground: React.FC<AnimatedGridBackgroundProps> = ({
                 return (
                   <Beam
                     key={`${i}-${targetIndex}`}
-                    className='origin-left'
+                    className="origin-left"
                     style={{
                       left: `${beamProps.x}px`,
                       top: `${beamProps.y}px`,
@@ -164,11 +166,11 @@ export const AnimatedGridBackground: React.FC<AnimatedGridBackgroundProps> = ({
         </div>
 
         {/* Radial Mask */}
-        <div className='absolute inset-0 flex items-center justify-center bg-white dark:bg-black mask-[radial-gradient(ellipse_at_center,transparent_10%,black)] transition-colors duration-300' />
+        <div className="absolute inset-0 flex items-center justify-center bg-white mask-[radial-gradient(ellipse_at_center,transparent_10%,black)] transition-colors duration-300 dark:bg-black" />
       </div>
 
       {/* --- Children: on top, interactive --- */}
-      <div className='relative z-10 pointer-events-auto'>{children}</div>
+      <div className="pointer-events-auto relative z-10">{children}</div>
     </div>
   )
 }

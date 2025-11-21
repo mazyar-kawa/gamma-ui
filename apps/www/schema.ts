@@ -190,7 +190,7 @@ export const configSchema = rawConfigSchema.extend({
 
 // TODO: type the key.
 // Okay for now since I don't want a breaking change.
-export const workspaceConfigSchema = z.record(z.string(), configSchema);
+export const workspaceConfigSchema = z.record(z.string(), configSchema)
 
 export const searchResultItemSchema = z.object({
   name: z.string(),

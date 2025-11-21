@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-
+import { IconCheck, IconClipboard, IconTerminal2 } from "@tabler/icons-react"
 
 import { useConfig } from "@/hooks/use-config"
 import { Button } from "@/components/ui/button"
@@ -12,7 +12,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { IconCheck, IconClipboard, IconTerminal2 } from '@tabler/icons-react'
 
 export function CodeBlockCommand({
   __npm__,

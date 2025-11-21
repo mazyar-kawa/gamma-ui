@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from "react"
 
 export const Plasma: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -108,20 +108,28 @@ export const Plasma: React.FC = () => {
     }
   `
 
-  const loadShader = (gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null => {
+  const loadShader = (
+    gl: WebGLRenderingContext,
+    type: number,
+    source: string
+  ): WebGLShader | null => {
     const shader = gl.createShader(type)
     if (!shader) return null
     gl.shaderSource(shader, source)
     gl.compileShader(shader)
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-      console.error('Shader compile error:', gl.getShaderInfoLog(shader))
+      console.error("Shader compile error:", gl.getShaderInfoLog(shader))
       gl.deleteShader(shader)
       return null
     }
     return shader
   }
 
-  const initShaderProgram = (gl: WebGLRenderingContext, vsSource: string, fsSource: string): WebGLProgram | null => {
+  const initShaderProgram = (
+    gl: WebGLRenderingContext,
+    vsSource: string,
+    fsSource: string
+  ): WebGLProgram | null => {
     const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource)
     const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource)
     if (!vertexShader || !fragmentShader) return null
@@ -134,7 +142,10 @@ export const Plasma: React.FC = () => {
     gl.linkProgram(shaderProgram)
 
     if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-      console.error('Shader program link error:', gl.getProgramInfoLog(shaderProgram))
+      console.error(
+        "Shader program link error:",
+        gl.getProgramInfoLog(shaderProgram)
+      )
       return null
     }
 
@@ -144,9 +155,9 @@ export const Plasma: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const gl = canvas.getContext('webgl')
+    const gl = canvas.getContext("webgl")
     if (!gl) {
-      console.warn('WebGL not supported.')
+      console.warn("WebGL not supported.")
       return
     }
 
@@ -161,11 +172,11 @@ export const Plasma: React.FC = () => {
     const programInfo = {
       program: shaderProgram,
       attribLocations: {
-        vertexPosition: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
+        vertexPosition: gl.getAttribLocation(shaderProgram, "aVertexPosition"),
       },
       uniformLocations: {
-        resolution: gl.getUniformLocation(shaderProgram, 'iResolution'),
-        time: gl.getUniformLocation(shaderProgram, 'iTime'),
+        resolution: gl.getUniformLocation(shaderProgram, "iResolution"),
+        time: gl.getUniformLocation(shaderProgram, "iTime"),
       },
     }
 
@@ -188,12 +199,23 @@ export const Plasma: React.FC = () => {
       gl.useProgram(programInfo.program)
 
       if (programInfo.uniformLocations.resolution)
-        gl.uniform2f(programInfo.uniformLocations.resolution, canvas.width, canvas.height)
+        gl.uniform2f(
+          programInfo.uniformLocations.resolution,
+          canvas.width,
+          canvas.height
+        )
       if (programInfo.uniformLocations.time)
         gl.uniform1f(programInfo.uniformLocations.time, currentTime)
 
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-      gl.vertexAttribPointer(programInfo.attribLocations.vertexPosition, 2, gl.FLOAT, false, 0, 0)
+      gl.vertexAttribPointer(
+        programInfo.attribLocations.vertexPosition,
+        2,
+        gl.FLOAT,
+        false,
+        0,
+        0
+      )
       gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
       requestAnimationFrame(render)
@@ -207,8 +229,8 @@ export const Plasma: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full rounded-xl"
-      style={{ display: 'block' }}
+      className="h-full w-full rounded-xl"
+      style={{ display: "block" }}
     />
   )
 }

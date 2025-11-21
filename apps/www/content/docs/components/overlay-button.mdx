@@ -5,6 +5,7 @@ description: An animated gradient button using Framer Motion with spring physics
 author: mazyar
 published: true
 ---
+
 <ComponentPreview
   name="overlay-button-demo"
   title="Overlay Button"
@@ -29,7 +30,10 @@ npx add motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
-<ComponentSource name="overlay-button" title="components/ui/overlay-button.tsx" />
+<ComponentSource
+  name="overlay-button"
+  title="components/ui/overlay-button.tsx"
+/>
 
 <Step>Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).</Step>
 ```css
@@ -82,7 +86,8 @@ npx add motion
       -webkit-mask-composite: xor;
       padding: 1px;
       }
-```
+
+````
 
 <Step>Update the import paths to match your project setup.</Step>
 </Steps>
@@ -98,11 +103,10 @@ import OverlayButton from '@/components/gammaui/overlay-button'
 export default function Example() {
   return <OverlayButton label="Gamma UI" />
 }
-```
-
+````
 
 #### Props
 
-| Prop                  | Type                            | Default    | Description                                    |
-| --------------------- | ------------------------------- | ---------- | ---------------------------------------------- |
-| label                | `string`                       | -    | The text content displayed on the button |
+| Prop  | Type     | Default | Description                              |
+| ----- | -------- | ------- | ---------------------------------------- |
+| label | `string` | -       | The text content displayed on the button |

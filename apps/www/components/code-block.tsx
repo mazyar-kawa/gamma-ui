@@ -1,24 +1,25 @@
 "use client"
 
-import { CodeIcon, TerminalIcon } from "lucide-react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import React from "react"
+import { CodeIcon, TerminalIcon } from "lucide-react"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import {
   oneDark,
   oneLight,
-} from "react-syntax-highlighter/dist/cjs/styles/prism";
+} from "react-syntax-highlighter/dist/cjs/styles/prism"
 
-import { cn } from "@/lib/utils";
-import React from "react";
-import { CopyButton } from './copy-button'
+import { cn } from "@/lib/utils"
+
+import { CopyButton } from "./copy-button"
 
 type CodeBlockProps = {
-  fileName?: string;
-  copyCode?: boolean;
-  contentClassName?: string;
-  customFilePath?: string;
-  simpleCode?: string;
-  code: string;
-} & React.ComponentProps<"div">;
+  fileName?: string
+  copyCode?: boolean
+  contentClassName?: string
+  customFilePath?: string
+  simpleCode?: string
+  code: string
+} & React.ComponentProps<"div">
 
 export function CodeBlock({
   fileName,
@@ -31,11 +32,11 @@ export function CodeBlock({
     <div
       className={cn(
         "relative rounded-xl border border-neutral-300/50 bg-neutral-200/30 dark:border-neutral-800/60 dark:bg-neutral-900/40",
-        className,
+        className
       )}
     >
       {fileName && copyCode && (
-        <div className="relative flex h-10 items-center justify-between border-b border-neutral-300/50 bg-neutral-200/30 pl-4 pr-2.5 dark:border-neutral-800/60 dark:bg-neutral-900/30">
+        <div className="relative flex h-10 items-center justify-between border-b border-neutral-300/50 bg-neutral-200/30 pr-2.5 pl-4 dark:border-neutral-800/60 dark:bg-neutral-900/30">
           <div className="flex items-center gap-2">
             {fileName === "Terminal" ? (
               <TerminalIcon
@@ -48,7 +49,7 @@ export function CodeBlock({
                 className="text-neutral-500 dark:text-neutral-600"
               />
             )}
-            <span className="text-[13px] font-medium leading-none text-neutral-500">
+            <span className="text-[13px] leading-none font-medium text-neutral-500">
               {fileName}
             </span>
           </div>
@@ -108,5 +109,5 @@ export function CodeBlock({
         </div>
       </div>
     </div>
-  );
+  )
 }
