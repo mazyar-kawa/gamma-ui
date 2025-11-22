@@ -1,10 +1,8 @@
-import { dirname } from "path"
-import { fileURLToPath } from "url"
+import js from "@eslint/js"
+import next from "eslint-plugin-next"
+import tseslint from "typescript-eslint"
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const eslintConfig = [
+export default [
   {
     ignores: [
       "node_modules/**",
@@ -15,12 +13,18 @@ const eslintConfig = [
       ".source/**",
     ],
   },
+
+  js.configs.recommended,
+
+  ...tseslint.configs.strict,
+  ...tseslint.configs.stylistic,
+
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    plugins: {
+      next,
+    },
     rules: {
       "@next/next/no-duplicate-head": "off",
     },
   },
 ]
-
-export default eslintConfig

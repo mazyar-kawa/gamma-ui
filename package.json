@@ -1,13 +1,24 @@
 {
   "name": "gammaui",
   "version": "0.1.0",
-  "private": true,
-  "type": "module",
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "js-yaml": "^4.1.1",
+    "lefthook": "^2.0.4",
+    "turbo": "^2.6.1",
+    "ultracite": "^6.3.5"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "engines": {
+    "bun": ">=1.1.43"
+  },
   "packageManager": "bun@1.1.43",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "private": true,
   "scripts": {
     "preinstall": "npx only-allow bun",
     "dev": "bunx turbo run dev --parallel",
@@ -23,17 +34,9 @@
     "build:registry": "bunx turbo run build:registry --filter=www && bunx turbo run lint:fix --filter=www && bunx turbo run format:fix:silent",
     "check": "bunx turbo run lint && bunx turbo run typecheck && bunx turbo run format:check"
   },
-  "dependencies": {
-    "@commitlint/cli": "^20.1.0",
-    "lefthook": "^2.0.4"
-  },
-  "devDependencies": {},
-  "engines": {
-    "bun": ">=1.1.43"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  }
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

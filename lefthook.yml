@@ -10,7 +10,9 @@ pre-commit:
       run: bun run typecheck
       stage_fixed: true
     lint:fix:
-      skip: true
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: bun run lint:fix
+      stage_fixed: true
     format:fix:silent:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: bun run format:fix:silent
