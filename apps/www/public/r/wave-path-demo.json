@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wave-path-demo",
+  "type": "registry:example",
+  "title": "Wave Path Demo",
+  "description": "An interactive SVG wave animation that reacts to cursor movement.",
+  "registryDependencies": [
+    "@gammaui/wave-path"
+  ],
+  "files": [
+    {
+      "path": "registry/example/wave-path-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport WavePath from \"@/registry/gammaui/wave-path\"\n\nexport default function Demo() {\n  return (\n    <div className=\"relative flex w-full flex-col items-center justify-center\">\n      <div\n        aria-hidden=\"true\"\n        className={cn(\n          \"pointer-events-none absolute -top-10 left-1/2 size-full -translate-x-1/2 rounded-full\",\n          \"bg-[radial-gradient(ellipse_at_center,--theme(--color-foreground/.1),transparent_50%)]\",\n          \"blur-[30px]\"\n        )}\n      />\n\n      <div className=\"flex w-full flex-col items-end\">\n        <WavePath className=\"mb-10\" />\n        <div className=\"flex w-full flex-col items-end\">\n          <div className=\"flex justify-end\">\n            <p className=\"text-muted-foreground mt-2 text-sm\">World of Art</p>\n            <p className=\"text-foreground/80 ml-8 w-3/4 text-2xl md:text-4xl\">\n              Experience the emotions of artists through their works. Let the\n              beauty of art inspire you and fill your soul.\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -92,6 +92,7 @@ export default async function DocPage({ params }: DocPageProps) {
     includeRoot: { url: "/docs" },
     includePage: true,
   })
+
   const lastBreadcrumb = breadcrumbs.at(-1)
 
   const resolveBreadcrumbName = (item: BreadcrumbItem): string => {

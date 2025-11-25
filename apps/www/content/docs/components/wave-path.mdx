@@ -1,0 +1,107 @@
+---
+title: Wave Path
+date: 2025-11-24
+description: An interactive wave animation that reacts to mouse movement, built with SVG and React.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="wave-path-demo"
+  title="Wave Path"
+  description="A reactive SVG wave animation that distorts based on pointer movement."
+  justify="start"
+/>
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/wave-path
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following component into your project:</Step>
+
+<ComponentSource name="wave-path" title="components/gammaui/wave-path.tsx" />
+
+  <Step>Update the import paths to match your project structure if needed.</Step>
+</Steps>
+  </TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+```tsx
+import WavePath from "@/components/gammaui/wave-path"
+
+export default function Example() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
+      <WavePath className="text-black dark:text-white" />
+    </div>
+  )
+}
+```
+
+The `WavePath` component renders a smooth SVG path that distorts based on your cursor position, then gently animates back to rest when the pointer leaves.
+
+---
+
+## Props
+
+| Prop      | Type                   | Default | Description                       |
+| --------- | ---------------------- | ------- | --------------------------------- |
+| className | `string`               | —       | Tailwind classes for customizing. |
+| ...props  | `React.HTMLAttributes` | —       | Forwarded to container `<div>`.   |
+
+---
+
+## Features
+
+- **Interactive Wave** — The SVG path reacts to pointer movement.
+- **Smooth Reset Animation** — On mouse leave, the wave slowly settles back.
+- **Fully Responsive** — Uses viewport width to calculate wave amplitude.
+- **Customizable Stroke** — Inherit color from `currentColor`.
+- **Client Component** — Works seamlessly with Next.js App Router.
+
+---
+
+## Demo Code
+
+```tsx
+"use client"
+
+import React from "react"
+
+import WavePath from "@/components/gammaui/wave-path"
+
+export default function WavePathDemo() {
+  return (
+    <div className="flex items-center justify-center py-40">
+      <WavePath className="text-blue-500" />
+    </div>
+  )
+}
+```
+
+---
+
+## Tips
+
+- Wrap the component in a container with padding to avoid clipping.
+- Change the color using Tailwind (`text-red-500`, `text-blue-400`, etc.).
+- Works great as a section separator or interactive decorative effect.
+- You can increase sensitivity by changing `movementY` logic.

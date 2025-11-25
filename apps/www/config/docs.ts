@@ -48,6 +48,21 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Radial Intro",
+          href: `/docs/components/radial-intro`,
+          items: [],
+        },
+        {
+          title: "Logo Cloud",
+          href: `/docs/components/logo-cloud`,
+          items: [],
+        },
+        {
+          title: "Wave Path",
+          href: `/docs/components/wave-path`,
+          items: [],
+        },
+        {
           title: "Support Box",
           href: `/docs/components/support-box`,
           items: [],
@@ -79,6 +94,11 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/pixel-button`,
           items: [],
         },
+        {
+          title: "Magnetize Button",
+          href: `/docs/components/magnetize-button`,
+          items: [],
+        },
       ],
     },
 
@@ -88,6 +108,17 @@ export const docsConfig: DocsConfig = {
         {
           title: "Wavy Text Block",
           href: `/docs/components/wavy-text-block`,
+          items: [],
+        },
+      ],
+    },
+
+    {
+      title: "Backgrounds",
+      items: [
+        {
+          title: "Plasma",
+          href: `/docs/components/plasma`,
           items: [],
         },
       ],

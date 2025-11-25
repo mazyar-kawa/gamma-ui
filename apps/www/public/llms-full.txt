@@ -820,7 +820,7 @@ export default function LiveWaveformDemo() {
   }
 
   return (
-    <div className="bg-card w-full rounded-lg border p-6">
+    <div className="bg-card mx-4 w-full rounded-lg border p-6">
       <div className="mb-4">
         <h3 className="text-lg font-semibold">Live Audio Waveform</h3>
         <p className="text-muted-foreground text-sm">
@@ -866,6 +866,307 @@ export default function LiveWaveformDemo() {
         </div>
       </div>
     </div>
+  )
+}
+
+
+
+===== COMPONENT: logo-cloud =====
+Title: Logo Cloud
+Description: A responsive logo grid component supporting dark mode, decorations, and flexible layout.
+
+--- file: gammaui/logo-cloud.tsx ---
+import { IconPlus } from "@tabler/icons-react"
+
+import { cn } from "@/lib/utils"
+
+type Logo = {
+  src: string
+  alt: string
+  width?: number
+  height?: number
+}
+
+type LogoCloudProps = React.ComponentProps<"div">
+
+export default function LogoCloud({ className, ...props }: LogoCloudProps) {
+  return (
+    <div
+      className={cn(
+        "relative grid grid-cols-2 border-x md:grid-cols-4",
+        className
+      )}
+      {...props}
+    >
+      <div className="pointer-events-none absolute -top-px left-1/2 w-screen -translate-x-1/2 border-t" />
+
+      <LogoCard
+        className="relative border-r border-b bg-gray-100 dark:bg-[#121212]"
+        logo={{
+          src: "https://svgl.app/library/nvidia-wordmark-light.svg",
+          alt: "Nvidia Logo",
+        }}
+      >
+        <IconPlus
+          className="absolute -right-[12.5px] -bottom-[12.5px] z-10 size-6"
+          strokeWidth={1}
+        />
+      </LogoCard>
+
+      <LogoCard
+        className="border-b bg-white md:border-r dark:bg-black"
+        logo={{
+          src: "https://svgl.app/library/supabase_wordmark_light.svg",
+          alt: "Supabase Logo",
+        }}
+      />
+
+      <LogoCard
+        className="relative border-r border-b bg-gray-100 md:bg-gray-100 dark:bg-[#121212] md:dark:bg-[#121212]"
+        logo={{
+          src: "https://svgl.app/library/github_wordmark_light.svg",
+          alt: "GitHub Logo",
+        }}
+      >
+        <IconPlus
+          className="absolute -right-[12.5px] -bottom-[12.5px] z-10 size-6"
+          strokeWidth={1}
+        />
+        <IconPlus
+          className="absolute -bottom-[12.5px] -left-[12.5px] z-10 hidden size-6 md:block"
+          strokeWidth={1}
+        />
+      </LogoCard>
+
+      <LogoCard
+        className="relative border-b bg-gray-100 md:bg-white dark:bg-[#121212] md:dark:bg-black"
+        logo={{
+          src: "https://svgl.app/library/openai_wordmark_light.svg",
+          alt: "OpenAI Logo",
+        }}
+      />
+
+      <LogoCard
+        className="relative border-r border-b bg-gray-100 md:border-b-0 md:bg-white dark:bg-[#121212] md:dark:bg-black"
+        logo={{
+          src: "https://svgl.app/library/turso-wordmark-light.svg",
+          alt: "Turso Logo",
+        }}
+      >
+        <IconPlus
+          className="absolute -right-[12.5px] -bottom-[12.5px] z-10 size-6 md:-left-[12.5px] md:hidden"
+          strokeWidth={1}
+        />
+      </LogoCard>
+
+      <LogoCard
+        className="border-b bg-white md:border-r md:border-b-0 md:bg-gray-100 dark:bg-black md:dark:bg-[#121212]"
+        logo={{
+          src: "https://svgl.app/library/clerk-wordmark-light.svg",
+          alt: "Clerk Logo",
+        }}
+      />
+
+      <LogoCard
+        className="border-r bg-white dark:bg-black"
+        logo={{
+          src: "https://svgl.app/library/claude-ai-wordmark-icon_light.svg",
+          alt: "Claude AI Logo",
+        }}
+      />
+
+      <LogoCard
+        className="bg-gray-100 dark:bg-[#121212]"
+        logo={{
+          src: "https://svgl.app/library/vercel_wordmark.svg",
+          alt: "Vercel Logo",
+        }}
+      />
+
+      <div className="pointer-events-none absolute -bottom-px left-1/2 w-screen -translate-x-1/2 border-b" />
+    </div>
+  )
+}
+
+type LogoCardProps = React.ComponentProps<"div"> & {
+  logo: Logo
+}
+
+function LogoCard({ logo, className, children, ...props }: LogoCardProps) {
+  return (
+    <div
+      className={cn(
+        "bg-background flex items-center justify-center px-4 py-8 md:p-8",
+        className
+      )}
+      {...props}
+    >
+      <img
+        alt={logo.alt}
+        className="pointer-events-none h-4 select-none md:h-5 dark:brightness-0 dark:invert"
+        height={logo.height || "auto"}
+        src={logo.src}
+        width={logo.width || "auto"}
+      />
+      {children}
+    </div>
+  )
+}
+
+
+===== EXAMPLE: logo-cloud-demo =====
+Title: Logo Cloud Demo
+
+--- file: example/logo-cloud-demo.tsx ---
+import LogoCloud from "@/registry/gammaui/logo-cloud"
+
+export default function DemoOne() {
+  return (
+    <div className="w-full place-content-center px-4">
+      <section className="relative mx-auto grid max-w-3xl">
+        <h2 className="text-muted-foreground mb-6 text-center text-lg font-medium tracking-tight md:text-2xl">
+          Companies we{" "}
+          <span className="text-primary font-semibold">collaborate</span> with.
+        </h2>
+
+        <LogoCloud />
+      </section>
+    </div>
+  )
+}
+
+
+
+===== COMPONENT: magnetize-button =====
+Title: Magnetize Button
+Description: A magnetic particle-attraction button built with Framer Motion.
+
+--- file: gammaui/magnetize-button.tsx ---
+"use client"
+
+import * as React from "react"
+import { useCallback, useEffect, useState } from "react"
+import { motion, useAnimation } from "framer-motion"
+import { Magnet } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+
+interface MagnetizeButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  particleCount?: number
+  attractRadius?: number
+}
+
+interface Particle {
+  id: number
+  x: number
+  y: number
+}
+
+export default function MagnetizeButton({
+  className,
+  particleCount = 12,
+  attractRadius = 50,
+  ...props
+}: MagnetizeButtonProps) {
+  const [isAttracting, setIsAttracting] = useState(false)
+  const [particles, setParticles] = useState<Particle[]>([])
+  const particlesControl = useAnimation()
+
+  useEffect(() => {
+    const newParticles = Array.from({ length: particleCount }, (_, i) => ({
+      id: i,
+      x: Math.random() * 360 - 180,
+      y: Math.random() * 360 - 180,
+    }))
+    setParticles(newParticles)
+  }, [particleCount])
+
+  const handleInteractionStart = useCallback(async () => {
+    setIsAttracting(true)
+    await particlesControl.start({
+      x: 0,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 10,
+      },
+    })
+  }, [particlesControl])
+
+  const handleInteractionEnd = useCallback(async () => {
+    setIsAttracting(false)
+    await particlesControl.start((i) => ({
+      x: particles[i].x,
+      y: particles[i].y,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    }))
+  }, [particlesControl, particles])
+
+  return (
+    <Button
+      className={cn(
+        "relative min-w-40 touch-none",
+        "bg-violet-100 dark:bg-violet-900",
+        "hover:bg-violet-200 dark:hover:bg-violet-800",
+        "text-violet-600 dark:text-violet-300",
+        "border border-violet-300 dark:border-violet-700",
+        "cursor-pointer transition-all duration-300",
+        className
+      )}
+      onMouseEnter={handleInteractionStart}
+      onMouseLeave={handleInteractionEnd}
+      onTouchStart={handleInteractionStart}
+      onTouchEnd={handleInteractionEnd}
+      {...props}
+    >
+      {particles.map((_, index) => (
+        <motion.div
+          key={index}
+          custom={index}
+          initial={{ x: particles[index].x, y: particles[index].y }}
+          animate={particlesControl}
+          className={cn(
+            "absolute h-1.5 w-1.5 rounded-full",
+            "bg-violet-400 dark:bg-violet-300",
+            "transition-opacity duration-300",
+            isAttracting ? "opacity-100" : "opacity-40"
+          )}
+        />
+      ))}
+      <span className="relative flex w-full items-center justify-center gap-2">
+        <Magnet
+          className={cn(
+            "h-4 w-4 transition-transform duration-300",
+            isAttracting && "scale-110"
+          )}
+        />
+        {isAttracting ? "Attracting" : "Hover me"}
+      </span>
+    </Button>
+  )
+}
+
+
+===== EXAMPLE: magnetize-button-demo =====
+Title: Magnetize Button Demo
+
+--- file: example/magnetize-button-demo.tsx ---
+import MagnetizeButton from "@/registry/gammaui/magnetize-button"
+
+export default function MagnetizeButtonDemo() {
+  return (
+    <MagnetizeButton
+      particleCount={14}
+      attractRadius={50}
+      className="mx-auto"
+    />
   )
 }
 
@@ -1014,28 +1315,10 @@ import { PixelButton } from "@/registry/gammaui/pixel-button"
 
 export default function PixelButtonDemo() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden bg-white text-center transition-colors duration-300 dark:bg-gray-950">
-      {/* Background grid */}
-      <div className="bg-size-[:50px_50px] absolute inset-0 z-0 bg-[linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)]" />
-
-      {/* Header */}
-      <div className="z-10 mb-8">
-        <h1 className="mb-4 text-5xl font-bold text-black transition-colors duration-300 dark:text-white">
-          Pixel Hover Effects
-        </h1>
-        <p className="max-w-2xl px-4 text-lg text-gray-600 transition-colors duration-300 dark:text-gray-300">
-          Experience the mesmerizing pixel animation effect. Hover over the
-          buttons below to watch as individual pixels fade in with random
-          delays, creating a dynamic and engaging visual experience.
-        </p>
-      </div>
-
-      {/* Buttons */}
-      <div className="z-10 flex flex-col gap-6">
-        <PixelButton color="#ff5722">Pixel</PixelButton>
-        <PixelButton color="#03a9f4">Button</PixelButton>
-        <PixelButton color="#4caf50">Hover Me</PixelButton>
-      </div>
+    <div className="z-10 flex h-full w-full justify-center gap-6">
+      <PixelButton color="#ff5722">Pixel</PixelButton>
+      <PixelButton color="#03a9f4">Button</PixelButton>
+      <PixelButton color="#4caf50">Hover Me</PixelButton>
     </div>
   )
 }
@@ -1303,6 +1586,221 @@ export default function PlasmaDemo() {
 
 
 
+===== COMPONENT: radial-intro =====
+Title: Radial Intro
+Description: A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.
+
+--- file: gammaui/radial-intro.tsx ---
+"use client"
+
+import * as React from "react"
+import {
+  delay,
+  LayoutGroup,
+  motion,
+  useAnimate,
+  type AnimationSequence,
+  type Transition,
+} from "motion/react"
+
+interface RadialIntroProps {
+  orbitItems: OrbitItem[]
+  stageSize?: number
+  imageSize?: number
+}
+
+type OrbitItem = {
+  id: number
+  name: string
+  src: string
+}
+
+const transition: Transition = {
+  delay: 0,
+  stiffness: 300,
+  damping: 35,
+  type: "spring",
+  restSpeed: 0.01,
+  restDelta: 0.01,
+}
+
+const spinConfig = {
+  duration: 30,
+  ease: "linear" as const,
+  repeat: Infinity,
+}
+
+const qsa = (root: Element, sel: string) =>
+  Array.from(root.querySelectorAll(sel))
+
+const angleOf = (el: Element) => Number((el as HTMLElement).dataset.angle || 0)
+
+const armOfImg = (img: Element) =>
+  (img as HTMLElement).closest("[data-arm]") as HTMLElement | null
+
+export default function RadialIntro({
+  orbitItems,
+  stageSize = 320,
+  imageSize = 60,
+}: RadialIntroProps) {
+  const step = 360 / orbitItems.length
+  const [scope, animate] = useAnimate()
+
+  React.useEffect(() => {
+    const root = scope.current
+    if (!root) return
+
+    // get arm and image elements
+    const arms = qsa(root, "[data-arm]")
+    const imgs = qsa(root, "[data-arm-image]")
+    const stops: Array<() => void> = []
+
+    // image lift-in
+    delay(() => animate(imgs, { top: 0 }, transition), 250)
+
+    // build sequence for orbit placement
+    const orbitPlacementSequence: AnimationSequence = [
+      ...arms.map((el): [Element, Record<string, any>, any] => [
+        el,
+        { rotate: angleOf(el) },
+        { ...transition, at: 0 },
+      ]),
+      ...imgs.map((img): [Element, Record<string, any>, any] => [
+        img,
+        { rotate: -angleOf(armOfImg(img)!), opacity: 1 },
+        { ...transition, at: 0 },
+      ]),
+    ]
+
+    // play placement sequence
+    delay(() => animate(orbitPlacementSequence), 700)
+
+    // start continuous spin for arms and images
+    delay(() => {
+      // arms spin clockwise
+      arms.forEach((el) => {
+        const angle = angleOf(el)
+        const ctrl = animate(el, { rotate: [angle, angle + 360] }, spinConfig)
+        stops.push(() => ctrl.cancel())
+      })
+
+      // images counter-spin to stay upright
+      imgs.forEach((img) => {
+        const arm = armOfImg(img)
+        const angle = arm ? angleOf(arm) : 0
+        const ctrl = animate(
+          img,
+          { rotate: [-angle, -angle - 360] },
+          spinConfig
+        )
+        stops.push(() => ctrl.cancel())
+      })
+    }, 1300)
+
+    return () => stops.forEach((stop) => stop())
+  }, [])
+
+  return (
+    <LayoutGroup>
+      <motion.div
+        ref={scope}
+        className="relative overflow-visible"
+        style={{ width: stageSize, height: stageSize }}
+        initial={false}
+      >
+        {orbitItems.map((item, i) => (
+          <motion.div
+            key={item.id}
+            data-arm
+            className="absolute inset-0 will-change-transform"
+            style={{ zIndex: orbitItems.length - i }}
+            data-angle={i * step}
+            layoutId={`arm-${item.id}`}
+          >
+            <motion.img
+              data-arm-image
+              className="translate absolute top-1/2 left-1/2 aspect-square -translate-x-1/2 rounded-full object-fill"
+              style={{
+                width: imageSize,
+                height: imageSize,
+                opacity: i === 0 ? 1 : 0,
+              }}
+              src={item.src}
+              alt={item.name}
+              draggable={false}
+              layoutId={`arm-img-${item.id}`}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </LayoutGroup>
+  )
+}
+
+
+===== EXAMPLE: radial-intro-demo =====
+Title: Radial Intro Demo
+
+--- file: example/radial-intro-demo.tsx ---
+import RadialIntro from "@/registry/gammaui/radial-intro"
+
+const ITEMS = [
+  {
+    id: 1,
+    name: "Framer University",
+    src: "https://pbs.twimg.com/profile_images/1602734731728142336/9Bppcs67_400x400.jpg",
+  },
+  {
+    id: 2,
+    name: "arhamkhnz",
+    src: "https://pbs.twimg.com/profile_images/1897311929028255744/otxpL-ke_400x400.jpg",
+  },
+  {
+    id: 3,
+    name: "Skyleen",
+    src: "https://pbs.twimg.com/profile_images/1948770261848756224/oPwqXMD6_400x400.jpg",
+  },
+  {
+    id: 4,
+    name: "Shadcn",
+    src: "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+  },
+  {
+    id: 5,
+    name: "Adam Wathan",
+    src: "https://pbs.twimg.com/profile_images/1677042510839857154/Kq4tpySA_400x400.jpg",
+  },
+  {
+    id: 6,
+    name: "Guillermo Rauch",
+    src: "https://pbs.twimg.com/profile_images/1783856060249595904/8TfcCN0r_400x400.jpg",
+  },
+  {
+    id: 7,
+    name: "Jhey",
+    src: "https://pbs.twimg.com/profile_images/1534700564810018816/anAuSfkp_400x400.jpg",
+  },
+  {
+    id: 8,
+    name: "David Haz",
+    src: "https://pbs.twimg.com/profile_images/1927474594102784000/Al0g-I6o_400x400.jpg",
+  },
+  {
+    id: 9,
+    name: "Matt Perry",
+    src: "https://pbs.twimg.com/profile_images/1690345911149375488/wfD0Ai9j_400x400.jpg",
+  },
+]
+export default function RadialIntroDemo() {
+  return (
+    <div className="mx-auto">
+      <RadialIntro orbitItems={ITEMS} />
+    </div>
+  )
+}
+
+
+
 ===== COMPONENT: support-box =====
 Title: Support Box
 Description: A collapsible animated support widget for quick help actions using Framer Motion.
@@ -1509,6 +2007,138 @@ export default function SupportBoxDemo() {
   return (
     <div className="flex items-center justify-center p-6">
       <SupportBox title="Need Help?" items={helpItems} />
+    </div>
+  )
+}
+
+
+
+===== COMPONENT: wave-path =====
+Title: Wave Path
+Description: A dynamic interactive SVG wave component that responds to pointer movement.
+
+--- file: gammaui/wave-path.tsx ---
+"use client"
+
+import React, { useEffect, useRef } from "react"
+
+import { cn } from "@/lib/utils"
+
+type WWavePathProps = React.ComponentProps<"div">
+
+export default function WavePath({ className, ...props }: WWavePathProps) {
+  const path = useRef<SVGPathElement>(null)
+  let progress = 0
+  let x = 0.2
+  let time = Math.PI / 2
+  let reqId: number | null = null
+
+  useEffect(() => {
+    setPath(progress)
+  }, [])
+
+  const setPath = (progress: number) => {
+    const width = window.innerWidth * 0.7
+    if (path.current) {
+      path.current.setAttributeNS(
+        null,
+        "d",
+        `M0 100 Q${width * x} ${100 + progress * 0.6}, ${width} 100`
+      )
+    }
+  }
+
+  const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a
+
+  const manageMouseEnter = () => {
+    if (reqId) {
+      cancelAnimationFrame(reqId)
+      resetAnimation()
+    }
+  }
+
+  const manageMouseMove = (e: React.MouseEvent) => {
+    const { movementY, clientX } = e
+    if (path.current) {
+      const pathBound = path.current.getBoundingClientRect()
+      x = (clientX - pathBound.left) / pathBound.width
+      progress += movementY
+      setPath(progress)
+    }
+  }
+
+  const manageMouseLeave = () => {
+    animateOut()
+  }
+
+  const animateOut = () => {
+    const newProgress = progress * Math.sin(time)
+    progress = lerp(progress, 0, 0.025)
+    time += 0.2
+    setPath(newProgress)
+    if (Math.abs(progress) > 0.75) {
+      reqId = requestAnimationFrame(animateOut)
+    } else {
+      resetAnimation()
+    }
+  }
+
+  const resetAnimation = () => {
+    time = Math.PI / 2
+    progress = 0
+  }
+
+  return (
+    <div className={cn("relative h-px w-[70vw]", className)} {...props}>
+      <div
+        onMouseEnter={manageMouseEnter}
+        onMouseMove={manageMouseMove}
+        onMouseLeave={manageMouseLeave}
+        className="relative -top-5 z-10 h-10 w-full hover:-top-[150px] hover:h-[300px]"
+      />
+      <svg className="absolute -top-[100px] h-[300px] w-full">
+        <path ref={path} className="fill-none stroke-current" strokeWidth={2} />
+      </svg>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: wave-path-demo =====
+Title: Wave Path Demo
+
+--- file: example/wave-path-demo.tsx ---
+"use client"
+
+import React from "react"
+
+import { cn } from "@/lib/utils"
+import WavePath from "@/registry/gammaui/wave-path"
+
+export default function Demo() {
+  return (
+    <div className="relative flex w-full flex-col items-center justify-center">
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute -top-10 left-1/2 size-full -translate-x-1/2 rounded-full",
+          "bg-[radial-gradient(ellipse_at_center,--theme(--color-foreground/.1),transparent_50%)]",
+          "blur-[30px]"
+        )}
+      />
+
+      <div className="flex w-full flex-col items-end">
+        <WavePath className="mb-10" />
+        <div className="flex w-full flex-col items-end">
+          <div className="flex justify-end">
+            <p className="text-muted-foreground mt-2 text-sm">World of Art</p>
+            <p className="text-foreground/80 ml-8 w-3/4 text-2xl md:text-4xl">
+              Experience the emotions of artists through their works. Let the
+              beauty of art inspire you and fill your soul.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

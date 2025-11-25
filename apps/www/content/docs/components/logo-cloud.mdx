@@ -1,0 +1,130 @@
+---
+title: Logo Cloud
+date: 2025-11-24
+description: A responsive grid layout displaying brand logos with optional overlay icons.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="logo-cloud-demo"
+  title="Logo Cloud"
+  description="A clean logo grid layout with optional decorations and responsive structure."
+  justify="start"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/logo-cloud
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following component code into your project.</Step>
+
+<ComponentSource name="logo-cloud" title="components/ui/logo-cloud.tsx" />
+
+<Step>Make sure the import paths match your project structure.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+```tsx
+import { LogoCloud } from "@/components/ui/logo-cloud"
+
+export default function Example() {
+  return <LogoCloud className="my-12" />
+}
+```
+
+This will display a responsive grid of branded logos with optional decorative icons.
+
+---
+
+## Props
+
+| Prop      | Type                              | Default | Description                                        |
+| --------- | --------------------------------- | ------- | -------------------------------------------------- |
+| className | `string`                          | —       | Extra Tailwind classes applied to the wrapper div. |
+| ...props  | `React.HTMLProps<HTMLDivElement>` | —       | All native div props are passed through.           |
+
+---
+
+## Logo Object Shape
+
+```ts
+type Logo = {
+  src: string
+  alt: string
+  width?: number
+  height?: number
+}
+```
+
+---
+
+## Component Features
+
+- **Responsive grid** (2 columns → 4 columns on desktop)
+- **Dark mode support**
+- **Decorative plus icons** using Tabler Icons
+- **Optimized image loading**
+- **Easy to extend with additional logos**
+- **Works inside any layout**
+
+---
+
+## Example: Adding Custom Logos
+
+```tsx
+import { LogoCloud } from "@/components/ui/logo-cloud"
+
+const logos = [
+  {
+    src: "/brands/tesla.svg",
+    alt: "Tesla Logo",
+  },
+  {
+    src: "/brands/apple.svg",
+    alt: "Apple Logo",
+  },
+]
+
+export default function Example() {
+  return (
+    <LogoCloud className="border-y">
+      {logos.map((logo, index) => (
+        <img
+          key={index}
+          src={logo.src}
+          alt={logo.alt}
+          className="h-6 dark:brightness-0 dark:invert"
+        />
+      ))}
+    </LogoCloud>
+  )
+}
+```
+
+---
+
+## Tips
+
+- You can pass child components to place badges or extra icons.
+- Use high-resolution SVGs for best quality.
+- This component works great as a **partners section** or **homepage trust section**.

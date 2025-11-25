@@ -124,6 +124,66 @@
       ]
     },
     {
+      "name": "radial-intro",
+      "type": "registry:ui",
+      "title": "Radial Intro",
+      "description": "A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.",
+      "registryDependencies": [
+        "@gammaui/radial-intro"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/radial-intro.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "logo-cloud",
+      "type": "registry:ui",
+      "title": "Logo Cloud",
+      "description": "A responsive logo grid component supporting dark mode, decorations, and flexible layout.",
+      "registryDependencies": [
+        "@gammaui/logo-cloud"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/logo-cloud.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wave-path",
+      "type": "registry:ui",
+      "title": "Wave Path",
+      "description": "A dynamic interactive SVG wave component that responds to pointer movement.",
+      "registryDependencies": [
+        "@gammaui/wave-path"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/wave-path.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "magnetize-button",
+      "type": "registry:ui",
+      "title": "Magnetize Button",
+      "description": "A magnetic particle-attraction button built with Framer Motion.",
+      "registryDependencies": [
+        "@gammaui/magnetize-button"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/magnetize-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "live-waveform-demo",
       "type": "registry:example",
       "title": "Live Waveform Demo",
@@ -239,6 +299,66 @@
       "files": [
         {
           "path": "registry/example/plasma-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radial-intro-demo",
+      "type": "registry:example",
+      "title": "Radial Intro Demo",
+      "description": "A rotating radial orbit animation demo showcasing spinning profile images.",
+      "registryDependencies": [
+        "radial-intro"
+      ],
+      "files": [
+        {
+          "path": "registry/example/radial-intro-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "logo-cloud-demo",
+      "type": "registry:example",
+      "title": "Logo Cloud Demo",
+      "description": "A responsive logo grid demo showcasing brand logos with optional plus icons.",
+      "registryDependencies": [
+        "logo-cloud"
+      ],
+      "files": [
+        {
+          "path": "registry/example/logo-cloud-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "wave-path-demo",
+      "type": "registry:example",
+      "title": "Wave Path Demo",
+      "description": "An interactive SVG wave animation that reacts to cursor movement.",
+      "registryDependencies": [
+        "@gammaui/wave-path"
+      ],
+      "files": [
+        {
+          "path": "registry/example/wave-path-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "magnetize-button-demo",
+      "type": "registry:example",
+      "title": "Magnetize Button Demo",
+      "description": "An interactive demo showcasing the Magnetize Button component with particle attraction effects.",
+      "registryDependencies": [
+        "@gammaui/magnetize-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/magnetize-button-demo.tsx",
           "type": "registry:example"
         }
       ]
