@@ -1,0 +1,146 @@
+---
+title: Radial Intro
+date: 2025-11-24
+description: A rotating radial orbit animation demo showcasing spinning profile images.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="radial-intro-demo"
+  title="Radial Intro"
+  description="A dynamic rotating orbit animation with interactive image nodes."
+  justify="start"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+```bash
+npx shadcn@latest add @gammaui/radial-intro
+````
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following component code into your project.</Step>
+
+<ComponentSource name="radial-intro" title="components/ui/radial-intro.tsx" />
+
+<Step>Make sure your import paths match your folder structure.</Step> 
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+```tsx
+import { RadialIntro } from "@/components/ui/radial-intro"
+
+const ITEMS = [
+  {
+    id: 1,
+    name: "Framer University",
+    src: "https://pbs.twimg.com/profile_images/1602734731728142336/9Bppcs67_400x400.jpg",
+  },
+  {
+    id: 2,
+    name: "arhamkhnz",
+    src: "https://pbs.twimg.com/profile_images/1897311929028255744/otxpL-ke_400x400.jpg",
+  },
+  {
+    id: 3,
+    name: "Skyleen",
+    src: "https://pbs.twimg.com/profile_images/1948770261848756224/oPwqXMD6_400x400.jpg",
+  },
+  {
+    id: 4,
+    name: "Shadcn",
+    src: "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+  },
+]
+
+export default function Example() {
+  return <RadialIntro orbitItems={ITEMS} stageSize={320} imageSize={60} />
+}
+```
+
+This will display rotating orbiting images with smooth animations powered by **Motion**.
+
+---
+
+## Props
+
+| Prop       | Type          | Default | Description                                                |
+| ---------- | ------------- | ------- | ---------------------------------------------------------- |
+| orbitItems | `OrbitItem[]` | —       | The list of images (with id, name, src) to place in orbit. |
+| stageSize  | `number`      | `320`   | The width/height of the orbit container.                   |
+| imageSize  | `number`      | `60`    | Image size for each orbiting item.                         |
+
+---
+
+## Orbit Item Shape
+
+```ts
+type OrbitItem = {
+  id: number
+  name: string
+  src: string
+}
+```
+
+---
+
+## Example Variants
+
+### Larger Stage
+
+```tsx
+<Component orbitItems={ITEMS} stageSize={480} imageSize={80} />
+```
+
+### Smaller Images
+
+```tsx
+<Component orbitItems={ITEMS} imageSize={40} />
+```
+
+### Custom Data
+
+```tsx
+<Component
+  orbitItems={[
+    { id: 1, name: "Mars", src: "/planets/mars.png" },
+    { id: 2, name: "Venus", src: "/planets/venus.png" },
+    { id: 3, name: "Jupiter", src: "/planets/jupiter.png" },
+  ]}
+/>
+```
+
+---
+
+## Features
+
+- **Beautiful Orbit Animation** using Motion’s spring physics
+- **Auto Counter-Rotation** keeps images upright during orbit
+- **Fully Responsive** with customizable sizes
+- **Optimized Rendering** using `LayoutGroup` and `motion`
+- **Supports Any Number of Items**
+
+---
+
+## Tips
+
+- Use square images for best rotation symmetry.
+- Increase `stageSize` for more orbit spacing.
+- You can place the Radial Intro in hero sections or intros for profiles.
+- Adjust animation speed by modifying the `spinConfig` inside the component.

@@ -1,0 +1,124 @@
+---
+title: Magnetize Button
+date: 2025-11-24
+description: A button that pulls animated particles toward its center using Framer Motion for a magnetic interaction effect.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="magnetize-button-demo"
+  title="Magnetize Button"
+  description="A button with particles that magnetically attract when hovered."
+  justify="start"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+```bash
+npx shadcn@latest add @gammaui/magnetize-button
+````
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy the following component into your project.</Step>
+
+<ComponentSource
+  name="magnetize-button"
+  title="components/gammaui/magnetize-button.tsx"
+/>
+
+<Step>Update import paths to match your project structure.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+```tsx
+import { MagnetizeButton } from "@/components/gammaui/magnetize-button"
+
+export default function Example() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
+      <MagnetizeButton>Hover me</MagnetizeButton>
+    </div>
+  )
+}
+```
+
+The `MagnetizeButton` releases several particles that magnetically snap toward the button center on hover or touch. When the interaction ends, the particles spring back to random positions.
+
+---
+
+## Props
+
+| Prop          | Type                         | Default | Description                                    |
+| ------------- | ---------------------------- | ------- | ---------------------------------------------- |
+| particleCount | `number`                     | `12`    | Number of particles orbiting the button.       |
+| attractRadius | `number`                     | `50`    | Distance at which particles begin attracting.  |
+| className     | `string`                     | —       | Optional Tailwind classes to style the button. |
+| ...props      | `React.ButtonHTMLAttributes` | —       | Any additional `<button>` attributes.          |
+
+---
+
+## Example Variants
+
+### Adjusting Particle Count
+
+```tsx
+<MagnetizeButton particleCount={25}>More Particles</MagnetizeButton>
+```
+
+### Stronger Attraction
+
+```tsx
+<MagnetizeButton attractRadius={120}>Stronger Pull</MagnetizeButton>
+```
+
+### Custom Colors
+
+```tsx
+<MagnetizeButton className="border-emerald-300 bg-emerald-200 text-emerald-700">
+  Green Style
+</MagnetizeButton>
+```
+
+---
+
+## Features
+
+- **Magnetic Interaction**
+  Particles snap toward the button on hover/touch.
+
+- **Random Particle Generation**
+  Each particle starts from a unique random position.
+
+- **Smooth Framer-Motion Animation**
+  Spring-based transitions for natural movement.
+
+- **Dark Mode Ready**
+  Uses Tailwind classes compatible with dark themes.
+
+- **Highly Customizable**
+  Particle count, radius, colors, and size are fully configurable.
+
+---
+
+## Tips
+
+- Increase particle density (`particleCount`) for dramatic visual effects.
+- Use `relative` containers for more controlled particle boundaries.
+- Combine with glowing shadows for a more futuristic style.
+- Works great in hero sections or call-to-action areas.

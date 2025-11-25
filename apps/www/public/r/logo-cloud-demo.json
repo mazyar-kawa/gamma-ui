@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-cloud-demo",
+  "type": "registry:example",
+  "title": "Logo Cloud Demo",
+  "description": "A responsive logo grid demo showcasing brand logos with optional plus icons.",
+  "registryDependencies": [
+    "logo-cloud"
+  ],
+  "files": [
+    {
+      "path": "registry/example/logo-cloud-demo.tsx",
+      "content": "import LogoCloud from \"@/registry/gammaui/logo-cloud\"\n\nexport default function DemoOne() {\n  return (\n    <div className=\"w-full place-content-center px-4\">\n      <section className=\"relative mx-auto grid max-w-3xl\">\n        <h2 className=\"text-muted-foreground mb-6 text-center text-lg font-medium tracking-tight md:text-2xl\">\n          Companies we{\" \"}\n          <span className=\"text-primary font-semibold\">collaborate</span> with.\n        </h2>\n\n        <LogoCloud />\n      </section>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

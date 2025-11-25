@@ -111,4 +111,63 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "radial-intro",
+    type: "registry:ui",
+    title: "Radial Intro",
+    description:
+      "A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.",
+    registryDependencies: ["@gammaui/radial-intro"],
+    files: [
+      {
+        path: "gammaui/radial-intro.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "logo-cloud",
+    type: "registry:ui",
+    title: "Logo Cloud",
+    description:
+      "A responsive logo grid component supporting dark mode, decorations, and flexible layout.",
+    registryDependencies: ["@gammaui/logo-cloud"],
+    files: [
+      {
+        path: "gammaui/logo-cloud.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "wave-path",
+    type: "registry:ui",
+    title: "Wave Path",
+    description:
+      "A dynamic interactive SVG wave component that responds to pointer movement.",
+    registryDependencies: ["@gammaui/wave-path"],
+    files: [
+      {
+        path: "gammaui/wave-path.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "magnetize-button",
+    type: "registry:ui",
+    title: "Magnetize Button",
+    description:
+      "A magnetic particle-attraction button built with Framer Motion.",
+    registryDependencies: ["@gammaui/magnetize-button"],
+    files: [
+      {
+        path: "gammaui/magnetize-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

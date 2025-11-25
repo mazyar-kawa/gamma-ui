@@ -115,4 +115,64 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "radial-intro-demo",
+    type: "registry:example",
+    title: "Radial Intro Demo",
+    description:
+      "A rotating radial orbit animation demo showcasing spinning profile images.",
+    registryDependencies: ["radial-intro"],
+    files: [
+      {
+        path: "example/radial-intro-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "logo-cloud-demo",
+    type: "registry:example",
+    title: "Logo Cloud Demo",
+    description:
+      "A responsive logo grid demo showcasing brand logos with optional plus icons.",
+    registryDependencies: ["logo-cloud"],
+    files: [
+      {
+        path: "example/logo-cloud-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "wave-path-demo",
+    type: "registry:example",
+    title: "Wave Path Demo",
+    description:
+      "An interactive SVG wave animation that reacts to cursor movement.",
+    registryDependencies: ["@gammaui/wave-path"],
+    files: [
+      {
+        path: "example/wave-path-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "magnetize-button-demo",
+    type: "registry:example",
+    title: "Magnetize Button Demo",
+    description:
+      "An interactive demo showcasing the Magnetize Button component with particle attraction effects.",
+    registryDependencies: ["@gammaui/magnetize-button"],
+    files: [
+      {
+        path: "example/magnetize-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

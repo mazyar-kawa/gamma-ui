@@ -151,6 +151,74 @@ export const Index: Record<string, any> = {
     }),
     meta: {},
   },
+  "radial-intro": {
+    name: "radial-intro",
+    description: "A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.",
+    type: "registry:ui",
+    registryDependencies: ["@gammaui/radial-intro"],
+    files: [{
+      path: "registry/gammaui/radial-intro.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/radial-intro.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radial-intro"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "logo-cloud": {
+    name: "logo-cloud",
+    description: "A responsive logo grid component supporting dark mode, decorations, and flexible layout.",
+    type: "registry:ui",
+    registryDependencies: ["@gammaui/logo-cloud"],
+    files: [{
+      path: "registry/gammaui/logo-cloud.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/logo-cloud.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "logo-cloud"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "wave-path": {
+    name: "wave-path",
+    description: "A dynamic interactive SVG wave component that responds to pointer movement.",
+    type: "registry:ui",
+    registryDependencies: ["@gammaui/wave-path"],
+    files: [{
+      path: "registry/gammaui/wave-path.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/wave-path.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "wave-path"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "magnetize-button": {
+    name: "magnetize-button",
+    description: "A magnetic particle-attraction button built with Framer Motion.",
+    type: "registry:ui",
+    registryDependencies: ["@gammaui/magnetize-button"],
+    files: [{
+      path: "registry/gammaui/magnetize-button.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/magnetize-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "magnetize-button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
   "live-waveform-demo": {
     name: "live-waveform-demo",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
@@ -283,6 +351,74 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/plasma-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "plasma-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "radial-intro-demo": {
+    name: "radial-intro-demo",
+    description: "A rotating radial orbit animation demo showcasing spinning profile images.",
+    type: "registry:example",
+    registryDependencies: ["radial-intro"],
+    files: [{
+      path: "registry/example/radial-intro-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/radial-intro-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radial-intro-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "logo-cloud-demo": {
+    name: "logo-cloud-demo",
+    description: "A responsive logo grid demo showcasing brand logos with optional plus icons.",
+    type: "registry:example",
+    registryDependencies: ["logo-cloud"],
+    files: [{
+      path: "registry/example/logo-cloud-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/logo-cloud-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "logo-cloud-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "wave-path-demo": {
+    name: "wave-path-demo",
+    description: "An interactive SVG wave animation that reacts to cursor movement.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/wave-path"],
+    files: [{
+      path: "registry/example/wave-path-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/wave-path-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "wave-path-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "magnetize-button-demo": {
+    name: "magnetize-button-demo",
+    description: "An interactive demo showcasing the Magnetize Button component with particle attraction effects.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/magnetize-button"],
+    files: [{
+      path: "registry/example/magnetize-button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/magnetize-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "magnetize-button-demo"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},

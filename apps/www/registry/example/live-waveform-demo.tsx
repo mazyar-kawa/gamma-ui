@@ -25,7 +25,7 @@ export default function LiveWaveformDemo() {
   }
 
   return (
-    <div className="bg-card w-full rounded-lg border p-6">
+    <div className="bg-card mx-4 w-full rounded-lg border p-6">
       <div className="mb-4">
         <h3 className="text-lg font-semibold">Live Audio Waveform</h3>
         <p className="text-muted-foreground text-sm">
