@@ -1,0 +1,116 @@
+---
+title: Badge
+date: 2025-11-30
+description: A flexible badge component built with Radix Slot and Class Variance Authority for multiple variants and custom wrappers.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="badge-demo"
+  title="Badge Demo"
+  description="A demonstration of the Badge component using class-variance-authority (CVA) for multiple variants and Radix Slot for custom wrappers."
+  justify="start"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/badge
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy the Badge component code into your project.</Step>
+
+<ComponentSource name="badge" title="components/ui/badge.tsx" />
+
+<Step>Install dependencies: <code>@radix-ui/react-slot</code> and <code>class-variance-authority</code>.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+### Default Badge
+
+```tsx
+import { Badge } from "@/components/ui/badge"
+
+export default function Example() {
+  return <Badge>Default Badge</Badge>
+}
+```
+
+---
+
+### Variants
+
+```tsx
+<div className="flex gap-2">
+  <Badge variant="default">Default</Badge>
+  <Badge variant="secondary">Secondary</Badge>
+  <Badge variant="destructive">Destructive</Badge>
+  <Badge variant="outline">Outline</Badge>
+</div>
+```
+
+---
+
+### As a Custom Slot
+
+```tsx
+import Link from "next/link"
+
+import { Badge } from "@/components/ui/badge"
+
+;<Badge asChild>
+  <Link href="/dashboard">Dashboard</Link>
+</Badge>
+```
+
+---
+
+### Props
+
+| Prop      | Type                           | Default     | Description                                    |            |             |                                    |
+| --------- | ------------------------------ | ----------- | ---------------------------------------------- | ---------- | ----------- | ---------------------------------- |
+| variant   | `'default'                     | 'secondary' | 'destructive'                                  | 'outline'` | `'default'` | Sets the visual style of the badge |
+| asChild   | `boolean`                      | `false`     | Allows rendering the badge as a custom wrapper |            |             |                                    |
+| className | `string`                       | —           | Additional Tailwind CSS classes                |            |             |                                    |
+| ...props  | `React.ComponentProps<'span'>` | —           | Native span props passed through               |            |             |                                    |
+
+---
+
+### Features
+
+- Fully **variant-driven** with CVA
+- Optional **custom wrapper** via Radix Slot (`asChild`)
+- Built-in **focus and hover states**
+- Supports **dark mode**
+- Lightweight, reusable, and easy to extend
+
+---
+
+### Example: Multiple Badges
+
+```tsx
+<div className="flex gap-2">
+  <Badge variant="default">Default</Badge>
+  <Badge variant="secondary">Secondary</Badge>
+  <Badge variant="destructive">Destructive</Badge>
+  <Badge variant="outline">Outline</Badge>
+</div>
+```

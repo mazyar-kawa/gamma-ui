@@ -6,35 +6,46 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Components
 
+- [Activity Dropdown](https://gamma-ui-delta.vercel.app/docs/components/activity-dropdown): A modern activity/notification dropdown with smooth animations and responsive motion.
+- [Animated List](https://gamma-ui-delta.vercel.app/docs/components/animated-list): A dynamic list component with smooth animations that forms a column and scrolls through items continuously.
+- [Badge](https://gamma-ui-delta.vercel.app/docs/components/badge): A flexible and customizable Badge component for labels, statuses, and indicators.
 - [Border Button](https://gamma-ui-delta.vercel.app/docs/components/border-button): A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.
 - [Inverted Cursor](https://gamma-ui-delta.vercel.app/docs/components/inverted-cursor): A smooth, animated custom cursor component with blend mode effects.
 - [Live Waveform](https://gamma-ui-delta.vercel.app/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
 - [Logo Cloud](https://gamma-ui-delta.vercel.app/docs/components/logo-cloud): A responsive logo grid component supporting dark mode, decorations, and flexible layout.
+- [Logo Timeline](https://gamma-ui-delta.vercel.app/docs/components/logo-timeline): A multi-row infinitely scrolling logo timeline built with Motion One, supporting hover-activated animations and row grouping.
 - [Magnetize Button](https://gamma-ui-delta.vercel.app/docs/components/magnetize-button): A magnetic particle-attraction button built with Framer Motion.
 - [Overlay Button](https://gamma-ui-delta.vercel.app/docs/components/overlay-button): An animated gradient button using Framer Motion with looping motion and spring transitions.
 - [Pixel Button](https://gamma-ui-delta.vercel.app/docs/components/pixel-button): A pixelated button animation effect built with Tailwind CSS and React.
 - [Plasma](https://gamma-ui-delta.vercel.app/docs/components/plasma): A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.
 - [Radial Intro](https://gamma-ui-delta.vercel.app/docs/components/radial-intro): A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.
 - [Support Box](https://gamma-ui-delta.vercel.app/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
+- [Text Roll](https://gamma-ui-delta.vercel.app/docs/components/text-roll): A rolling hover-animated text component built with Motion One.
 - [Wave Path](https://gamma-ui-delta.vercel.app/docs/components/wave-path): A dynamic interactive SVG wave component that responds to pointer movement.
 - [Wavy Text Block](https://gamma-ui-delta.vercel.app/docs/components/wavy-text-block): A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.
 
 ## Examples
 
-- [Live Waveform Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/live-waveform-demo.tsx): Example usage
-- [Support Box Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/support-box-demo.tsx): Example usage
-- [Overlay Button Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/overlay-button-demo.tsx): Example usage
-- [Border Button Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/border-button-demo.tsx): Example usage
-- [Wavy Text Block Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/wavy-text-block-demo.tsx): Example usage
-- [Inverted Cursor Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/inverted-cursor-demo.tsx): Example usage
-- [Pixel Button Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/pixel-button-demo.tsx): Example usage
-- [Plasma Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/plasma-demo.tsx): Example usage
-- [Radial Intro Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/radial-intro-demo.tsx): Example usage
-- [Logo Cloud Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/logo-cloud-demo.tsx): Example usage
-- [Wave Path Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/wave-path-demo.tsx): Example usage
-- [Magnetize Button Demo](https://github.com/gammauidesign/gammaui/blob/main/registry/example/magnetize-button-demo.tsx): Example usage
+- [Live Waveform Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/live-waveform-demo.tsx): Example usage
+- [Support Box Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/support-box-demo.tsx): Example usage
+- [Overlay Button Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/overlay-button-demo.tsx): Example usage
+- [Border Button Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/border-button-demo.tsx): Example usage
+- [Wavy Text Block Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/wavy-text-block-demo.tsx): Example usage
+- [Inverted Cursor Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/inverted-cursor-demo.tsx): Example usage
+- [Pixel Button Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/pixel-button-demo.tsx): Example usage
+- [Plasma Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/plasma-demo.tsx): Example usage
+- [Radial Intro Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/radial-intro-demo.tsx): Example usage
+- [Logo Cloud Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/logo-cloud-demo.tsx): Example usage
+- [Wave Path Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/wave-path-demo.tsx): Example usage
+- [Magnetize Button Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/magnetize-button-demo.tsx): Example usage
+- [Text Roll Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/text-roll-demo.tsx): Example usage
+- [Activity Dropdown Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/activity-dropdown-demo.tsx): Example usage
+- [Badge Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/badge-demo.tsx): Example usage
+- [Animated List Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/animated-list-demo.tsx): Example usage
+- [Logo Timeline Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/logo-timeline-demo.tsx): Example usage
+- [Logo Timeline Demo 2](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/logo-timeline-demo-2.tsx): Example usage
 
 ## Optional
 
-- [Repository](https://github.com/gammauidesign/gammaui): Source code and issues
+- [Repository](https://github.com/mazyar-kawa/gamma-ui): Source code and issues
 - [Sitemap](https://gamma-ui-delta.vercel.app/sitemap.xml): Indexable pages

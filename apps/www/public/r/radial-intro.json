@@ -4,8 +4,9 @@
   "type": "registry:ui",
   "title": "Radial Intro",
   "description": "A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.",
-  "registryDependencies": [
-    "@gammaui/radial-intro"
+  "dependencies": [
+    "react",
+    "motion"
   ],
   "files": [
     {

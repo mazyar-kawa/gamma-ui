@@ -4,6 +4,10 @@
   "type": "registry:ui",
   "title": "Wavy Text Block",
   "description": "A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.",
+  "dependencies": [
+    "react",
+    "motion"
+  ],
   "files": [
     {
       "path": "registry/gammaui/wavy-text-block.tsx",

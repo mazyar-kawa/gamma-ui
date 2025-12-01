@@ -1,0 +1,122 @@
+---
+title: Text Roll
+date: 2025-11-27
+description: An animated text component that reveals letters with a smooth vertical roll effect on hover.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="text-roll-demo"
+  title="Text Roll"
+  description="A hover-triggered rolling text animation built with Motion One."
+  justify="start"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/text-roll
+````
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following component code into your project.</Step>
+
+<ComponentSource name="text-roll" title="components/ui/text-roll.tsx" />
+
+<Step>Ensure the import paths match your project structure.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+```tsx
+import { TextRoll } from "@/components/ui/text-roll"
+
+export default function Example() {
+  return (
+    <TextRoll className="text-4xl font-semibold">
+      Gamma UI
+    </TextRoll>
+  )
+}
+```
+
+This will create a letter-by-letter animated roll effect when hovering.
+
+---
+
+## Props
+
+| Prop      | Type      | Default | Description                                                                 |
+| --------- | --------- | ------- | --------------------------------------------------------------------------- |
+| children  | `string`  | —       | The text that will animate letter by letter.                                |
+| className | `string`  | —       | Extra Tailwind classes applied to the wrapper.                              |
+| center    | `boolean` | `false` | If true, animation timing staggers from the center instead of left-to-right |
+
+---
+
+## Component Features
+
+* Smooth **vertical roll animation** on hover
+* Letter-by-letter stagger timing
+* **Center stagger mode** for symmetrical animations
+* Fully **customizable** with Tailwind CSS
+* “use client” compatible for Next.js App Router
+* Built using **Motion One** (`motion/react`)
+
+---
+
+## Example: Centered Stagger Animation
+
+```tsx
+import { TextRoll } from "@/components/ui/text-roll"
+
+export default function Example() {
+  return (
+    <TextRoll center className="text-5xl font-bold">
+      Gamma UI
+    </TextRoll>
+  )
+}
+```
+
+---
+
+## Example: Animated Headline
+
+```tsx
+export default function HeroSection() {
+  return (
+    <h1 className="text-6xl font-extrabold leading-tight">
+      <TextRoll className="text-indigo-500">Build Fast</TextRoll>
+      <br />
+      <TextRoll center className="text-gray-800">Ship Beautiful</TextRoll>
+    </h1>
+  )
+}
+```
+
+---
+
+## Tips
+
+* Best used for **headlines**, **logos**, or interactive **hover reveals**.
+* Combine with gradients for premium effect.
+* Increase the font weight to make the slide animation more satisfying.
+* Works great inside hero sections or call-to-action banners.
+

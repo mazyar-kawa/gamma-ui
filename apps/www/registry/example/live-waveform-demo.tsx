@@ -27,7 +27,9 @@ export default function LiveWaveformDemo() {
   return (
     <div className="bg-card mx-4 w-full rounded-lg border p-6">
       <div className="mb-4">
-        <h3 className="text-lg font-semibold">Live Audio Waveform</h3>
+        <h3 className="text-muted-foreground text-lg font-semibold">
+          Live Audio Waveform
+        </h3>
         <p className="text-muted-foreground text-sm">
           Real-time microphone input visualization with audio reactivity
         </p>
@@ -51,6 +53,7 @@ export default function LiveWaveformDemo() {
             size="sm"
             variant={active ? "default" : "outline"}
             onClick={handleToggleActive}
+            className="text-black dark:text-white"
           >
             {active ? "Stop" : "Start"} Listening
           </Button>
@@ -58,6 +61,7 @@ export default function LiveWaveformDemo() {
             size="sm"
             variant={processing ? "default" : "outline"}
             onClick={handleToggleProcessing}
+            className="text-black dark:text-white"
           >
             {processing ? "Stop" : "Start"} Processing
           </Button>
@@ -65,6 +69,7 @@ export default function LiveWaveformDemo() {
             size="sm"
             variant="outline"
             onClick={() => setMode(mode === "static" ? "scrolling" : "static")}
+            className="text-black dark:text-white"
           >
             Mode: {mode === "static" ? "Static" : "Scrolling"}
           </Button>

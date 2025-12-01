@@ -104,7 +104,7 @@ export const Index: Record<string, any> = {
     name: "inverted-cursor",
     description: "A smooth, animated custom cursor component with blend mode effects.",
     type: "registry:ui",
-    registryDependencies: ["@gammaui/inverted-cursor"],
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/inverted-cursor.tsx",
       type: "registry:ui",
@@ -121,7 +121,7 @@ export const Index: Record<string, any> = {
     name: "pixel-button",
     description: "A pixelated button animation effect built with Tailwind CSS and React.",
     type: "registry:ui",
-    registryDependencies: ["@gammaui/pixel-button"],
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/pixel-button.tsx",
       type: "registry:ui",
@@ -138,7 +138,7 @@ export const Index: Record<string, any> = {
     name: "plasma",
     description: "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
     type: "registry:ui",
-    registryDependencies: ["@gammaui/plasma"],
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/plasma.tsx",
       type: "registry:ui",
@@ -155,7 +155,7 @@ export const Index: Record<string, any> = {
     name: "radial-intro",
     description: "A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.",
     type: "registry:ui",
-    registryDependencies: ["@gammaui/radial-intro"],
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/radial-intro.tsx",
       type: "registry:ui",
@@ -172,7 +172,7 @@ export const Index: Record<string, any> = {
     name: "logo-cloud",
     description: "A responsive logo grid component supporting dark mode, decorations, and flexible layout.",
     type: "registry:ui",
-    registryDependencies: ["@gammaui/logo-cloud"],
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/logo-cloud.tsx",
       type: "registry:ui",
@@ -189,7 +189,7 @@ export const Index: Record<string, any> = {
     name: "wave-path",
     description: "A dynamic interactive SVG wave component that responds to pointer movement.",
     type: "registry:ui",
-    registryDependencies: ["@gammaui/wave-path"],
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/wave-path.tsx",
       type: "registry:ui",
@@ -206,7 +206,7 @@ export const Index: Record<string, any> = {
     name: "magnetize-button",
     description: "A magnetic particle-attraction button built with Framer Motion.",
     type: "registry:ui",
-    registryDependencies: ["@gammaui/magnetize-button"],
+    registryDependencies: [],
     files: [{
       path: "registry/gammaui/magnetize-button.tsx",
       type: "registry:ui",
@@ -215,6 +215,91 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/magnetize-button.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "magnetize-button"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "text-roll": {
+    name: "text-roll",
+    description: "A rolling hover-animated text component built with Motion One.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/text-roll.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/text-roll.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "text-roll"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "activity-dropdown": {
+    name: "activity-dropdown",
+    description: "A modern activity/notification dropdown with smooth animations and responsive motion.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/activity-dropdown.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/activity-dropdown.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "activity-dropdown"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "badge": {
+    name: "badge",
+    description: "A flexible and customizable Badge component for labels, statuses, and indicators.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/badge.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/badge.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "animated-list": {
+    name: "animated-list",
+    description: "A dynamic list component with smooth animations that forms a column and scrolls through items continuously.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/animated-list.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/animated-list.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "animated-list"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "logo-timeline": {
+    name: "logo-timeline",
+    description: "A multi-row infinitely scrolling logo timeline built with Motion One, supporting hover-activated animations and row grouping.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/logo-timeline.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/logo-timeline.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "logo-timeline"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},
@@ -419,6 +504,108 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/magnetize-button-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "magnetize-button-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "text-roll-demo": {
+    name: "text-roll-demo",
+    description: "An interactive demo showcasing the TextRoll hover animation component.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/text-roll"],
+    files: [{
+      path: "registry/example/text-roll-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-roll-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "text-roll-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "activity-dropdown-demo": {
+    name: "activity-dropdown-demo",
+    description: "A demo showcasing the animated ActivityDropdown component with staggered item reveal.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/activity-dropdown"],
+    files: [{
+      path: "registry/example/activity-dropdown-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/activity-dropdown-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "activity-dropdown-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "badge-demo": {
+    name: "badge-demo",
+    description: "A demo showcasing the GammaUI Badge component with customizable colors, sizes, and variants.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/badge"],
+    files: [{
+      path: "registry/example/badge-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/badge-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "animated-list-demo": {
+    name: "animated-list-demo",
+    description: "A demo showcasing the Animated List component with smooth formation and scrolling animations.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/animated-list"],
+    files: [{
+      path: "registry/example/animated-list-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-list-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "animated-list-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "logo-timeline-demo": {
+    name: "logo-timeline-demo",
+    description: "A demo showcasing the animated multi-row Logo Timeline component with infinite scrolling and staggered item motion.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/logo-timeline"],
+    files: [{
+      path: "registry/example/logo-timeline-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/logo-timeline-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "logo-timeline-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "logo-timeline-demo-2": {
+    name: "logo-timeline-demo-2",
+    description: "A demo showcasing the animated multi-row Logo Timeline component with infinite scrolling and staggered item motion.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/logo-timeline"],
+    files: [{
+      path: "registry/example/logo-timeline-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/logo-timeline-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "logo-timeline-demo-2"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},

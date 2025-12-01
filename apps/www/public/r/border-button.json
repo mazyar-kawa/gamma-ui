@@ -4,6 +4,10 @@
   "type": "registry:ui",
   "title": "Border Button",
   "description": "A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.",
+  "dependencies": [
+    "react",
+    "motion"
+  ],
   "files": [
     {
       "path": "registry/gammaui/border-button.tsx",

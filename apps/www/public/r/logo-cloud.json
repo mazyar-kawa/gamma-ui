@@ -4,8 +4,9 @@
   "type": "registry:ui",
   "title": "Logo Cloud",
   "description": "A responsive logo grid component supporting dark mode, decorations, and flexible layout.",
-  "registryDependencies": [
-    "@gammaui/logo-cloud"
+  "dependencies": [
+    "react",
+    "@tabler/icons-react"
   ],
   "files": [
     {

@@ -4,8 +4,10 @@
   "type": "registry:ui",
   "title": "Magnetize Button",
   "description": "A magnetic particle-attraction button built with Framer Motion.",
-  "registryDependencies": [
-    "@gammaui/magnetize-button"
+  "dependencies": [
+    "react",
+    "motion",
+    "@tabler/icons-react"
   ],
   "files": [
     {

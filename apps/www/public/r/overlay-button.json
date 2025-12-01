@@ -4,6 +4,10 @@
   "type": "registry:ui",
   "title": "Overlay Button",
   "description": "An animated gradient button using Framer Motion with looping motion and spring transitions.",
+  "dependencies": [
+    "react",
+    "motion"
+  ],
   "files": [
     {
       "path": "registry/gammaui/overlay-button.tsx",

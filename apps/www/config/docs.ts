@@ -8,18 +8,13 @@ interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
+      title: "Home",
+      href: "/",
+    },
+
+    {
       title: "Components",
       href: "/components",
-    },
-    {
-      title: "Templates",
-      href: "https://pro.gammaui.design",
-      event: "header_cta_clicked",
-      label: "",
-    },
-    {
-      title: "Showcase",
-      href: "/showcase",
     },
   ],
   sidebarNav: [
@@ -46,31 +41,68 @@ export const docsConfig: DocsConfig = {
           title: "Live Waveform",
           href: `/docs/components/live-waveform`,
           items: [],
+          label: "New",
         },
         {
           title: "Radial Intro",
           href: `/docs/components/radial-intro`,
           items: [],
+          label: "New",
+        },
+        {
+          title: "Animated List",
+          href: `/docs/components/animated-list`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Text Roll",
+          href: `/docs/components/text-roll`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Logo Timeline",
+          href: `/docs/components/logo-timeline`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Activity Dropdown",
+          href: `/docs/components/activity-dropdown`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Badge",
+          href: `/docs/components/badge`,
+          items: [],
+          label: "New",
         },
         {
           title: "Logo Cloud",
           href: `/docs/components/logo-cloud`,
           items: [],
+          label: "New",
         },
         {
           title: "Wave Path",
           href: `/docs/components/wave-path`,
           items: [],
+          label: "New",
         },
+
         {
           title: "Support Box",
           href: `/docs/components/support-box`,
           items: [],
+          label: "New",
         },
         {
           title: "Inverted Cursor",
           href: `/docs/components/inverted-cursor`,
           items: [],
+          label: "New",
         },
       ],
     },
@@ -82,22 +114,26 @@ export const docsConfig: DocsConfig = {
           title: "Overlay Button",
           href: `/docs/components/overlay-button`,
           items: [],
+          label: "New",
         },
         {
           title: "Border Button",
           href: `/docs/components/border-button`,
           items: [],
+          label: "New",
         },
 
         {
           title: "Pixel Button",
           href: `/docs/components/pixel-button`,
           items: [],
+          label: "New",
         },
         {
           title: "Magnetize Button",
           href: `/docs/components/magnetize-button`,
           items: [],
+          label: "New",
         },
       ],
     },
@@ -109,6 +145,7 @@ export const docsConfig: DocsConfig = {
           title: "Wavy Text Block",
           href: `/docs/components/wavy-text-block`,
           items: [],
+          label: "New",
         },
       ],
     },
@@ -120,6 +157,7 @@ export const docsConfig: DocsConfig = {
           title: "Plasma",
           href: `/docs/components/plasma`,
           items: [],
+          label: "New",
         },
       ],
     },

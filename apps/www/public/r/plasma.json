@@ -4,8 +4,8 @@
   "type": "registry:ui",
   "title": "Plasma",
   "description": "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
-  "registryDependencies": [
-    "@gammaui/plasma"
+  "dependencies": [
+    "react"
   ],
   "files": [
     {
