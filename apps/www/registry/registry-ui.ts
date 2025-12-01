@@ -7,6 +7,7 @@ export const ui: Registry["items"] = [
     title: "Live Waveform",
     description:
       "A customizable live audio waveform visualizer using the Web Audio API.",
+    dependencies: ["react"],
     files: [
       {
         path: "gammaui/live-waveform.tsx",
@@ -21,6 +22,7 @@ export const ui: Registry["items"] = [
     title: "Support Box",
     description:
       "A collapsible animated support widget for quick help actions using Framer Motion.",
+    dependencies: ["react", "motion"],
     files: [
       {
         path: "gammaui/support-box.tsx",
@@ -34,6 +36,7 @@ export const ui: Registry["items"] = [
     title: "Overlay Button",
     description:
       "An animated gradient button using Framer Motion with looping motion and spring transitions.",
+    dependencies: ["react", "motion"],
     files: [
       {
         path: "gammaui/overlay-button.tsx",
@@ -47,6 +50,7 @@ export const ui: Registry["items"] = [
     title: "Border Button",
     description:
       "A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.",
+    dependencies: ["react", "motion"],
     files: [
       {
         path: "gammaui/border-button.tsx",
@@ -60,6 +64,7 @@ export const ui: Registry["items"] = [
     title: "Wavy Text Block",
     description:
       "A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.",
+    dependencies: ["react", "motion"],
     files: [
       {
         path: "gammaui/wavy-text-block.tsx",
@@ -73,7 +78,7 @@ export const ui: Registry["items"] = [
     title: "Inverted Cursor",
     description:
       "A smooth, animated custom cursor component with blend mode effects.",
-    registryDependencies: ["@gammaui/inverted-cursor"],
+    dependencies: ["react"],
     files: [
       {
         path: "gammaui/inverted-cursor.tsx",
@@ -88,7 +93,7 @@ export const ui: Registry["items"] = [
     title: "Pixel Button",
     description:
       "A pixelated button animation effect built with Tailwind CSS and React.",
-    registryDependencies: ["@gammaui/pixel-button"],
+    dependencies: ["react"],
     files: [
       {
         path: "gammaui/pixel-button.tsx",
@@ -103,7 +108,7 @@ export const ui: Registry["items"] = [
     title: "Plasma",
     description:
       "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
-    registryDependencies: ["@gammaui/plasma"],
+    dependencies: ["react"],
     files: [
       {
         path: "gammaui/plasma.tsx",
@@ -118,7 +123,7 @@ export const ui: Registry["items"] = [
     title: "Radial Intro",
     description:
       "A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.",
-    registryDependencies: ["@gammaui/radial-intro"],
+    dependencies: ["react", "motion"],
     files: [
       {
         path: "gammaui/radial-intro.tsx",
@@ -133,7 +138,7 @@ export const ui: Registry["items"] = [
     title: "Logo Cloud",
     description:
       "A responsive logo grid component supporting dark mode, decorations, and flexible layout.",
-    registryDependencies: ["@gammaui/logo-cloud"],
+    dependencies: ["react", "@tabler/icons-react"],
     files: [
       {
         path: "gammaui/logo-cloud.tsx",
@@ -148,7 +153,7 @@ export const ui: Registry["items"] = [
     title: "Wave Path",
     description:
       "A dynamic interactive SVG wave component that responds to pointer movement.",
-    registryDependencies: ["@gammaui/wave-path"],
+    dependencies: ["react"],
     files: [
       {
         path: "gammaui/wave-path.tsx",
@@ -162,10 +167,83 @@ export const ui: Registry["items"] = [
     title: "Magnetize Button",
     description:
       "A magnetic particle-attraction button built with Framer Motion.",
-    registryDependencies: ["@gammaui/magnetize-button"],
+    dependencies: ["react", "motion", "@tabler/icons-react"],
     files: [
       {
         path: "gammaui/magnetize-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "text-roll",
+    type: "registry:ui",
+    title: "Text Roll",
+    description:
+      "A rolling hover-animated text component built with Motion One.",
+    dependencies: ["react", "motion"],
+    files: [
+      {
+        path: "gammaui/text-roll.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "activity-dropdown",
+    type: "registry:ui",
+    title: "Activity Dropdown",
+    description:
+      "A modern activity/notification dropdown with smooth animations and responsive motion.",
+    dependencies: ["react", "@tabler/icons-react"],
+    files: [
+      {
+        path: "gammaui/activity-dropdown.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "badge",
+    type: "registry:ui",
+    title: "Badge",
+    description:
+      "A flexible and customizable Badge component for labels, statuses, and indicators.",
+    dependencies: ["react", "@radix-ui/react-slot", "class-variance-authority"],
+    files: [
+      {
+        path: "gammaui/badge.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "animated-list",
+    type: "registry:ui",
+    title: "Animated List",
+    description:
+      "A dynamic list component with smooth animations that forms a column and scrolls through items continuously.",
+    dependencies: ["react", "motion"],
+    files: [
+      {
+        path: "gammaui/animated-list.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "logo-timeline",
+    type: "registry:ui",
+    title: "Logo Timeline",
+    description:
+      "A multi-row infinitely scrolling logo timeline built with Motion One, supporting hover-activated animations and row grouping.",
+    dependencies: ["react", "motion"],
+    files: [
+      {
+        path: "gammaui/logo-timeline.tsx",
         type: "registry:ui",
       },
     ],

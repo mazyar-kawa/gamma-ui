@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 
 import Terminal from "../ui/terminal"
 import { TextShimmerWave } from "../ui/text-shimmer-wave"
+import { ComponentPreview } from '../component-preview'
 
 export const SkeletonOne = () => {
   return (

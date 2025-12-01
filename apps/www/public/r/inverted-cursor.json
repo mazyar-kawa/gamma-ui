@@ -4,8 +4,8 @@
   "type": "registry:ui",
   "title": "Inverted Cursor",
   "description": "A smooth, animated custom cursor component with blend mode effects.",
-  "registryDependencies": [
-    "@gammaui/inverted-cursor"
+  "dependencies": [
+    "react"
   ],
   "files": [
     {

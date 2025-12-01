@@ -6,7 +6,7 @@ export const siteConfig = {
     "Beautifully designed landing page components built with React & Tailwind CSS.",
   links: {
     twitter: "https://x.com/mazyar_kawa",
-    github: "https://github.com/gammauidesign/gammaui",
+    github: "https://github.com/mazyar-kawa/gamma-ui",
   },
   keywords: [
     "React",

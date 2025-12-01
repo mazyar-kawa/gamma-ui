@@ -1,0 +1,127 @@
+---
+title: Activity Dropdown
+date: 2025-11-27
+description: A modern, animated activity/notification dropdown with smooth accordion motion and staggered list reveal.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="activity-dropdown-demo"
+  title="Activity Dropdown"
+  description="An animated dropdown showing recent activity items with staggered transitions."
+  justify="start"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/activity-dropdown
+````
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the ActivityDropdown component into your project.</Step>
+
+<ComponentSource name="activity-dropdown" title="components/ui/activity-dropdown.tsx" />
+
+<Step>Make sure your imports (icons, cn, utils) match your project structure.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+```tsx
+import { ActivityDropdown } from "@/components/ui/activity-dropdown"
+
+export default function Example() {
+  return (
+    <div className="p-4">
+      <ActivityDropdown />
+    </div>
+  )
+}
+```
+
+This renders a fully animated notification dropdown with smooth transitions and staggered item animation.
+
+---
+
+## Props
+
+| Prop      | Type                                   | Default | Description                                 |
+| --------- | -------------------------------------- | ------- | ------------------------------------------- |
+| className | `string`                               | —       | Add custom Tailwind classes to the wrapper. |
+| ...props  | `React.HTMLAttributes<HTMLDivElement>` | —       | Pass additional DOM attributes.             |
+
+---
+
+## Component Features
+
+* Smooth **accordion-style open/close animation**
+* Staggered activity item transitions
+* Beautiful **dark mode** support
+* Built-in icons using **Tabler Icons**
+* Fully responsive layout
+* Elegant hover states
+* Easy to customize (titles, icons, colors, animations)
+
+---
+
+## Activity Object Shape
+
+```ts
+interface Activity {
+  id: number
+  icon: React.ReactNode
+  iconBg: string
+  title: string
+  description: string
+  time: string
+}
+```
+
+---
+
+## Example: Adding Your Own Activity Items
+
+```tsx
+import { ActivityDropdown } from "@/components/ui/activity-dropdown"
+
+const customActivities = [
+  {
+    id: 99,
+    icon: <IconStar className="h-4 w-4" />,
+    iconBg: "bg-yellow-500/20",
+    title: "Premium Feature Unlocked",
+    description: "You now have access to all premium tools.",
+    time: "1 min ago",
+  },
+]
+
+export default function Example() {
+  return <ActivityDropdown activities={customActivities} />
+}
+```
+
+---
+
+## Tips
+
+* Ideal for dashboards, notifications, and activity feeds.
+* You can adjust animation speed by modifying `transitionDelay`.
+* Wrap it inside a card or navbar dropdown for more complex layouts.
+* Works beautifully with shadcn/ui and Tailwind themes.

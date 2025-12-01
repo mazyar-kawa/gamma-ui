@@ -4,6 +4,9 @@
   "type": "registry:ui",
   "title": "Live Waveform",
   "description": "A customizable live audio waveform visualizer using the Web Audio API.",
+  "dependencies": [
+    "react"
+  ],
   "files": [
     {
       "path": "registry/gammaui/live-waveform.tsx",

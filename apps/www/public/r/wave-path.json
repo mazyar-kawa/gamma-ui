@@ -4,8 +4,8 @@
   "type": "registry:ui",
   "title": "Wave Path",
   "description": "A dynamic interactive SVG wave component that responds to pointer movement.",
-  "registryDependencies": [
-    "@gammaui/wave-path"
+  "dependencies": [
+    "react"
   ],
   "files": [
     {

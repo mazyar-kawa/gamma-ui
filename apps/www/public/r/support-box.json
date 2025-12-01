@@ -4,6 +4,10 @@
   "type": "registry:ui",
   "title": "Support Box",
   "description": "A collapsible animated support widget for quick help actions using Framer Motion.",
+  "dependencies": [
+    "react",
+    "motion"
+  ],
   "files": [
     {
       "path": "registry/gammaui/support-box.tsx",

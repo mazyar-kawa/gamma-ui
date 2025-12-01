@@ -175,4 +175,93 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "text-roll-demo",
+    type: "registry:example",
+    title: "Text Roll Demo",
+    description:
+      "An interactive demo showcasing the TextRoll hover animation component.",
+    registryDependencies: ["@gammaui/text-roll"],
+    files: [
+      {
+        path: "example/text-roll-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "activity-dropdown-demo",
+    type: "registry:example",
+    title: "Activity Dropdown Demo",
+    description:
+      "A demo showcasing the animated ActivityDropdown component with staggered item reveal.",
+    registryDependencies: ["@gammaui/activity-dropdown"],
+    files: [
+      {
+        path: "example/activity-dropdown-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "badge-demo",
+    type: "registry:example",
+    title: "Badge Demo",
+    description:
+      "A demo showcasing the GammaUI Badge component with customizable colors, sizes, and variants.",
+    registryDependencies: ["@gammaui/badge"],
+    files: [
+      {
+        path: "example/badge-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "animated-list-demo",
+    type: "registry:example",
+    title: "Animated List Demo",
+    description:
+      "A demo showcasing the Animated List component with smooth formation and scrolling animations.",
+    registryDependencies: ["@gammaui/animated-list"],
+    files: [
+      {
+        path: "example/animated-list-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "logo-timeline-demo",
+    type: "registry:example",
+    title: "Logo Timeline Demo",
+    description:
+      "A demo showcasing the animated multi-row Logo Timeline component with infinite scrolling and staggered item motion.",
+    registryDependencies: ["@gammaui/logo-timeline"],
+    files: [
+      {
+        path: "example/logo-timeline-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "logo-timeline-demo-2",
+    type: "registry:example",
+    title: "Logo Timeline Demo 2",
+    description:
+      "A demo showcasing the animated multi-row Logo Timeline component with infinite scrolling and staggered item motion.",
+    registryDependencies: ["@gammaui/logo-timeline"],
+    files: [
+      {
+        path: "example/logo-timeline-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

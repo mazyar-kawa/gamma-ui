@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-roll-demo",
+  "type": "registry:example",
+  "title": "Text Roll Demo",
+  "description": "An interactive demo showcasing the TextRoll hover animation component.",
+  "registryDependencies": [
+    "@gammaui/text-roll"
+  ],
+  "files": [
+    {
+      "path": "registry/example/text-roll-demo.tsx",
+      "content": "import TextRoll from \"@/registry/gammaui/text-roll\"\n\nconst navigationItems = [\n  {\n    name: \"Home\",\n    href: \"/\",\n    description: \"[0]\",\n  },\n  {\n    name: \"Components\",\n    href: \"/components\",\n    description: \"[1]\",\n  },\n  {\n    name: \"Pricing\",\n    href: \"/pricing\",\n    description: \"[2]\",\n  },\n  {\n    name: \"How to use\",\n    href: \"/docs/quick-start\",\n    description: \"[3]\",\n  },\n  {\n    name: \"Account\",\n    href: \"/user\",\n    description: \"[4]\",\n  },\n  {\n    name: \"Login\",\n    href: \"/login\",\n    description: \"[7]\",\n  },\n]\n\nexport default function TextRollDemo() {\n  return (\n    <ul className=\"flex min-h-full w-full flex-1 flex-col items-center justify-center gap-1.5 rounded-2xl px-7 py-3 backdrop-blur-sm\">\n      {navigationItems.map((item, index) => (\n        <li\n          className=\"relative flex cursor-pointer flex-col items-center overflow-visible\"\n          key={index}\n        >\n          <div className=\"relative flex items-start\">\n            <TextRoll\n              center\n              className=\"text-4xl leading-[0.8] font-extrabold tracking-[-0.03em] uppercase transition-colors lg:text-5xl\"\n            >\n              {item.name}\n            </TextRoll>\n          </div>\n        </li>\n      ))}\n    </ul>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

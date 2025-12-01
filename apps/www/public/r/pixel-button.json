@@ -4,8 +4,8 @@
   "type": "registry:ui",
   "title": "Pixel Button",
   "description": "A pixelated button animation effect built with Tailwind CSS and React.",
-  "registryDependencies": [
-    "@gammaui/pixel-button"
+  "dependencies": [
+    "react"
   ],
   "files": [
     {
