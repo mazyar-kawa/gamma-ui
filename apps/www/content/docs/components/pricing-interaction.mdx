@@ -1,0 +1,81 @@
+---
+title: Pricing Interaction
+date: 2025-12-02
+description: An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.
+author: mazyar
+published: true
+---
+
+<ComponentPreview name="pricing-interaction-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/pricing-interaction
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="pricing-interaction"
+  title="components/gammaui/pricing-interaction.tsx"
+/>
+
+<Step>Update the import paths to match your project structure.</Step>
+</Steps>
+</TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { PricingInteraction } from "@/components/gammaui/pricing-interaction"
+```
+
+### Basic Example
+
+```tsx showLineNumbers
+<PricingInteraction />
+```
+
+### With Custom Container
+
+```tsx showLineNumbers
+<div className="bg-background rounded-xl border p-6 shadow-sm">
+  <PricingInteraction />
+</div>
+```
+
+## Props
+
+| Prop        | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | `-`     | Additional CSS classes |
+
+## Features
+
+- **Monthly / Yearly Billing Toggle**
+- **Animated Numbers** using NumberFlow
+- **Selectable Pricing Plans**
+- **Smooth Transitions**
+- **Accessible and Fully Keyboard-Navigable**
+- **Clean UI with TailwindCSS**
+
+## Use Cases
+
+- SaaS Pricing Sections
+- Subscription Plans
+- Feature Comparison Pages
+- Upgrade / Checkout Screens

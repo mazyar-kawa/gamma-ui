@@ -264,4 +264,62 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "logo-loop-demo",
+    type: "registry:example",
+    title: "Logo Timeline Demo 2",
+    description:
+      "A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.",
+    registryDependencies: ["@gammaui/logo-loop"],
+    files: [
+      {
+        path: "example/logo-loop-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "pricing-interaction-demo",
+    type: "registry:example",
+    title: "Pricing Interaction Demo",
+    description:
+      "An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.",
+    registryDependencies: ["@gammaui/pricing-interaction"],
+    files: [
+      {
+        path: "example/pricing-interaction-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "rest-api-demo",
+    type: "registry:example",
+    title: "Rest API Demo",
+    description:
+      "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
+    registryDependencies: ["@gammaui/rest-api"],
+    files: [
+      {
+        path: "example/rest-api-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "macbook-keyboard-demo",
+    type: "registry:example",
+    title: "Macbook Keyboard Demo",
+    description: "Interactive animated MacBook keyboard component.",
+    registryDependencies: ["@gammaui/macbook-keyboard"],
+    files: [
+      {
+        path: "example/macbook-keyboard-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

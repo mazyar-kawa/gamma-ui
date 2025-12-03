@@ -19,10 +19,10 @@ export function AnimatedListDemo() {
   ]
 
   return (
-    <div className="bg-background relative mx-4 h-[400px] w-full overflow-hidden rounded-lg border">
+    <div className="bg-background relative h-[400px] w-full overflow-hidden rounded-lg border">
       <AnimatedList
         stackGap={20}
-        columnGap={85}
+        columnGap={70}
         scaleFactor={0.05}
         scrollDownDuration={5}
         formationDuration={1}

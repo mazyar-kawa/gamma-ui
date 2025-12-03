@@ -53,15 +53,34 @@ function InternalAnimatedListItem({
   const isVisible = reverseIndex < visibleItemsCount
   const lastItemOffset = (listLength - 1) * columnGap
   const isLastItem = index === listLength - 1
+  let initialScale = 1
+  let columnScale = 0.8
 
+  if (typeof window !== "undefined") {
+    const w = window.innerWidth
+
+    if (w < 480) {
+      // 📱 Mobile
+      initialScale = 0.5
+      columnScale = 0.8
+    } else if (w < 768) {
+      // 📲 Tablet
+      initialScale = 0.45
+      columnScale = 0.7
+    } else {
+      // 🖥 Desktop (default)
+      initialScale = 1
+      columnScale = 0.8
+    }
+  }
   const itemVariants = {
     initial: {
-      scale: 1 + index * scaleFactor,
+      scale: initialScale + index * scaleFactor,
       y: reverseIndex * stackGap,
       opacity: isVisible ? 1 : 0,
     },
     column: {
-      scale: 1,
+      scale: columnScale,
       y: index * columnGap - lastItemOffset,
       opacity: 1,
     },

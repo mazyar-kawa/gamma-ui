@@ -1,0 +1,135 @@
+---
+title: Logo Loop
+date: 2025-12-02
+description: A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.
+author: mazyar
+published: true
+---
+
+<ComponentPreview name="logo-loop-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+```bash
+npx shadcn@latest add @gammaui/logo-loop
+````
+
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+name="logo-loop"
+title="components/gammaui/logo-loop.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+</TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { LogoLoop } from "@/components/gammaui/logo-loop"
+```
+
+### Basic Horizontal Loop
+
+```tsx showLineNumbers
+const logos = [
+  { node: <IconBrandReact />, title: "React" },
+  { node: <IconBrandNextjs />, title: "Next.js" },
+  { node: <IconBrandTypescript />, title: "TypeScript" },
+  { node: <IconBrandTailwind />, title: "TailwindCSS" },
+]
+
+<LogoLoop
+  logos={logos}
+  speed={120}
+  direction="left"
+  logoHeight={48}
+  gap={40}
+  scaleOnHover
+  fadeOut
+/>
+```
+
+### Vertical Loop with Hover Deceleration
+
+```tsx showLineNumbers
+<LogoLoop
+  logos={logos}
+  speed={80}
+  direction="up"
+  hoverSpeed={20}
+  fadeOut
+  logoHeight={48}
+  gap={40}
+/>
+```
+
+### Two Loops Stacked Together
+
+```tsx showLineNumbers
+<div className="relative h-[200px] overflow-hidden">
+  <LogoLoop
+    logos={logos}
+    speed={120}
+    direction="left"
+    logoHeight={48}
+    gap={40}
+    fadeOut
+    scaleOnHover
+  />
+  <LogoLoop
+    logos={logos}
+    speed={80}
+    direction="up"
+    logoHeight={48}
+    gap={40}
+    hoverSpeed={20}
+  />
+</div>
+```
+
+## Props
+
+| Prop           | Type                                                   | Default     | Description                  |
+| -------------- | ------------------------------------------------------ | ----------- | ---------------------------- |
+| `logos`        | `{ node: ReactNode; title?: string; href?: string }[]` | `[]`        | Array of logo items          |
+| `speed`        | `number`                                               | `100`       | Loop speed (higher = faster) |
+| `direction`    | `"left" \| "right" \| "up" \| "down"`                  | `"left"`    | Motion direction             |
+| `logoHeight`   | `number`                                               | `48`        | Height of each logo          |
+| `gap`          | `number`                                               | `32`        | Space between logos          |
+| `hoverSpeed`   | `number`                                               | `speed`     | Speed when hovered           |
+| `fadeOut`      | `boolean`                                              | `false`     | Enable edge fading gradient  |
+| `fadeOutColor` | `string`                                               | `"#ffffff"` | Color used for fade mask     |
+| `scaleOnHover` | `boolean`                                              | `false`     | Slight zoom on hover         |
+| `className`    | `string`                                               | `-`         | Custom classes               |
+
+## Features
+
+* **Infinite Looping** (horizontal & vertical)
+* **Two-Speed Motion** (normal + hover speed)
+* **Fade-Out Edges** for aesthetic masking
+* **Responsive** at any container size
+* **Hover Interactions** (scale + deceleration)
+* **Highly Customizable** spacing, speed, direction
+* **Smooth Animations** powered by CSS transforms
+
+## Use Cases
+
+* Tech stacks & partner logo strips
+* Auto-scrolling logo carousels
+* Feature sections in landing pages
+* Vertical marquee-style logo columns
+* Sponsor grids
+* Tooling & ecosystem highlights

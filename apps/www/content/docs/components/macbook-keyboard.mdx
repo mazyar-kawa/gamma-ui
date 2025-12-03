@@ -1,0 +1,154 @@
+---
+title: MacBook Keyboard
+date: 2025-12-02
+description: Interactive animated MacBook keyboard component.
+author: mazyar
+published: true
+---
+
+<ComponentPreview name="macbook-keyboard-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/macbook-keyboard
+```
+
+## Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).
+
+```css
+.database {
+  offset-anchor: 10px 0px;
+  animation: database-animation-path;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+
+.db-light-1 {
+  offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
+}
+
+.db-light-2 {
+  offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
+}
+
+.db-light-3 {
+  offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
+}
+
+.db-light-4 {
+  offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
+}
+
+@keyframes database-animation-path {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+```
+
+  </TabsContent>
+
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="rest-api" title="components/gammaui/macbook-keyboard" />
+
+<Step>Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).</Step>
+```css
+/* Overlay Button Styles */
+.database {
+  offset-anchor: 10px 0px;
+  animation: database-animation-path;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+
+.db-light-1 {
+offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
+}
+
+.db-light-2 {
+offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
+}
+
+.db-light-3 {
+offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
+}
+
+.db-light-4 {
+offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
+}
+
+@keyframes database-animation-path {
+0% {
+offset-distance: 0%;
+}
+100% {
+offset-distance: 100%;
+}
+}
+
+```
+
+  <Step>Update the import paths to match your project structure.</Step>
+</Steps>
+
+</TabsContent>
+</Tabs>
+
+
+
+---
+
+## Props
+
+| Prop          | Type                                                               | Default                                       | Description                                      |
+| ------------- | ------------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------------ |
+| `className`   | `string`                                                           | `-`                                           | Extra CSS classes                                |
+| `circleText`  | `string`                                                           | `"SVG"`                                       | Text inside the bottom circle                    |
+| `badgeTexts`  | `{ first: string; second: string; third: string; fourth: string }` | `{ GET, POST, PUT, DELETE }`                  | Labels for the top API method badges             |
+| `buttonTexts` | `{ first: string; second: string }`                                | `{ LegionDev, v2_updates }`                   | Labels inside the animated bottom badges         |
+| `title`       | `string`                                                           | `"Data exchange using a customized REST API"` | Box header text                                  |
+| `lightColor`  | `string`                                                           | `"#00A6F5"`                                   | The highlight glow color used in animated lights |
+
+---
+
+## Features
+
+- ✔ **Beautiful animated SVG API diagram**
+- ✔ **Glowing blue lights following API paths**
+- ✔ **Animated pulsing concentric circles**
+- ✔ **Customizable HTTP method badges**
+- ✔ **Customizable bottom badges**
+- ✔ **Motion-powered scaling effects**
+- ✔ **Fully responsive**
+- ✔ **Dark mode friendly**
+
+---
+
+## When to Use
+
+- API Documentation
+- Landing pages for developer tools
+- SaaS dashboards
+- Feature highlights
+- Tutorials explaining REST requests
+- Interactive diagrams
+```

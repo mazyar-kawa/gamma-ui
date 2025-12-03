@@ -248,4 +248,63 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "logo-loop",
+    type: "registry:ui",
+    title: "Logo Timeline",
+    description:
+      "A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.",
+    dependencies: ["react"],
+    files: [
+      {
+        path: "gammaui/logo-loop.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "pricing-interaction",
+    type: "registry:ui",
+    title: "Pricing Interaction",
+    description:
+      "An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.",
+    dependencies: ["react", "@number-flow/react"],
+    files: [
+      {
+        path: "gammaui/pricing-interaction.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "rest-api",
+    type: "registry:ui",
+    title: "Rest API",
+    description:
+      "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
+    dependencies: ["react", "@tabler/icons-react", "motion"],
+    files: [
+      {
+        path: "gammaui/rest-api.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "macbook-keyboard",
+    type: "registry:ui",
+    title: "Macbook Keyboard",
+    description: "Interactive animated MacBook keyboard component.",
+    dependencies: ["react", "@tabler/icons-react", "motion"],
+    files: [
+      {
+        path: "gammaui/macbook-keyboard.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

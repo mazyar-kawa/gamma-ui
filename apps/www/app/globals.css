@@ -99,7 +99,7 @@
   --card-foreground: oklch(0.1884 0.0128 248.5103);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.1884 0.0128 248.5103);
-  --primary: oklch(0.6723 0.1606 244.9955);
+  --primary: oklab(67.23% -0.06787 -0.14566);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.1884 0.0128 248.5103);
   --secondary-foreground: oklch(1 0 0);
@@ -314,5 +314,67 @@
   }
   to {
     transform: translateX(var(--move-x-to));
+  }
+}
+
+.database {
+  offset-anchor: 10px 0px;
+  animation: database-animation-path;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+
+.db-light-1 {
+  offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
+}
+
+.db-light-2 {
+  offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
+}
+
+.db-light-3 {
+  offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
+}
+
+.db-light-4 {
+  offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
+}
+
+@keyframes database-animation-path {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.glowing-key {
+  box-shadow: 0px 0px 15px transparent;
+  border-color: currentColor !important;
+  animation: animate-key-border-shadow 1000ms linear forwards;
+}
+
+@keyframes animate-key-border-shadow {
+  0% {
+    box-shadow: 0px 0px 15px transparent;
+  }
+  100% {
+    box-shadow: 0px 0px 20px currentColor;
+  }
+}
+
+.blur-in {
+  animation: blur-in 400ms ease-in-out forwards;
+}
+
+@keyframes blur-in {
+  0% {
+    filter: blur(1px);
+  }
+  100% {
+    filter: blur(0px);
   }
 }
