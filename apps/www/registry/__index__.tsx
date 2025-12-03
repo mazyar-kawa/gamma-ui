@@ -304,6 +304,74 @@ export const Index: Record<string, any> = {
     }),
     meta: {},
   },
+  "logo-loop": {
+    name: "logo-loop",
+    description: "A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/logo-loop.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/logo-loop.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "logo-loop"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "pricing-interaction": {
+    name: "pricing-interaction",
+    description: "An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/pricing-interaction.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/pricing-interaction.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pricing-interaction"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "rest-api": {
+    name: "rest-api",
+    description: "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/rest-api.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/rest-api.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "rest-api"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "macbook-keyboard": {
+    name: "macbook-keyboard",
+    description: "Interactive animated MacBook keyboard component.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/macbook-keyboard.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/macbook-keyboard.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "macbook-keyboard"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
   "live-waveform-demo": {
     name: "live-waveform-demo",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
@@ -606,6 +674,74 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/logo-timeline-demo-2.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "logo-timeline-demo-2"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "logo-loop-demo": {
+    name: "logo-loop-demo",
+    description: "A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/logo-loop"],
+    files: [{
+      path: "registry/example/logo-loop-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/logo-loop-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "logo-loop-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "pricing-interaction-demo": {
+    name: "pricing-interaction-demo",
+    description: "An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/pricing-interaction"],
+    files: [{
+      path: "registry/example/pricing-interaction-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/pricing-interaction-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pricing-interaction-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "rest-api-demo": {
+    name: "rest-api-demo",
+    description: "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/rest-api"],
+    files: [{
+      path: "registry/example/rest-api-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/rest-api-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "rest-api-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "macbook-keyboard-demo": {
+    name: "macbook-keyboard-demo",
+    description: "Interactive animated MacBook keyboard component.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/macbook-keyboard"],
+    files: [{
+      path: "registry/example/macbook-keyboard-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/macbook-keyboard-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "macbook-keyboard-demo"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},

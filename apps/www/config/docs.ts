@@ -38,6 +38,18 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Rest API",
+          href: `/docs/components/rest-api`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Macbook Keyboard",
+          href: `/docs/components/macbook-keyboard`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Live Waveform",
           href: `/docs/components/live-waveform`,
           items: [],
@@ -64,6 +76,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Logo Timeline",
           href: `/docs/components/logo-timeline`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Pricing Interaction",
+          href: `/docs/components/pricing-interaction`,
           items: [],
           label: "New",
         },

@@ -243,15 +243,34 @@ function InternalAnimatedListItem({
   const isVisible = reverseIndex < visibleItemsCount
   const lastItemOffset = (listLength - 1) * columnGap
   const isLastItem = index === listLength - 1
+  let initialScale = 1
+  let columnScale = 0.8
 
+  if (typeof window !== "undefined") {
+    const w = window.innerWidth
+
+    if (w < 480) {
+      // 📱 Mobile
+      initialScale = 0.5
+      columnScale = 0.8
+    } else if (w < 768) {
+      // 📲 Tablet
+      initialScale = 0.45
+      columnScale = 0.7
+    } else {
+      // 🖥 Desktop (default)
+      initialScale = 1
+      columnScale = 0.8
+    }
+  }
   const itemVariants = {
     initial: {
-      scale: 1 + index * scaleFactor,
+      scale: initialScale + index * scaleFactor,
       y: reverseIndex * stackGap,
       opacity: isVisible ? 1 : 0,
     },
     column: {
-      scale: 1,
+      scale: columnScale,
       y: index * columnGap - lastItemOffset,
       opacity: 1,
     },
@@ -445,10 +464,10 @@ export function AnimatedListDemo() {
   ]
 
   return (
-    <div className="bg-background relative mx-4 h-[400px] w-full overflow-hidden rounded-lg border">
+    <div className="bg-background relative h-[400px] w-full overflow-hidden rounded-lg border">
       <AnimatedList
         stackGap={20}
-        columnGap={85}
+        columnGap={70}
         scaleFactor={0.05}
         scrollDownDuration={5}
         formationDuration={1}
@@ -1627,6 +1646,705 @@ export default function DemoOne() {
 
 
 
+===== COMPONENT: logo-loop =====
+Title: Logo Timeline
+Description: A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.
+
+--- file: gammaui/logo-loop.tsx ---
+"use client"
+
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
+
+export type LogoItem =
+  | {
+      node: React.ReactNode
+      href?: string
+      title?: string
+      ariaLabel?: string
+    }
+  | {
+      src: string
+      alt?: string
+      href?: string
+      title?: string
+      srcSet?: string
+      sizes?: string
+      width?: number
+      height?: number
+    }
+
+export interface LogoLoopProps {
+  logos: LogoItem[]
+  speed?: number
+  direction?: "left" | "right" | "up" | "down"
+  width?: number | string
+  logoHeight?: number
+  gap?: number
+  pauseOnHover?: boolean
+  hoverSpeed?: number
+  fadeOut?: boolean
+  fadeOutColor?: string
+  scaleOnHover?: boolean
+  renderItem?: (item: LogoItem, key: React.Key) => React.ReactNode
+  ariaLabel?: string
+  className?: string
+  style?: React.CSSProperties
+}
+
+const ANIMATION_CONFIG = {
+  SMOOTH_TAU: 0.25,
+  MIN_COPIES: 2,
+  COPY_HEADROOM: 2,
+} as const
+
+const toCssLength = (value?: number | string): string | undefined =>
+  typeof value === "number" ? `${value}px` : (value ?? undefined)
+
+const cx = (...parts: Array<string | false | null | undefined>) =>
+  parts.filter(Boolean).join(" ")
+
+const useResizeObserver = (
+  callback: () => void,
+  elements: Array<React.RefObject<Element | null>>,
+  dependencies: React.DependencyList
+) => {
+  useEffect(() => {
+    if (!window.ResizeObserver) {
+      const handleResize = () => callback()
+      window.addEventListener("resize", handleResize)
+      callback()
+      return () => window.removeEventListener("resize", handleResize)
+    }
+
+    const observers = elements.map((ref) => {
+      if (!ref.current) return null
+      const observer = new ResizeObserver(callback)
+      observer.observe(ref.current)
+      return observer
+    })
+
+    callback()
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect())
+    }
+  }, dependencies)
+}
+
+const useImageLoader = (
+  seqRef: React.RefObject<HTMLUListElement | null>,
+  onLoad: () => void,
+  dependencies: React.DependencyList
+) => {
+  useEffect(() => {
+    const images = seqRef.current?.querySelectorAll("img") ?? []
+
+    if (images.length === 0) {
+      onLoad()
+      return
+    }
+
+    let remainingImages = images.length
+    const handleImageLoad = () => {
+      remainingImages -= 1
+      if (remainingImages === 0) {
+        onLoad()
+      }
+    }
+
+    images.forEach((img) => {
+      const htmlImg = img as HTMLImageElement
+      if (htmlImg.complete) {
+        handleImageLoad()
+      } else {
+        htmlImg.addEventListener("load", handleImageLoad, { once: true })
+        htmlImg.addEventListener("error", handleImageLoad, { once: true })
+      }
+    })
+
+    return () => {
+      images.forEach((img) => {
+        img.removeEventListener("load", handleImageLoad)
+        img.removeEventListener("error", handleImageLoad)
+      })
+    }
+  }, dependencies)
+}
+
+const useAnimationLoop = (
+  trackRef: React.RefObject<HTMLDivElement | null>,
+  targetVelocity: number,
+  seqWidth: number,
+  seqHeight: number,
+  isHovered: boolean,
+  hoverSpeed: number | undefined,
+  isVertical: boolean
+) => {
+  const rafRef = useRef<number | null>(null)
+  const lastTimestampRef = useRef<number | null>(null)
+  const offsetRef = useRef(0)
+  const velocityRef = useRef(0)
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    const seqSize = isVertical ? seqHeight : seqWidth
+
+    if (seqSize > 0) {
+      offsetRef.current = ((offsetRef.current % seqSize) + seqSize) % seqSize
+      const transformValue = isVertical
+        ? `translate3d(0, ${-offsetRef.current}px, 0)`
+        : `translate3d(${-offsetRef.current}px, 0, 0)`
+      track.style.transform = transformValue
+    }
+
+    if (prefersReduced) {
+      track.style.transform = isVertical
+        ? "translate3d(0, 0, 0)"
+        : "translate3d(0, 0, 0)"
+      return () => {
+        lastTimestampRef.current = null
+      }
+    }
+
+    const animate = (timestamp: number) => {
+      if (lastTimestampRef.current === null) {
+        lastTimestampRef.current = timestamp
+      }
+
+      const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000
+      lastTimestampRef.current = timestamp
+
+      const target =
+        isHovered && hoverSpeed !== undefined ? hoverSpeed : targetVelocity
+
+      const easingFactor =
+        1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU)
+      velocityRef.current += (target - velocityRef.current) * easingFactor
+
+      if (seqSize > 0) {
+        let nextOffset = offsetRef.current + velocityRef.current * deltaTime
+        nextOffset = ((nextOffset % seqSize) + seqSize) % seqSize
+        offsetRef.current = nextOffset
+
+        const transformValue = isVertical
+          ? `translate3d(0, ${-offsetRef.current}px, 0)`
+          : `translate3d(${-offsetRef.current}px, 0, 0)`
+        track.style.transform = transformValue
+      }
+
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = null
+      }
+      lastTimestampRef.current = null
+    }
+  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical])
+}
+
+export const LogoLoop = React.memo<LogoLoopProps>(
+  ({
+    logos,
+    speed = 120,
+    direction = "left",
+    width = "100%",
+    logoHeight = 28,
+    gap = 32,
+    pauseOnHover,
+    hoverSpeed,
+    fadeOut = false,
+    fadeOutColor,
+    scaleOnHover = false,
+    renderItem,
+    ariaLabel = "Partner logos",
+    className,
+    style,
+  }) => {
+    const containerRef = useRef<HTMLDivElement>(null)
+    const trackRef = useRef<HTMLDivElement>(null)
+    const seqRef = useRef<HTMLUListElement>(null)
+
+    const [seqWidth, setSeqWidth] = useState<number>(0)
+    const [seqHeight, setSeqHeight] = useState<number>(0)
+    const [copyCount, setCopyCount] = useState<number>(
+      ANIMATION_CONFIG.MIN_COPIES
+    )
+    const [isHovered, setIsHovered] = useState<boolean>(false)
+
+    const effectiveHoverSpeed = useMemo(() => {
+      if (hoverSpeed !== undefined) return hoverSpeed
+      if (pauseOnHover === true) return 0
+      if (pauseOnHover === false) return undefined
+      return 0
+    }, [hoverSpeed, pauseOnHover])
+
+    const isVertical = direction === "up" || direction === "down"
+
+    const targetVelocity = useMemo(() => {
+      const magnitude = Math.abs(speed)
+      let directionMultiplier: number
+      if (isVertical) {
+        directionMultiplier = direction === "up" ? 1 : -1
+      } else {
+        directionMultiplier = direction === "left" ? 1 : -1
+      }
+      const speedMultiplier = speed < 0 ? -1 : 1
+      return magnitude * directionMultiplier * speedMultiplier
+    }, [speed, direction, isVertical])
+
+    const updateDimensions = useCallback(() => {
+      const containerWidth = containerRef.current?.clientWidth ?? 0
+      const sequenceRect = seqRef.current?.getBoundingClientRect?.()
+      const sequenceWidth = sequenceRect?.width ?? 0
+      const sequenceHeight = sequenceRect?.height ?? 0
+      if (isVertical) {
+        const parentHeight =
+          containerRef.current?.parentElement?.clientHeight ?? 0
+        if (containerRef.current && parentHeight > 0) {
+          const targetHeight = Math.ceil(parentHeight)
+          if (containerRef.current.style.height !== `${targetHeight}px`)
+            containerRef.current.style.height = `${targetHeight}px`
+        }
+        if (sequenceHeight > 0) {
+          setSeqHeight(Math.ceil(sequenceHeight))
+          const viewport =
+            containerRef.current?.clientHeight ?? parentHeight ?? sequenceHeight
+          const copiesNeeded =
+            Math.ceil(viewport / sequenceHeight) +
+            ANIMATION_CONFIG.COPY_HEADROOM
+          setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded))
+        }
+      } else if (sequenceWidth > 0) {
+        setSeqWidth(Math.ceil(sequenceWidth))
+        const copiesNeeded =
+          Math.ceil(containerWidth / sequenceWidth) +
+          ANIMATION_CONFIG.COPY_HEADROOM
+        setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded))
+      }
+    }, [isVertical])
+
+    useResizeObserver(
+      updateDimensions,
+      [containerRef, seqRef],
+      [logos, gap, logoHeight, isVertical]
+    )
+
+    useImageLoader(seqRef, updateDimensions, [
+      logos,
+      gap,
+      logoHeight,
+      isVertical,
+    ])
+
+    useAnimationLoop(
+      trackRef,
+      targetVelocity,
+      seqWidth,
+      seqHeight,
+      isHovered,
+      effectiveHoverSpeed,
+      isVertical
+    )
+
+    const cssVariables = useMemo(
+      () =>
+        ({
+          "--logoloop-gap": `${gap}px`,
+          "--logoloop-logoHeight": `${logoHeight}px`,
+          ...(fadeOutColor && { "--logoloop-fadeColor": fadeOutColor }),
+        }) as React.CSSProperties,
+      [gap, logoHeight, fadeOutColor]
+    )
+
+    const rootClasses = useMemo(
+      () =>
+        cx(
+          "relative group",
+          isVertical
+            ? "overflow-hidden h-full inline-block"
+            : "overflow-x-hidden",
+          "[--logoloop-gap:32px]",
+          "[--logoloop-logoHeight:28px]",
+          "[--logoloop-fadeColorAuto:#ffffff]",
+          "dark:[--logoloop-fadeColorAuto:#0b0b0b]",
+          scaleOnHover && "py-[calc(var(--logoloop-logoHeight)*0.1)]",
+          className
+        ),
+      [isVertical, scaleOnHover, className]
+    )
+
+    const handleMouseEnter = useCallback(() => {
+      if (effectiveHoverSpeed !== undefined) setIsHovered(true)
+    }, [effectiveHoverSpeed])
+    const handleMouseLeave = useCallback(() => {
+      if (effectiveHoverSpeed !== undefined) setIsHovered(false)
+    }, [effectiveHoverSpeed])
+
+    const renderLogoItem = useCallback(
+      (item: LogoItem, key: React.Key) => {
+        if (renderItem) {
+          return (
+            <li
+              className={cx(
+                "flex-none text-(length:--logoloop-logoHeight) leading-none",
+                isVertical ? "mb-(--logoloop-gap)" : "mr-(--logoloop-gap)",
+                scaleOnHover && "group/item overflow-visible"
+              )}
+              key={key}
+              role="listitem"
+            >
+              {renderItem(item, key)}
+            </li>
+          )
+        }
+
+        const isNodeItem = "node" in item
+
+        const content = isNodeItem ? (
+          <span
+            className={cx(
+              "inline-flex items-center",
+              "motion-reduce:transition-none",
+              scaleOnHover &&
+                "transition-transform duration-300 ease-in-out group-hover/item:scale-120"
+            )}
+            aria-hidden={!!(item as any).href && !(item as any).ariaLabel}
+          >
+            {(item as any).node}
+          </span>
+        ) : (
+          <img
+            className={cx(
+              "block h-[--logoloop-logoHeight] w-auto object-contain",
+              "pointer-events-none [-webkit-user-drag:none]",
+              "[image-rendering:-webkit-optimize-contrast]",
+              "motion-reduce:transition-none",
+              scaleOnHover &&
+                "transition-transform duration-300 ease-in-out group-hover/item:scale-120"
+            )}
+            src={(item as any).src}
+            srcSet={(item as any).srcSet}
+            sizes={(item as any).sizes}
+            width={(item as any).width}
+            height={(item as any).height}
+            alt={(item as any).alt ?? ""}
+            title={(item as any).title}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+          />
+        )
+
+        const itemAriaLabel = isNodeItem
+          ? ((item as any).ariaLabel ?? (item as any).title)
+          : ((item as any).alt ?? (item as any).title)
+
+        const inner = (item as any).href ? (
+          <a
+            className={cx(
+              "inline-flex items-center rounded no-underline",
+              "transition-opacity duration-200 ease-linear",
+              "hover:opacity-80",
+              "focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-current"
+            )}
+            href={(item as any).href}
+            aria-label={itemAriaLabel || "logo link"}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            {content}
+          </a>
+        ) : (
+          content
+        )
+
+        return (
+          <li
+            className={cx(
+              "flex-none text-(length:--logoloop-logoHeight) leading-none",
+              isVertical ? "mb-[--logoloop-gap]" : "mr-[--logoloop-gap]",
+              scaleOnHover && "group/item overflow-visible"
+            )}
+            key={key}
+            role="listitem"
+          >
+            {inner}
+          </li>
+        )
+      },
+      [isVertical, scaleOnHover, renderItem]
+    )
+
+    const logoLists = useMemo(
+      () =>
+        Array.from({ length: copyCount }, (_, copyIndex) => (
+          <ul
+            className={cx("flex items-center", isVertical && "flex-col")}
+            key={`copy-${copyIndex}`}
+            role="list"
+            aria-hidden={copyIndex > 0}
+            ref={copyIndex === 0 ? seqRef : undefined}
+          >
+            {logos.map((item, itemIndex) =>
+              renderLogoItem(item, `${copyIndex}-${itemIndex}`)
+            )}
+          </ul>
+        )),
+      [copyCount, logos, renderLogoItem, isVertical]
+    )
+
+    const containerStyle = useMemo(
+      (): React.CSSProperties => ({
+        width: isVertical
+          ? toCssLength(width) === "100%"
+            ? undefined
+            : toCssLength(width)
+          : (toCssLength(width) ?? "100%"),
+        ...cssVariables,
+        ...style,
+      }),
+      [width, cssVariables, style, isVertical]
+    )
+
+    return (
+      <div
+        ref={containerRef}
+        className={rootClasses}
+        style={containerStyle}
+        role="region"
+        aria-label={ariaLabel}
+      >
+        {fadeOut && (
+          <>
+            {isVertical ? (
+              <>
+                <div
+                  aria-hidden
+                  className={cx(
+                    "pointer-events-none absolute inset-x-0 top-0 z-10",
+                    "h-[clamp(24px,8%,120px)]",
+                    "bg-[linear-gradient(to_bottom,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
+                  )}
+                />
+                <div
+                  aria-hidden
+                  className={cx(
+                    "pointer-events-none absolute inset-x-0 bottom-0 z-10",
+                    "h-[clamp(24px,8%,120px)]",
+                    "bg-[linear-gradient(to_top,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
+                  )}
+                />
+              </>
+            ) : (
+              <>
+                <div
+                  aria-hidden
+                  className={cx(
+                    "pointer-events-none absolute inset-y-0 left-0 z-10",
+                    "w-[clamp(24px,8%,120px)]",
+                    "bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
+                  )}
+                />
+                <div
+                  aria-hidden
+                  className={cx(
+                    "pointer-events-none absolute inset-y-0 right-0 z-10",
+                    "w-[clamp(24px,8%,120px)]",
+                    "bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
+                  )}
+                />
+              </>
+            )}
+          </>
+        )}
+
+        <div
+          className={cx(
+            "relative z-0 flex will-change-transform select-none",
+            "motion-reduce:transform-none",
+            isVertical ? "h-max w-full flex-col" : "w-max flex-row"
+          )}
+          ref={trackRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {logoLists}
+        </div>
+      </div>
+    )
+  }
+)
+
+LogoLoop.displayName = "LogoLoop"
+
+export default LogoLoop
+
+
+===== EXAMPLE: logo-loop-demo =====
+Title: Logo Timeline Demo 2
+
+--- file: example/logo-loop-demo.tsx ---
+import {
+  IconBrandAndroid,
+  IconBrandApple,
+  IconBrandAws,
+  IconBrandCss3,
+  IconBrandDocker,
+  IconBrandFigma,
+  IconBrandFirebase,
+  IconBrandGithub,
+  IconBrandGitlab,
+  IconBrandGoogle,
+  IconBrandHtml5,
+  IconBrandJavascript,
+  IconBrandNextjs,
+  IconBrandNodejs,
+  IconBrandReact,
+  IconBrandStripe,
+  IconBrandSupabase,
+  IconBrandTailwind,
+  IconBrandTypescript,
+  IconBrandVercel,
+} from "@tabler/icons-react"
+
+import { LogoLoop } from "@/registry/gammaui/logo-loop"
+
+const techLogos = [
+  {
+    node: <IconBrandReact size={48} />,
+    title: "React",
+    href: "https://react.dev",
+  },
+  {
+    node: <IconBrandNextjs size={48} />,
+    title: "Next.js",
+    href: "https://nextjs.org",
+  },
+  {
+    node: <IconBrandTypescript size={48} />,
+    title: "TypeScript",
+    href: "https://www.typescriptlang.org",
+  },
+  {
+    node: <IconBrandTailwind size={48} />,
+    title: "Tailwind CSS",
+    href: "https://tailwindcss.com",
+  },
+
+  // --- Added Logos ---
+  {
+    node: <IconBrandVercel size={48} />,
+    title: "Vercel",
+    href: "https://vercel.com",
+  },
+  {
+    node: <IconBrandNodejs size={48} />,
+    title: "Node.js",
+    href: "https://nodejs.org",
+  },
+  {
+    node: <IconBrandGithub size={48} />,
+    title: "GitHub",
+    href: "https://github.com",
+  },
+  {
+    node: <IconBrandGitlab size={48} />,
+    title: "GitLab",
+    href: "https://gitlab.com",
+  },
+  {
+    node: <IconBrandDocker size={48} />,
+    title: "Docker",
+    href: "https://www.docker.com",
+  },
+  {
+    node: <IconBrandJavascript size={48} />,
+    title: "JavaScript",
+    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  },
+  {
+    node: <IconBrandHtml5 size={48} />,
+    title: "HTML5",
+    href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+  },
+  {
+    node: <IconBrandCss3 size={48} />,
+    title: "CSS3",
+    href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  },
+  {
+    node: <IconBrandFigma size={48} />,
+    title: "Figma",
+    href: "https://figma.com",
+  },
+  {
+    node: <IconBrandAws size={48} />,
+    title: "Amazon AWS",
+    href: "https://aws.amazon.com",
+  },
+  {
+    node: <IconBrandGoogle size={48} />,
+    title: "Google",
+    href: "https://google.com",
+  },
+  {
+    node: <IconBrandStripe size={48} />,
+    title: "Stripe",
+    href: "https://stripe.com",
+  },
+  {
+    node: <IconBrandFirebase size={48} />,
+    title: "Firebase",
+    href: "https://firebase.google.com",
+  },
+  {
+    node: <IconBrandSupabase size={48} />,
+    title: "Supabase",
+    href: "https://supabase.com",
+  },
+  {
+    node: <IconBrandApple size={48} />,
+    title: "Apple",
+    href: "https://apple.com",
+  },
+  {
+    node: <IconBrandAndroid size={48} />,
+    title: "Android",
+    href: "https://www.android.com",
+  },
+]
+
+export function LogoLoopDemo() {
+  return (
+    <div style={{ height: "200px", position: "relative", overflow: "hidden" }}>
+      <LogoLoop
+        logos={techLogos}
+        speed={50}
+        direction="left"
+        gap={80}
+        hoverSpeed={0}
+        scaleOnHover
+        fadeOut
+        ariaLabel="Technology partners"
+      />
+    </div>
+  )
+}
+
+
+
 ===== COMPONENT: logo-timeline =====
 Title: Logo Timeline
 Description: A multi-row infinitely scrolling logo timeline built with Motion One, supporting hover-activated animations and row grouping.
@@ -2038,6 +2756,850 @@ export default function LogoTimelineDemo() {
         showRowSeparator={true}
         animateOnHover={true}
       />
+    </div>
+  )
+}
+
+
+
+===== COMPONENT: macbook-keyboard =====
+Title: Macbook Keyboard
+Description: Interactive animated MacBook keyboard component.
+
+--- file: gammaui/macbook-keyboard.tsx ---
+"use client"
+
+import React, { memo, useEffect, useState } from "react"
+import {
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+  ChevronUpIcon,
+  CommandIcon,
+  DotIcon,
+  GlobeIcon,
+  LayoutPanelLeft,
+  MicIcon,
+  MoonIcon,
+  OptionIcon,
+  PauseIcon,
+  SearchIcon,
+  SkipBackIcon,
+  SkipForwardIcon,
+  SunDimIcon,
+  SunIcon,
+  Volume1Icon,
+  Volume2Icon,
+  VolumeIcon,
+} from "lucide-react"
+import { motion } from "motion/react"
+
+import { cn } from "../lib/utils"
+
+const iconSize = 12
+
+type CustomKeyType = "FingerPrintKey" | "ArrowKeys"
+
+interface IconKeyboardKeyProps {
+  icon: string | React.ReactNode
+  text?: string | React.ReactNode
+  className?: string
+  isSingleKey?: boolean
+  custom?: CustomKeyType
+  index?: number
+  rowIndex?: number
+  isLastRow?: boolean
+  keySize?: number
+  transparentKey?: boolean
+  glowColor?: string
+  pressedKey: string | null
+}
+
+interface MacBookKeyboardSvgProps {
+  transparentKey?: boolean
+  keySize?: number
+  glowColor?: string
+}
+
+type KeyRowDataProps = Omit<IconKeyboardKeyProps, "pressedKey">
+
+const keyMap: Record<string, string> = {
+  Escape: "esc",
+  F1: "F1",
+  F2: "F2",
+  F3: "F3",
+  F4: "F4",
+  F5: "F5",
+  F6: "F6",
+  F7: "F7",
+  F8: "F8",
+  F9: "F9",
+  F10: "F10",
+  F11: "F11",
+  F12: "F12",
+  "`": "`",
+  "1": "1",
+  "2": "2",
+  "3": "3",
+  "4": "4",
+  "5": "5",
+  "6": "6",
+  "7": "7",
+  "8": "8",
+  "9": "9",
+  "0": "0",
+  "-": "-",
+  "=": "=",
+  Backspace: "delete",
+  Tab: "tab",
+  q: "Q",
+  w: "W",
+  e: "E",
+  r: "R",
+  t: "T",
+  y: "Y",
+  u: "U",
+  i: "I",
+  o: "O",
+  p: "P",
+  "[": "[",
+  "]": "]",
+  "\\": "/",
+  CapsLock: "caps lock",
+  a: "A",
+  s: "S",
+  d: "D",
+  f: "F",
+  g: "G",
+  h: "H",
+  j: "J",
+  k: "K",
+  l: "L",
+  ";": ";",
+  "'": "'",
+  Enter: "return",
+  Shift: "shift",
+  z: "Z",
+  x: "X",
+  c: "C",
+  v: "V",
+  b: "B",
+  n: "N",
+  m: "M",
+  ",": ",",
+  ".": ".",
+  "/": "/",
+  Control: "control",
+  Alt: "option",
+  Meta: "command",
+  " ": "",
+  ArrowUp: "ArrowUp",
+  ArrowDown: "ArrowDown",
+  ArrowLeft: "ArrowLeft",
+  ArrowRight: "ArrowRight",
+}
+
+const MacBookKeyboard = memo(
+  ({
+    transparentKey = true,
+    keySize = 40,
+    glowColor = "#f43f5d",
+  }: MacBookKeyboardSvgProps) => {
+    const [pressedKey, setPressedKey] = useState<string | null>(null)
+
+    useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        const mappedKey = keyMap[event.key]
+        if (mappedKey !== undefined) {
+          setPressedKey(mappedKey)
+        }
+      }
+
+      const handleKeyUp = () => {
+        setPressedKey(null)
+      }
+
+      window.addEventListener("keydown", handleKeyDown)
+      window.addEventListener("keyup", handleKeyUp)
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown)
+        window.removeEventListener("keyup", handleKeyUp)
+      }
+    }, [])
+
+    return (
+      <div className="card-color flex w-full flex-col gap-1 rounded-[3px] p-2">
+        {keysData.map((row, rowIndex) => {
+          return (
+            <div key={rowIndex} className="flex flex-row gap-1">
+              {row.map((item, index) => {
+                if (item.custom === "FingerPrintKey") {
+                  return (
+                    <FingerPrintKey
+                      key={index}
+                      index={index}
+                      rowIndex={rowIndex}
+                      keySize={keySize}
+                      transparentKey={transparentKey}
+                    />
+                  )
+                }
+
+                if (item.custom === "ArrowKeys") {
+                  return (
+                    <ArrowKeys
+                      key={index}
+                      index={index}
+                      rowIndex={rowIndex}
+                      pressedKey={pressedKey}
+                      glowColor={glowColor}
+                    />
+                  )
+                }
+
+                return (
+                  <IconKeyboardKey
+                    key={index}
+                    index={index}
+                    rowIndex={rowIndex}
+                    text={item.text}
+                    icon={item.icon}
+                    className={item.className}
+                    isSingleKey={item.isSingleKey}
+                    isLastRow={rowIndex === keysData.length - 1}
+                    keySize={keySize}
+                    transparentKey={transparentKey}
+                    glowColor={glowColor}
+                    pressedKey={pressedKey}
+                  />
+                )
+              })}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+)
+
+MacBookKeyboard.displayName = "MacBookKeyboard"
+
+const IconKeyboardKey = memo(
+  ({
+    icon,
+    text,
+    className,
+    isSingleKey,
+    index = 0,
+    rowIndex = 0,
+    isLastRow,
+    keySize,
+    transparentKey,
+    glowColor,
+    pressedKey,
+  }: IconKeyboardKeyProps) => {
+    const isText = typeof text === "string"
+    const shouldGlow = isText && pressedKey === text
+
+    return (
+      <motion.div
+        variants={{
+          initial: { borderColor: "#212121" },
+          animate: {
+            borderColor: ["#212121", "#383838", "#212121"],
+          },
+        }}
+        initial="initial"
+        animate="animate"
+        transition={{
+          duration: 0.8,
+          ease: "easeInOut",
+          delay: index * 0.1 + rowIndex * 0.12,
+        }}
+        style={{
+          width: `${keySize}px`,
+          height: `${keySize}px`,
+          minWidth: `${keySize}px`,
+          flexBasis: `${keySize}px`,
+          color: shouldGlow ? `${glowColor}50` : "#212121",
+        }}
+        className={cn(
+          className,
+          shouldGlow && "animate-[6000ms]",
+          "group border-border/80 relative flex flex-col items-center justify-center gap-1.5 rounded-[3px] border border-x border-t-[1.5px] border-b-[0.1px] px-2 shadow-[inset_0px_0px_15px_rgba(0,0,0,0.2)] duration-200 select-none first:items-start last:items-end active:scale-[0.98]!",
+          transparentKey ? "bg-transparent" : "bg-[#121214]"
+        )}
+      >
+        {!isSingleKey && (
+          <div className="text-muted-foreground/70 group-hover:text-muted-foreground mt-0.5 h-[10px] w-[10px] text-center text-xs font-light duration-200">
+            {icon}
+          </div>
+        )}
+        <div
+          style={{
+            color: shouldGlow ? glowColor : "",
+            textShadow: shouldGlow ? `0 0 10px ${glowColor}` : "",
+          }}
+          className={cn(
+            isLastRow && "text-[8px]!",
+            isSingleKey ? "text-sm" : "text-xs",
+            "text-muted-foreground/70 text-center duration-200 group-hover:text-white/60"
+          )}
+        >
+          {text}
+        </div>
+      </motion.div>
+    )
+  }
+)
+
+IconKeyboardKey.displayName = "IconKeyboardKey"
+
+const FingerPrintKey = memo(
+  ({
+    index,
+    rowIndex,
+    keySize,
+    transparentKey,
+  }: {
+    index: number
+    rowIndex: number
+    keySize: number
+    transparentKey: boolean
+  }) => {
+    return (
+      <motion.div
+        variants={{
+          initial: { borderColor: "#212121" },
+          animate: {
+            borderColor: ["#212121", "#383838", "#212121"],
+          },
+        }}
+        initial="initial"
+        animate="animate"
+        transition={{
+          duration: 0.6,
+          ease: "easeInOut",
+          delay: index * 0.1 + rowIndex * 0.12,
+        }}
+        style={{
+          width: `${keySize}px`,
+          height: `${keySize}px`,
+          minWidth: `${keySize}px`,
+        }}
+        className={cn(
+          "group border-border/80 relative flex flex-col items-center justify-center gap-1.5 rounded-[3px] border border-x border-t-[1.5px] border-b-[0.1px] shadow-[inset_0px_0px_15px_rgba(0,0,0,0.2)] duration-200",
+          transparentKey ? "bg-transparent" : "bg-[#121214]"
+        )}
+      >
+        <div className="bg-muted/20 group-hover:bg-muted/35 h-8 w-8 rounded-full shadow-[inset_0px_0px_2px_rgba(0,0,0,0.6)] duration-200" />
+      </motion.div>
+    )
+  }
+)
+
+FingerPrintKey.displayName = "FingerPrintKey"
+
+const ArrowKeys = memo(
+  ({
+    index,
+    rowIndex,
+    pressedKey,
+    glowColor,
+  }: {
+    index: number
+    rowIndex: number
+    pressedKey: string | null
+    glowColor: string
+  }) => {
+    return (
+      <div className="flex flex-row gap-1">
+        <ArrowKey
+          index={index}
+          rowIndex={rowIndex}
+          icon={<ArrowLeftIcon size={iconSize} />}
+          keyName="ArrowLeft"
+          pressedKey={pressedKey}
+          glowColor={glowColor}
+          className="h-1/2! translate-y-5 items-center!"
+        />
+        <div className="flex h-10 flex-col">
+          <ArrowKey
+            index={index}
+            rowIndex={rowIndex}
+            icon={<ArrowUpIcon size={iconSize} />}
+            keyName="ArrowUp"
+            pressedKey={pressedKey}
+            glowColor={glowColor}
+            className="h-1/2! items-center! rounded-b-none!"
+          />
+          <ArrowKey
+            index={index}
+            rowIndex={rowIndex}
+            icon={<ArrowDownIcon size={iconSize} />}
+            keyName="ArrowDown"
+            pressedKey={pressedKey}
+            glowColor={glowColor}
+            className="h-1/2! items-center! rounded-t-none!"
+          />
+        </div>
+        <ArrowKey
+          index={index}
+          rowIndex={rowIndex}
+          icon={<ArrowRightIcon size={iconSize} />}
+          keyName="ArrowRight"
+          pressedKey={pressedKey}
+          glowColor={glowColor}
+          className="h-1/2! translate-y-5 items-center!"
+        />
+      </div>
+    )
+  }
+)
+
+ArrowKeys.displayName = "ArrowKeys"
+
+const ArrowKey = memo(
+  ({
+    index,
+    rowIndex,
+    icon,
+    keyName,
+    pressedKey,
+    glowColor,
+    className,
+  }: {
+    index: number
+    rowIndex: number
+    icon: React.ReactNode
+    keyName: string
+    pressedKey: string | null
+    glowColor: string
+    className?: string
+  }) => {
+    const shouldGlow = pressedKey === keyName
+
+    return (
+      <motion.div
+        variants={{
+          initial: { borderColor: "#212121" },
+          animate: {
+            borderColor: ["#212121", "#383838", "#212121"],
+          },
+        }}
+        initial="initial"
+        animate="animate"
+        transition={{
+          duration: 0.8,
+          ease: "easeInOut",
+          delay: index * 0.1 + rowIndex * 0.12,
+        }}
+        className={cn(
+          className,
+          "group border-border/80 relative flex flex-col items-center justify-center gap-1.5 rounded-[3px] border border-x border-t-[1.5px] border-b-[0.1px] bg-transparent px-2 shadow-[inset_0px_0px_15px_rgba(0,0,0,0.2)] duration-200 select-none"
+        )}
+      >
+        <div
+          style={{
+            color: shouldGlow ? glowColor : "",
+            filter: shouldGlow ? `drop-shadow(0 0 8px ${glowColor})` : "",
+          }}
+          className="text-muted-foreground/70 text-center duration-200"
+        >
+          {icon}
+        </div>
+      </motion.div>
+    )
+  }
+)
+
+ArrowKey.displayName = "ArrowKey"
+
+export { MacBookKeyboard }
+
+const firstRowData: KeyRowDataProps[] = [
+  {
+    icon: null,
+    text: "esc",
+    className: "!basis-full",
+  },
+  {
+    icon: <SunDimIcon size={iconSize} />,
+    text: "F1",
+  },
+  {
+    icon: <SunIcon size={iconSize} />,
+    text: "F2",
+  },
+  {
+    icon: <LayoutPanelLeft size={iconSize} />,
+    text: "F3",
+  },
+  {
+    icon: <SearchIcon size={iconSize} />,
+    text: "F4",
+  },
+  {
+    icon: <MicIcon size={iconSize} />,
+    text: "F5",
+  },
+  {
+    icon: <MoonIcon size={iconSize} />,
+    text: "F6",
+  },
+  {
+    icon: <SkipBackIcon size={iconSize} />,
+    text: "F7",
+  },
+  {
+    icon: <PauseIcon size={iconSize} />,
+    text: "F8",
+  },
+  {
+    icon: <SkipForwardIcon size={iconSize} />,
+    text: "F9",
+  },
+  {
+    icon: <VolumeIcon size={iconSize} />,
+    text: "F10",
+  },
+  {
+    icon: <Volume1Icon size={iconSize} />,
+    text: "F11",
+  },
+  {
+    icon: <Volume2Icon size={iconSize} />,
+    text: "F12",
+  },
+  {
+    custom: "FingerPrintKey",
+    icon: null,
+  },
+]
+
+const secondRowData: KeyRowDataProps[] = [
+  {
+    icon: "~",
+    text: "`",
+    className: "first:!items-center",
+  },
+  {
+    icon: "!",
+    text: "1",
+  },
+  {
+    icon: "@",
+    text: "2",
+  },
+  {
+    icon: "#",
+    text: "3",
+  },
+  {
+    icon: "$",
+    text: "4",
+  },
+  {
+    icon: "%",
+    text: "5",
+  },
+  {
+    icon: "^",
+    text: "6",
+  },
+  {
+    icon: "&",
+    text: "7",
+  },
+  {
+    icon: "*",
+    text: "8",
+  },
+  {
+    icon: "(",
+    text: "9",
+  },
+  {
+    icon: ")",
+    text: "0",
+  },
+  {
+    icon: "_",
+    text: "-",
+  },
+  {
+    icon: "+",
+    text: "=",
+  },
+  {
+    icon: null,
+    text: "delete",
+    className: "!basis-full",
+  },
+]
+
+const thirdRowData: KeyRowDataProps[] = [
+  {
+    icon: null,
+    text: "tab",
+    className: "!basis-full",
+  },
+  {
+    icon: "q",
+    text: "Q",
+    isSingleKey: true,
+  },
+  {
+    icon: "w",
+    text: "W",
+    isSingleKey: true,
+  },
+  {
+    icon: "e",
+    text: "E",
+    isSingleKey: true,
+  },
+  {
+    icon: "r",
+    text: "R",
+    isSingleKey: true,
+  },
+  {
+    icon: "t",
+    text: "T",
+    isSingleKey: true,
+  },
+  {
+    icon: "y",
+    text: "Y",
+    isSingleKey: true,
+  },
+  {
+    icon: "u",
+    text: "U",
+    isSingleKey: true,
+  },
+  {
+    icon: "i",
+    text: "I",
+    isSingleKey: true,
+  },
+  {
+    icon: "o",
+    text: "O",
+    isSingleKey: true,
+  },
+  {
+    icon: "p",
+    text: "P",
+    isSingleKey: true,
+  },
+  {
+    icon: "{",
+    text: "[",
+  },
+  {
+    icon: "}",
+    text: "]",
+  },
+  {
+    icon: "|",
+    text: "/",
+    className: "last:!items-center",
+  },
+]
+
+const fourthRowData: KeyRowDataProps[] = [
+  {
+    icon: <DotIcon size={iconSize + 3} className="-mt-0.5 -ml-1.5" />,
+    text: "caps lock",
+    className: "!basis-full",
+  },
+  {
+    icon: "a",
+    text: "A",
+    isSingleKey: true,
+  },
+  {
+    icon: "s",
+    text: "S",
+    isSingleKey: true,
+  },
+  {
+    icon: "d",
+    text: "D",
+    isSingleKey: true,
+  },
+  {
+    icon: "f",
+    text: "F",
+    isSingleKey: true,
+  },
+  {
+    icon: "g",
+    text: "G",
+    isSingleKey: true,
+  },
+  {
+    icon: "h",
+    text: "H",
+    isSingleKey: true,
+  },
+  {
+    icon: "j",
+    text: "J",
+    isSingleKey: true,
+  },
+  {
+    icon: "k",
+    text: "K",
+    isSingleKey: true,
+  },
+  {
+    icon: "l",
+    text: "L",
+    isSingleKey: true,
+  },
+  {
+    icon: ":",
+    text: ";",
+  },
+  {
+    icon: '"',
+    text: "'",
+  },
+  {
+    icon: null,
+    text: "return",
+    className: "!basis-full",
+  },
+]
+
+const fifthRowData: KeyRowDataProps[] = [
+  {
+    icon: null,
+    text: "shift",
+    className: "!basis-full",
+  },
+  {
+    icon: "z",
+    text: "Z",
+    isSingleKey: true,
+  },
+  {
+    icon: "x",
+    text: "X",
+    isSingleKey: true,
+  },
+  {
+    icon: "c",
+    text: "C",
+    isSingleKey: true,
+  },
+  {
+    icon: "v",
+    text: "V",
+    isSingleKey: true,
+  },
+  {
+    icon: "b",
+    text: "B",
+    isSingleKey: true,
+  },
+  {
+    icon: "n",
+    text: "N",
+    isSingleKey: true,
+  },
+  {
+    icon: "m",
+    text: "M",
+    isSingleKey: true,
+  },
+  {
+    icon: "<",
+    text: ",",
+  },
+  {
+    icon: ">",
+    text: ".",
+  },
+  {
+    icon: "?",
+    text: "/",
+  },
+  {
+    icon: null,
+    text: "shift",
+    className: "!basis-full",
+  },
+]
+
+const sixthRowData: KeyRowDataProps[] = [
+  {
+    icon: "fn",
+    text: <GlobeIcon size={iconSize} />,
+  },
+  {
+    icon: <ChevronUpIcon size={iconSize} />,
+    text: "control",
+    className: "!items-end",
+  },
+  {
+    icon: <OptionIcon size={iconSize} />,
+    text: "option",
+    className: "!items-end",
+  },
+  {
+    icon: <CommandIcon size={iconSize} />,
+    text: "command",
+    className: "!items-end !basis-20",
+  },
+  {
+    icon: null,
+    text: "",
+    className: "!basis-80",
+  },
+  {
+    icon: <CommandIcon size={iconSize} />,
+    text: "command",
+    className: "!items-start !basis-20",
+  },
+  {
+    icon: <OptionIcon size={iconSize} />,
+    text: "option",
+    className: "!items-start",
+  },
+  {
+    icon: null,
+    custom: "ArrowKeys",
+  },
+]
+
+const keysData = [
+  firstRowData,
+  secondRowData,
+  thirdRowData,
+  fourthRowData,
+  fifthRowData,
+  sixthRowData,
+]
+
+
+===== EXAMPLE: macbook-keyboard-demo =====
+Title: Macbook Keyboard Demo
+
+--- file: example/macbook-keyboard-demo.tsx ---
+"use client"
+
+import { MacBookKeyboard } from "@/registry/gammaui/macbook-keyboard"
+
+export const MacbookKeyboardDemo = () => {
+  return (
+    <div className="mx-4 w-full rounded-[3px] bg-[#0C0C0F]">
+      <MacBookKeyboard glowColor="#fff" />
     </div>
   )
 }
@@ -2593,6 +4155,186 @@ export default function PlasmaDemo() {
 
 
 
+===== COMPONENT: pricing-interaction =====
+Title: Pricing Interaction
+Description: An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.
+
+--- file: gammaui/pricing-interaction.tsx ---
+"use client"
+
+import React from "react"
+import NumberFlow from "@number-flow/react"
+
+export default function PricingInteraction() {
+  const [active, setActive] = React.useState(0)
+  const [period, setPeriod] = React.useState(0)
+  const handleChangePlan = (index: number) => {
+    setActive(index)
+  }
+  const handleChangePeriod = (index: number) => {
+    setPeriod(index)
+    if (index === 0) {
+      setStarter(9.99)
+      setPro(19.99)
+    } else {
+      setStarter(7.49)
+      setPro(17.49)
+    }
+  }
+  const [starter, setStarter] = React.useState(9.99)
+  const [pro, setPro] = React.useState(19.99)
+  return (
+    <main className="relative flex w-full items-center justify-center p-4">
+      <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-4xl border-2 p-3 shadow-md">
+        <div className="relative flex w-full items-center rounded-full bg-slate-100 p-1.5 dark:bg-zinc-900">
+          <button
+            className="z-20 w-full rounded-full p-1.5 font-semibold text-slate-800 dark:text-white"
+            onClick={() => handleChangePeriod(0)}
+          >
+            Monthly
+          </button>
+          <button
+            className="z-20 w-full rounded-full p-1.5 font-semibold text-slate-800 dark:text-white"
+            onClick={() => handleChangePeriod(1)}
+          >
+            Yearly
+          </button>
+          <div
+            className="items-cnter absolute inset-0 z-10 flex w-1/2 justify-center p-1.5"
+            style={{
+              transform: `translateX(${period * 100}%)`,
+              transition: "transform 0.3s",
+            }}
+          >
+            <div className="h-full w-full rounded-full bg-white shadow-sm dark:bg-black" />
+          </div>
+        </div>
+        <div className="relative flex w-full flex-col items-center justify-center gap-3">
+          <div
+            className="flex w-full cursor-pointer justify-between rounded-2xl border-2 p-4"
+            onClick={() => handleChangePlan(0)}
+          >
+            <div className="flex flex-col items-start">
+              <p className="text-xl font-semibold text-black dark:text-white">
+                Free
+              </p>
+              <p className="text-md text-slate-500 dark:text-zinc-600">
+                <span className="font-medium text-black dark:text-white">
+                  $0.00
+                </span>
+                /month
+              </p>
+            </div>
+            <div
+              className="mt-0.5 flex size-6 items-center justify-center rounded-full border-2 border-slate-500 p-1"
+              style={{
+                borderColor: `${active === 0 ? "#000" : "#64748b"}`,
+                transition: "border-color 0.3s",
+              }}
+            >
+              <div
+                className="bg-primary size-3 rounded-full"
+                style={{
+                  opacity: `${active === 0 ? 1 : 0}`,
+                  transition: "opacity 0.3s",
+                }}
+              ></div>
+            </div>
+          </div>
+          <div
+            className="flex w-full cursor-pointer justify-between rounded-2xl border-2 p-4"
+            onClick={() => handleChangePlan(1)}
+          >
+            <div className="flex flex-col items-start">
+              <p className="flex items-center gap-2 text-xl font-semibold text-black dark:text-white">
+                Starter{" "}
+                <span className="block rounded-lg bg-yellow-100 px-2 py-1 text-sm text-yellow-950">
+                  Popular
+                </span>
+              </p>
+              <p className="text-md flex text-slate-500 dark:text-zinc-600">
+                <span className="flex items-center font-medium text-black dark:text-white">
+                  $ <NumberFlow className="font-medium" value={starter} />
+                </span>
+                /month
+              </p>
+            </div>
+            <div
+              className="mt-0.5 flex size-6 items-center justify-center rounded-full border-2 border-slate-500 p-1"
+              style={{
+                borderColor: `${active === 1 ? "#000" : "#64748b"}`,
+                transition: "border-color 0.3s",
+              }}
+            >
+              <div
+                className="bg-primary size-3 rounded-full"
+                style={{
+                  opacity: `${active === 1 ? 1 : 0}`,
+                  transition: "opacity 0.3s",
+                }}
+              ></div>
+            </div>
+          </div>
+          <div
+            className="flex w-full cursor-pointer justify-between rounded-2xl border-2 p-4"
+            onClick={() => handleChangePlan(2)}
+          >
+            <div className="flex flex-col items-start">
+              <p className="text-xl font-semibold text-black dark:text-white">
+                Pro
+              </p>
+              <p className="text-md flex text-slate-500 dark:text-zinc-600">
+                <span className="flex items-center font-medium text-black dark:text-white">
+                  $ <NumberFlow className="font-medium" value={pro} />
+                </span>
+                /month
+              </p>
+            </div>
+            <div
+              className="mt-0.5 flex size-6 items-center justify-center rounded-full border-2 border-slate-500 p-1"
+              style={{
+                borderColor: `${active === 2 ? "#000" : "#64748b"}`,
+                transition: "border-color 0.3s",
+              }}
+            >
+              <div
+                className="bg-primary size-3 rounded-full"
+                style={{
+                  opacity: `${active === 2 ? 1 : 0}`,
+                  transition: "opacity 0.3s",
+                }}
+              ></div>
+            </div>
+          </div>
+          <div
+            className={`absolute top-0 h-[88px] w-full rounded-2xl border-[3px] border-black dark:border-zinc-700`}
+            style={{
+              transform: `translateY(${active * 88 + 12 * active}px)`,
+              transition: "transform 0.3s",
+            }}
+          ></div>
+        </div>
+        <button className="w-full rounded-full bg-black p-3 text-lg text-white transition-transform duration-300 active:scale-95 dark:bg-zinc-900">
+          Get Started
+        </button>
+      </div>
+    </main>
+  )
+}
+
+
+===== EXAMPLE: pricing-interaction-demo =====
+Title: Pricing Interaction Demo
+
+--- file: example/pricing-interaction-demo.tsx ---
+import PricingInteraction from "@/registry/gammaui/pricing-interaction"
+
+export default function PricingInteractionDemo() {
+  return <PricingInteraction />
+}
+
+
+
 ===== COMPONENT: radial-intro =====
 Title: Radial Intro
 Description: A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.
@@ -2802,6 +4544,355 @@ export default function RadialIntroDemo() {
   return (
     <div className="mx-auto">
       <RadialIntro orbitItems={ITEMS} />
+    </div>
+  )
+}
+
+
+
+===== COMPONENT: rest-api =====
+Title: Rest API
+Description: A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.
+
+--- file: gammaui/rest-api.tsx ---
+"use client"
+
+import React from "react"
+import {
+  IconFolder,
+  IconHeartHandshake,
+  IconSparkles,
+} from "@tabler/icons-react"
+import { motion } from "motion/react"
+import { useTheme } from "next-themes"
+
+import { cn } from "@/lib/utils"
+
+interface RestApiProps {
+  className?: string
+  circleText?: string
+  badgeTexts?: {
+    first: string
+    second: string
+    third: string
+    fourth: string
+  }
+  buttonTexts?: {
+    first: string
+    second: string
+  }
+  title?: string
+  lightColor?: string
+}
+
+export default function RestApi({
+  className,
+  circleText,
+  badgeTexts,
+  buttonTexts,
+  title,
+  lightColor,
+}: RestApiProps) {
+  const { resolvedTheme } = useTheme()
+  return (
+    <div
+      className={cn(
+        "relative flex h-[350px] w-full max-w-[500px] flex-col items-center",
+        className
+      )}
+    >
+      {/* SVG Paths  */}
+      <svg
+        className="text-muted h-full sm:w-full"
+        width="100%"
+        height="100%"
+        viewBox="0 0 200 100"
+      >
+        <g
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="0.4"
+          strokeDasharray="100 100"
+          pathLength="100"
+        >
+          <path d="M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 10" />
+          <path d="M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 10" />
+          <path d="M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 10" />
+          <path d="M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 10" />
+          {/* Animation For Path Starting */}
+          <animate
+            attributeName="stroke-dashoffset"
+            from="100"
+            to="0"
+            dur="1s"
+            fill="freeze"
+            calcMode="spline"
+            keySplines="0.25,0.1,0.5,1"
+            keyTimes="0; 1"
+          />
+        </g>
+        {/* Blue Lights */}
+        <g mask="url(#db-mask-1)">
+          <circle
+            className="database db-light-1"
+            cx="0"
+            cy="0"
+            r="12"
+            fill="url(#db-blue-grad)"
+          />
+        </g>
+        <g mask="url(#db-mask-2)">
+          <circle
+            className="database db-light-2"
+            cx="0"
+            cy="0"
+            r="12"
+            fill="url(#db-blue-grad)"
+          />
+        </g>
+        <g mask="url(#db-mask-3)">
+          <circle
+            className="database db-light-3"
+            cx="0"
+            cy="0"
+            r="12"
+            fill="url(#db-blue-grad)"
+          />
+        </g>
+        <g mask="url(#db-mask-4)">
+          <circle
+            className="database db-light-4"
+            cx="0"
+            cy="0"
+            r="12"
+            fill="url(#db-blue-grad)"
+          />
+        </g>
+        {/* Buttons */}
+        <g stroke="currentColor" fill="none" strokeWidth="0.4">
+          {/* First Button */}
+          <g>
+            <rect
+              fill="#18181B"
+              x="14"
+              y="5"
+              width="34"
+              height="10"
+              rx="5"
+            ></rect>
+            <DatabaseIcon x="18" y="7.5"></DatabaseIcon>
+            <text
+              x="28"
+              y="12"
+              fill="white"
+              stroke="none"
+              fontSize="5"
+              fontWeight="500"
+            >
+              {badgeTexts?.first || "GET"}
+            </text>
+          </g>
+          {/* Second Button */}
+          <g>
+            <rect
+              fill="#18181B"
+              x="60"
+              y="5"
+              width="34"
+              height="10"
+              rx="5"
+            ></rect>
+            <DatabaseIcon x="64" y="7.5"></DatabaseIcon>
+            <text
+              x="74"
+              y="12"
+              fill="white"
+              stroke="none"
+              fontSize="5"
+              fontWeight="500"
+            >
+              {badgeTexts?.second || "POST"}
+            </text>
+          </g>
+          {/* Third Button */}
+          <g>
+            <rect
+              fill="#18181B"
+              x="108"
+              y="5"
+              width="34"
+              height="10"
+              rx="5"
+            ></rect>
+            <DatabaseIcon x="112" y="7.5"></DatabaseIcon>
+            <text
+              x="122"
+              y="12"
+              fill="white"
+              stroke="none"
+              fontSize="5"
+              fontWeight="500"
+            >
+              {badgeTexts?.third || "PUT"}
+            </text>
+          </g>
+          {/* Fourth Button */}
+          <g>
+            <rect
+              fill="#18181B"
+              x="150"
+              y="5"
+              width="40"
+              height="10"
+              rx="5"
+            ></rect>
+            <DatabaseIcon x="154" y="7.5"></DatabaseIcon>
+            <text
+              x="165"
+              y="12"
+              fill="white"
+              stroke="none"
+              fontSize="5"
+              fontWeight="500"
+            >
+              {badgeTexts?.fourth || "DELETE"}
+            </text>
+          </g>
+        </g>
+        <defs>
+          {/* 1 -  user list */}
+          <mask id="db-mask-1">
+            <path
+              d="M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 10"
+              strokeWidth="0.5"
+              stroke="white"
+            />
+          </mask>
+          {/* 2 - task list */}
+          <mask id="db-mask-2">
+            <path
+              d="M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 10"
+              strokeWidth="0.5"
+              stroke="white"
+            />
+          </mask>
+          {/* 3 - backlogs */}
+          <mask id="db-mask-3">
+            <path
+              d="M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 10"
+              strokeWidth="0.5"
+              stroke="white"
+            />
+          </mask>
+          {/* 4 - misc */}
+          <mask id="db-mask-4">
+            <path
+              d="M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 10"
+              strokeWidth="0.5"
+              stroke="white"
+            />
+          </mask>
+          {/* Blue Grad */}
+          <radialGradient id="db-blue-grad" fx="1">
+            <stop offset="0%" stopColor={lightColor || "#00A6F5"} />
+            <stop offset="100%" stopColor="transparent" />
+          </radialGradient>
+        </defs>
+      </svg>
+      {/* Main Box */}
+      <div className="absolute bottom-10 flex w-full flex-col items-center">
+        {/* bottom shadow */}
+        <div className="bg-accent/30 absolute -bottom-4 h-[100px] w-[62%] rounded-lg" />
+        {/* box title */}
+        <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border bg-[#101112] px-2 py-1 sm:-top-4 sm:py-1.5">
+          <IconSparkles className="size-3 text-white" />
+          <span className="ml-2 text-[10px] text-white">
+            {title ? title : "Data exchange using a customized REST API"}
+          </span>
+        </div>
+        {/* box outter circle */}
+        <div className="absolute -bottom-8 z-30 grid h-[60px] w-[60px] place-items-center rounded-full border-t bg-[#141516] text-xs font-semibold text-white">
+          {circleText ? circleText : "SVG"}
+        </div>
+        {/* box content */}
+        <div className="bg-background relative z-10 flex h-[150px] w-full items-center justify-center overflow-hidden rounded-lg border shadow-md">
+          {/* Badges */}
+          <div className="absolute bottom-8 left-12 z-10 flex h-7 items-center gap-2 rounded-full border bg-[#101112] px-3 text-xs text-white">
+            <IconHeartHandshake className="size-4" />
+            <span>{buttonTexts?.first || "Gamma UI"}</span>
+          </div>
+          <div className="absolute right-16 z-10 hidden h-7 items-center gap-2 rounded-full border bg-[#101112] px-3 text-xs text-white sm:flex">
+            <IconFolder className="size-4" />
+            <span>{buttonTexts?.second || "v2_updates"}</span>
+          </div>
+          {/* Circles */}
+          <motion.div
+            className="bg-accent/5 absolute -bottom-14 h-[100px] w-[100px] rounded-full border-t"
+            animate={{
+              scale: [0.98, 1.02, 0.98, 1, 1, 1, 1, 1, 1],
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.div
+            className="bg-accent/5 absolute -bottom-20 h-[145px] w-[145px] rounded-full border-t"
+            animate={{
+              scale: [1, 1, 1, 0.98, 1.02, 0.98, 1, 1, 1],
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.div
+            className="bg-accent/5 absolute -bottom-[100px] h-[190px] w-[190px] rounded-full border-t"
+            animate={{
+              scale: [1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1, 1],
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.div
+            className="bg-accent/5 absolute -bottom-[120px] h-[235px] w-[235px] rounded-full border-t"
+            animate={{
+              scale: [1, 1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1],
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const DatabaseIcon = ({ x = "0", y = "0" }: { x: string; y: string }) => {
+  return (
+    <svg
+      x={x}
+      y={y}
+      xmlns="http://www.w3.org/2000/svg"
+      width="5"
+      height="5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+      <path d="M3 12A9 3 0 0 0 21 12" />
+    </svg>
+  )
+}
+
+
+===== EXAMPLE: rest-api-demo =====
+Title: Rest API Demo
+
+--- file: example/rest-api-demo.tsx ---
+import RestApi from "@/registry/gammaui/rest-api"
+
+export const RestApiDemo = () => {
+  return (
+    <div className="flex w-full justify-center rounded-xl p-4">
+      <RestApi />
     </div>
   )
 }

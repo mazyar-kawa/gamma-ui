@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "macbook-keyboard-demo",
+  "type": "registry:example",
+  "title": "Macbook Keyboard Demo",
+  "description": "Interactive animated MacBook keyboard component.",
+  "registryDependencies": [
+    "@gammaui/macbook-keyboard"
+  ],
+  "files": [
+    {
+      "path": "registry/example/macbook-keyboard-demo.tsx",
+      "content": "\"use client\"\n\nimport { MacBookKeyboard } from \"@/registry/gammaui/macbook-keyboard\"\n\nexport const MacbookKeyboardDemo = () => {\n  return (\n    <div className=\"mx-4 w-full rounded-[3px] bg-[#0C0C0F]\">\n      <MacBookKeyboard glowColor=\"#fff\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

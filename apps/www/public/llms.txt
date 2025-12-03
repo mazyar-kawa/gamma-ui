@@ -13,12 +13,16 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Inverted Cursor](https://gamma-ui-delta.vercel.app/docs/components/inverted-cursor): A smooth, animated custom cursor component with blend mode effects.
 - [Live Waveform](https://gamma-ui-delta.vercel.app/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
 - [Logo Cloud](https://gamma-ui-delta.vercel.app/docs/components/logo-cloud): A responsive logo grid component supporting dark mode, decorations, and flexible layout.
+- [Logo Timeline](https://gamma-ui-delta.vercel.app/docs/components/logo-loop): A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.
 - [Logo Timeline](https://gamma-ui-delta.vercel.app/docs/components/logo-timeline): A multi-row infinitely scrolling logo timeline built with Motion One, supporting hover-activated animations and row grouping.
+- [Macbook Keyboard](https://gamma-ui-delta.vercel.app/docs/components/macbook-keyboard): Interactive animated MacBook keyboard component.
 - [Magnetize Button](https://gamma-ui-delta.vercel.app/docs/components/magnetize-button): A magnetic particle-attraction button built with Framer Motion.
 - [Overlay Button](https://gamma-ui-delta.vercel.app/docs/components/overlay-button): An animated gradient button using Framer Motion with looping motion and spring transitions.
 - [Pixel Button](https://gamma-ui-delta.vercel.app/docs/components/pixel-button): A pixelated button animation effect built with Tailwind CSS and React.
 - [Plasma](https://gamma-ui-delta.vercel.app/docs/components/plasma): A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.
+- [Pricing Interaction](https://gamma-ui-delta.vercel.app/docs/components/pricing-interaction): An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.
 - [Radial Intro](https://gamma-ui-delta.vercel.app/docs/components/radial-intro): A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.
+- [Rest API](https://gamma-ui-delta.vercel.app/docs/components/rest-api): A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.
 - [Support Box](https://gamma-ui-delta.vercel.app/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
 - [Text Roll](https://gamma-ui-delta.vercel.app/docs/components/text-roll): A rolling hover-animated text component built with Motion One.
 - [Wave Path](https://gamma-ui-delta.vercel.app/docs/components/wave-path): A dynamic interactive SVG wave component that responds to pointer movement.
@@ -44,6 +48,10 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated List Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/animated-list-demo.tsx): Example usage
 - [Logo Timeline Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/logo-timeline-demo.tsx): Example usage
 - [Logo Timeline Demo 2](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/logo-timeline-demo-2.tsx): Example usage
+- [Logo Timeline Demo 2](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/logo-loop-demo.tsx): Example usage
+- [Pricing Interaction Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/pricing-interaction-demo.tsx): Example usage
+- [Rest API Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/rest-api-demo.tsx): Example usage
+- [Macbook Keyboard Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/macbook-keyboard-demo.tsx): Example usage
 
 ## Optional
 
