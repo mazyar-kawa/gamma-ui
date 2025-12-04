@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cpu-architecture-demo",
+  "type": "registry:example",
+  "title": "CPU Architecture Demo",
+  "description": "A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.",
+  "registryDependencies": [
+    "@gammaui/macbook-keyboard"
+  ],
+  "files": [
+    {
+      "path": "registry/example/cpu-architecture-demo.tsx",
+      "content": "\"use client\"\n\nimport { CpuArchitecture } from \"@/registry/gammaui/cpu-architecture\"\n\nconst CpuArchitectureDemo = () => {\n  return (\n    <div className=\"bg-accent/20 h-full w-full rounded-xl p-4\">\n      <CpuArchitecture />\n    </div>\n  )\n}\n\nexport default CpuArchitectureDemo\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -307,4 +307,19 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "cpu-architecture",
+    type: "registry:ui",
+    title: "CPU Architecture",
+    description:
+      "A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.",
+    dependencies: ["react"],
+    files: [
+      {
+        path: "gammaui/cpu-architecture.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

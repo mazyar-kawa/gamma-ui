@@ -1,154 +1,389 @@
 ---
 title: MacBook Keyboard
-date: 2025-12-02
-description: Interactive animated MacBook keyboard component.
+date: 2025-12-04
+description: Interactive animated MacBook keyboard component with real-time key press detection and customizable glow effects.
 author: mazyar
 published: true
 ---
+
+import { CSSCodeBlock } from "@/components/css-code-block"
 
 <ComponentPreview name="macbook-keyboard-demo" />
 
 ## Installation
 
 <Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
 
-  <TabsContent value="cli">
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
 
 ```bash
 npx shadcn@latest add @gammaui/macbook-keyboard
 ```
 
-## Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).
-
-```css
-.database {
-  offset-anchor: 10px 0px;
-  animation: database-animation-path;
-  animation-iteration-count: infinite;
-  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  animation-duration: 4s;
-  animation-delay: 1s;
+<CSSCodeBlock
+  fileName="global.css"
+code={`
+.glowing-key {
+  box-shadow: 0px 0px 15px transparent;
+  border-color: currentColor !important;
+  animation: animate-key-border-shadow 1000ms linear forwards;
 }
 
-.db-light-1 {
-  offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
-}
-
-.db-light-2 {
-  offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
-}
-
-.db-light-3 {
-  offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
-}
-
-.db-light-4 {
-  offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
-}
-
-@keyframes database-animation-path {
-  0% {
-    offset-distance: 0%;
-  }
-  100% {
-    offset-distance: 100%;
-  }
-}
-```
-
-  </TabsContent>
-
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Copy and paste the following code into your project.</Step>
-
-<ComponentSource name="rest-api" title="components/gammaui/macbook-keyboard" />
-
-<Step>Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).</Step>
-```css
-/* Overlay Button Styles */
-.database {
-  offset-anchor: 10px 0px;
-  animation: database-animation-path;
-  animation-iteration-count: infinite;
-  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  animation-duration: 4s;
-  animation-delay: 1s;
-}
-
-.db-light-1 {
-offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
-}
-
-.db-light-2 {
-offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
-}
-
-.db-light-3 {
-offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
-}
-
-.db-light-4 {
-offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
-}
-
-@keyframes database-animation-path {
+@keyframes animate-key-border-shadow {
 0% {
-offset-distance: 0%;
+box-shadow: 0px 0px 15px transparent;
 }
 100% {
-offset-distance: 100%;
+box-shadow: 0px 0px 20px currentColor;
 }
 }
 
+.blur-in {
+animation: blur-in 400ms ease-in-out forwards;
+}
+
+@keyframes blur-in {
+0% {
+filter: blur(1px);
+}
+100% {
+filter: blur(0px);
+}
+}
+`}
+
+copyCode={true}
+/>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies</Step>
+
+```bash
+npm install motion lucide-react
 ```
 
-  <Step>Update the import paths to match your project structure.</Step>
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="macbook-keyboard"
+  title="components/gammaui/macbook-keyboard.tsx"
+/>
+
+<Step>Add the following CSS to your global CSS file.</Step>
+
+<CSSCodeBlock
+  fileName="global.css"
+code={`
+.glowing-key {
+  box-shadow: 0px 0px 15px transparent;
+  border-color: currentColor !important;
+  animation: animate-key-border-shadow 1000ms linear forwards;
+}
+
+@keyframes animate-key-border-shadow {
+0% {
+box-shadow: 0px 0px 15px transparent;
+}
+100% {
+box-shadow: 0px 0px 20px currentColor;
+}
+}
+
+.blur-in {
+animation: blur-in 400ms ease-in-out forwards;
+}
+
+@keyframes blur-in {
+0% {
+filter: blur(1px);
+}
+100% {
+filter: blur(0px);
+}
+}
+`}
+
+copyCode={true}
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
 </Steps>
 
 </TabsContent>
+
 </Tabs>
 
+---
 
+## Usage
+
+```tsx title="app/page.tsx" showLineNumbers
+import { MacBookKeyboard } from "@/components/gammaui/macbook-keyboard"
+
+export default function Home() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <MacBookKeyboard />
+    </div>
+  )
+}
+```
+
+---
+
+## Examples
+
+### Default Keyboard
+
+```tsx title="example.tsx" showLineNumbers
+<MacBookKeyboard />
+```
+
+### Custom Glow Color
+
+```tsx title="example.tsx" showLineNumbers {3}
+<MacBookKeyboard glowColor="#3b82f6" transparentKey={true} />
+```
+
+### Solid Background Keys
+
+```tsx title="example.tsx" showLineNumbers {2}
+<MacBookKeyboard transparentKey={false} keySize={45} />
+```
+
+### Larger Keys
+
+```tsx title="example.tsx" showLineNumbers {2}
+<MacBookKeyboard keySize={50} glowColor="#10b981" />
+```
 
 ---
 
 ## Props
 
-| Prop          | Type                                                               | Default                                       | Description                                      |
-| ------------- | ------------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------------ |
-| `className`   | `string`                                                           | `-`                                           | Extra CSS classes                                |
-| `circleText`  | `string`                                                           | `"SVG"`                                       | Text inside the bottom circle                    |
-| `badgeTexts`  | `{ first: string; second: string; third: string; fourth: string }` | `{ GET, POST, PUT, DELETE }`                  | Labels for the top API method badges             |
-| `buttonTexts` | `{ first: string; second: string }`                                | `{ LegionDev, v2_updates }`                   | Labels inside the animated bottom badges         |
-| `title`       | `string`                                                           | `"Data exchange using a customized REST API"` | Box header text                                  |
-| `lightColor`  | `string`                                                           | `"#00A6F5"`                                   | The highlight glow color used in animated lights |
+| Prop             | Type      | Default   | Description                                       |
+| ---------------- | --------- | --------- | ------------------------------------------------- |
+| `transparentKey` | `boolean` | `true`    | Whether keys should have a transparent background |
+| `keySize`        | `number`  | `40`      | Size of each key in pixels (width and height)     |
+| `glowColor`      | `string`  | `#f43f5d` | Color of the glow effect when a key is pressed    |
 
 ---
 
 ## Features
 
-- ✔ **Beautiful animated SVG API diagram**
-- ✔ **Glowing blue lights following API paths**
-- ✔ **Animated pulsing concentric circles**
-- ✔ **Customizable HTTP method badges**
-- ✔ **Customizable bottom badges**
-- ✔ **Motion-powered scaling effects**
-- ✔ **Fully responsive**
-- ✔ **Dark mode friendly**
+- ✔ **Real-time keyboard detection** - Responds to physical keyboard presses
+- ✔ **Animated key borders** - Subtle pulsing animation on each key
+- ✔ **Custom glow effects** - Customizable color for pressed keys
+- ✔ **Full keyboard layout** - Complete MacBook keyboard including function keys
+- ✔ **Touch ID sensor** - Visual representation of fingerprint sensor
+- ✔ **Arrow key cluster** - Authentic MacBook arrow key layout
+- ✔ **Responsive design** - Scales beautifully across different screen sizes
+- ✔ **Motion animations** - Smooth enter animations with staggered delays
+- ✔ **Dark mode optimized** - Looks great in both light and dark themes
+- ✔ **Customizable styling** - Transparent or solid key backgrounds
+
+---
+
+## Component Architecture
+
+The MacBook Keyboard component consists of several sub-components:
+
+### Main Components
+
+**`MacBookKeyboard`** - The main container component that manages keyboard state and renders all key rows.
+
+**`IconKeyboardKey`** - Individual key component that renders standard keys with optional icons and text.
+
+**`FingerPrintKey`** - Special component for the Touch ID sensor key.
+
+**`ArrowKeys`** - Composite component that renders the arrow key cluster with proper MacBook layout.
+
+**`ArrowKey`** - Individual arrow key component with directional icons.
+
+---
+
+## Key Mapping
+
+The component includes a comprehensive key mapping system that translates browser keyboard events to visual key presses:
+
+```tsx title="Key Mapping Examples" showLineNumbers
+const keyMap: Record<string, string> = {
+  Escape: "esc",
+  Enter: "return",
+  Meta: "command",
+  Alt: "option",
+  Shift: "shift",
+  Control: "control",
+  // ... and more
+}
+```
+
+This allows the component to accurately highlight keys when they're pressed on your physical keyboard.
+
+---
+
+## Styling
+
+The component uses Tailwind CSS utility classes and custom styling for the authentic MacBook look:
+
+```tsx title="Key Styling Features" showLineNumbers
+// Gradient borders with animation
+border: "1px solid #212121"
+borderTop: "1.5px"
+borderBottom: "0.1px"
+
+// Inset shadow for depth
+boxShadow: "inset 0px 0px 15px rgba(0,0,0,0.2)"
+
+// Glow effect on press
+textShadow: `0 0 10px ${glowColor}`
+filter: `drop-shadow(0 0 8px ${glowColor})`
+```
+
+---
+
+## Animation Details
+
+### Border Pulse Animation
+
+Each key features a subtle border color animation:
+
+```tsx title="Border Animation" showLineNumbers {4-6}
+variants={{
+  initial: { borderColor: "#212121" },
+  animate: {
+    borderColor: ["#212121", "#383838", "#212121"],
+  },
+}}
+```
+
+### Staggered Enter Animation
+
+Keys animate in with a staggered delay based on their position:
+
+```tsx title="Stagger Effect" showLineNumbers {3}
+transition={{
+  duration: 0.8,
+  delay: index * 0.1 + rowIndex * 0.12,
+}}
+```
+
+---
+
+## Accessibility
+
+- **Keyboard Navigation**: Full support for keyboard interaction
+- **Visual Feedback**: Clear visual indication of pressed keys
+- **Color Contrast**: Optimized for readability in both light and dark modes
+- **Non-intrusive**: Doesn't interfere with normal keyboard functionality
 
 ---
 
 ## When to Use
 
-- API Documentation
-- Landing pages for developer tools
-- SaaS dashboards
-- Feature highlights
-- Tutorials explaining REST requests
-- Interactive diagrams
+- **Developer Portfolios** - Showcase your attention to detail
+- **Keyboard Shortcut Documentation** - Visualize keyboard shortcuts
+- **Interactive Tutorials** - Teach users keyboard shortcuts
+- **Product Demos** - Demonstrate keyboard-driven applications
+- **Landing Pages** - Eye-catching hero sections for dev tools
+- **Documentation Sites** - Interactive command references
+- **UI/UX Showcases** - Display keyboard interaction design
+
+---
+
+## Browser Compatibility
+
+The component works across all modern browsers that support:
+
+- CSS Animations
+- Framer Motion
+- Keyboard Events API
+- CSS Custom Properties
+
+---
+
+## Performance
+
+- **Optimized with React.memo** - Prevents unnecessary re-renders
+- **Efficient event listeners** - Single keyboard listener for all keys
+- **CSS-based animations** - Hardware-accelerated animations
+- **Minimal re-renders** - Only updates when keys are pressed
+
+---
+
+## Customization Tips
+
+### Change Key Layout
+
+Modify the `keysData` array to customize the keyboard layout:
+
+```tsx title="Custom Layout" showLineNumbers
+const customKeysData = [
+  firstRowData,
+  secondRowData,
+  // Add or remove rows
+]
 ```
+
+### Add Custom Keys
+
+Create new key objects with custom icons and text:
+
+```tsx title="Custom Key" showLineNumbers
+{
+  icon: <YourIcon size={12} />,
+  text: "Custom",
+  className: "custom-styling"
+}
+```
+
+### Modify Animations
+
+Adjust animation timing in the component:
+
+```tsx title="Animation Timing" showLineNumbers
+transition={{
+  duration: 1.2,  // Slower animation
+  delay: index * 0.15,  // More stagger
+}}
+```
+
+---
+
+## Troubleshooting
+
+**Keys not responding to keyboard input?**
+
+- Ensure the component is mounted and visible
+- Check that no other element is capturing keyboard events
+
+**Glow effect not visible?**
+
+- Verify the `glowColor` prop is a valid CSS color
+- Check that the key text matches the keyMap values
+
+**Animation performance issues?**
+
+- Reduce `keySize` prop for better performance
+- Consider disabling animations on low-end devices
+
+---
+
+## Credits
+
+Built with:
+
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+- [Lucide React](https://lucide.dev/) - Icon system
+- [Tailwind CSS](https://tailwindcss.com/) - Styling framework

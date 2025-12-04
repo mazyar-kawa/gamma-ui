@@ -11,7 +11,6 @@ export const docsConfig: DocsConfig = {
       title: "Home",
       href: "/",
     },
-
     {
       title: "Components",
       href: "/components",
@@ -46,6 +45,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Macbook Keyboard",
           href: `/docs/components/macbook-keyboard`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "CPU Architecture",
+          href: `/docs/components/cpu-architecture`,
           items: [],
           label: "New",
         },

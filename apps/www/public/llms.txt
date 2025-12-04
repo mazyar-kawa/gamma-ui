@@ -10,6 +10,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated List](https://gamma-ui-delta.vercel.app/docs/components/animated-list): A dynamic list component with smooth animations that forms a column and scrolls through items continuously.
 - [Badge](https://gamma-ui-delta.vercel.app/docs/components/badge): A flexible and customizable Badge component for labels, statuses, and indicators.
 - [Border Button](https://gamma-ui-delta.vercel.app/docs/components/border-button): A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.
+- [CPU Architecture](https://gamma-ui-delta.vercel.app/docs/components/cpu-architecture): A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.
 - [Inverted Cursor](https://gamma-ui-delta.vercel.app/docs/components/inverted-cursor): A smooth, animated custom cursor component with blend mode effects.
 - [Live Waveform](https://gamma-ui-delta.vercel.app/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
 - [Logo Cloud](https://gamma-ui-delta.vercel.app/docs/components/logo-cloud): A responsive logo grid component supporting dark mode, decorations, and flexible layout.
@@ -52,6 +53,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Pricing Interaction Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/pricing-interaction-demo.tsx): Example usage
 - [Rest API Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/rest-api-demo.tsx): Example usage
 - [Macbook Keyboard Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/macbook-keyboard-demo.tsx): Example usage
+- [CPU Architecture Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/cpu-architecture-demo.tsx): Example usage
 
 ## Optional
 

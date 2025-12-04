@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/macbook-keyboard-demo.tsx",
-      "content": "\"use client\"\n\nimport { MacBookKeyboard } from \"@/registry/gammaui/macbook-keyboard\"\n\nexport const MacbookKeyboardDemo = () => {\n  return (\n    <div className=\"mx-4 w-full rounded-[3px] bg-[#0C0C0F]\">\n      <MacBookKeyboard glowColor=\"#fff\" />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\n\nimport { MacBookKeyboard } from \"@/registry/gammaui/macbook-keyboard\"\n\nexport const MacbookKeyboardDemo = () => {\n  const { resolvedTheme } = useTheme()\n  return (\n    <div className=\"mx-4 w-full rounded-[3px] bg-[#0C0C0F]\">\n      <MacBookKeyboard glowColor={resolvedTheme === \"dark\" ? \"#FFF\" : \"#000\"} />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

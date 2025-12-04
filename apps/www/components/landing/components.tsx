@@ -2,10 +2,29 @@ import { AnimatedListDemo } from "@/registry/example/animated-list-demo"
 import BorderButtonDemo from "@/registry/example/border-button-demo"
 import LiveWaveformDemo from "@/registry/example/live-waveform-demo"
 import OverlayButtonDemo from "@/registry/example/overlay-button-demo"
+import { AnimatedList } from "@/registry/gammaui/animated-list"
 import { Badge } from "@/registry/gammaui/badge"
 import { PixelButton } from "@/registry/gammaui/pixel-button"
 import PricingInteraction from "@/registry/gammaui/pricing-interaction"
+import RestApi from "@/registry/gammaui/rest-api"
 import TextRoll from "@/registry/gammaui/text-roll"
+
+const notifications = [
+  { name: "Location", message: "Thomas has arrived home", time: "2h ago" },
+  { name: "Fitness", message: "Daily step goal reached!", time: "1h ago" },
+  {
+    name: "Calendar",
+    message: "Team meeting in 30 minutes",
+    time: "45m ago",
+  },
+  { name: "Tasks", message: "3 tasks due today", time: "1d ago" },
+  { name: "Health", message: "Heart rate elevated", time: "3h ago" },
+  { name: "Email", message: "New message from manager", time: "5m ago" },
+  { name: "Social", message: "Video got 1000 likes!", time: "2d ago" },
+  { name: "Family", message: "How are you doing?", time: "1w ago" },
+  { name: "Friends", message: "Coffee tomorrow?", time: "2d ago" },
+  { name: "Movies", message: "Did you see the new movie?", time: "4h ago" },
+]
 
 const Components = () => {
   return (
@@ -23,46 +42,50 @@ const Components = () => {
 
       {/* Grid Section */}
       <div className="w-full max-w-7xl">
-        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
-          {/* Large Feature - Takes full width on mobile, 2 cols on md, 6 cols on lg */}
-          <div className="flex flex-col gap-4 sm:gap-6 md:col-span-2 lg:col-span-6">
-            <div className="w-full">
-              <PricingInteraction />
-            </div>
-            <div className="w-full">
-              <AnimatedListDemo />
-            </div>
+        <div className="grid grid-cols-1 place-items-center gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
+          <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
+            <RestApi />
           </div>
-
-          {/* Middle Column - Takes full width on mobile, 1 col on md, 3 cols on lg */}
-          <div className="flex flex-col gap-4 sm:gap-6 md:col-span-1 lg:col-span-3">
-            <div className="flex min-h-[120px] items-center justify-center rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-950">
-              <TextRoll
-                center
-                className="text-3xl leading-tight font-extrabold tracking-tight uppercase transition-colors sm:text-4xl lg:text-5xl"
+          <div className="col-span-6 flex w-full justify-center rounded-md border px-10">
+            slaw
+          </div>
+          <div className="col-span-6 flex w-full justify-center rounded-md border px-10">
+            slaw
+          </div>
+          <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
+            <div className="bg-background relative h-[400px] w-full overflow-hidden">
+              <AnimatedList
+                stackGap={20}
+                columnGap={70}
+                scaleFactor={0.05}
+                scrollDownDuration={5}
+                formationDuration={1}
               >
-                Hover Me
-              </TextRoll>
+                {notifications.map((notification, index) => (
+                  <div
+                    key={index}
+                    className="bg-card flex w-full max-w-[350px] items-center gap-4 rounded-2xl border p-4 shadow-sm"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500 text-sm font-medium text-white">
+                      {notification.name.charAt(0)}
+                    </div>
+                    <div className="flex flex-1 flex-col">
+                      <div className="flex items-center justify-between">
+                        <span className="text-muted-foreground text-sm font-medium">
+                          {notification.name}
+                        </span>
+                        <span className="text-muted-foreground text-xs">
+                          {notification.time}
+                        </span>
+                      </div>
+                      <span className="text-muted-foreground text-sm">
+                        {notification.message}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </AnimatedList>
             </div>
-
-            <div className="flex flex-col gap-3 rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-950">
-              <div className="flex flex-wrap gap-2">
-                <Badge>Badge</Badge>
-                <Badge variant="secondary">Secondary</Badge>
-                <Badge variant="destructive">Destructive</Badge>
-                <Badge variant="outline">Outline</Badge>
-              </div>
-            </div>
-
-            <div className="w-full">
-              <PixelButton color="#ff5722">Pixel Button</PixelButton>
-            </div>
-          </div>
-
-          {/* Right Column - Takes full width on mobile, 1 col on md, 3 cols on lg */}
-          <div className="flex flex-col gap-4 sm:gap-6 md:col-span-1 lg:col-span-3">
-            <BorderButtonDemo />
-            <OverlayButtonDemo />
           </div>
         </div>
       </div>
