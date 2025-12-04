@@ -2,9 +2,11 @@
 title: Logo Timeline
 date: 2025-11-01
 description: A visually stunning animated logo timeline component that displays logos in horizontal scrolling rows with smooth infinite animations, perfect for showcasing partners, technologies, or integrations.
-author: karthikmudunuri
+author: mazyar
 published: true
 ---
+
+import { CSSCodeBlock } from "@/components/css-code-block"
 
 <ComponentPreview name="logo-timeline-demo" />
 
@@ -22,6 +24,21 @@ published: true
 npx shadcn@latest add @gammaui/logo-timeline
 ```
 
+<CSSCodeBlock
+  fileName="global.css"
+code={`
+@keyframes move-x {
+  from {
+    transform: translateX(var(--move-x-from));
+  }
+  to {
+    transform: translateX(var(--move-x-to));
+  }
+}`}
+
+copyCode={true}
+/>
+
 </TabsContent>
 
 <TabsContent value="manual">
@@ -35,12 +52,11 @@ npx shadcn@latest add @gammaui/logo-timeline
   title="components/gammaui/logo-timeline.tsx"
 />
 
-<Step>
-  Add the following CSS to your global CSS file (e.g., app/globals.css or
-  styles/globals.css).
-</Step>
+<Step>Add the following CSS to your global CSS file.</Step>
 
-```css showLineNumbers {3}
+<CSSCodeBlock
+  fileName="global.css"
+code={`
 @keyframes move-x {
   from {
     transform: translateX(var(--move-x-from));
@@ -48,8 +64,10 @@ npx shadcn@latest add @gammaui/logo-timeline
   to {
     transform: translateX(var(--move-x-to));
   }
-}
-```
+}`}
+
+copyCode={true}
+/>
 
 <Step>Update the import paths to match your project setup.</Step>
 

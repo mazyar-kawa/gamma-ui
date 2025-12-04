@@ -276,7 +276,7 @@ const IconKeyboardKey = memo(
           className={cn(
             isLastRow && "text-[8px]!",
             isSingleKey ? "text-sm" : "text-xs",
-            "text-muted-foreground/70 text-center duration-200 group-hover:text-white/60"
+            "dark:text-muted-foreground/70 text-center text-white duration-200 group-hover:text-white/60"
           )}
         >
           {text}

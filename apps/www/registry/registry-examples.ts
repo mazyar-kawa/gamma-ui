@@ -322,4 +322,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "cpu-architecture-demo",
+    type: "registry:example",
+    title: "CPU Architecture Demo",
+    description:
+      "A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.",
+    registryDependencies: ["@gammaui/macbook-keyboard"],
+    files: [
+      {
+        path: "example/cpu-architecture-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

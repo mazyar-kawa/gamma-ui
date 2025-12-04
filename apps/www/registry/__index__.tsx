@@ -372,6 +372,23 @@ export const Index: Record<string, any> = {
     }),
     meta: {},
   },
+  "cpu-architecture": {
+    name: "cpu-architecture",
+    description: "A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/cpu-architecture.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/cpu-architecture.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "cpu-architecture"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
   "live-waveform-demo": {
     name: "live-waveform-demo",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
@@ -742,6 +759,23 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/macbook-keyboard-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "macbook-keyboard-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "cpu-architecture-demo": {
+    name: "cpu-architecture-demo",
+    description: "A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/macbook-keyboard"],
+    files: [{
+      path: "registry/example/cpu-architecture-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/cpu-architecture-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "cpu-architecture-demo"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},

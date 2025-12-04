@@ -353,6 +353,21 @@
       ]
     },
     {
+      "name": "cpu-architecture",
+      "type": "registry:ui",
+      "title": "CPU Architecture",
+      "description": "A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.",
+      "dependencies": [
+        "react"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/cpu-architecture.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "live-waveform-demo",
       "type": "registry:example",
       "title": "Live Waveform Demo",
@@ -678,6 +693,21 @@
       "files": [
         {
           "path": "registry/example/macbook-keyboard-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "cpu-architecture-demo",
+      "type": "registry:example",
+      "title": "CPU Architecture Demo",
+      "description": "A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.",
+      "registryDependencies": [
+        "@gammaui/macbook-keyboard"
+      ],
+      "files": [
+        {
+          "path": "registry/example/cpu-architecture-demo.tsx",
           "type": "registry:example"
         }
       ]
