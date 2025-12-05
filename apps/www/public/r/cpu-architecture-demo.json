@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/cpu-architecture-demo.tsx",
-      "content": "\"use client\"\n\nimport { CpuArchitecture } from \"@/registry/gammaui/cpu-architecture\"\n\nconst CpuArchitectureDemo = () => {\n  return (\n    <div className=\"bg-accent/20 h-full w-full rounded-xl p-4\">\n      <CpuArchitecture />\n    </div>\n  )\n}\n\nexport default CpuArchitectureDemo\n",
+      "content": "\"use client\"\n\nimport { CpuArchitecture } from \"@/registry/gammaui/cpu-architecture\"\n\nconst CpuArchitectureDemo = () => {\n  return (\n    <div className=\"h-full w-full rounded-xl p-4\">\n      <CpuArchitecture />\n    </div>\n  )\n}\n\nexport default CpuArchitectureDemo\n",
       "type": "registry:example"
     }
   ]

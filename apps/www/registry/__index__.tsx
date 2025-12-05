@@ -389,6 +389,23 @@ export const Index: Record<string, any> = {
     }),
     meta: {},
   },
+  "shadcn-ui": {
+    name: "shadcn-ui",
+    description: "Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/shadcn-ui.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/shadcn-ui.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "shadcn-ui"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
   "live-waveform-demo": {
     name: "live-waveform-demo",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
@@ -776,6 +793,23 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/cpu-architecture-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "cpu-architecture-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "shadcn-ui-demo": {
+    name: "shadcn-ui-demo",
+    description: "Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/shadcn-ui"],
+    files: [{
+      path: "registry/example/shadcn-ui-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/shadcn-ui-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "shadcn-ui-demo"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},

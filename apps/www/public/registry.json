@@ -368,6 +368,23 @@
       ]
     },
     {
+      "name": "shadcn-ui",
+      "type": "registry:ui",
+      "title": "Shadcn UI",
+      "description": "Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.",
+      "dependencies": [
+        "react",
+        "next-themes",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/shadcn-ui.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "live-waveform-demo",
       "type": "registry:example",
       "title": "Live Waveform Demo",
@@ -708,6 +725,21 @@
       "files": [
         {
           "path": "registry/example/cpu-architecture-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "shadcn-ui-demo",
+      "type": "registry:example",
+      "title": "Shadcn UI Demo",
+      "description": "Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.",
+      "registryDependencies": [
+        "@gammaui/shadcn-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/example/shadcn-ui-demo.tsx",
           "type": "registry:example"
         }
       ]

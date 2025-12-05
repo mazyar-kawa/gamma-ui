@@ -337,4 +337,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "shadcn-ui-demo",
+    type: "registry:example",
+    title: "Shadcn UI Demo",
+    description:
+      "Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.",
+    registryDependencies: ["@gammaui/shadcn-ui"],
+    files: [
+      {
+        path: "example/shadcn-ui-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

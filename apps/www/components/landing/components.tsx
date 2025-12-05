@@ -4,9 +4,11 @@ import LiveWaveformDemo from "@/registry/example/live-waveform-demo"
 import OverlayButtonDemo from "@/registry/example/overlay-button-demo"
 import { AnimatedList } from "@/registry/gammaui/animated-list"
 import { Badge } from "@/registry/gammaui/badge"
+import { CpuArchitecture } from "@/registry/gammaui/cpu-architecture"
 import { PixelButton } from "@/registry/gammaui/pixel-button"
 import PricingInteraction from "@/registry/gammaui/pricing-interaction"
 import RestApi from "@/registry/gammaui/rest-api"
+import ShadCnUI from "@/registry/gammaui/shadcn-ui"
 import TextRoll from "@/registry/gammaui/text-roll"
 
 const notifications = [
@@ -46,11 +48,11 @@ const Components = () => {
           <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
             <RestApi />
           </div>
-          <div className="col-span-6 flex w-full justify-center rounded-md border px-10">
-            slaw
+          <div className="col-span-6 flex w-full justify-center rounded-md border px-10 py-2">
+            <CpuArchitecture />
           </div>
-          <div className="col-span-6 flex w-full justify-center rounded-md border px-10">
-            slaw
+          <div className="col-span-6 flex w-full justify-center rounded-md border px-10 py-5">
+            <ShadCnUI />
           </div>
           <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
             <div className="bg-background relative h-[400px] w-full overflow-hidden">

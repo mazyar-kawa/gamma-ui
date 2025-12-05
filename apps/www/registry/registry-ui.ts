@@ -322,4 +322,19 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "shadcn-ui",
+    type: "registry:ui",
+    title: "Shadcn UI",
+    description:
+      "Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.",
+    dependencies: ["react", "next-themes", "motion"],
+    files: [
+      {
+        path: "gammaui/shadcn-ui.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
