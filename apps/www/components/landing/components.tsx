@@ -48,10 +48,10 @@ const Components = () => {
           <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
             <RestApi />
           </div>
-          <div className="col-span-6 flex w-full justify-center rounded-md border px-10 py-2">
+          <div className="col-span-12 flex w-full justify-center rounded-md border px-10 py-2 sm:col-span-6">
             <CpuArchitecture />
           </div>
-          <div className="col-span-6 flex w-full justify-center rounded-md border px-10 py-5">
+          <div className="col-span-12 flex w-full justify-center rounded-md border px-10 py-5 sm:col-span-6">
             <ShadCnUI />
           </div>
           <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
