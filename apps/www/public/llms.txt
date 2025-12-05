@@ -24,6 +24,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Pricing Interaction](https://gamma-ui-delta.vercel.app/docs/components/pricing-interaction): An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.
 - [Radial Intro](https://gamma-ui-delta.vercel.app/docs/components/radial-intro): A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.
 - [Rest API](https://gamma-ui-delta.vercel.app/docs/components/rest-api): A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.
+- [Shadcn UI](https://gamma-ui-delta.vercel.app/docs/components/shadcn-ui): Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.
 - [Support Box](https://gamma-ui-delta.vercel.app/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
 - [Text Roll](https://gamma-ui-delta.vercel.app/docs/components/text-roll): A rolling hover-animated text component built with Motion One.
 - [Wave Path](https://gamma-ui-delta.vercel.app/docs/components/wave-path): A dynamic interactive SVG wave component that responds to pointer movement.
@@ -54,6 +55,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Rest API Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/rest-api-demo.tsx): Example usage
 - [Macbook Keyboard Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/macbook-keyboard-demo.tsx): Example usage
 - [CPU Architecture Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/cpu-architecture-demo.tsx): Example usage
+- [Shadcn UI Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/shadcn-ui-demo.tsx): Example usage
 
 ## Optional
 

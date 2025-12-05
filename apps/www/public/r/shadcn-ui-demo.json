@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-ui-demo",
+  "type": "registry:example",
+  "title": "Shadcn UI Demo",
+  "description": "Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.",
+  "registryDependencies": [
+    "@gammaui/shadcn-ui"
+  ],
+  "files": [
+    {
+      "path": "registry/example/shadcn-ui-demo.tsx",
+      "content": "\"use client\"\n\nimport ShadCnUI from \"@/registry/gammaui/shadcn-ui\"\n\nconst Page = () => {\n  return (\n    <div className=\"bg-accent/20 w-full rounded-xl p-4\">\n      <ShadCnUI />\n    </div>\n  )\n}\n\nexport default Page\n",
+      "type": "registry:example"
+    }
+  ]
+}

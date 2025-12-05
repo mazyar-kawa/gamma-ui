@@ -1,0 +1,155 @@
+---
+title: ShadCN Animated UI
+date: 2025-12-04
+description: Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.
+author: mazyar
+published: true
+---
+
+import { CSSCodeBlock } from "@/components/css-code-block"
+
+<ComponentPreview name="shadcn-ui-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/shadcn-animated-ui
+```
+
+<CSSCodeBlock
+fileName="global.css"
+code={`
+.shadcn {
+offset-anchor: 10px 0px;
+animation: shadcn-line-animation;
+animation-iteration-count: infinite;
+animation-timing-function: cubic-bezier(0.75, -0.01, 0, 0.99);
+}
+
+.shadcn-line-1 {
+offset-path: path("M 35 14 h 25 q 5 0 5 5 v 23 q 0 5 5 5 h 15");
+animation-duration: 4s;
+animation-delay: 1s;
+}
+
+.shadcn-line-2 {
+offset-path: path("M 30 50 h 52");
+animation-duration: 3.5s;
+animation-delay: 1.5s;
+}
+
+.shadcn-line-3 {
+offset-path: path("M 36.3 87 h 24 q 5 0 5 -5 v -24 q 0 -5 5 -5 h 15");
+animation-duration: 4.5s;
+animation-delay: 2s;
+}
+
+.compBox {
+animation: comp-box-spin 4.5s ease-in-out infinite;
+}
+
+@keyframes comp-box-spin {
+0% { transform: rotate(0deg); }
+50% { transform: rotate(8deg); }
+100% { transform: rotate(0deg); }
+}
+
+@keyframes shadcn-line-animation {
+0% { offset-distance: 0%; }
+100% { offset-distance: 100%; }
+}
+`}
+copyCode={true}
+/>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+<Step>Copy the component code into your project.</Step>
+
+<ComponentSource
+  name="shadcn-animated-ui"
+  title="components/gammaui/shadcn-animated-ui.tsx"
+/>
+
+<Step>Add this CSS into your global stylesheet.</Step>
+
+<CSSCodeBlock
+fileName="global.css"
+code={`
+.shadcn {
+offset-anchor: 10px 0px;
+animation: shadcn-line-animation;
+animation-iteration-count: infinite;
+animation-timing-function: cubic-bezier(0.75, -0.01, 0, 0.99);
+}
+
+.shadcn-line-1 {
+offset-path: path("M 35 14 h 25 q 5 0 5 5 v 23 q 0 5 5 5 h 15");
+animation-duration: 4s;
+animation-delay: 1s;
+}
+
+.shadcn-line-2 {
+offset-path: path("M 30 50 h 52");
+animation-duration: 3.5s;
+animation-delay: 1.5s;
+}
+
+.shadcn-line-3 {
+offset-path: path("M 36.3 87 h 24 q 5 0 5 -5 v -24 q 0 -5 5 -5 h 15");
+animation-duration: 4.5s;
+animation-delay: 2s;
+}
+
+.compBox {
+animation: comp-box-spin 4.5s ease-in-out infinite;
+}
+
+@keyframes comp-box-spin {
+0% { transform: rotate(0deg); }
+50% { transform: rotate(8deg); }
+100% { transform: rotate(0deg); }
+}
+
+@keyframes shadcn-line-animation {
+0% { offset-distance: 0%; }
+100% { offset-distance: 100%; }
+}
+`}
+copyCode={true}
+/>
+
+<Step>Update imports to match your folder structure.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+---
+
+## Props
+
+| Prop              | Type   | Default               | Description            |
+| ----------------- | ------ | --------------------- | ---------------------- |
+| `className`       | string | —                     | Wrapper class          |
+| `circleText`      | string | `"Registry"`          | Text inside the circle |
+| `triangleText`    | string | `"AI"`                | Text inside triangle   |
+| `diamondText`     | string | `"Registry"`          | Bottom diamond text    |
+| `animatedText`    | string | `"npx shadcn add"`    | Glowing command text   |
+| `animatedBoxText` | string | `"Sidebar"`           | Box label text         |
+| `hintText`        | string | `"(components.json)"` | Small hint under box   |
+| `appName`         | string | `"Your App"`          | App name text          |

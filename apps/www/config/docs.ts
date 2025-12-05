@@ -55,6 +55,12 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Shadcn UI",
+          href: `/docs/components/shadcn-ui`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Live Waveform",
           href: `/docs/components/live-waveform`,
           items: [],
