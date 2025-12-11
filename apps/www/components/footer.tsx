@@ -44,7 +44,7 @@ export default function Footer({ className }: FooterProps) {
           </Link>
           . The source code is available on{" "}
           <Link
-            href="https://github.com/yourusername/yourrepo"
+            href="https://github.com/mazyar-kawa/gamma-ui"
             className="hover:text-foreground underline transition-colors"
             target="_blank"
             rel="noopener noreferrer"

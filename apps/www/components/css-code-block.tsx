@@ -52,13 +52,13 @@ export function CSSCodeBlock({
   const CodeContent = () => (
     <div
       className={cn(
-        "relative my-10 rounded-xl border border-neutral-300/50 bg-neutral-200/30 dark:border-neutral-800/60 dark:bg-neutral-900/40",
+        "relative my-10 rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-black",
         className
       )}
       {...props}
     >
       {fileName && (
-        <div className="relative flex h-10 items-center justify-between border-b border-neutral-300/50 bg-neutral-200/30 pr-2.5 pl-4 dark:border-neutral-800/60 dark:bg-neutral-900/30">
+        <div className="relative flex h-10 items-center justify-between rounded-t-lg border-b border-neutral-300/50 bg-neutral-200/30 pr-2.5 pl-4 dark:border-neutral-800/60 dark:bg-neutral-900/30">
           <div className="flex items-center gap-2">
             <CodeIcon
               size={14}

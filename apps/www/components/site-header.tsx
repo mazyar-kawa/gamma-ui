@@ -7,6 +7,7 @@ import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
 
 import { GithubLink } from "./github-link"
+import MyLogo from "./my-logo"
 import { TwitterLink } from "./x-link"
 
 export function SiteHeader() {
@@ -20,7 +21,7 @@ export function SiteHeader() {
       <div className="container-wrapper 3xl:fixed:px-0 px-6">
         <div className="3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:h-4!">
           <MobileNav className="flex lg:hidden" />
-          {/* <LogoButton /> */}
+          <MyLogo />
           <MainNav items={docsConfig.mainNav} className="hidden lg:flex" />
           <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
             <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
