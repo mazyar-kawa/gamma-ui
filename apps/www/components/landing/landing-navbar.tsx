@@ -1,13 +1,16 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
+import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 
 import { CommandMenu } from "../command-menu"
 import { GithubLink } from "../github-link"
 import { ModeToggle } from "../mode-toggle"
+import MyLogo from "../my-logo"
 import { TwitterLink } from "../x-link"
 
 const LandingNavbar = () => {
@@ -38,14 +41,7 @@ const LandingNavbar = () => {
     >
       <div className="mx-auto max-w-7xl px-3 md:px-5 lg:px-8">
         <div className="flex h-[3.7rem] items-center justify-between">
-          <div className="flex items-center space-x-12">
-            <Link href="/" className="flex items-center space-x-2">
-              {/* <MyIcon className="h-5 w-5 text-white" /> */}
-              <span className="text-xl font-bold text-black dark:text-white">
-                Gamma UI
-              </span>
-            </Link>
-          </div>
+          <MyLogo />
 
           <div className="hidden items-center space-x-2 lg:flex">
             <CommandMenu />

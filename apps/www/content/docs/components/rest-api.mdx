@@ -6,6 +6,8 @@ author: mazyar
 published: true
 ---
 
+import { CSSCodeBlock } from "@/components/css-code-block"
+
 <ComponentPreview name="rest-api-demo" />
 
 ## Installation
@@ -22,55 +24,9 @@ published: true
 npx shadcn@latest add @gammaui/rest-api
 ```
 
-## Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).
-
-```css
-.database {
-  offset-anchor: 10px 0px;
-  animation: database-animation-path;
-  animation-iteration-count: infinite;
-  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  animation-duration: 4s;
-  animation-delay: 1s;
-}
-
-.db-light-1 {
-  offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
-}
-
-.db-light-2 {
-  offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
-}
-
-.db-light-3 {
-  offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
-}
-
-.db-light-4 {
-  offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
-}
-
-@keyframes database-animation-path {
-  0% {
-    offset-distance: 0%;
-  }
-  100% {
-    offset-distance: 100%;
-  }
-}
-```
-
-  </TabsContent>
-
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Copy and paste the following code into your project.</Step>
-
-<ComponentSource name="rest-api" title="components/gammaui/rest-api.tsx" />
-
-<Step>Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).</Step>
-```css
-/* Overlay Button Styles */
+<CSSCodeBlock
+  fileName="global.css"
+code={`
 .database {
   offset-anchor: 10px 0px;
   animation: database-animation-path;
@@ -104,8 +60,60 @@ offset-distance: 0%;
 offset-distance: 100%;
 }
 }
+`}
 
-````
+copyCode={true}
+/>
+
+  </TabsContent>
+
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="rest-api" title="components/gammaui/rest-api.tsx" />
+
+<Step>Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).</Step>
+<CSSCodeBlock
+  fileName="global.css"
+code={`
+.database {
+  offset-anchor: 10px 0px;
+  animation: database-animation-path;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+
+.db-light-1 {
+offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
+}
+
+.db-light-2 {
+offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
+}
+
+.db-light-3 {
+offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
+}
+
+.db-light-4 {
+offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
+}
+
+@keyframes database-animation-path {
+0% {
+offset-distance: 0%;
+}
+100% {
+offset-distance: 100%;
+}
+}
+`}
+
+copyCode={true}
+/>
 
   <Step>Update the import paths to match your project structure.</Step>
 </Steps>
@@ -188,4 +196,7 @@ export default function Demo() {
 - Feature highlights
 - Tutorials explaining REST requests
 - Interactive diagrams
-````
+
+```
+
+```
