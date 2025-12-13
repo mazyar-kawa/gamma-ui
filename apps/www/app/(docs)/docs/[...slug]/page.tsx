@@ -53,9 +53,9 @@ export async function generateMetadata({
 
   const url = process.env.NEXT_PUBLIC_APP_URL
 
-  const ogUrl = new URL(`${url}/og`)
-  ogUrl.searchParams.set("title", doc.title ?? "")
-  ogUrl.searchParams.set("description", doc.description ?? "")
+  // const ogUrl = new URL(`${url}/og`)
+  // ogUrl.searchParams.set('title', doc.title ?? '')
+  // ogUrl.searchParams.set('description', doc.description ?? '')
 
   return {
     title: `${doc.title} | React Components & Templates`,
