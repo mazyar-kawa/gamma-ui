@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { useCallback, useEffect, useState } from "react"
-import { motion, useAnimation } from "framer-motion"
 import { Magnet } from "lucide-react"
+import { motion, useAnimation } from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"

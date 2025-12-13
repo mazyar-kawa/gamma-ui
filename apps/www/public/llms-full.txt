@@ -4070,8 +4070,8 @@ Description: A magnetic particle-attraction button built with Framer Motion.
 
 import * as React from "react"
 import { useCallback, useEffect, useState } from "react"
-import { motion, useAnimation } from "framer-motion"
 import { Magnet } from "lucide-react"
+import { motion, useAnimation } from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -5728,7 +5728,7 @@ Description: A collapsible animated support widget for quick help actions using 
 "use client"
 
 import { useState } from "react"
-import { AnimatePresence, motion, Variants } from "framer-motion"
+import { AnimatePresence, motion, Variants } from "motion/react"
 
 interface MenuItem {
   title: string

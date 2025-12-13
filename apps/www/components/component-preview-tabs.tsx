@@ -9,6 +9,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export function ComponentPreviewTabs({
   className,
+  name,
   align = "center",
   justify = "center",
   hideCode = false,
@@ -16,6 +17,7 @@ export function ComponentPreviewTabs({
   source,
   ...props
 }: React.ComponentProps<"div"> & {
+  name: string
   align?: "center" | "start" | "end"
   justify?: "center" | "start" | "end"
   hideCode?: boolean
