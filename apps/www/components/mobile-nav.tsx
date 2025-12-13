@@ -58,7 +58,6 @@ export function MobileNav({ className }: { className?: string }) {
               Menu
             </div>
             <div className="flex flex-col gap-3">
-              
               {docsConfig.mainNav.map(
                 (item, index) =>
                   item.href && (

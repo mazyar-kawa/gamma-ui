@@ -203,16 +203,12 @@ export const mdxComponents = {
   },
   code: ({
     className,
-    __raw__,
-    __src__,
     __npm__,
     __yarn__,
     __pnpm__,
     __bun__,
     ...props
   }: React.ComponentProps<"code"> & {
-    __raw__?: string
-    __src__?: string
     __npm__?: string
     __yarn__?: string
     __pnpm__?: string

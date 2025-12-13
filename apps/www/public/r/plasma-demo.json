@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "plasma-demo",
-  "type": "registry:example",
   "title": "Plasma Demo",
   "description": "A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import Plasma from \"@/registry/gammaui/plasma\"\n\nexport default function PlasmaDemo() {\n  return (\n    <div className=\"relative h-[600px] w-full overflow-hidden rounded-xl\">\n      <Plasma />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

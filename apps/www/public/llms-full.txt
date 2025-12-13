@@ -197,7 +197,7 @@ import { cn } from "@/lib/utils"
 
 type AnimationPhase = "idle" | "forming_column" | "scrolling_down" | "resetting"
 
-type AnimatedListProps = {
+interface AnimatedListProps {
   children: React.ReactNode
   className?: string
   stackGap?: number
@@ -207,7 +207,7 @@ type AnimatedListProps = {
   formationDuration?: number
 }
 
-type AnimatedListItemProps = {
+interface AnimatedListItemProps {
   children: React.ReactNode
   className?: string
   index: number
@@ -659,8 +659,8 @@ export default function BorderButton({ label }: BorderButtonProps) {
 
   return (
     <motion.button
-      initial={{ "--x": "100%", scale: 1.5 } as any}
-      animate={{ "--x": "-100%" } as any}
+      initial={{ "--x": "100%", scale: 1.5 }}
+      animate={{ "--x": "-100%" }}
       whileTap={{ scale: 0.97 }}
       transition={{
         stiffness: 20,
@@ -1922,7 +1922,7 @@ import { IconPlus } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 
-type Logo = {
+interface Logo {
   src: string
   alt: string
   width?: number
@@ -2133,12 +2133,12 @@ const ANIMATION_CONFIG = {
 const toCssLength = (value?: number | string): string | undefined =>
   typeof value === "number" ? `${value}px` : (value ?? undefined)
 
-const cx = (...parts: Array<string | false | null | undefined>) =>
+const cx = (...parts: (string | false | null | undefined)[]) =>
   parts.filter(Boolean).join(" ")
 
 const useResizeObserver = (
   callback: () => void,
-  elements: Array<React.RefObject<Element | null>>,
+  elements: React.RefObject<Element | null>[],
   dependencies: React.DependencyList
 ) => {
   useEffect(() => {
@@ -4076,8 +4076,7 @@ import { Magnet } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-interface MagnetizeButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface MagnetizeButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   particleCount?: number
   attractRadius?: number
 }
@@ -4813,7 +4812,7 @@ interface RadialIntroProps {
   imageSize?: number
 }
 
-type OrbitItem = {
+interface OrbitItem {
   id: number
   name: string
   src: string
@@ -4857,7 +4856,7 @@ export default function RadialIntro({
     // get arm and image elements
     const arms = qsa(root, "[data-arm]")
     const imgs = qsa(root, "[data-arm-image]")
-    const stops: Array<() => void> = []
+    const stops: (() => void)[] = []
 
     // image lift-in
     delay(() => animate(imgs, { top: 0 }, transition), 250)
@@ -5731,7 +5730,7 @@ Description: A collapsible animated support widget for quick help actions using 
 import { useState } from "react"
 import { AnimatePresence, motion, Variants } from "framer-motion"
 
-type MenuItem = {
+interface MenuItem {
   title: string
   description: string
   icon: React.ReactNode

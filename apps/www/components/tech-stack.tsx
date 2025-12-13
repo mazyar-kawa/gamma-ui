@@ -5,7 +5,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-type TechComponentType = {
+interface TechComponentType {
   name: string
   icon: React.ReactNode
 }

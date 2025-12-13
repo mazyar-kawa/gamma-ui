@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 
 type AnimationPhase = "idle" | "forming_column" | "scrolling_down" | "resetting"
 
-type AnimatedListProps = {
+interface AnimatedListProps {
   children: React.ReactNode
   className?: string
   stackGap?: number
@@ -17,7 +17,7 @@ type AnimatedListProps = {
   formationDuration?: number
 }
 
-type AnimatedListItemProps = {
+interface AnimatedListItemProps {
   children: React.ReactNode
   className?: string
   index: number

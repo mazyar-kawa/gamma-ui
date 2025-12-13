@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useTheme } from "next-themes"
 
-type Props = {
+interface Props {
   className?: string
 }
 

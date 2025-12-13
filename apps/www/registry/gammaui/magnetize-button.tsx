@@ -8,8 +8,7 @@ import { Magnet } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-interface MagnetizeButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface MagnetizeButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   particleCount?: number
   attractRadius?: number
 }

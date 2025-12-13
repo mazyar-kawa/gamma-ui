@@ -3,12 +3,12 @@
 import { useEffect, useMemo, useState, type ReactElement } from "react"
 import { IconTerminal, IconTerminal2 } from "@tabler/icons-react"
 
-type TerminalStep = {
+interface TerminalStep {
   text: string
   bold?: boolean
 }
 
-type TerminalProps = {
+interface TerminalProps {
   command: string
   steps: TerminalStep[]
   pulseInterval?: number

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "inverted-cursor-demo",
-  "type": "registry:example",
   "title": "Inverted Cursor Demo",
   "description": "A smooth, animated custom cursor component with blend mode effects.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "\"use client\"\n\nimport { Cursor } from \"@/registry/gammaui/inverted-cursor\"\n\nexport default function CursorDemo() {\n  return (\n    <div className=\"relative h-96 w-full cursor-none overflow-hidden\">\n      {/* Custom circular inverted color cursor */}\n      <Cursor />\n\n      {/* Main content centered vertically and horizontally */}\n      <main className=\"flex h-full items-center justify-center\">\n        <h1 className=\"text-4xl font-extrabold select-none\">Move your mouse</h1>\n      </main>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

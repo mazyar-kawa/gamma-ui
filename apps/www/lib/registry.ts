@@ -174,14 +174,14 @@ export function fixImport(content: string) {
   return content.replace(regex, replacement)
 }
 
-export type FileTree = {
+export interface FileTree {
   name: string
   path?: string
   children?: FileTree[]
 }
 
 export function createFileTreeForRegistryItemFiles(
-  files: Array<{ path: string; target?: string }>
+  files: { path: string; target?: string }[]
 ) {
   const root: FileTree[] = []
 
@@ -201,7 +201,7 @@ export function createFileTreeForRegistryItemFiles(
           existingNode.path = path
         } else {
           // Move to next level in the tree
-          currentLevel = existingNode.children!
+          if (existingNode.children) currentLevel = existingNode.children
         }
       } else {
         const newNode: FileTree = isFile
@@ -211,7 +211,7 @@ export function createFileTreeForRegistryItemFiles(
         currentLevel.push(newNode)
 
         if (!isFile) {
-          currentLevel = newNode.children!
+          if (newNode.children) currentLevel = newNode.children
         }
       }
     }

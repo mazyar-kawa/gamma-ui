@@ -4,4 +4,4 @@ export const ringClasses = [
   "ring-focus",
   "ring-offset-2",
   "ring-offset-background",
-];
+]

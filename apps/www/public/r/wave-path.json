@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "wave-path",
-  "type": "registry:ui",
   "title": "Wave Path",
   "description": "A dynamic interactive SVG wave component that responds to pointer movement.",
   "dependencies": [
@@ -13,5 +12,6 @@
       "content": "\"use client\"\n\nimport React, { useEffect, useRef } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype WWavePathProps = React.ComponentProps<\"div\">\n\nexport default function WavePath({ className, ...props }: WWavePathProps) {\n  const path = useRef<SVGPathElement>(null)\n  let progress = 0\n  let x = 0.2\n  let time = Math.PI / 2\n  let reqId: number | null = null\n\n  useEffect(() => {\n    setPath(progress)\n  }, [])\n\n  const setPath = (progress: number) => {\n    const width = window.innerWidth * 0.7\n    if (path.current) {\n      path.current.setAttributeNS(\n        null,\n        \"d\",\n        `M0 100 Q${width * x} ${100 + progress * 0.6}, ${width} 100`\n      )\n    }\n  }\n\n  const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a\n\n  const manageMouseEnter = () => {\n    if (reqId) {\n      cancelAnimationFrame(reqId)\n      resetAnimation()\n    }\n  }\n\n  const manageMouseMove = (e: React.MouseEvent) => {\n    const { movementY, clientX } = e\n    if (path.current) {\n      const pathBound = path.current.getBoundingClientRect()\n      x = (clientX - pathBound.left) / pathBound.width\n      progress += movementY\n      setPath(progress)\n    }\n  }\n\n  const manageMouseLeave = () => {\n    animateOut()\n  }\n\n  const animateOut = () => {\n    const newProgress = progress * Math.sin(time)\n    progress = lerp(progress, 0, 0.025)\n    time += 0.2\n    setPath(newProgress)\n    if (Math.abs(progress) > 0.75) {\n      reqId = requestAnimationFrame(animateOut)\n    } else {\n      resetAnimation()\n    }\n  }\n\n  const resetAnimation = () => {\n    time = Math.PI / 2\n    progress = 0\n  }\n\n  return (\n    <div className={cn(\"relative h-px w-[70vw]\", className)} {...props}>\n      <div\n        onMouseEnter={manageMouseEnter}\n        onMouseMove={manageMouseMove}\n        onMouseLeave={manageMouseLeave}\n        className=\"relative -top-5 z-10 h-10 w-full hover:-top-[150px] hover:h-[300px]\"\n      />\n      <svg className=\"absolute -top-[100px] h-[300px] w-full\">\n        <path ref={path} className=\"fill-none stroke-current\" strokeWidth={2} />\n      </svg>\n    </div>\n  )\n}\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

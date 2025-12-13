@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pixel-button-demo",
-  "type": "registry:example",
   "title": "Pixel Button Demo",
   "description": "A pixelated button animation effect built with Tailwind CSS and React.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "\"use client\"\n\nimport { PixelButton } from \"@/registry/gammaui/pixel-button\"\n\nexport default function PixelButtonDemo() {\n  return (\n    <div className=\"z-10 flex h-full w-full justify-center gap-6\">\n      <PixelButton color=\"#ff5722\">Pixel</PixelButton>\n      <PixelButton color=\"#03a9f4\">Button</PixelButton>\n      <PixelButton color=\"#4caf50\">Hover Me</PixelButton>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

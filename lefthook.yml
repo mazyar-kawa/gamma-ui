@@ -14,7 +14,7 @@ pre-commit:
       run: bun run lint:fix
       stage_fixed: true
     format:fix:silent:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      glob: "*.{js,ts,jsx,tsx,json}"
       run: bun run format:fix:silent
       stage_fixed: true
 

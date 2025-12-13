@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "magnetize-button-demo",
-  "type": "registry:example",
   "title": "Magnetize Button Demo",
   "description": "An interactive demo showcasing the Magnetize Button component with particle attraction effects.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import MagnetizeButton from \"@/registry/gammaui/magnetize-button\"\n\nexport default function MagnetizeButtonDemo() {\n  return (\n    <MagnetizeButton\n      particleCount={14}\n      attractRadius={50}\n      className=\"mx-auto\"\n    />\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

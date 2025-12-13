@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-roll",
-  "type": "registry:ui",
   "title": "Text Roll",
   "description": "A rolling hover-animated text component built with Motion One.",
   "dependencies": [
@@ -14,5 +13,6 @@
       "content": "\"use client\"\n\nimport React from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst STAGGER = 0.035\n\nexport default function TextRoll({\n  children,\n  className,\n  center = false,\n}: {\n  children: string\n  className?: string\n  center?: boolean\n}) {\n  return (\n    <motion.span\n      initial=\"initial\"\n      whileHover=\"hovered\"\n      className={cn(\n        \"relative block overflow-hidden text-black dark:text-white/90\",\n        className\n      )}\n      style={{\n        lineHeight: 0.85,\n      }}\n    >\n      {/* Top Text (Slides up) */}\n      <div>\n        {children.split(\"\").map((l, i) => {\n          const delay = center\n            ? STAGGER * Math.abs(i - (children.length - 1) / 2)\n            : STAGGER * i\n\n          return (\n            <motion.span\n              variants={{\n                initial: {\n                  y: 0,\n                },\n                hovered: {\n                  y: \"-100%\",\n                },\n              }}\n              transition={{\n                ease: \"easeInOut\",\n                delay,\n              }}\n              className=\"inline-block\"\n              key={i}\n            >\n              {l}\n            </motion.span>\n          )\n        })}\n      </div>\n\n      {/* Bottom Text (Slides in from bottom) */}\n      <div className=\"absolute inset-0\">\n        {children.split(\"\").map((l, i) => {\n          const delay = center\n            ? STAGGER * Math.abs(i - (children.length - 1) / 2)\n            : STAGGER * i\n\n          return (\n            <motion.span\n              variants={{\n                initial: {\n                  y: \"100%\",\n                },\n                hovered: {\n                  y: 0,\n                },\n              }}\n              transition={{\n                ease: \"easeInOut\",\n                delay,\n              }}\n              className=\"inline-block\"\n              key={i}\n            >\n              {l}\n            </motion.span>\n          )\n        })}\n      </div>\n    </motion.span>\n  )\n}\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

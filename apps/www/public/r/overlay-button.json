@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "overlay-button",
-  "type": "registry:ui",
   "title": "Overlay Button",
   "description": "An animated gradient button using Framer Motion with looping motion and spring transitions.",
   "dependencies": [
@@ -14,5 +13,6 @@
       "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\n\ninterface OverlayButtonProps {\n  label: string\n}\n\nexport default function OverlayButton({ label }: OverlayButtonProps) {\n  return (\n    <motion.button\n      initial={{ \"--x\": \"100%\", scale: 1.5 }}\n      animate={{ \"--x\": \"-100%\" }}\n      whileTap={{ scale: 0.97 }}\n      transition={{\n        repeat: Infinity,\n        repeatType: \"loop\",\n        repeatDelay: 1,\n        type: \"spring\",\n        stiffness: 20,\n        damping: 15,\n        mass: 2,\n        scale: {\n          type: \"spring\",\n          stiffness: 10,\n          damping: 5,\n          mass: 0.1,\n        },\n      }}\n      className=\"radial-gradient relative rounded-xl px-2 py-1\"\n    >\n      <span className=\"linear-overlay absolute inset-0 top-0 left-0 h-full w-full rounded-xl\" />\n      <span className=\"linear-mask relative block h-full w-full font-light text-neutral-100\">\n        {label}\n      </span>\n    </motion.button>\n  )\n}\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

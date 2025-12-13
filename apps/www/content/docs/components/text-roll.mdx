@@ -25,7 +25,7 @@ published: true
 
 ```bash
 npx shadcn@latest add @gammaui/text-roll
-````
+```
 
 </TabsContent>
 
@@ -48,11 +48,7 @@ npx shadcn@latest add @gammaui/text-roll
 import { TextRoll } from "@/components/ui/text-roll"
 
 export default function Example() {
-  return (
-    <TextRoll className="text-4xl font-semibold">
-      Gamma UI
-    </TextRoll>
-  )
+  return <TextRoll className="text-4xl font-semibold">Gamma UI</TextRoll>
 }
 ```
 
@@ -72,12 +68,12 @@ This will create a letter-by-letter animated roll effect when hovering.
 
 ## Component Features
 
-* Smooth **vertical roll animation** on hover
-* Letter-by-letter stagger timing
-* **Center stagger mode** for symmetrical animations
-* Fully **customizable** with Tailwind CSS
-* “use client” compatible for Next.js App Router
-* Built using **Motion One** (`motion/react`)
+- Smooth **vertical roll animation** on hover
+- Letter-by-letter stagger timing
+- **Center stagger mode** for symmetrical animations
+- Fully **customizable** with Tailwind CSS
+- “use client” compatible for Next.js App Router
+- Built using **Motion One** (`motion/react`)
 
 ---
 
@@ -102,10 +98,12 @@ export default function Example() {
 ```tsx
 export default function HeroSection() {
   return (
-    <h1 className="text-6xl font-extrabold leading-tight">
+    <h1 className="text-6xl leading-tight font-extrabold">
       <TextRoll className="text-indigo-500">Build Fast</TextRoll>
       <br />
-      <TextRoll center className="text-gray-800">Ship Beautiful</TextRoll>
+      <TextRoll center className="text-gray-800">
+        Ship Beautiful
+      </TextRoll>
     </h1>
   )
 }
@@ -115,8 +113,7 @@ export default function HeroSection() {
 
 ## Tips
 
-* Best used for **headlines**, **logos**, or interactive **hover reveals**.
-* Combine with gradients for premium effect.
-* Increase the font weight to make the slide animation more satisfying.
-* Works great inside hero sections or call-to-action banners.
-
+- Best used for **headlines**, **logos**, or interactive **hover reveals**.
+- Combine with gradients for premium effect.
+- Increase the font weight to make the slide animation more satisfying.
+- Works great inside hero sections or call-to-action banners.

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pricing-interaction-demo",
-  "type": "registry:example",
   "title": "Pricing Interaction Demo",
   "description": "An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import PricingInteraction from \"@/registry/gammaui/pricing-interaction\"\n\nexport default function PricingInteractionDemo() {\n  return <PricingInteraction />\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }
