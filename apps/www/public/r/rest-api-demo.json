@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "rest-api-demo",
-  "type": "registry:example",
   "title": "Rest API Demo",
   "description": "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import RestApi from \"@/registry/gammaui/rest-api\"\n\nexport const RestApiDemo = () => {\n  return (\n    <div className=\"flex w-full justify-center rounded-xl p-4\">\n      <RestApi />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

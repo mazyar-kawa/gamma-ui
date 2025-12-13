@@ -5,7 +5,7 @@ import { SidebarProvider } from "@/components/ui/sidebar"
 import { DocsSidebar } from "@/components/docs-sidebar"
 import { SiteHeader } from "@/components/site-header"
 
-type MarketingLayoutProps = {
+interface MarketingLayoutProps {
   children: React.ReactNode
 }
 

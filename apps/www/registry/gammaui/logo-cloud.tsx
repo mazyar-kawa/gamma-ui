@@ -2,7 +2,7 @@ import { IconPlus } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 
-type Logo = {
+interface Logo {
   src: string
   alt: string
   width?: number

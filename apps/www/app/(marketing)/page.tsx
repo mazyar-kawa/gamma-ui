@@ -1,4 +1,4 @@
-import Components from '@/components/landing/components'
+import Components from "@/components/landing/components"
 import Features from "@/components/landing/features"
 import Hero from "@/components/landing/hero"
 

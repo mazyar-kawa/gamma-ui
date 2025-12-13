@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export async function copyToClipboardWithMeta(value: string, event?: Event) {
+export async function copyToClipboardWithMeta(value: string) {
   navigator.clipboard.writeText(value)
 }
 
@@ -44,7 +44,7 @@ export function CopyButton({
             className
           )}
           onClick={() => {
-            copyToClipboardWithMeta(value, undefined)
+            copyToClipboardWithMeta(value)
             setHasCopied(true)
           }}
           {...props}

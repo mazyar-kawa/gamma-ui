@@ -1,15 +1,7 @@
-import { AnimatedListDemo } from "@/registry/example/animated-list-demo"
-import BorderButtonDemo from "@/registry/example/border-button-demo"
-import LiveWaveformDemo from "@/registry/example/live-waveform-demo"
-import OverlayButtonDemo from "@/registry/example/overlay-button-demo"
 import { AnimatedList } from "@/registry/gammaui/animated-list"
-import { Badge } from "@/registry/gammaui/badge"
 import { CpuArchitecture } from "@/registry/gammaui/cpu-architecture"
-import { PixelButton } from "@/registry/gammaui/pixel-button"
-import PricingInteraction from "@/registry/gammaui/pricing-interaction"
 import RestApi from "@/registry/gammaui/rest-api"
 import ShadCnUI from "@/registry/gammaui/shadcn-ui"
-import TextRoll from "@/registry/gammaui/text-roll"
 
 const notifications = [
   { name: "Location", message: "Thomas has arrived home", time: "2h ago" },

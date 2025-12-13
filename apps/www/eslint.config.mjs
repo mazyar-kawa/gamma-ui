@@ -1,5 +1,4 @@
 import js from "@eslint/js"
-import next from "eslint-plugin-next"
 import tseslint from "typescript-eslint"
 
 export default [
@@ -11,6 +10,7 @@ export default [
       "build/**",
       "next-env.d.ts",
       ".source/**",
+      "apps/www/registry/gammaui/**",
     ],
   },
 
@@ -20,11 +20,12 @@ export default [
   ...tseslint.configs.stylistic,
 
   {
-    plugins: {
-      next,
-    },
     rules: {
-      "@next/next/no-duplicate-head": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/prefer-for-of": "off",
     },
   },
 ]

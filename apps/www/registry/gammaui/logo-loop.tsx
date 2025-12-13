@@ -47,12 +47,12 @@ const ANIMATION_CONFIG = {
 const toCssLength = (value?: number | string): string | undefined =>
   typeof value === "number" ? `${value}px` : (value ?? undefined)
 
-const cx = (...parts: Array<string | false | null | undefined>) =>
+const cx = (...parts: (string | false | null | undefined)[]) =>
   parts.filter(Boolean).join(" ")
 
 const useResizeObserver = (
   callback: () => void,
-  elements: Array<React.RefObject<Element | null>>,
+  elements: React.RefObject<Element | null>[],
   dependencies: React.DependencyList
 ) => {
   useEffect(() => {

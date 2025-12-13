@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { AnimatePresence, motion, Variants } from "framer-motion"
 
-type MenuItem = {
+interface MenuItem {
   title: string
   description: string
   icon: React.ReactNode

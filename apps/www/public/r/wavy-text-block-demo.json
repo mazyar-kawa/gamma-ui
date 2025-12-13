@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "wavy-text-block-demo",
-  "type": "registry:example",
   "title": "Wavy Text Block Demo",
   "description": "An example demonstrating the Wavy Block scroll-triggered animation with multiple text lines.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { WavyBlock, WavyBlockItem } from \"@/registry/gammaui/wavy-text-block\"\n\nconst titles = [\n  \"Flexible\",\n  \"Animated\",\n  \"Customizable\",\n  \"Optimized\",\n  \"Lightweight\",\n  \"Responsive\",\n  \"UI Blocks\",\n]\n\nexport default function DemoOne() {\n  return (\n    <main className=\"h-screen pt-60\">\n      <div className=\"w-full max-w-6xl\">\n        <WavyBlock className=\"flex flex-col items-start justify-start gap-6\">\n          {titles.map((title, index) => (\n            <WavyBlockItem key={title} index={index}>\n              <h2 className=\"text-[4rem] leading-none font-bold tracking-tighter whitespace-nowrap uppercase\">\n                {title}\n              </h2>\n            </WavyBlockItem>\n          ))}\n        </WavyBlock>\n      </div>\n    </main>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

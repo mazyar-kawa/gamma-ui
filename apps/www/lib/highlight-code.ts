@@ -56,8 +56,8 @@ export const transformers: ShikiTransformer[] = [
 
 export async function highlightCode(
   code: string,
-  language: string = "tsx",
-  theme: string = "github-light"
+  language = "tsx",
+  theme = "github-light"
 ) {
   const html = await codeToHtml(code, {
     lang: language,

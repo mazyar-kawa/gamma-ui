@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-export type TextShimmerProps = {
+export interface TextShimmerProps {
   children: string
   as?: React.ElementType
   className?: string

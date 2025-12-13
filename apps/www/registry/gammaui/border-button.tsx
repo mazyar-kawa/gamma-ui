@@ -50,8 +50,8 @@ export default function BorderButton({ label }: BorderButtonProps) {
 
   return (
     <motion.button
-      initial={{ "--x": "100%", scale: 1.5 } as any}
-      animate={{ "--x": "-100%" } as any}
+      initial={{ "--x": "100%", scale: 1.5 }}
+      animate={{ "--x": "-100%" }}
       whileTap={{ scale: 0.97 }}
       transition={{
         stiffness: 20,

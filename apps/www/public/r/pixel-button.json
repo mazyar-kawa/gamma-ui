@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pixel-button",
-  "type": "registry:ui",
   "title": "Pixel Button",
   "description": "A pixelated button animation effect built with Tailwind CSS and React.",
   "dependencies": [
@@ -13,5 +12,6 @@
       "content": "\"use client\"\n\nimport React, { useEffect, useRef, useState } from \"react\"\n\ninterface PixelButtonProps {\n  children: React.ReactNode\n  color?: string\n}\n\nexport const PixelButton: React.FC<PixelButtonProps> = ({\n  children,\n  color = \"#ff5722\",\n}) => {\n  const containerRef = useRef<HTMLDivElement>(null)\n  const buttonRef = useRef<HTMLButtonElement>(null)\n  const [hovered, setHovered] = useState(false)\n\n  useEffect(() => {\n    const button = buttonRef.current\n    const pixelContainer = containerRef.current\n    if (!button || !pixelContainer) return\n\n    const pixelSize = 10\n    const btnWidth = button.offsetWidth\n    const btnHeight = button.offsetHeight\n    const cols = Math.floor(btnWidth / pixelSize)\n    const rows = Math.floor(btnHeight / pixelSize)\n\n    // Clear old pixels\n    pixelContainer.innerHTML = \"\"\n\n    for (let row = 0; row < rows; row++) {\n      for (let col = 0; col < cols; col++) {\n        const pixel = document.createElement(\"div\")\n        pixel.className =\n          \"absolute w-[10px] h-[10px] border border-black/25 opacity-0 transition-opacity duration-500 ease-in-out\"\n        pixel.style.background = color\n        pixel.style.left = `${col * pixelSize}px`\n        pixel.style.top = `${row * pixelSize}px`\n        pixel.style.transitionDelay = `${Math.random() * 0.8}s`\n        pixelContainer.appendChild(pixel)\n      }\n    }\n  }, [color])\n\n  useEffect(() => {\n    // When hover state changes, toggle opacity\n    const pixels = containerRef.current?.querySelectorAll<HTMLDivElement>(\"div\")\n    if (!pixels) return\n    pixels.forEach((pixel) => {\n      pixel.style.opacity = hovered ? \"1\" : \"0\"\n    })\n  }, [hovered])\n\n  return (\n    <button\n      ref={buttonRef}\n      onMouseEnter={() => setHovered(true)}\n      onMouseLeave={() => setHovered(false)}\n      className=\"relative h-[60px] w-[180px] cursor-pointer overflow-hidden rounded-[10px] bg-black text-xl font-normal tracking-[0.1em] text-white uppercase shadow-[0_2px_8px_rgba(0,0,0,0.2)] transition-all duration-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)] dark:bg-white dark:text-black\"\n    >\n      <span className=\"relative z-10\">{children}</span>\n      <div\n        ref={containerRef}\n        className=\"pointer-events-none absolute inset-0 z-1 overflow-hidden rounded-[10px]\"\n      />\n    </button>\n  )\n}\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

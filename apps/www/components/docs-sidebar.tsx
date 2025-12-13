@@ -71,9 +71,9 @@ function DocsSidebarNavItems({
                 )}
               </SidebarMenuButton>
             </SidebarMenuItem>
-            {hasChildren && (
+            {hasChildren && item.items && (
               <DocsSidebarNavItems
-                items={item.items!}
+                items={item?.items}
                 pathname={pathname}
                 level={level + 1}
               />

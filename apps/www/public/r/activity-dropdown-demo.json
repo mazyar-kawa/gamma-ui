@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "activity-dropdown-demo",
-  "type": "registry:example",
   "title": "Activity Dropdown Demo",
   "description": "A demo showcasing the animated ActivityDropdown component with staggered item reveal.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import ActivityDropdown from \"@/registry/gammaui/activity-dropdown\"\n\nexport default function ActivityDropdownDemo() {\n  return (\n    <div className=\"mx-auto\">\n      <ActivityDropdown />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

@@ -16,7 +16,7 @@ interface RadialIntroProps {
   imageSize?: number
 }
 
-type OrbitItem = {
+interface OrbitItem {
   id: number
   name: string
   src: string
@@ -60,7 +60,7 @@ export default function RadialIntro({
     // get arm and image elements
     const arms = qsa(root, "[data-arm]")
     const imgs = qsa(root, "[data-arm-image]")
-    const stops: Array<() => void> = []
+    const stops: (() => void)[] = []
 
     // image lift-in
     delay(() => animate(imgs, { top: 0 }, transition), 250)

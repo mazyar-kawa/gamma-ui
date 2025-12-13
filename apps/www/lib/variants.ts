@@ -6,17 +6,18 @@ const solid = {
   warning: "bg-warning text-warning-foreground",
   danger: "bg-danger text-danger-foreground",
   foreground: "bg-foreground text-background",
-};
+}
 
 const shadow = {
   default: "shadow-lg shadow-default/50 bg-default text-default-foreground",
   primary: "shadow-lg shadow-primary/40 bg-primary text-primary-foreground",
-  secondary: "shadow-lg shadow-secondary/40 bg-secondary text-secondary-foreground",
+  secondary:
+    "shadow-lg shadow-secondary/40 bg-secondary text-secondary-foreground",
   success: "shadow-lg shadow-success/40 bg-success text-success-foreground",
   warning: "shadow-lg shadow-warning/40 bg-warning text-warning-foreground",
   danger: "shadow-lg shadow-danger/40 bg-danger text-danger-foreground",
   foreground: "shadow-lg shadow-foreground/40 bg-foreground text-background",
-};
+}
 
 const bordered = {
   default: "bg-transparent border-default text-foreground",
@@ -26,7 +27,7 @@ const bordered = {
   warning: "bg-transparent border-warning text-warning",
   danger: "bg-transparent border-danger text-danger",
   foreground: "bg-transparent border-foreground text-foreground",
-};
+}
 
 const flat = {
   default: "bg-default/40 text-default-700",
@@ -36,7 +37,7 @@ const flat = {
   warning: "bg-warning/20 text-warning-700 dark:text-warning",
   danger: "bg-danger/20 text-danger-600 dark:text-danger-500",
   foreground: "bg-foreground/10 text-foreground",
-};
+}
 
 const faded = {
   default: "border-default bg-default-100 text-default-foreground",
@@ -46,7 +47,7 @@ const faded = {
   warning: "border-default bg-default-100 text-warning",
   danger: "border-default bg-default-100 text-danger",
   foreground: "border-default bg-default-100 text-foreground",
-};
+}
 
 const light = {
   default: "bg-transparent text-default-foreground",
@@ -56,7 +57,7 @@ const light = {
   warning: "bg-transparent text-warning",
   danger: "bg-transparent text-danger",
   foreground: "bg-transparent text-foreground",
-};
+}
 
 const ghost = {
   default: "border-default text-default-foreground",
@@ -66,7 +67,7 @@ const ghost = {
   warning: "border-warning text-warning",
   danger: "border-danger text-danger",
   foreground: "border-foreground text-foreground hover:!bg-foreground",
-};
+}
 
 export const colorVariants = {
   solid,
@@ -76,4 +77,4 @@ export const colorVariants = {
   faded,
   light,
   ghost,
-};
+}
