@@ -126,7 +126,7 @@ export default function RadialIntro({
           >
             <motion.img
               data-arm-image
-              className="translate absolute top-1/2 left-1/2 aspect-square -translate-x-1/2 rounded-full object-fill"
+              className="translate absolute top-1/2 left-1/2 aspect-square -translate-x-1/2 rounded-full bg-black object-fill object-center"
               style={{
                 width: imageSize,
                 height: imageSize,

@@ -1,0 +1,152 @@
+---
+title: Animated Folder
+date: 2025-12-04
+description: A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.
+author: mazyar
+published: true
+---
+
+<ComponentPreview name="3d-folder-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/animated-folder
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+<Step>Copy the component into your project.</Step>
+
+<ComponentSource
+  name="animated-folder"
+  title="components/gammaui/animated-folder.tsx"
+/>
+
+<Step>Install required dependencies.</Step>
+
+```bash
+npm install @tabler/icons-react
+# or
+pnpm add @tabler/icons-react
+# or
+bun add @tabler/icons-react
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+---
+
+## Usage
+
+```tsx showLineNumbers
+import { AnimatedFolder } from "@/components/gammaui/animated-folder"
+
+const projects = [
+  {
+    id: "1",
+    title: "Landing Page",
+    image: "/images/project-1.jpg",
+  },
+  {
+    id: "2",
+    title: "Dashboard UI",
+    image: "/images/project-2.jpg",
+  },
+  {
+    id: "3",
+    title: "Mobile App",
+    image: "/images/project-3.jpg",
+  },
+]
+
+export default function Page() {
+  return <AnimatedFolder title="My Projects" projects={projects} />
+}
+```
+
+---
+
+## Examples
+
+### Default
+
+```tsx showLineNumbers
+<AnimatedFolder title="Projects" projects={projects} />
+```
+
+### Custom Styling
+
+```tsx showLineNumbers
+<AnimatedFolder title="Design Work" projects={projects} className="max-w-sm" />
+```
+
+---
+
+## Props
+
+### `AnimatedFolder`
+
+| Prop        | Type        | Required | Description              |
+| ----------- | ----------- | -------- | ------------------------ |
+| `title`     | `string`    | ✅       | Folder title             |
+| `projects`  | `Project[]` | ✅       | List of projects         |
+| `className` | `string`    | ❌       | Optional wrapper classes |
+
+### `Project`
+
+| Prop    | Type     | Description       |
+| ------- | -------- | ----------------- |
+| `id`    | `string` | Unique project ID |
+| `title` | `string` | Project title     |
+| `image` | `string` | Image URL         |
+
+---
+
+## Features
+
+- **3D Folder Animation** with layered depth
+- **Hover-Revealed Project Cards**
+- **Smooth Lightbox Expansion** from card position
+- **Keyboard Navigation** (`← → Esc`)
+- **Animated Image Slider**
+- **Dot Pagination**
+- **Accessible Focus & Controls**
+- **Responsive & Mobile-Friendly**
+- **No animation libraries required**
+
+---
+
+## Interactions
+
+- Hover the folder to reveal project cards
+- Click a card to open the lightbox
+- Use arrow keys or buttons to navigate
+- Press `Esc` or click outside to close
+
+---
+
+## Use Cases
+
+- Portfolio project showcases
+- Design & case study previews
+- Creative folders
+- Landing page highlights
+- Product galleries
+- Personal websites

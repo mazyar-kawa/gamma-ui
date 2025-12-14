@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "location-map-demo",
+  "title": "Location Map Demo",
+  "description": "An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.",
+  "registryDependencies": [
+    "@gammaui/location-map"
+  ],
+  "files": [
+    {
+      "path": "registry/example/location-map-demo.tsx",
+      "content": "import { LocationMap } from \"@/registry/gammaui/location-map\"\n\nexport default function LocationMapDemo() {\n  return (\n    <main className=\"flex w-full items-center justify-center\">\n      <div className=\"relative z-10 flex flex-col items-center gap-8\">\n        {/* Optional subtle label */}\n        <p className=\"text-xs font-medium tracking-[0.2em] text-neutral-600 uppercase\">\n          Current Location\n        </p>\n\n        <LocationMap\n          location=\"Berlin, Germany\"\n          coordinates=\"52.5200° N, 13.4050° E\"\n        />\n      </div>\n    </main>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

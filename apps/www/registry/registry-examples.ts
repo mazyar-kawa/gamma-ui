@@ -352,4 +352,32 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "location-map-demo",
+    type: "registry:example",
+    title: "Location Map Demo",
+    description:
+      "An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.",
+    registryDependencies: ["@gammaui/location-map"],
+    files: [
+      {
+        path: "example/location-map-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "3d-folder-demo",
+    type: "registry:example",
+    title: "3D Folder Demo",
+    description:
+      "A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.",
+    registryDependencies: ["@gammaui/3d-folder"],
+    files: [
+      {
+        path: "example/3d-folder-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
