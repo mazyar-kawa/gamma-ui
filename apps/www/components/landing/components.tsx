@@ -1,6 +1,6 @@
 import { AnimatedList } from "@/registry/gammaui/animated-list"
-import { CpuArchitecture } from "@/registry/gammaui/cpu-architecture"
-import RestApi from "@/registry/gammaui/rest-api"
+import CloudFlow from "@/registry/gammaui/cloud-flow"
+import CpuArchitecture from "@/registry/gammaui/cpu-architecture"
 import ShadCnUI from "@/registry/gammaui/shadcn-ui"
 
 const notifications = [
@@ -38,7 +38,7 @@ const Components = () => {
       <div className="w-full max-w-7xl">
         <div className="grid grid-cols-1 place-items-center gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
           <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
-            <RestApi />
+            <CloudFlow />
           </div>
           <div className="col-span-12 flex w-full justify-center rounded-md border px-10 py-2 sm:col-span-6">
             <CpuArchitecture />

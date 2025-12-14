@@ -37,8 +37,8 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "Rest API",
-          href: `/docs/components/rest-api`,
+          title: "Cloud Flow",
+          href: `/docs/components/cloud-flow`,
           items: [],
           label: "New",
         },

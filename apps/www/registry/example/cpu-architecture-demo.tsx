@@ -1,6 +1,6 @@
 "use client"
 
-import { CpuArchitecture } from "@/registry/gammaui/cpu-architecture"
+import CpuArchitecture from "@/registry/gammaui/cpu-architecture"
 
 const CpuArchitectureDemo = () => {
   return (
