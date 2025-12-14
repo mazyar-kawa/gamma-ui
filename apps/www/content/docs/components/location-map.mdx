@@ -1,0 +1,142 @@
+---
+title: Location Map
+date: 2025-12-04
+description: An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.
+author: mazyar
+published: true
+---
+
+<ComponentPreview name="location-map-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/location-map
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+<Step>Copy and paste the component into your project.</Step>
+
+<ComponentSource
+  name="location-map"
+  title="components/gammaui/location-map.tsx"
+/>
+
+<Step>
+  Make sure you have <code>motion</code> installed.
+</Step>
+
+```bash
+npm install motion
+# or
+pnpm add motion
+# or
+bun add motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+---
+
+## Usage
+
+```tsx showLineNumbers
+import { LocationMap } from "@/components/gammaui/location-map"
+
+export default function Page() {
+  return (
+    <div className="p-10">
+      <LocationMap
+        location="San Francisco, CA"
+        coordinates="37.7749° N, 122.4194° W"
+      />
+    </div>
+  )
+}
+```
+
+---
+
+## Examples
+
+### Default
+
+```tsx showLineNumbers
+<LocationMap />
+```
+
+### Custom Location
+
+```tsx showLineNumbers
+<LocationMap location="Berlin, Germany" coordinates="52.5200° N, 13.4050° E" />
+```
+
+### With Custom Styling
+
+```tsx showLineNumbers
+<LocationMap
+  className="max-w-sm"
+  location="Tokyo, Japan"
+  coordinates="35.6762° N, 139.6503° E"
+/>
+```
+
+---
+
+## Props
+
+| Prop          | Type     | Default                     | Description                     |
+| ------------- | -------- | --------------------------- | ------------------------------- |
+| `location`    | `string` | `"San Francisco, CA"`       | Displayed location name         |
+| `coordinates` | `string` | `"37.7749° N, 122.4194° W"` | Coordinates shown when expanded |
+| `className`   | `string` | `-`                         | Optional wrapper classes        |
+
+---
+
+## Features
+
+- **3D Hover Tilt** powered by motion values & springs
+- **Expandable Map View** with animated roads & buildings
+- **Live Status Indicator**
+- **Animated SVG Streets & Buildings**
+- **Smooth Layout Transitions**
+- **Click-to-Expand Interaction**
+- **Fully Theme-Aware** (light & dark mode)
+- **No external map APIs required**
+
+---
+
+## Behavior
+
+- Hover to tilt the card in 3D space
+- Click to expand and reveal the animated map
+- Hover effects enhance depth, glow, and motion
+- Coordinates fade in only when expanded
+
+---
+
+## Use Cases
+
+- Location previews
+- Event cards
+- Office & company locations
+- Dashboard widgets
+- Interactive UI showcases
+- Landing page highlights

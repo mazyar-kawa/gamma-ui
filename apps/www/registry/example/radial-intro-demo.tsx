@@ -3,8 +3,8 @@ import RadialIntro from "@/registry/gammaui/radial-intro"
 const ITEMS = [
   {
     id: 1,
-    name: "Framer University",
-    src: "https://pbs.twimg.com/profile_images/1602734731728142336/9Bppcs67_400x400.jpg",
+    name: "Gamma UI",
+    src: "/gamma-ui-dark.svg",
   },
   {
     id: 2,

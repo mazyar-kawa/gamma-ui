@@ -385,6 +385,38 @@
       ]
     },
     {
+      "name": "location-map",
+      "type": "registry:ui",
+      "title": "Location Map",
+      "description": "An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.",
+      "dependencies": [
+        "react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/location-map.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "3d-folder",
+      "type": "registry:ui",
+      "title": "3D Folder",
+      "description": "A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.",
+      "dependencies": [
+        "react",
+        "@tabler/icons-react"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/3d-folder.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "live-waveform-demo",
       "type": "registry:example",
       "title": "Live Waveform Demo",
@@ -740,6 +772,36 @@
       "files": [
         {
           "path": "registry/example/shadcn-ui-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "location-map-demo",
+      "type": "registry:example",
+      "title": "Location Map Demo",
+      "description": "An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.",
+      "registryDependencies": [
+        "@gammaui/location-map"
+      ],
+      "files": [
+        {
+          "path": "registry/example/location-map-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "3d-folder-demo",
+      "type": "registry:example",
+      "title": "3D Folder Demo",
+      "description": "A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.",
+      "registryDependencies": [
+        "@gammaui/3d-folder"
+      ],
+      "files": [
+        {
+          "path": "registry/example/3d-folder-demo.tsx",
           "type": "registry:example"
         }
       ]

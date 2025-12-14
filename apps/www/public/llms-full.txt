@@ -1,3 +1,740 @@
+===== COMPONENT: 3d-folder =====
+Title: 3D Folder
+Description: A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.
+
+--- file: gammaui/3d-folder.tsx ---
+"use client"
+
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react"
+import type React from "react"
+import {
+  IconChevronLeft,
+  IconChevronRight,
+  IconExternalLink,
+  IconX,
+} from "@tabler/icons-react"
+
+import { cn } from "@/lib/utils"
+
+interface Project {
+  id: string
+  image: string
+  title: string
+}
+
+interface AnimatedFolderProps {
+  title: string
+  projects: Project[]
+  className?: string
+}
+
+export function AnimatedFolder({
+  title,
+  projects,
+  className,
+}: AnimatedFolderProps) {
+  const [isHovered, setIsHovered] = useState(false)
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const [sourceRect, setSourceRect] = useState<DOMRect | null>(null)
+  const [hiddenCardId, setHiddenCardId] = useState<string | null>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  const handleProjectClick = (project: Project, index: number) => {
+    const cardEl = cardRefs.current[index]
+    if (cardEl) {
+      setSourceRect(cardEl.getBoundingClientRect())
+    }
+    setSelectedIndex(index)
+    setHiddenCardId(project.id)
+  }
+
+  const handleCloseLightbox = () => {
+    setSelectedIndex(null)
+    setSourceRect(null)
+  }
+
+  const handleCloseComplete = () => {
+    setHiddenCardId(null)
+  }
+
+  const handleNavigate = (newIndex: number) => {
+    setSelectedIndex(newIndex)
+    setHiddenCardId(projects[newIndex]?.id || null)
+  }
+
+  return (
+    <>
+      <div
+        className={cn(
+          "relative flex flex-col items-center justify-center",
+          "cursor-pointer rounded-2xl p-8",
+          "bg-card border-border border",
+          "transition-all duration-500 ease-out",
+          "hover:shadow-accent/10 hover:shadow-2xl",
+          "hover:border-orange-400/30",
+          "group",
+          className
+        )}
+        style={{
+          minWidth: "280px",
+          minHeight: "320px",
+          perspective: "1000px",
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Subtle background glow on hover */}
+        <div
+          className="absolute inset-0 rounded-2xl transition-opacity duration-500"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 70%, var(--accent) 0%, transparent 70%)",
+            opacity: isHovered ? 0.08 : 0,
+          }}
+        />
+
+        <div
+          className="relative mb-4 flex items-center justify-center"
+          style={{ height: "160px", width: "200px" }}
+        >
+          {/* Folder back layer - z-index 10 */}
+          <div
+            className="absolute h-24 w-32 rounded-[10px] bg-[#E48C57] shadow-md"
+            style={{
+              transformOrigin: "bottom center",
+              transform: isHovered ? "rotateX(-15deg)" : "rotateX(0deg)",
+              transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+              zIndex: 10,
+            }}
+          />
+
+          {/* Folder tab - z-index 10 */}
+          <div
+            className="absolute h-4 w-12 rounded-t-[10px] bg-[#B36B51]"
+            style={{
+              top: "calc(50% - 48px - 12px)",
+              left: "calc(50% - 64px + 16px)",
+              transformOrigin: "bottom center",
+              transform: isHovered
+                ? "rotateX(-25deg) translateY(-2px)"
+                : "rotateX(0deg)",
+              transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+              zIndex: 10,
+            }}
+          />
+
+          {/* Project cards - z-index 20, between back and front */}
+          <div
+            className="absolute"
+            style={{
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 20,
+            }}
+          >
+            {projects.slice(0, 3).map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                ref={(el) => {
+                  cardRefs.current[index] = el
+                }}
+                image={project.image}
+                title={project.title}
+                delay={index * 80}
+                isVisible={isHovered}
+                index={index}
+                onClick={() => handleProjectClick(project, index)}
+                isSelected={hiddenCardId === project.id}
+              />
+            ))}
+          </div>
+
+          {/* Folder front layer - z-index 30 */}
+          <div
+            className="absolute h-24 w-32 rounded-[10px] bg-[#E48C57] shadow-lg"
+            style={{
+              top: "calc(50% - 48px + 4px)",
+              transformOrigin: "bottom center",
+              transform: isHovered
+                ? "rotateX(25deg) translateY(8px)"
+                : "rotateX(0deg)",
+              transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+              zIndex: 30,
+            }}
+          />
+
+          {/* Folder shine effect - z-index 31 */}
+          <div
+            className="pointer-events-none absolute h-24 w-32 overflow-hidden rounded-lg"
+            style={{
+              top: "calc(50% - 48px + 4px)",
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%)",
+              transformOrigin: "bottom center",
+              transform: isHovered
+                ? "rotateX(25deg) translateY(8px)"
+                : "rotateX(0deg)",
+              transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+              zIndex: 31,
+            }}
+          />
+        </div>
+
+        {/* Folder title */}
+        <h3
+          className="text-foreground mt-4 text-lg font-semibold transition-all duration-300"
+          style={{
+            transform: isHovered ? "translateY(4px)" : "translateY(0)",
+          }}
+        >
+          {title}
+        </h3>
+
+        {/* Project count */}
+        <p
+          className="text-muted-foreground text-sm transition-all duration-300"
+          style={{
+            opacity: isHovered ? 0.7 : 1,
+          }}
+        >
+          {projects.length} projects
+        </p>
+
+        {/* Hover hint */}
+        <div
+          className="text-muted-foreground absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1.5 text-xs transition-all duration-300"
+          style={{
+            opacity: isHovered ? 0 : 0.6,
+            transform: isHovered ? "translateY(10px)" : "translateY(0)",
+          }}
+        >
+          <span>Hover to explore</span>
+        </div>
+      </div>
+
+      <ImageLightbox
+        projects={projects.slice(0, 3)}
+        currentIndex={selectedIndex ?? 0}
+        isOpen={selectedIndex !== null}
+        onClose={handleCloseLightbox}
+        sourceRect={sourceRect}
+        onCloseComplete={handleCloseComplete}
+        onNavigate={handleNavigate}
+      />
+    </>
+  )
+}
+
+interface Project {
+  id: string
+  image: string
+  title: string
+}
+
+interface ImageLightboxProps {
+  projects: Project[]
+  currentIndex: number
+  isOpen: boolean
+  onClose: () => void
+  sourceRect: DOMRect | null
+  onCloseComplete?: () => void
+  onNavigate: (index: number) => void
+}
+
+export function ImageLightbox({
+  projects,
+  currentIndex,
+  isOpen,
+  onClose,
+  sourceRect,
+  onCloseComplete,
+  onNavigate,
+}: ImageLightboxProps) {
+  const [animationPhase, setAnimationPhase] = useState<
+    "initial" | "animating" | "complete"
+  >("initial")
+  const [isClosing, setIsClosing] = useState(false)
+  const [shouldRender, setShouldRender] = useState(false)
+  const [internalIndex, setInternalIndex] = useState(currentIndex)
+  const [prevIndex, setPrevIndex] = useState(currentIndex)
+  const [isSliding, setIsSliding] = useState(false)
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">(
+    "right"
+  )
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const totalProjects = projects.length
+  const hasNext = internalIndex < totalProjects - 1
+  const hasPrev = internalIndex > 0
+
+  const currentProject = projects[internalIndex]
+
+  useEffect(() => {
+    if (isOpen && currentIndex !== internalIndex && !isSliding) {
+      const direction = currentIndex > internalIndex ? "left" : "right"
+      setSlideDirection(direction)
+      setPrevIndex(internalIndex)
+      setIsSliding(true)
+
+      const timer = setTimeout(() => {
+        setInternalIndex(currentIndex)
+        setIsSliding(false)
+      }, 400)
+
+      return () => clearTimeout(timer)
+    }
+  }, [currentIndex, isOpen])
+
+  useEffect(() => {
+    if (isOpen) {
+      setInternalIndex(currentIndex)
+      setPrevIndex(currentIndex)
+      setIsSliding(false)
+    }
+  }, [isOpen])
+
+  const navigateNext = useCallback(() => {
+    if (internalIndex >= totalProjects - 1 || isSliding) return
+    onNavigate(internalIndex + 1)
+  }, [internalIndex, totalProjects, isSliding, onNavigate])
+
+  const navigatePrev = useCallback(() => {
+    if (internalIndex <= 0 || isSliding) return
+    onNavigate(internalIndex - 1)
+  }, [internalIndex, isSliding, onNavigate])
+
+  const handleClose = useCallback(() => {
+    setIsClosing(true)
+    onClose()
+    setTimeout(() => {
+      setIsClosing(false)
+      setShouldRender(false)
+      setAnimationPhase("initial")
+      onCloseComplete?.()
+    }, 400)
+  }, [onClose, onCloseComplete])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isOpen) return
+      if (e.key === "Escape") handleClose()
+      if (e.key === "ArrowRight") navigateNext()
+      if (e.key === "ArrowLeft") navigatePrev()
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+      document.body.style.overflow = ""
+    }
+  }, [isOpen, handleClose, navigateNext, navigatePrev])
+
+  useLayoutEffect(() => {
+    if (isOpen && sourceRect) {
+      setShouldRender(true)
+      setAnimationPhase("initial")
+      setIsClosing(false)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setAnimationPhase("animating")
+        })
+      })
+      const timer = setTimeout(() => {
+        setAnimationPhase("complete")
+      }, 500)
+      return () => clearTimeout(timer)
+    }
+  }, [isOpen, sourceRect])
+
+  const handleDotClick = (idx: number) => {
+    if (isSliding || idx === internalIndex) return
+    onNavigate(idx)
+  }
+
+  if (!shouldRender || !currentProject) return null
+
+  const getInitialStyles = (): React.CSSProperties => {
+    if (!sourceRect) return {}
+
+    const viewportWidth = window.innerWidth
+    const viewportHeight = window.innerHeight
+    const targetWidth = Math.min(768, viewportWidth - 64)
+    const targetHeight = Math.min(viewportHeight * 0.85, 600)
+
+    const targetX = (viewportWidth - targetWidth) / 2
+    const targetY = (viewportHeight - targetHeight) / 2
+
+    const scaleX = sourceRect.width / targetWidth
+    const scaleY = sourceRect.height / targetHeight
+    const scale = Math.max(scaleX, scaleY)
+
+    const translateX =
+      sourceRect.left + sourceRect.width / 2 - (targetX + targetWidth / 2)
+    const translateY =
+      sourceRect.top + sourceRect.height / 2 - (targetY + targetHeight / 2)
+
+    return {
+      transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
+      opacity: 1,
+    }
+  }
+
+  const getFinalStyles = (): React.CSSProperties => {
+    return {
+      transform: "translate(0, 0) scale(1)",
+      opacity: 1,
+    }
+  }
+
+  const currentStyles =
+    animationPhase === "initial" && !isClosing
+      ? getInitialStyles()
+      : getFinalStyles()
+
+  return (
+    <div
+      className={cn(
+        "fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+      )}
+      onClick={handleClose}
+      style={{
+        opacity: isClosing ? 0 : 1,
+        transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+      }}
+    >
+      <div
+        className="bg-background/80 absolute inset-0 backdrop-blur-xl"
+        style={{
+          opacity: animationPhase === "initial" && !isClosing ? 0 : 1,
+          transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      />
+
+      {/* Close button */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation()
+          handleClose()
+        }}
+        className={cn(
+          "absolute top-5 right-5 z-50",
+          "flex h-10 w-10 items-center justify-center",
+          "bg-muted/50 rounded-full backdrop-blur-md",
+          "border-border border",
+          "text-muted-foreground hover:text-foreground hover:bg-muted",
+          "transition-all duration-300 ease-out hover:scale-105 active:scale-95"
+        )}
+        style={{
+          opacity: animationPhase === "complete" && !isClosing ? 1 : 0,
+          transform:
+            animationPhase === "complete" && !isClosing
+              ? "translateY(0)"
+              : "translateY(-10px)",
+          transition: "opacity 300ms ease-out, transform 300ms ease-out",
+        }}
+      >
+        <IconX className="h-4 w-4" strokeWidth={2.5} />
+      </button>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation()
+          navigatePrev()
+        }}
+        disabled={!hasPrev || isSliding}
+        className={cn(
+          "absolute left-4 z-50 md:left-8",
+          "flex h-12 w-12 items-center justify-center",
+          "bg-muted/50 rounded-full backdrop-blur-md",
+          "border-border border",
+          "text-muted-foreground hover:text-foreground hover:bg-muted",
+          "transition-all duration-300 ease-out hover:scale-110 active:scale-95",
+          "disabled:pointer-events-none disabled:opacity-0"
+        )}
+        style={{
+          opacity:
+            animationPhase === "complete" && !isClosing && hasPrev ? 1 : 0,
+          transform:
+            animationPhase === "complete" && !isClosing
+              ? "translateX(0)"
+              : "translateX(-20px)",
+          transition:
+            "opacity 300ms ease-out 150ms, transform 300ms ease-out 150ms",
+        }}
+      >
+        <IconChevronLeft className="h-5 w-5" strokeWidth={2.5} />
+      </button>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation()
+          navigateNext()
+        }}
+        disabled={!hasNext || isSliding}
+        className={cn(
+          "absolute right-4 z-50 md:right-8",
+          "flex h-12 w-12 items-center justify-center",
+          "bg-muted/50 rounded-full backdrop-blur-md",
+          "border-border border",
+          "text-muted-foreground hover:text-foreground hover:bg-muted",
+          "transition-all duration-300 ease-out hover:scale-110 active:scale-95",
+          "disabled:pointer-events-none disabled:opacity-0"
+        )}
+        style={{
+          opacity:
+            animationPhase === "complete" && !isClosing && hasNext ? 1 : 0,
+          transform:
+            animationPhase === "complete" && !isClosing
+              ? "translateX(0)"
+              : "translateX(20px)",
+          transition:
+            "opacity 300ms ease-out 150ms, transform 300ms ease-out 150ms",
+        }}
+      >
+        <IconChevronRight className="h-5 w-5" strokeWidth={2.5} />
+      </button>
+
+      <div
+        ref={containerRef}
+        className="relative z-10 w-full max-w-3xl"
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          ...currentStyles,
+          transform: isClosing
+            ? "translate(0, 0) scale(0.95)"
+            : currentStyles.transform,
+          transition:
+            animationPhase === "initial" && !isClosing
+              ? "none"
+              : "transform 400ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease-out",
+          transformOrigin: "center center",
+        }}
+      >
+        <div
+          className={cn(
+            "relative overflow-hidden",
+            "rounded-2xl",
+            "bg-card",
+            "ring-border ring-1",
+            "shadow-2xl"
+          )}
+          style={{
+            borderRadius:
+              animationPhase === "initial" && !isClosing ? "8px" : "16px",
+            transition: "border-radius 500ms cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
+          <div className="relative overflow-hidden">
+            <div
+              className="flex transition-transform duration-400 ease-out"
+              style={{
+                transform: `translateX(-${internalIndex * 100}%)`,
+                transition: isSliding
+                  ? "transform 400ms cubic-bezier(0.32, 0.72, 0, 1)"
+                  : "none",
+              }}
+            >
+              {projects.map((project, idx) => (
+                <img
+                  key={project.id}
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  className="bg-background h-auto max-h-[70vh] w-full shrink-0 object-contain"
+                  style={{ minWidth: "100%" }}
+                />
+              ))}
+            </div>
+
+            {/* Subtle vignette effect */}
+            <div className="from-card/20 to-card/10 pointer-events-none absolute inset-0 bg-linear-to-t via-transparent" />
+          </div>
+
+          <div
+            className={cn("px-6 py-5", "bg-card", "border-border border-t")}
+            style={{
+              opacity: animationPhase === "complete" && !isClosing ? 1 : 0,
+              transform:
+                animationPhase === "complete" && !isClosing
+                  ? "translateY(0)"
+                  : "translateY(20px)",
+              transition:
+                "opacity 300ms ease-out 100ms, transform 300ms ease-out 100ms",
+            }}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0 flex-1">
+                <h3 className="text-foreground h-7 truncate text-lg font-medium tracking-tight">
+                  {currentProject?.title}
+                </h3>
+                <div className="mt-1 flex items-center gap-3">
+                  <p className="text-muted-foreground text-sm">
+                    <kbd className="bg-muted text-muted-foreground border-border mx-0.5 rounded border px-1.5 py-0.5 text-xs font-medium">
+                      ←
+                    </kbd>
+                    <kbd className="bg-muted text-muted-foreground border-border mx-0.5 rounded border px-1.5 py-0.5 text-xs font-medium">
+                      →
+                    </kbd>{" "}
+                    to navigate
+                  </p>
+                  <div className="flex items-center gap-1.5">
+                    {projects.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleDotClick(idx)}
+                        className={cn(
+                          "h-2 w-2 rounded-full transition-all duration-300",
+                          idx === internalIndex
+                            ? "bg-foreground scale-110"
+                            : "bg-muted-foreground/40 hover:bg-muted-foreground/60"
+                        )}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <button
+                className={cn(
+                  "flex items-center gap-2 px-4 py-2",
+                  "text-muted-foreground text-sm font-medium",
+                  "bg-muted/50 hover:bg-muted",
+                  "border-border rounded-lg border",
+                  "transition-all duration-200 ease-out",
+                  "hover:text-foreground"
+                )}
+              >
+                <span>View</span>
+                <IconExternalLink className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+interface ProjectCardProps {
+  image: string
+  title: string
+  delay: number
+  isVisible: boolean
+  index: number
+  onClick: () => void
+  isSelected: boolean
+}
+
+export const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
+  ({ image, title, delay, isVisible, index, onClick, isSelected }, ref) => {
+    const rotations = [-12, 0, 12]
+    const translations = [-55, 0, 55]
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "absolute h-28 w-20 overflow-hidden rounded-[8px] shadow-xl",
+          "bg-card border-border border",
+          "cursor-pointer hover:ring-2 hover:ring-orange-400/50",
+          isSelected && "opacity-0"
+        )}
+        style={{
+          transform: isVisible
+            ? `translateY(-90px) translateX(${translations[index]}px) rotate(${rotations[index]}deg) scale(1)`
+            : "translateY(0px) translateX(0px) rotate(0deg) scale(0.5)",
+          opacity: isSelected ? 0 : isVisible ? 1 : 0,
+          transition: `all 600ms cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}ms`,
+          zIndex: 10 - index,
+          left: "-40px",
+          top: "-56px",
+        }}
+        onClick={(e) => {
+          e.stopPropagation()
+          onClick()
+        }}
+      >
+        <img
+          src={image || "/placeholder.svg"}
+          alt={title}
+          className="h-full w-full object-cover"
+        />
+        <div className="from-foreground/60 absolute inset-0 bg-linear-to-t to-transparent" />
+        <p className="text-primary-foreground absolute right-1.5 bottom-1.5 left-1.5 truncate text-[10px] font-medium">
+          {title}
+        </p>
+      </div>
+    )
+  }
+)
+
+ProjectCard.displayName = "ProjectCard"
+
+
+===== EXAMPLE: 3d-folder-demo =====
+Title: 3D Folder Demo
+
+--- file: example/3d-folder-demo.tsx ---
+import { AnimatedFolder } from "@/registry/gammaui/3d-folder"
+
+const portfolioData = [
+  {
+    title: "Branding",
+    projects: [
+      {
+        id: "1",
+        image:
+          "https://plus.unsplash.com/premium_photo-1723489242223-865b4a8cf7b8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D$0",
+        title: "Lumnia",
+      },
+      {
+        id: "2",
+        image:
+          "https://i.pinimg.com/1200x/99/ca/5c/99ca5cf82cf12df8801f7b2bef38d325.jpg",
+        title: "Prism",
+      },
+      {
+        id: "3",
+        image:
+          "https://i.pinimg.com/736x/7c/15/39/7c1539cf7ff0207cb49ce0d338de1e5f.jpg",
+        title: "Vertex",
+      },
+    ],
+  },
+]
+
+export default function AnimatedFolderDemo() {
+  return (
+    <main className="bg-background flex w-full items-center justify-center">
+      {/* Main content */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <div className="flex w-full items-center justify-center">
+          {portfolioData.map((folder) => (
+            <AnimatedFolder
+              key={folder.title}
+              title={folder.title}
+              projects={folder.projects}
+            />
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+
+
 ===== COMPONENT: activity-dropdown =====
 Title: Activity Dropdown
 Description: A modern activity/notification dropdown with smooth animations and responsive motion.
@@ -1908,6 +2645,428 @@ export default function LiveWaveformDemo() {
         </div>
       </div>
     </div>
+  )
+}
+
+
+
+===== COMPONENT: location-map =====
+Title: Location Map
+Description: An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.
+
+--- file: gammaui/location-map.tsx ---
+"use client"
+
+import type React from "react"
+import { useRef, useState } from "react"
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "motion/react"
+
+interface LocationMapProps {
+  location?: string
+  coordinates?: string
+  className?: string
+}
+
+export function LocationMap({
+  location = "San Francisco, CA",
+  coordinates = "37.7749° N, 122.4194° W",
+  className,
+}: LocationMapProps) {
+  const [isHovered, setIsHovered] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  const rotateX = useTransform(mouseY, [-50, 50], [8, -8])
+  const rotateY = useTransform(mouseX, [-50, 50], [-8, 8])
+
+  const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 30 })
+  const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 30 })
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    mouseX.set(e.clientX - centerX)
+    mouseY.set(e.clientY - centerY)
+  }
+
+  const handleMouseLeave = () => {
+    mouseX.set(0)
+    mouseY.set(0)
+    setIsHovered(false)
+  }
+
+  const handleClick = () => {
+    setIsExpanded(!isExpanded)
+  }
+
+  return (
+    <motion.div
+      ref={containerRef}
+      className={`relative cursor-pointer select-none ${className}`}
+      style={{
+        perspective: 1000,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+    >
+      <motion.div
+        className="bg-background border-border relative overflow-hidden rounded-2xl border"
+        style={{
+          rotateX: springRotateX,
+          rotateY: springRotateY,
+          transformStyle: "preserve-3d",
+        }}
+        animate={{
+          width: isExpanded ? 360 : 240,
+          height: isExpanded ? 280 : 140,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 35,
+        }}
+      >
+        {/* Subtle gradient overlay */}
+        <div className="from-muted/20 to-muted/40 absolute inset-0 bg-linear-to-br via-transparent" />
+
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              className="pointer-events-none absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+            >
+              <div className="bg-muted absolute inset-0 rounded-2xl" />
+
+              <svg
+                className="absolute inset-0 h-full w-full"
+                preserveAspectRatio="none"
+              >
+                {/* Main roads - using foreground with opacity */}
+                <motion.line
+                  x1="0%"
+                  y1="35%"
+                  x2="100%"
+                  y2="35%"
+                  className="stroke-foreground/25"
+                  strokeWidth="4"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+                <motion.line
+                  x1="0%"
+                  y1="65%"
+                  x2="100%"
+                  y2="65%"
+                  className="stroke-foreground/25"
+                  strokeWidth="4"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                />
+
+                {/* Vertical main roads */}
+                <motion.line
+                  x1="30%"
+                  y1="0%"
+                  x2="30%"
+                  y2="100%"
+                  className="stroke-foreground/20"
+                  strokeWidth="3"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                />
+                <motion.line
+                  x1="70%"
+                  y1="0%"
+                  x2="70%"
+                  y2="100%"
+                  className="stroke-foreground/20"
+                  strokeWidth="3"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                />
+
+                {/* Secondary streets */}
+                {[20, 50, 80].map((y, i) => (
+                  <motion.line
+                    key={`h-${i}`}
+                    x1="0%"
+                    y1={`${y}%`}
+                    x2="100%"
+                    y2={`${y}%`}
+                    className="stroke-foreground/10"
+                    strokeWidth="1.5"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+                  />
+                ))}
+                {[15, 45, 55, 85].map((x, i) => (
+                  <motion.line
+                    key={`v-${i}`}
+                    x1={`${x}%`}
+                    y1="0%"
+                    x2={`${x}%`}
+                    y2="100%"
+                    className="stroke-foreground/10"
+                    strokeWidth="1.5"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
+                  />
+                ))}
+              </svg>
+
+              {/* Buildings - using muted-foreground */}
+              <motion.div
+                className="bg-muted-foreground/30 border-muted-foreground/20 absolute top-[40%] left-[10%] h-[20%] w-[15%] rounded-sm border"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+              />
+              <motion.div
+                className="bg-muted-foreground/25 border-muted-foreground/15 absolute top-[15%] left-[35%] h-[15%] w-[12%] rounded-sm border"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+              />
+              <motion.div
+                className="bg-muted-foreground/28 border-muted-foreground/18 absolute top-[70%] left-[75%] h-[18%] w-[18%] rounded-sm border"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.7 }}
+              />
+              <motion.div
+                className="bg-muted-foreground/22 border-muted-foreground/15 absolute top-[20%] right-[10%] h-[25%] w-[10%] rounded-sm border"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.55 }}
+              />
+              <motion.div
+                className="bg-muted-foreground/20 border-muted-foreground/12 absolute top-[55%] left-[5%] h-[12%] w-[8%] rounded-sm border"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.65 }}
+              />
+              <motion.div
+                className="bg-muted-foreground/22 border-muted-foreground/15 absolute top-[8%] left-[75%] h-[10%] w-[14%] rounded-sm border"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.75 }}
+              />
+
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                initial={{ scale: 0, y: -20 }}
+                animate={{ scale: 1, y: 0 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 20,
+                  delay: 0.3,
+                }}
+              >
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="drop-shadow-lg"
+                  style={{
+                    filter: "drop-shadow(0 0 10px rgba(52, 211, 153, 0.5))",
+                  }}
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                    fill="#34D399"
+                  />
+                  <circle cx="12" cy="9" r="2.5" className="fill-background" />
+                </svg>
+              </motion.div>
+
+              <div className="from-background absolute inset-0 bg-linear-to-t via-transparent to-transparent opacity-60" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Grid pattern - only show when collapsed */}
+        <motion.div
+          className="absolute inset-0 opacity-[0.03]"
+          animate={{ opacity: isExpanded ? 0 : 0.03 }}
+          transition={{ duration: 0.3 }}
+        >
+          <svg width="100%" height="100%" className="absolute inset-0">
+            <defs>
+              <pattern
+                id="grid"
+                width="20"
+                height="20"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 20 0 L 0 0 0 20"
+                  fill="none"
+                  className="stroke-foreground"
+                  strokeWidth="0.5"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </motion.div>
+
+        {/* Content */}
+        <div className="relative z-10 flex h-full flex-col justify-between p-5">
+          {/* Top section */}
+          <div className="flex items-start justify-between">
+            <div className="relative">
+              <motion.div
+                className="relative"
+                animate={{
+                  opacity: isExpanded ? 0 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Map Icon SVG */}
+                <motion.svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-emerald-400"
+                  animate={{
+                    filter: isHovered
+                      ? "drop-shadow(0 0 8px rgba(52, 211, 153, 0.6))"
+                      : "drop-shadow(0 0 4px rgba(52, 211, 153, 0.3))",
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                  <line x1="9" x2="9" y1="3" y2="18" />
+                  <line x1="15" x2="15" y1="6" y2="21" />
+                </motion.svg>
+              </motion.div>
+            </div>
+
+            {/* Status indicator */}
+            <motion.div
+              className="bg-foreground/5 flex items-center gap-1.5 rounded-full px-2 py-1 backdrop-blur-sm"
+              animate={{
+                scale: isHovered ? 1.05 : 1,
+                backgroundColor: isHovered
+                  ? "hsl(var(--foreground) / 0.08)"
+                  : "hsl(var(--foreground) / 0.05)",
+              }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <span className="text-muted-foreground text-[10px] font-medium tracking-wide uppercase">
+                Live
+              </span>
+            </motion.div>
+          </div>
+
+          {/* Bottom section */}
+          <div className="space-y-1">
+            <motion.h3
+              className="text-foreground text-sm font-medium tracking-tight"
+              animate={{
+                x: isHovered ? 4 : 0,
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+              {location}
+            </motion.h3>
+
+            <AnimatePresence>
+              {isExpanded && (
+                <motion.p
+                  className="text-muted-foreground font-mono text-xs"
+                  initial={{ opacity: 0, y: -10, height: 0 }}
+                  animate={{ opacity: 1, y: 0, height: "auto" }}
+                  exit={{ opacity: 0, y: -10, height: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  {coordinates}
+                </motion.p>
+              )}
+            </AnimatePresence>
+
+            {/* Animated underline */}
+            <motion.div
+              className="h-px bg-linear-to-r from-emerald-500/50 via-emerald-400/30 to-transparent"
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={{
+                scaleX: isHovered || isExpanded ? 1 : 0.3,
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Click hint */}
+      <motion.p
+        className="text-muted-foreground absolute -bottom-6 left-1/2 text-[10px] whitespace-nowrap"
+        style={{ x: "-50%" }}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: isHovered && !isExpanded ? 1 : 0,
+          y: isHovered ? 0 : 4,
+        }}
+        transition={{ duration: 0.2 }}
+      >
+        Click to expand
+      </motion.p>
+    </motion.div>
+  )
+}
+
+
+===== EXAMPLE: location-map-demo =====
+Title: Location Map Demo
+
+--- file: example/location-map-demo.tsx ---
+import { LocationMap } from "@/registry/gammaui/location-map"
+
+export default function LocationMapDemo() {
+  return (
+    <main className="flex w-full items-center justify-center">
+      <div className="relative z-10 flex flex-col items-center gap-8">
+        {/* Optional subtle label */}
+        <p className="text-xs font-medium tracking-[0.2em] text-neutral-600 uppercase">
+          Current Location
+        </p>
+
+        <LocationMap
+          location="Berlin, Germany"
+          coordinates="52.5200° N, 13.4050° E"
+        />
+      </div>
+    </main>
   )
 }
 
@@ -4922,7 +6081,7 @@ export default function RadialIntro({
           >
             <motion.img
               data-arm-image
-              className="translate absolute top-1/2 left-1/2 aspect-square -translate-x-1/2 rounded-full object-fill"
+              className="translate absolute top-1/2 left-1/2 aspect-square -translate-x-1/2 rounded-full bg-black object-fill object-center"
               style={{
                 width: imageSize,
                 height: imageSize,
@@ -4950,8 +6109,8 @@ import RadialIntro from "@/registry/gammaui/radial-intro"
 const ITEMS = [
   {
     id: 1,
-    name: "Framer University",
-    src: "https://pbs.twimg.com/profile_images/1602734731728142336/9Bppcs67_400x400.jpg",
+    name: "Gamma UI",
+    src: "/gamma-ui-dark.svg",
   },
   {
     id: 2,

@@ -337,4 +337,32 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "location-map",
+    type: "registry:ui",
+    title: "Location Map",
+    description:
+      "An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.",
+    dependencies: ["react", "motion"],
+    files: [
+      {
+        path: "gammaui/location-map.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "3d-folder",
+    type: "registry:ui",
+    title: "3D Folder",
+    description:
+      "A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.",
+    dependencies: ["react", "@tabler/icons-react"],
+    files: [
+      {
+        path: "gammaui/3d-folder.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

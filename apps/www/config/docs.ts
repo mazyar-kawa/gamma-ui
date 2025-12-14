@@ -61,6 +61,18 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Location Map",
+          href: `/docs/components/location-map`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "3D Folder",
+          href: `/docs/components/3d-folder`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Live Waveform",
           href: `/docs/components/live-waveform`,
           items: [],

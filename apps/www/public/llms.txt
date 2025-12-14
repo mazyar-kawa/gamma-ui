@@ -6,6 +6,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Components
 
+- [3D Folder](https://gamma-ui-delta.vercel.app/docs/components/3d-folder): A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.
 - [Activity Dropdown](https://gamma-ui-delta.vercel.app/docs/components/activity-dropdown): A modern activity/notification dropdown with smooth animations and responsive motion.
 - [Animated List](https://gamma-ui-delta.vercel.app/docs/components/animated-list): A dynamic list component with smooth animations that forms a column and scrolls through items continuously.
 - [Badge](https://gamma-ui-delta.vercel.app/docs/components/badge): A flexible and customizable Badge component for labels, statuses, and indicators.
@@ -13,6 +14,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [CPU Architecture](https://gamma-ui-delta.vercel.app/docs/components/cpu-architecture): A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.
 - [Inverted Cursor](https://gamma-ui-delta.vercel.app/docs/components/inverted-cursor): A smooth, animated custom cursor component with blend mode effects.
 - [Live Waveform](https://gamma-ui-delta.vercel.app/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
+- [Location Map](https://gamma-ui-delta.vercel.app/docs/components/location-map): An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.
 - [Logo Cloud](https://gamma-ui-delta.vercel.app/docs/components/logo-cloud): A responsive logo grid component supporting dark mode, decorations, and flexible layout.
 - [Logo Timeline](https://gamma-ui-delta.vercel.app/docs/components/logo-loop): A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.
 - [Logo Timeline](https://gamma-ui-delta.vercel.app/docs/components/logo-timeline): A multi-row infinitely scrolling logo timeline built with Motion One, supporting hover-activated animations and row grouping.
@@ -56,6 +58,8 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Macbook Keyboard Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/macbook-keyboard-demo.tsx): Example usage
 - [CPU Architecture Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/cpu-architecture-demo.tsx): Example usage
 - [Shadcn UI Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/shadcn-ui-demo.tsx): Example usage
+- [Location Map Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/location-map-demo.tsx): Example usage
+- [3D Folder Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/3d-folder-demo.tsx): Example usage
 
 ## Optional
 
