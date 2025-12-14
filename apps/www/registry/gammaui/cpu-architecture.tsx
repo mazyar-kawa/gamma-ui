@@ -14,7 +14,7 @@ export interface CpuArchitectureSvgProps {
   animateMarkers?: boolean
 }
 
-const CpuArchitecture = ({
+export default function CpuArchitecture({
   className,
   width = "100%",
   height = "100%",
@@ -24,7 +24,7 @@ const CpuArchitecture = ({
   lineMarkerSize = 18,
   animateLines = true,
   animateMarkers = true,
-}: CpuArchitectureSvgProps) => {
+}: CpuArchitectureSvgProps) {
   return (
     <svg
       className={cn("text-muted", className)}
@@ -421,5 +421,3 @@ const CpuArchitecture = ({
     </svg>
   )
 }
-
-export { CpuArchitecture }

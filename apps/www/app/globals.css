@@ -317,38 +317,49 @@
   }
 }
 
-.database {
-  offset-anchor: 10px 0px;
-  animation: database-animation-path;
-  animation-iteration-count: infinite;
-  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  animation-duration: 4s;
-  animation-delay: 1s;
-}
-
-.db-light-1 {
-  offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
-}
-
-.db-light-2 {
-  offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
-}
-
-.db-light-3 {
-  offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
-}
-
-.db-light-4 {
-  offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
-}
-
-@keyframes database-animation-path {
+@keyframes flow-particle {
   0% {
     offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
   }
   100% {
     offset-distance: 100%;
+    opacity: 0;
   }
+}
+
+.flow-particle-1 {
+  offset-path: path(
+    "M 25 15 L 25 35 Q 25 40 30 40 L 90 40 Q 95 40 95 45 L 95 48"
+  );
+  animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-2 {
+  offset-path: path(
+    "M 175 15 L 175 35 Q 175 40 170 40 L 110 40 Q 105 40 105 45 L 105 48"
+  );
+  animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-3 {
+  offset-path: path(
+    "M 95 62 L 95 65 Q 95 70 90 70 L 30 70 Q 25 70 25 75 L 25 85"
+  );
+  animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-4 {
+  offset-path: path(
+    "M 105 62 L 105 65 Q 105 70 110 70 L 170 70 Q 175 70 175 75 L 175 85"
+  );
+  animation: flow-particle 2s ease-in-out infinite;
 }
 
 .glowing-key {
@@ -446,8 +457,6 @@
     offset-distance: 100%;
   }
 }
-
-
 
 .shadcn {
   offset-anchor: 10px 0px;

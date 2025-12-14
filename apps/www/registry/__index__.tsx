@@ -338,19 +338,19 @@ export const Index: Record<string, any> = {
     }),
     meta: {},
   },
-  "rest-api": {
-    name: "rest-api",
-    description: "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
+  "cloud-flow": {
+    name: "cloud-flow",
+    description: "An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.",
     type: "registry:ui",
     registryDependencies: [],
     files: [{
-      path: "registry/gammaui/rest-api.tsx",
+      path: "registry/gammaui/cloud-flow.tsx",
       type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/gammaui/rest-api.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "rest-api"
+      const mod = await import("@/registry/gammaui/cloud-flow.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "cloud-flow"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},
@@ -780,19 +780,19 @@ export const Index: Record<string, any> = {
     }),
     meta: {},
   },
-  "rest-api-demo": {
-    name: "rest-api-demo",
-    description: "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
+  "cloud-flow-demo": {
+    name: "cloud-flow-demo",
+    description: "An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.",
     type: "registry:example",
-    registryDependencies: ["@gammaui/rest-api"],
+    registryDependencies: ["@gammaui/cloud-flow"],
     files: [{
-      path: "registry/example/rest-api-demo.tsx",
+      path: "registry/example/cloud-flow-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/rest-api-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "rest-api-demo"
+      const mod = await import("@/registry/example/cloud-flow-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "cloud-flow-demo"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},

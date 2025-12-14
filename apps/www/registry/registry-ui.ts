@@ -280,15 +280,15 @@ export const ui: Registry["items"] = [
   },
 
   {
-    name: "rest-api",
+    name: "cloud-flow",
     type: "registry:ui",
-    title: "Rest API",
+    title: "Cloud Flow",
     description:
-      "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
+      "An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.",
     dependencies: ["react", "@tabler/icons-react", "motion"],
     files: [
       {
-        path: "gammaui/rest-api.tsx",
+        path: "gammaui/cloud-flow.tsx",
         type: "registry:ui",
       },
     ],

@@ -295,15 +295,15 @@ export const examples: Registry["items"] = [
   },
 
   {
-    name: "rest-api-demo",
+    name: "cloud-flow-demo",
     type: "registry:example",
-    title: "Rest API Demo",
+    title: "Cloud Flow Demo",
     description:
-      "A beautifully animated REST API visualization component with SVG paths, glowing lights, badges, and interactive motion effects.",
-    registryDependencies: ["@gammaui/rest-api"],
+      "An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.",
+    registryDependencies: ["@gammaui/cloud-flow"],
     files: [
       {
-        path: "example/rest-api-demo.tsx",
+        path: "example/cloud-flow-demo.tsx",
         type: "registry:example",
       },
     ],

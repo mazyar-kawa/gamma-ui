@@ -1,0 +1,220 @@
+---
+title: Cloud Flow
+date: 2025-12-02
+description: An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.
+author: mazyar
+published: true
+---
+
+import { CSSCodeBlock } from "@/components/css-code-block"
+
+<ComponentPreview name="cloud-flow-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/cloud-flow
+```
+
+<CSSCodeBlock
+  fileName="global.css"
+code={`
+@keyframes flow-particle {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+.flow-particle-1 {
+offset-path: path(
+"M 25 15 L 25 35 Q 25 40 30 40 L 90 40 Q 95 40 95 45 L 95 48"
+);
+animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-2 {
+offset-path: path(
+"M 175 15 L 175 35 Q 175 40 170 40 L 110 40 Q 105 40 105 45 L 105 48"
+);
+animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-3 {
+offset-path: path(
+"M 95 62 L 95 65 Q 95 70 90 70 L 30 70 Q 25 70 25 75 L 25 85"
+);
+animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-4 {
+offset-path: path(
+"M 105 62 L 105 65 Q 105 70 110 70 L 170 70 Q 175 70 175 75 L 175 85"
+);
+animation: flow-particle 2s ease-in-out infinite;
+}
+`}
+
+copyCode={true}
+/>
+
+  </TabsContent>
+
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="cloud-flow" title="components/gammaui/cloud-flow.tsx" />
+
+<Step>Add the following CSS to your global CSS file (e.g., `app/globals.css` or `styles/globals.css`).</Step>
+<CSSCodeBlock
+  fileName="global.css"
+code={`
+@keyframes flow-particle {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+.flow-particle-1 {
+offset-path: path(
+"M 25 15 L 25 35 Q 25 40 30 40 L 90 40 Q 95 40 95 45 L 95 48"
+);
+animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-2 {
+offset-path: path(
+"M 175 15 L 175 35 Q 175 40 170 40 L 110 40 Q 105 40 105 45 L 105 48"
+);
+animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-3 {
+offset-path: path(
+"M 95 62 L 95 65 Q 95 70 90 70 L 30 70 Q 25 70 25 75 L 25 85"
+);
+animation: flow-particle 2s ease-in-out infinite;
+}
+
+.flow-particle-4 {
+offset-path: path(
+"M 105 62 L 105 65 Q 105 70 110 70 L 170 70 Q 175 70 175 75 L 175 85"
+);
+animation: flow-particle 2s ease-in-out infinite;
+}
+`}
+
+copyCode={true}
+/>
+
+  <Step>Update the import paths to match your project structure.</Step>
+</Steps>
+
+</TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import CloudFlow from "@/components/gammaui/cloud-flow"
+
+export default function Demo() {
+  return <CloudFlow />
+}
+```
+
+---
+
+## Basic Example
+
+```tsx showLineNumbers
+<CloudFlow />
+```
+
+---
+
+## Custom Badges & Title
+
+```tsx showLineNumbers
+<CloudFlow
+  centerText="CORE"
+  title="Distributed Cloud Architecture"
+  nodeLabels={{
+    topLeft: "API",
+    topRight: "CDN",
+    bottomLeft: "Database",
+    bottomRight: "Worker",
+  }}
+  badges={{
+    left: "Live Traffic",
+    right: "Sync Active",
+  }}
+  accentColor="#22C55E"
+/>
+```
+
+---
+
+## Props
+
+| Prop          | Type                                                                             | Default                            | Description                                 |
+| ------------- | -------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------- |
+| `className`   | `string`                                                                         | `-`                                | Extra CSS classes                           |
+| `centerText`  | `string`                                                                         | `"HUB"`                            | Text inside the center hub circle           |
+| `title`       | `string`                                                                         | `"Distributed Cloud Architecture"` | Header badge title                          |
+| `accentColor` | `string`                                                                         | `"#10B981"`                        | Accent color for glow, icons, and gradients |
+| `nodeLabels`  | `{ topLeft: string; topRight: string; bottomLeft: string; bottomRight: string }` | `{ API, CDN, DB, Worker }`         | Labels for the cloud nodes                  |
+| `badges`      | `{ left: string; right: string }`                                                | `{ Live Traffic, Sync Active }`    | Floating info badges                        |
+
+---
+
+## Features
+
+- ✔ **Animated SVG cloud flow paths**
+- ✔ **Glowing data particles following routes**
+- ✔ **Central hub with pulsing motion rings**
+- ✔ **Customizable node labels & badges**
+- ✔ **Accent color theming**
+- ✔ **Motion-powered depth effects**
+- ✔ **Responsive & dark-mode ready**
+
+---
+
+## When to Use
+
+- Cloud architecture diagrams
+- Infrastructure overviews
+- SaaS dashboards
+- DevOps & monitoring tools
+- Landing pages for cloud products
+- System design documentation

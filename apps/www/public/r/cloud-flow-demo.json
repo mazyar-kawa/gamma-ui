@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cloud-flow-demo",
+  "title": "Cloud Flow Demo",
+  "description": "An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.",
+  "registryDependencies": [
+    "@gammaui/cloud-flow"
+  ],
+  "files": [
+    {
+      "path": "registry/example/cloud-flow-demo.tsx",
+      "content": "import CloudFlow from \"@/registry/gammaui/cloud-flow\"\n\nexport const CloudFlowDemo = () => {\n  return (\n    <div className=\"flex w-full justify-center rounded-xl p-4\">\n      <CloudFlow />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
