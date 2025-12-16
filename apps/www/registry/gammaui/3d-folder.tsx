@@ -35,7 +35,7 @@ export function AnimatedFolder({
   projects,
   className,
 }: AnimatedFolderProps) {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isOpened, setIsOpened] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const [sourceRect, setSourceRect] = useState<DOMRect | null>(null)
   const [hiddenCardId, setHiddenCardId] = useState<string | null>(null)
@@ -70,10 +70,7 @@ export function AnimatedFolder({
         className={cn(
           "relative flex flex-col items-center justify-center",
           "cursor-pointer rounded-2xl p-8",
-          "bg-card border-border border",
           "transition-all duration-500 ease-out",
-          "hover:shadow-accent/10 hover:shadow-2xl",
-          "hover:border-orange-400/30",
           "group",
           className
         )}
@@ -82,8 +79,6 @@ export function AnimatedFolder({
           minHeight: "320px",
           perspective: "1000px",
         }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
       >
         {/* Subtle background glow on hover */}
         <div
@@ -91,20 +86,21 @@ export function AnimatedFolder({
           style={{
             background:
               "radial-gradient(circle at 50% 70%, var(--accent) 0%, transparent 70%)",
-            opacity: isHovered ? 0.08 : 0,
+            opacity: isOpened ? 0.08 : 0,
           }}
         />
 
         <div
           className="relative mb-4 flex items-center justify-center"
           style={{ height: "160px", width: "200px" }}
+          onClick={() => setIsOpened((prev) => !prev)}
         >
           {/* Folder back layer - z-index 10 */}
           <div
-            className="absolute h-24 w-32 rounded-[10px] bg-[#E48C57] shadow-md"
+            className="absolute h-24 w-32 rounded-[10px] bg-[#437cb2] shadow-md"
             style={{
               transformOrigin: "bottom center",
-              transform: isHovered ? "rotateX(-15deg)" : "rotateX(0deg)",
+              transform: isOpened ? "rotateX(-15deg)" : "rotateX(0deg)",
               transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)",
               zIndex: 10,
             }}
@@ -112,13 +108,13 @@ export function AnimatedFolder({
 
           {/* Folder tab - z-index 10 */}
           <div
-            className="absolute h-4 w-12 rounded-t-[10px] bg-[#B36B51]"
+            className="absolute h-4 w-12 rounded-t-[7px] bg-[#5184b3]"
             style={{
               top: "calc(50% - 48px - 12px)",
-              left: "calc(50% - 64px + 16px)",
+              left: "calc(50% - 64px + 2px)",
               transformOrigin: "bottom center",
-              transform: isHovered
-                ? "rotateX(-25deg) translateY(-2px)"
+              transform: isOpened
+                ? "rotateX(-25deg) translateY(2px)"
                 : "rotateX(0deg)",
               transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)",
               zIndex: 10,
@@ -144,7 +140,7 @@ export function AnimatedFolder({
                 image={project.image}
                 title={project.title}
                 delay={index * 80}
-                isVisible={isHovered}
+                isVisible={isOpened}
                 index={index}
                 onClick={() => handleProjectClick(project, index)}
                 isSelected={hiddenCardId === project.id}
@@ -154,11 +150,11 @@ export function AnimatedFolder({
 
           {/* Folder front layer - z-index 30 */}
           <div
-            className="absolute h-24 w-32 rounded-[10px] bg-[#E48C57] shadow-lg"
+            className="absolute h-24 w-32 rounded-[10px] bg-[#5184b3] shadow-lg"
             style={{
               top: "calc(50% - 48px + 4px)",
               transformOrigin: "bottom center",
-              transform: isHovered
+              transform: isOpened
                 ? "rotateX(25deg) translateY(8px)"
                 : "rotateX(0deg)",
               transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -168,13 +164,13 @@ export function AnimatedFolder({
 
           {/* Folder shine effect - z-index 31 */}
           <div
-            className="pointer-events-none absolute h-24 w-32 overflow-hidden rounded-lg"
+            className="pointer-events-none absolute h-24 w-32 overflow-hidden rounded-[10px]"
             style={{
               top: "calc(50% - 48px + 4px)",
               background:
                 "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%)",
               transformOrigin: "bottom center",
-              transform: isHovered
+              transform: isOpened
                 ? "rotateX(25deg) translateY(8px)"
                 : "rotateX(0deg)",
               transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -185,9 +181,9 @@ export function AnimatedFolder({
 
         {/* Folder title */}
         <h3
-          className="text-foreground mt-4 text-lg font-semibold transition-all duration-300"
+          className="text-foreground text-lg font-semibold transition-all duration-300"
           style={{
-            transform: isHovered ? "translateY(4px)" : "translateY(0)",
+            transform: isOpened ? "translateY(4px)" : "translateY(0)",
           }}
         >
           {title}
@@ -197,21 +193,21 @@ export function AnimatedFolder({
         <p
           className="text-muted-foreground text-sm transition-all duration-300"
           style={{
-            opacity: isHovered ? 0.7 : 1,
+            opacity: isOpened ? 0.7 : 1,
           }}
         >
-          {projects.length} projects
+          {projects.length} Documents
         </p>
 
         {/* Hover hint */}
         <div
           className="text-muted-foreground absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1.5 text-xs transition-all duration-300"
           style={{
-            opacity: isHovered ? 0 : 0.6,
-            transform: isHovered ? "translateY(10px)" : "translateY(0)",
+            opacity: isOpened ? 0 : 0.6,
+            transform: isOpened ? "translateY(10px)" : "translateY(0)",
           }}
         >
-          <span>Hover to explore</span>
+          <span>Click to explore</span>
         </div>
       </div>
 

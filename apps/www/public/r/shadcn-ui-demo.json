@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/example/shadcn-ui-demo.tsx",
-      "content": "\"use client\"\n\nimport ShadCnUI from \"@/registry/gammaui/shadcn-ui\"\n\nconst Page = () => {\n  return (\n    <div className=\"bg-accent/20 w-full rounded-xl p-4\">\n      <ShadCnUI />\n    </div>\n  )\n}\n\nexport default Page\n",
+      "content": "\"use client\"\n\nimport ShadCnUI from \"@/registry/gammaui/shadcn-ui\"\n\nconst Page = () => {\n  return (\n    <div className=\"w-full rounded-xl p-4\">\n      <ShadCnUI />\n    </div>\n  )\n}\n\nexport default Page\n",
       "type": "registry:example"
     }
   ],
