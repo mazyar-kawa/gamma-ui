@@ -2,25 +2,25 @@ import { AnimatedFolder } from "@/registry/gammaui/3d-folder"
 
 const portfolioData = [
   {
-    title: "Branding",
+    title: "Folder Name",
     projects: [
       {
         id: "1",
         image:
-          "https://plus.unsplash.com/premium_photo-1723489242223-865b4a8cf7b8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D$0",
-        title: "Lumnia",
+          "https://images.pexels.com/photos/29531041/pexels-photo-29531041.jpeg",
+        title: "Tokyo",
       },
       {
         id: "2",
         image:
-          "https://i.pinimg.com/1200x/99/ca/5c/99ca5cf82cf12df8801f7b2bef38d325.jpg",
-        title: "Prism",
+          "https://images.pexels.com/photos/569416/pexels-photo-569416.jpeg",
+        title: "Berlin",
       },
       {
         id: "3",
         image:
-          "https://i.pinimg.com/736x/7c/15/39/7c1539cf7ff0207cb49ce0d338de1e5f.jpg",
-        title: "Vertex",
+          "https://images.pexels.com/photos/1461974/pexels-photo-1461974.jpeg",
+        title: "Pris",
       },
     ],
   },
