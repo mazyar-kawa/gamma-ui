@@ -111,7 +111,7 @@ export function constructMetadata({
       creator: "@dillionverma",
     },
     icons: "/favicon.ico",
-    metadataBase: new URL("https://gamma-ui-delta.vercel.app"),
+    metadataBase: new URL("https://gammaui.com"),
     authors: [
       {
         name: "dillionverma",

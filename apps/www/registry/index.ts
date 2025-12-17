@@ -18,7 +18,7 @@ const DEFAULT: RegistryItem = {
 
 export const registry = {
   name: "gammaui",
-  homepage: "https://gamma-ui-delta.vercel.app",
+  homepage: "https://gammaui.com",
   items: registryIndexSchema.parse(
     [DEFAULT, ...ui, ...examples, ...lib].filter((item) => {
       return !DEPRECATED_ITEMS.includes(item.name)

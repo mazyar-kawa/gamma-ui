@@ -6,31 +6,31 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Components
 
-- [3D Folder](https://gamma-ui-delta.vercel.app/docs/components/3d-folder): A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.
-- [Activity Dropdown](https://gamma-ui-delta.vercel.app/docs/components/activity-dropdown): A modern activity/notification dropdown with smooth animations and responsive motion.
-- [Animated List](https://gamma-ui-delta.vercel.app/docs/components/animated-list): A dynamic list component with smooth animations that forms a column and scrolls through items continuously.
-- [Badge](https://gamma-ui-delta.vercel.app/docs/components/badge): A flexible and customizable Badge component for labels, statuses, and indicators.
-- [Border Button](https://gamma-ui-delta.vercel.app/docs/components/border-button): A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.
-- [Cloud Flow](https://gamma-ui-delta.vercel.app/docs/components/cloud-flow): An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.
-- [CPU Architecture](https://gamma-ui-delta.vercel.app/docs/components/cpu-architecture): A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.
-- [Inverted Cursor](https://gamma-ui-delta.vercel.app/docs/components/inverted-cursor): A smooth, animated custom cursor component with blend mode effects.
-- [Live Waveform](https://gamma-ui-delta.vercel.app/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
-- [Location Map](https://gamma-ui-delta.vercel.app/docs/components/location-map): An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.
-- [Logo Cloud](https://gamma-ui-delta.vercel.app/docs/components/logo-cloud): A responsive logo grid component supporting dark mode, decorations, and flexible layout.
-- [Logo Timeline](https://gamma-ui-delta.vercel.app/docs/components/logo-loop): A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.
-- [Logo Timeline](https://gamma-ui-delta.vercel.app/docs/components/logo-timeline): A multi-row infinitely scrolling logo timeline built with Motion One, supporting hover-activated animations and row grouping.
-- [Macbook Keyboard](https://gamma-ui-delta.vercel.app/docs/components/macbook-keyboard): Interactive animated MacBook keyboard component.
-- [Magnetize Button](https://gamma-ui-delta.vercel.app/docs/components/magnetize-button): A magnetic particle-attraction button built with Framer Motion.
-- [Overlay Button](https://gamma-ui-delta.vercel.app/docs/components/overlay-button): An animated gradient button using Framer Motion with looping motion and spring transitions.
-- [Pixel Button](https://gamma-ui-delta.vercel.app/docs/components/pixel-button): A pixelated button animation effect built with Tailwind CSS and React.
-- [Plasma](https://gamma-ui-delta.vercel.app/docs/components/plasma): A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.
-- [Pricing Interaction](https://gamma-ui-delta.vercel.app/docs/components/pricing-interaction): An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.
-- [Radial Intro](https://gamma-ui-delta.vercel.app/docs/components/radial-intro): A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.
-- [Shadcn UI](https://gamma-ui-delta.vercel.app/docs/components/shadcn-ui): Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.
-- [Support Box](https://gamma-ui-delta.vercel.app/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
-- [Text Roll](https://gamma-ui-delta.vercel.app/docs/components/text-roll): A rolling hover-animated text component built with Motion One.
-- [Wave Path](https://gamma-ui-delta.vercel.app/docs/components/wave-path): A dynamic interactive SVG wave component that responds to pointer movement.
-- [Wavy Text Block](https://gamma-ui-delta.vercel.app/docs/components/wavy-text-block): A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.
+- [3D Folder](https://gammaui.com/docs/components/3d-folder): A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.
+- [Activity Dropdown](https://gammaui.com/docs/components/activity-dropdown): A modern activity/notification dropdown with smooth animations and responsive motion.
+- [Animated List](https://gammaui.com/docs/components/animated-list): A dynamic list component with smooth animations that forms a column and scrolls through items continuously.
+- [Badge](https://gammaui.com/docs/components/badge): A flexible and customizable Badge component for labels, statuses, and indicators.
+- [Border Button](https://gammaui.com/docs/components/border-button): A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.
+- [Cloud Flow](https://gammaui.com/docs/components/cloud-flow): An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.
+- [CPU Architecture](https://gammaui.com/docs/components/cpu-architecture): A fully animated CPU architecture SVG component with dynamic paths, gradients, and optional CPU connections.
+- [Inverted Cursor](https://gammaui.com/docs/components/inverted-cursor): A smooth, animated custom cursor component with blend mode effects.
+- [Live Waveform](https://gammaui.com/docs/components/live-waveform): A customizable live audio waveform visualizer using the Web Audio API.
+- [Location Map](https://gammaui.com/docs/components/location-map): An interactive 3D-tilting location card with expandable animated map, live indicator, and motion-based hover effects.
+- [Logo Cloud](https://gammaui.com/docs/components/logo-cloud): A responsive logo grid component supporting dark mode, decorations, and flexible layout.
+- [Logo Timeline](https://gammaui.com/docs/components/logo-loop): A looping logo marquee component with horizontal and vertical motion, hover effects, fading edges, and responsive behavior.
+- [Logo Timeline](https://gammaui.com/docs/components/logo-timeline): A multi-row infinitely scrolling logo timeline built with Motion One, supporting hover-activated animations and row grouping.
+- [Macbook Keyboard](https://gammaui.com/docs/components/macbook-keyboard): Interactive animated MacBook keyboard component.
+- [Magnetize Button](https://gammaui.com/docs/components/magnetize-button): A magnetic particle-attraction button built with Framer Motion.
+- [Overlay Button](https://gammaui.com/docs/components/overlay-button): An animated gradient button using Framer Motion with looping motion and spring transitions.
+- [Pixel Button](https://gammaui.com/docs/components/pixel-button): A pixelated button animation effect built with Tailwind CSS and React.
+- [Plasma](https://gammaui.com/docs/components/plasma): A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.
+- [Pricing Interaction](https://gammaui.com/docs/components/pricing-interaction): An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.
+- [Radial Intro](https://gammaui.com/docs/components/radial-intro): A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.
+- [Shadcn UI](https://gammaui.com/docs/components/shadcn-ui): Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.
+- [Support Box](https://gammaui.com/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
+- [Text Roll](https://gammaui.com/docs/components/text-roll): A rolling hover-animated text component built with Motion One.
+- [Wave Path](https://gammaui.com/docs/components/wave-path): A dynamic interactive SVG wave component that responds to pointer movement.
+- [Wavy Text Block](https://gammaui.com/docs/components/wavy-text-block): A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.
 
 ## Examples
 
@@ -64,4 +64,4 @@ This file provides LLM-friendly entry points to documentation and examples.
 ## Optional
 
 - [Repository](https://github.com/mazyar-kawa/gamma-ui): Source code and issues
-- [Sitemap](https://gamma-ui-delta.vercel.app/sitemap.xml): Indexable pages
+- [Sitemap](https://gammaui.com/sitemap.xml): Indexable pages

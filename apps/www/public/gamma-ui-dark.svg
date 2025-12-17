@@ -1,21 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
-<style type="text/css">
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve" sodipodi:docname="41baded9-1312-4f31-9f96-735108da80a1.svg"><defs id="defs5"/><sodipodi:namedview id="namedview5" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1"/>
+<style type="text/css" id="style1">
 	.st0{fill:#FFFFFF;}
 </style>
-<g>
-	<g>
-		<path class="st0" d="M561.27,349.76v-54.72H342.36c-11.96,0-23.77,3.15-33.89,9.51c-0.57,0.36-1.15,0.73-1.72,1.11
-			c-21.73,14.52-29.14,36.49-31.32,44.1H561.27z"/>
-		<path class="st0" d="M275.43,358.4c0,0-2.88,38.88,13.68,56.88l65.52,102.96c0,0,67.52,41.04,145-5.76s61.64-136.08,61.64-136.08
-			H423.03l-0.72,54.72l74.16,0.72c0,0,0,29.52-61.2,48.24c0,0-73.44,14.4-99.36-72c0,0,5.04-37.44-21.6-45.36
-			C287.67,354.8,275.43,358.4,275.43,358.4z"/>
+<g id="g5">
+	<g id="g2">
+		<path class="st0" d="M561.27,349.76v-54.72H342.36c-11.96,0-23.77,3.15-33.89,9.51c-0.57,0.36-1.15,0.73-1.72,1.11    c-21.73,14.52-29.14,36.49-31.32,44.1H561.27z" id="path1"/>
+		<path class="st0" d="M275.43,358.4c0,0-2.88,38.88,13.68,56.88l65.52,102.96c0,0,67.52,41.04,145-5.76s61.64-136.08,61.64-136.08    H423.03l-0.72,54.72l74.16,0.72c0,0,0,29.52-61.2,48.24c0,0-73.44,14.4-99.36-72c0,0,5.04-37.44-21.6-45.36    C287.67,354.8,275.43,358.4,275.43,358.4z" id="path2"/>
 	</g>
-	<path class="st0" d="M444.63,562.16h-61.92l79.92,130.32c0,0,29.52-45.36,12.96-79.2L444.63,562.16z"/>
-	<path class="st0" d="M471.99,698.24l115.92-186.48V295.04h55.44v229.68l-85.68,138.96C557.67,663.68,522.39,724.88,471.99,698.24z"
-		/>
-	<path class="st0" d="M669.27,480.08V295.04h55.44v78.48c0,0,2.16,24.48-19.44,51.84L669.27,480.08z"/>
+	<path class="st0" d="M444.63,562.16h-61.92l79.92,130.32c0,0,29.52-45.36,12.96-79.2L444.63,562.16z" id="path3"/>
+	<path class="st0" d="M471.99,698.24l115.92-186.48V295.04h55.44v229.68l-85.68,138.96C557.67,663.68,522.39,724.88,471.99,698.24z" id="path4"/>
+	<path class="st0" d="M669.27,480.08V295.04h55.44v78.48c0,0,2.16,24.48-19.44,51.84L669.27,480.08z" id="path5"/>
 </g>
 </svg>
