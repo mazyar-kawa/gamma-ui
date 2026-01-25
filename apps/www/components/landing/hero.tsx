@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { IconChevronRight } from "@tabler/icons-react"
 
 import { Button } from "../ui/button"
@@ -21,10 +22,13 @@ const Hero = () => {
             <span className="font-semibold"> shadcn/ui</span>.
           </p>
           <div className="flex gap-8">
-            <Button className="flex items-center gap-2 capitalize" size={"lg"}>
+            <Link
+              href={"/components"}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium capitalize transition-colors md:text-base"
+            >
               browse components
               <IconChevronRight className="h-4 w-4" />
-            </Button>
+            </Link>
             <a
               className="group flex items-center gap-1.5 text-[0.75rem] text-black md:gap-2 md:text-[1rem] dark:text-white"
               href="/docs/introduction"
@@ -64,7 +68,6 @@ const Hero = () => {
           <Stacks />
         </div>
       </AnimatedGridBackground>
-      {/* Content */}
     </div>
   )
 }

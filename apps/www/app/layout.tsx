@@ -7,9 +7,9 @@ import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = constructMetadata({
-  title: "Magic UI",
+  title: "Gamma UI",
   description:
-    "Beautiful UI components and templates to make your landing page look stunning.",
+    "Beautifully designed landing page components built with React & Tailwind CSS & Motion.",
   image: absoluteUrl("/og"),
 })
 
