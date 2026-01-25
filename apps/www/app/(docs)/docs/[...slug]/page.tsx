@@ -78,7 +78,7 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description,
       images: [ogUrl.toString()],
-      creator: "@dillionverma",
+      creator: "@mazyar_kawa",
     },
   }
 }
@@ -135,7 +135,7 @@ export default async function DocPage({ params }: DocPageProps) {
       url: siteConfig.url,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/logo.png`,
+        url: `${siteConfig.url}/logo.svg`,
       },
     },
     author: {
@@ -145,7 +145,7 @@ export default async function DocPage({ params }: DocPageProps) {
     },
     isPartOf: {
       "@type": "CreativeWorkSeries",
-      name: "Magic UI Documentation",
+      name: "Gamma UI Documentation",
       url: absoluteUrl("/docs"),
     },
     wordCount: content ? content.split(/\s+/).length : 0,
