@@ -70,8 +70,8 @@ export function absoluteUrl(path: string) {
 }
 
 export function constructMetadata({
-  title = "Magic UI - Modern React + Tailwind CSS components & Templates",
-  description = "Magic UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
+  title = "Gamma UI - Modern React + Tailwind CSS components & Templates",
+  description = "Beautifully designed landing page components built with React & Tailwind CSS & Motion.",
   image = absoluteUrl("/og"),
   ...props
 }: {
@@ -84,12 +84,35 @@ export function constructMetadata({
     title,
     description,
     keywords: [
-      "React",
-      "Tailwind CSS",
-      "Motion",
-      "Landing Page",
-      "Components",
+      "GammaUI",
+      "UI Library",
+      "Component Library",
+      "React Components",
       "Next.js",
+      "Tailwind CSS",
+      "Open Source",
+      "Frontend",
+      "Design System",
+      "Mazyar Kawa",
+      "GammaUI by Aman",
+      "Copy and Paste Components",
+      "Developer Tools",
+      "Frontend Engineer",
+      "Beautiful UI",
+      "React UI Kit",
+      "Free React Components",
+      "Open Source UI Kit",
+      "Tailwind UI Components",
+      "Headless UI",
+      "Reusable React Components",
+      "UI Templates",
+      "Accessible React Components",
+      "Copy-Paste UI",
+      "Next.js Component Library",
+      "Open Source Developer Tools",
+      "Frontend Design System",
+      "Minimal UI Kit",
+      "Clean React UI",
     ],
     openGraph: {
       title,
@@ -108,17 +131,17 @@ export function constructMetadata({
       title,
       description,
       images: [image],
-      creator: "@dillionverma",
+      creator: "@mazyar_kawa",
     },
     icons: "/favicon.ico",
     metadataBase: new URL("https://gammaui.com"),
     authors: [
       {
-        name: "dillionverma",
-        url: "https://twitter.com/dillionverma",
+        name: "mazyar_kawa",
+        url: "https://twitter.com/mazyar_kawa",
       },
     ],
-    creator: "dillionverma",
+    creator: "mazyar_kawa",
     ...props,
   }
 }
