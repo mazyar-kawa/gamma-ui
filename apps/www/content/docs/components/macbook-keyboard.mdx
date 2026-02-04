@@ -25,41 +25,6 @@ import { CSSCodeBlock } from "@/components/css-code-block"
 npx shadcn@latest add @gammaui/macbook-keyboard
 ```
 
-<CSSCodeBlock
-  fileName="global.css"
-code={`
-.glowing-key {
-  box-shadow: 0px 0px 15px transparent;
-  border-color: currentColor !important;
-  animation: animate-key-border-shadow 1000ms linear forwards;
-}
-
-@keyframes animate-key-border-shadow {
-0% {
-box-shadow: 0px 0px 15px transparent;
-}
-100% {
-box-shadow: 0px 0px 20px currentColor;
-}
-}
-
-.blur-in {
-animation: blur-in 400ms ease-in-out forwards;
-}
-
-@keyframes blur-in {
-0% {
-filter: blur(1px);
-}
-100% {
-filter: blur(0px);
-}
-}
-`}
-
-copyCode={true}
-/>
-
 </TabsContent>
 
 <TabsContent value="manual">
@@ -77,43 +42,6 @@ npm install motion lucide-react
 <ComponentSource
   name="macbook-keyboard"
   title="components/gammaui/macbook-keyboard.tsx"
-/>
-
-<Step>Add the following CSS to your global CSS file.</Step>
-
-<CSSCodeBlock
-  fileName="global.css"
-code={`
-.glowing-key {
-  box-shadow: 0px 0px 15px transparent;
-  border-color: currentColor !important;
-  animation: animate-key-border-shadow 1000ms linear forwards;
-}
-
-@keyframes animate-key-border-shadow {
-0% {
-box-shadow: 0px 0px 15px transparent;
-}
-100% {
-box-shadow: 0px 0px 20px currentColor;
-}
-}
-
-.blur-in {
-animation: blur-in 400ms ease-in-out forwards;
-}
-
-@keyframes blur-in {
-0% {
-filter: blur(1px);
-}
-100% {
-filter: blur(0px);
-}
-}
-`}
-
-copyCode={true}
 />
 
 <Step>Update the import paths to match your project setup.</Step>

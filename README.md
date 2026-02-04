@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<img
+  alt="GammaUI – Modern UI Library for Design Engineers"
+  src="https://gammaui.com/hero.gif"
+  width="100%"
+/>
 
-## Getting Started
+<h3 align="center">GammaUI</h3>
 
-First, run the development server:
+<p align="center">
+  Modern UI components & effects for design engineers
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<div align="center">
+  <a href="https://github.com/gammaui/gammaui/stargazers">
+    <img
+      alt="GitHub Repo stars"
+      src="https://img.shields.io/github/stars/gammaui/gammaui"
+    />
+  </a>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  <a href="https://twitter.com/gammaui">
+    <img
+      alt="Twitter Follow"
+      src="https://img.shields.io/twitter/follow/gammaui"
+    />
+  </a>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  <a href="https://github.com/gammaui/gammaui/blob/main/LICENSE.md">
+    <img
+      alt="License"
+      src="https://img.shields.io/badge/License-MIT-yellow.svg"
+    />
+  </a>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  <a href="https://discord.gg/gammaui">
+    <img
+      alt="Discord"
+      src="https://img.shields.io/discord/YOUR_DISCORD_ID"
+    />
+  </a>
+</div>
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visit 👉 **https://gammaui.com/docs**  
+to explore components, effects, and usage examples.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Want to add a component or improve GammaUI?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the  
+👉 [Contributing Guide](https://github.com/gammaui/gammaui/blob/main/CONTRIBUTING.md)
+
+Adding a new component takes **~5–10 minutes** ⚡
+
+---
+
+## Community
+
+Have questions, ideas, or feedback?
+
+💬 Join the community on  
+👉 **https://gammaui.com/discord**
+
+---
+
+## Authors
+
+Thanks to all contributors 💜
+
+<a href="https://github.com/gammaui/gammaui/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=gammaui/gammaui" />
+</a>
+
+---
+
+## Stats
+
+![Repo analytics](https://repobeats.axiom.co/api/embed/YOUR_REPOBEATS_ID.svg "Repobeats analytics")
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=gammaui/gammaui&type=Date)](https://www.star-history.com/#gammaui/gammaui&Date)
+
+---
+
+## License
+
+Licensed under the [MIT license](https://github.com/gammaui/gammaui/blob/main/LICENSE.md).
