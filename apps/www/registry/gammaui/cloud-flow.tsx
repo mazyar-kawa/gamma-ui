@@ -74,43 +74,84 @@ export default function CloudFlow({
           />
         </g>
 
-        {/* Animated Flow Particles */}
-        <g mask="url(#flow-mask-1)">
-          <circle
-            className="flow-particle-1"
-            cx="0"
-            cy="0"
-            r="10"
-            fill="url(#flow-gradient)"
-          />
-        </g>
-        <g mask="url(#flow-mask-2)">
-          <circle
-            className="flow-particle-2"
-            cx="0"
-            cy="0"
-            r="10"
-            fill="url(#flow-gradient)"
-          />
-        </g>
-        <g mask="url(#flow-mask-3)">
-          <circle
-            className="flow-particle-3"
-            cx="0"
-            cy="0"
-            r="10"
-            fill="url(#flow-gradient)"
-          />
-        </g>
-        <g mask="url(#flow-mask-4)">
-          <circle
-            className="flow-particle-4"
-            cx="0"
-            cy="0"
-            r="10"
-            fill="url(#flow-gradient)"
-          />
-        </g>
+        <motion.path
+          d="M 25 15 L 25 35 Q 25 40 30 40 L 90 40 Q 95 40 95 45 L 95 48"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="0.5"
+          strokeDasharray="6 94"
+          strokeDashoffset="100"
+          initial={{ opacity: 0 }}
+          animate={{
+            strokeDashoffset: [100, 0],
+            opacity: [0, 1, 1, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.1, 0.9, 1],
+          }}
+        />
+
+        <motion.path
+          d="M 175 15 L 175 35 Q 175 40 170 40 L 110 40 Q 105 40 105 45 L 105 48"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="0.5"
+          strokeDasharray="6 94"
+          strokeDashoffset="100"
+          initial={{ opacity: 0 }}
+          animate={{
+            strokeDashoffset: [100, 0],
+            opacity: [0, 1, 1, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.1, 0.9, 1],
+          }}
+        />
+
+        <motion.path
+          d="M 95 62 L 95 65 Q 95 70 90 70 L 30 70 Q 25 70 25 75 L 25 85"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="0.5"
+          strokeDasharray="6 94"
+          strokeDashoffset="100"
+          initial={{ opacity: 0 }}
+          animate={{
+            strokeDashoffset: [100, 0],
+            opacity: [0, 1, 1, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.1, 0.9, 1],
+          }}
+        />
+        <motion.path
+          d="M 105 62 L 105 65 Q 105 70 110 70 L 170 70 Q 175 70 175 75 L 175 85"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="0.5"
+          strokeDasharray="6 94"
+          strokeDashoffset="100"
+          initial={{ opacity: 0 }}
+          animate={{
+            strokeDashoffset: [100, 0],
+            opacity: [0, 1, 1, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.1, 0.9, 1],
+          }}
+        />
 
         {/* Node Badges */}
         <g stroke="currentColor" fill="none" strokeWidth="0.3">

@@ -1,6 +1,6 @@
 # Gamma UI
 
-> Beautifully designed landing page components built with React & Tailwind CSS.
+> Beautifully designed landing page components built with React & Tailwind CSS & Motion.
 
 This file provides LLM-friendly entry points to documentation and examples.
 
