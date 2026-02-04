@@ -4,24 +4,24 @@
   width="100%"
 />
 
-<h3 align="center">GammaUI</h3>
+<h3 align="center">Gamma UI</h3>
 
 <p align="center">
   Modern UI components & effects for design engineers
 </p>
 
 <div align="center">
-  <a href="https://github.com/gammaui/gammaui/stargazers">
+  <a href="https://github.com/mazyar-kawa/gamma-ui/stargazers">
     <img
       alt="GitHub Repo stars"
-      src="https://img.shields.io/github/stars/gammaui/gammaui"
+      src="https://img.shields.io/github/stars/mazyar-kawa/gamma-ui"
     />
   </a>
 
   <a href="https://twitter.com/gammaui">
     <img
       alt="Twitter Follow"
-      src="https://img.shields.io/twitter/follow/gammaui"
+      src="https://img.shields.io/twitter/follow/mazyar_kawa"
     />
   </a>
 
@@ -32,19 +32,13 @@
     />
   </a>
 
-  <a href="https://discord.gg/gammaui">
-    <img
-      alt="Discord"
-      src="https://img.shields.io/discord/YOUR_DISCORD_ID"
-    />
-  </a>
 </div>
 
 ---
 
 ## Documentation
 
-Visit 👉 **https://gammaui.com/docs**  
+Visit 👉 \*\*https://gammaui.com/docs/introduction
 to explore components, effects, and usage examples.
 
 ---
@@ -54,18 +48,9 @@ to explore components, effects, and usage examples.
 Want to add a component or improve GammaUI?
 
 Check out the  
-👉 [Contributing Guide](https://github.com/gammaui/gammaui/blob/main/CONTRIBUTING.md)
+👉 [Contributing Guide](https://github.com/mazyar-kawa/gamma-ui/blob/master/CONTRIBUTING.md)
 
 Adding a new component takes **~5–10 minutes** ⚡
-
----
-
-## Community
-
-Have questions, ideas, or feedback?
-
-💬 Join the community on  
-👉 **https://gammaui.com/discord**
 
 ---
 
@@ -73,24 +58,24 @@ Have questions, ideas, or feedback?
 
 Thanks to all contributors 💜
 
-<a href="https://github.com/gammaui/gammaui/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=gammaui/gammaui" />
+<a href="https://github.com/mazyar-kawa/gamma-ui/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mazyar-kawa/gamma-ui" />
 </a>
 
 ---
 
 ## Stats
 
-![Repo analytics](https://repobeats.axiom.co/api/embed/YOUR_REPOBEATS_ID.svg "Repobeats analytics")
+![Repo analytics](https://repobeats.axiom.co/api/embed/111fb0ed02cfcb908f006a9e33d83d1047418a16.svg "Repobeats analytics")
 
 ---
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=gammaui/gammaui&type=Date)](https://www.star-history.com/#gammaui/gammaui&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=mazyar-kawa/gamma-ui&type=date&legend=bottom-right)](https://www.star-history.com/#mazyar-kawa/gamma-ui&type=date)
 
 ---
 
 ## License
 
-Licensed under the [MIT license](https://github.com/gammaui/gammaui/blob/main/LICENSE.md).
+Licensed under the [MIT license](https://github.com/mazyar-kawa/gamma-ui/blob/master/README.md).
