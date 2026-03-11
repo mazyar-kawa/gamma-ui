@@ -1705,7 +1705,7 @@ export default function CloudFlow({
         <div className="bg-accent/20 absolute -bottom-4 h-[100px] w-[62%] rounded-xl blur-xl" />
 
         {/* Title Badge */}
-        <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border bg-gradient-to-r from-slate-900 to-slate-800 px-3 py-1.5 shadow-lg sm:-top-4">
+        <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border bg-linear-to-r from-slate-900 to-slate-800 px-3 py-1.5 shadow-lg sm:-top-4">
           <IconCloud className="size-3.5" color={accentColor} />
           <span className="ml-2 text-[11px] font-medium text-white">
             {title || "Distributed Cloud Architecture"}
