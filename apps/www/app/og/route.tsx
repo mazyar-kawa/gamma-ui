@@ -50,32 +50,33 @@ export async function GET(request: Request) {
       tw="flex h-full w-full relative"
       style={{
         fontFamily: "Geist Sans",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        background:
+          "linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%)",
       }}
     >
-      {/* Animated gradient orbs */}
+      {/* Gradient orbs — white/grey tones */}
       <div
-        tw="absolute w-[500px] h-[500px] rounded-full opacity-30"
+        tw="absolute w-[500px] h-[500px] rounded-full opacity-20"
         style={{
-          background: "radial-gradient(circle, #fbbf24 0%, transparent 70%)",
+          background: "radial-gradient(circle, #ffffff 0%, transparent 70%)",
           top: "-150px",
           left: "-150px",
           filter: "blur(80px)",
         }}
       />
       <div
-        tw="absolute w-[600px] h-[600px] rounded-full opacity-20"
+        tw="absolute w-[600px] h-[600px] rounded-full opacity-10"
         style={{
-          background: "radial-gradient(circle, #ec4899 0%, transparent 70%)",
+          background: "radial-gradient(circle, #d4d4d4 0%, transparent 70%)",
           bottom: "-200px",
           right: "-200px",
           filter: "blur(100px)",
         }}
       />
 
-      {/* Grid pattern overlay */}
+      {/* Subtle grid overlay */}
       <div
-        tw="absolute inset-0 opacity-10"
+        tw="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `
             linear-gradient(to right, white 1px, transparent 1px),
@@ -85,23 +86,38 @@ export async function GET(request: Request) {
         }}
       />
 
+      {/* Thin white top-edge highlight */}
+      <div
+        tw="absolute top-0 left-0 right-0 h-[1px]"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent)",
+        }}
+      />
+
       {/* Content container */}
       <div tw="flex flex-col relative z-10 justify-between p-16 w-full h-full">
         {/* Top branding */}
         <div tw="flex flex-row items-center">
           <Icons.logo width={80} height={80} />
-          <div tw="text-white flex text-[28px] font-semibold">Gamma UI</div>
+          <div
+            tw="text-white flex text-[28px] font-semibold"
+            style={{ color: "#ffffff" }}
+          >
+            Gamma UI
+          </div>
         </div>
 
         {/* Main content */}
         {title || description ? (
           <div tw="flex flex-col w-full max-w-[900px]">
             <div
-              tw="tracking-tight flex flex-col text-white font-semibold mb-6"
+              tw="tracking-tight flex flex-col font-semibold mb-6"
               style={{
                 fontSize: "72px",
                 lineHeight: "1.1",
-                textShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+                color: "#ffffff",
+                textShadow: "0 4px 30px rgba(255, 255, 255, 0.15)",
               }}
             >
               {title}
@@ -110,7 +126,7 @@ export async function GET(request: Request) {
               <div
                 tw="text-[36px] font-normal mb-8"
                 style={{
-                  color: "rgba(255, 255, 255, 0.9)",
+                  color: "rgba(255, 255, 255, 0.65)",
                   lineHeight: "1.4",
                 }}
               >
@@ -121,11 +137,12 @@ export async function GET(request: Request) {
         ) : (
           <div tw="flex flex-col w-full">
             <div
-              tw="text-white flex font-semibold mb-6"
+              tw="flex font-semibold mb-6"
               style={{
                 fontSize: "80px",
                 lineHeight: "1.1",
-                textShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+                color: "#ffffff",
+                textShadow: "0 4px 30px rgba(255, 255, 255, 0.15)",
               }}
             >
               Modern Next.js Templates
@@ -133,7 +150,7 @@ export async function GET(request: Request) {
             <div
               tw="text-[32px] flex font-normal"
               style={{
-                color: "rgba(255, 255, 255, 0.85)",
+                color: "rgba(255, 255, 255, 0.55)",
                 lineHeight: "1.5",
               }}
             >
@@ -147,11 +164,11 @@ export async function GET(request: Request) {
           {["Next.js", "React", "TypeScript", "Tailwind CSS"].map((tech) => (
             <div
               key={tech}
-              tw="flex px-5 py-3 rounded-full text-white text-[18px] font-medium mx-1"
+              tw="flex px-5 py-3 rounded-full text-[18px] font-medium mx-1"
               style={{
-                background: "rgba(255, 255, 255, 0.15)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
+                color: "rgba(255, 255, 255, 0.85)",
+                background: "rgba(255, 255, 255, 0.07)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
               }}
             >
               {tech}
@@ -162,7 +179,7 @@ export async function GET(request: Request) {
 
       {/* Decorative corner accent */}
       <div
-        tw="absolute bottom-0 right-0 w-64 h-64 opacity-20"
+        tw="absolute bottom-0 right-0 w-64 h-64 opacity-10"
         style={{
           background:
             "linear-gradient(135deg, transparent 50%, white 50%, white 52%, transparent 52%)",
