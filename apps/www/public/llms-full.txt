@@ -7314,8 +7314,10 @@ function Pill({
       style={{ originY: 1, flex: 1 }}
       className="relative h-full overflow-hidden rounded-xs"
     >
-      <div className="absolute inset-0 rounded-xs bg-white/5" />
+      {/* Track */}
+      <div className="absolute inset-0 rounded-xs bg-black/5 dark:bg-white/5" />
 
+      {/* Fill */}
       <motion.div
         className="absolute inset-0 rounded-xs"
         initial={{ scaleX: 0 }}
@@ -7336,6 +7338,7 @@ function Pill({
         }}
       />
 
+      {/* Shimmer */}
       {active && (
         <motion.div
           className="absolute inset-0 rounded-xs"
@@ -7372,31 +7375,20 @@ export default function UsageCard({
       className="relative w-64 select-none"
       style={{ fontFamily: "'IBM Plex Mono', 'Courier New', monospace" }}
     >
-      {/* outer glow */}
+      {/* Outer glow */}
       <div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-30 blur-sm"
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-20 blur-sm dark:opacity-30"
         style={{
           background: `linear-gradient(135deg, ${accent}66, transparent 60%)`,
         }}
       />
 
-      {/* card */}
-      <div
-        className="relative overflow-hidden rounded-2xl"
-        style={{
-          background: "linear-gradient(150deg, #0e1117, #090c12)",
-          border: "1px solid rgba(255,255,255,0.07)",
-          boxShadow:
-            "0 0 0 1px rgba(255,255,255,0.03), 0 20px 40px rgba(0,0,0,0.65)",
-        }}
-      >
+      {/* Card */}
+      <div className="relative overflow-hidden rounded-[8px] border border-zinc-200 bg-white dark:border-white/7 dark:bg-zinc-950">
         <div className="flex flex-col gap-4 p-4">
-          {/* Top row: title left — percentage right */}
+          {/* Top row */}
           <div className="flex items-center justify-between">
-            <div
-              className="flex items-center gap-1.5"
-              style={{ color: "rgba(255,255,255,0.42)" }}
-            >
+            <div className="flex items-center gap-1.5 text-black dark:text-white/40">
               {icon}
               <span className="text-[11px] tracking-widest uppercase">
                 {title}
@@ -7410,16 +7402,13 @@ export default function UsageCard({
               >
                 {display}
               </motion.span>
-              <span
-                className="text-[10px]"
-                style={{ color: "rgba(255,255,255,0.28)" }}
-              >
+              <span className="text-[10px] text-black dark:text-white/25">
                 %
               </span>
             </div>
           </div>
 
-          {/* Pills — fill full card width */}
+          {/* Pills */}
           <div className="flex gap-[4px]" style={{ height: 32 }}>
             {Array.from({ length: pillCount }).map((_, i) => (
               <Pill
