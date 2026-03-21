@@ -29,6 +29,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Shadcn UI](https://gammaui.com/docs/components/shadcn-ui): Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.
 - [Support Box](https://gammaui.com/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
 - [Text Roll](https://gammaui.com/docs/components/text-roll): A rolling hover-animated text component built with Motion One.
+- [Usage Card](https://gammaui.com/docs/components/usage-card): An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.
 - [Wave Path](https://gammaui.com/docs/components/wave-path): A dynamic interactive SVG wave component that responds to pointer movement.
 - [Wavy Text Block](https://gammaui.com/docs/components/wavy-text-block): A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.
 
@@ -60,6 +61,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Shadcn UI Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/shadcn-ui-demo.tsx): Example usage
 - [Location Map Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/location-map-demo.tsx): Example usage
 - [3D Folder Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/3d-folder-demo.tsx): Example usage
+- [Usage Card Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/usage-card-demo.tsx): Example usage
 
 ## Optional
 

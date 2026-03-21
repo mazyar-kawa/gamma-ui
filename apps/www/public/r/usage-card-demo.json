@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "usage-card-demo",
+  "title": "Usage Card Demo",
+  "description": "An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.",
+  "registryDependencies": [
+    "@gammaui/usage-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/usage-card-demo.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\nimport { IconCpu } from \"@tabler/icons-react\"\n\nimport UsageCard from \"@/registry/gammaui/usage-card\"\n\nconst UsageCardDemo = () => {\n  const [cpuVal, setCpuVal] = useState(72)\n\n  useEffect(() => {\n    const id = setInterval(() => {\n      setCpuVal((v) =>\n        Math.min(100, Math.max(0, v + (Math.random() - 0.5) * 10))\n      )\n    }, 2000)\n    return () => clearInterval(id)\n  }, [])\n  return (\n    <div className=\"h-full\">\n      <UsageCard\n        title=\"CPU\"\n        percentage={Math.round(cpuVal)}\n        pillCount={20}\n        accentColor=\"#00f5ff\"\n        icon={<IconCpu size={13} />}\n      />\n    </div>\n  )\n}\n\nexport default UsageCardDemo\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
