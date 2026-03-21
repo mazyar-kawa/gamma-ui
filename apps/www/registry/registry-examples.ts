@@ -380,4 +380,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "usage-card-demo",
+    type: "registry:example",
+    title: "Usage Card Demo",
+    description:
+      "An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.",
+    registryDependencies: ["@gammaui/usage-card"],
+    files: [
+      {
+        path: "example/usage-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

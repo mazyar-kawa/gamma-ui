@@ -1,0 +1,176 @@
+---
+title: Usage Card
+date: 2026-03-21
+description: An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="usage-card-demo"
+  title="Usage Card"
+  description="A real-time resource monitor card with staggered pill animations and neon glow effects."
+  justify="center"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/usage-card
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Install the required dependencies.</Step>
+
+```bash
+npm install motion @tabler/icons-react
+```
+
+<Step>Copy and paste the following component code into your project.</Step>
+
+<ComponentSource name="usage-card" title="components/ui/usage-card.tsx" />
+
+<Step>Ensure the import paths match your project structure.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+```tsx
+import { IconCpu } from "@tabler/icons-react"
+
+import { UsageCard } from "@/components/ui/usage-card"
+
+export default function Example() {
+  return (
+    <UsageCard
+      title="CPU"
+      percentage={72}
+      pillCount={10}
+      accentColor="#00f5ff"
+      icon={<IconCpu size={13} />}
+    />
+  )
+}
+```
+
+---
+
+## Props
+
+| Prop        | Type        | Default   | Description                                                  |
+| ----------- | ----------- | --------- | ------------------------------------------------------------ |
+| title       | `string`    | —         | Label shown on the top-left of the card.                     |
+| percentage  | `number`    | —         | Current usage value from `0` to `100`.                       |
+| pillCount   | `number`    | `10`      | How many pill segments to render across the card.            |
+| accentColor | `string`    | `#00f5ff` | Neon glow color for active pills and the percentage counter. |
+| icon        | `ReactNode` | —         | Optional icon rendered next to the title (use Tabler Icons). |
+
+---
+
+## Component Features
+
+- Smooth **animated counter** that tweens to the new percentage value
+- **Staggered pill entrance** animation on mount using Motion spring curves
+- **Neon glow** on active pills with a shimmer sweep effect
+- Automatically switches accent to **red** (`#ff2d55`) when usage exceeds 75%
+- Pills **fill the full card width** using equal flex columns
+- Built with **Motion** (`motion/react`) and **Tabler Icons**
+- `"use client"` compatible for Next.js App Router
+
+---
+
+## Example: Memory Monitor
+
+```tsx
+import { IconServer } from "@tabler/icons-react"
+
+import { UsageCard } from "@/components/ui/usage-card"
+
+export default function Example() {
+  return (
+    <UsageCard
+      title="Memory"
+      percentage={45}
+      pillCount={10}
+      accentColor="#bf5af2"
+      icon={<IconServer size={13} />}
+    />
+  )
+}
+```
+
+---
+
+## Example: Live Data with useState
+
+```tsx
+"use client"
+
+import { useEffect, useState } from "react"
+import { IconCpu, IconDatabase, IconServer } from "@tabler/icons-react"
+
+import { UsageCard } from "@/components/ui/usage-card"
+
+export default function Dashboard() {
+  const [cpu, setCpu] = useState(40)
+  const [ram, setRam] = useState(55)
+  const [disk, setDisk] = useState(80)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCpu((v) => Math.min(100, Math.max(0, v + (Math.random() - 0.5) * 10)))
+      setRam((v) => Math.min(100, Math.max(0, v + (Math.random() - 0.5) * 6)))
+      setDisk((v) => Math.min(100, Math.max(0, v + (Math.random() - 0.48) * 2)))
+    }, 2000)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div className="flex flex-col gap-4">
+      <UsageCard
+        title="CPU"
+        percentage={Math.round(cpu)}
+        accentColor="#00f5ff"
+        icon={<IconCpu size={13} />}
+      />
+      <UsageCard
+        title="Memory"
+        percentage={Math.round(ram)}
+        accentColor="#bf5af2"
+        icon={<IconServer size={13} />}
+      />
+      <UsageCard
+        title="Disk"
+        percentage={Math.round(disk)}
+        accentColor="#ff9f0a"
+        icon={<IconDatabase size={13} />}
+      />
+    </div>
+  )
+}
+```
+
+---
+
+## Tips
+
+- Set `pillCount` lower (e.g. `5`) for a chunkier, bolder look.
+- Pair with a dark background — the neon glow relies on contrast to pop.
+- The **critical threshold** (auto-red at 75%) is hardcoded; fork the component to customize it.
+- Works great inside **dashboards**, **sidebars**, or **status panels**.
+- Combine multiple cards in a vertical stack for a full system monitor view.

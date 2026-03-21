@@ -417,6 +417,22 @@
       ]
     },
     {
+      "name": "usage-card",
+      "type": "registry:ui",
+      "title": "Usage Card",
+      "description": "An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.",
+      "dependencies": [
+        "react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/usage-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "live-waveform-demo",
       "type": "registry:example",
       "title": "Live Waveform Demo",
@@ -802,6 +818,21 @@
       "files": [
         {
           "path": "registry/example/3d-folder-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "usage-card-demo",
+      "type": "registry:example",
+      "title": "Usage Card Demo",
+      "description": "An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.",
+      "registryDependencies": [
+        "@gammaui/usage-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/usage-card-demo.tsx",
           "type": "registry:example"
         }
       ]

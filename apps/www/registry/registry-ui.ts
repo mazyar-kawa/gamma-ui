@@ -365,4 +365,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "usage-card",
+    type: "registry:ui",
+    title: "Usage Card",
+    description:
+      "An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.",
+    dependencies: ["react", "motion"],
+    files: [
+      {
+        path: "gammaui/usage-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

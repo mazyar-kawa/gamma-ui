@@ -440,6 +440,23 @@ export const Index: Record<string, any> = {
     }),
     meta: {},
   },
+  "usage-card": {
+    name: "usage-card",
+    description: "An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/usage-card.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/usage-card.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "usage-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
   "live-waveform-demo": {
     name: "live-waveform-demo",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
@@ -878,6 +895,23 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/3d-folder-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "3d-folder-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "usage-card-demo": {
+    name: "usage-card-demo",
+    description: "An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/usage-card"],
+    files: [{
+      path: "registry/example/usage-card-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/usage-card-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "usage-card-demo"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},
