@@ -1,0 +1,85 @@
+---
+title: Data Feeding In
+date: 2026-06-21
+description: An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal using Framer Motion.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="data-feeding-in-demo"
+  title="Data Feeding In"
+  description="An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal."
+  justify="center"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/data-feeding-in
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Install dependencies.</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="data-feeding-in"
+  title="components/gammaui/data-feeding-in.tsx"
+/>
+
+<Step>Update the import paths to match your project structure.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+The `DataFeedingIn` component visualizes data flowing into a system. Animated SVG paths fan out from a source, carrying pulsing purple gradient beams along each line, before converging into a frosted-glass table panel where rows animate in one by one.
+
+---
+
+## Features
+
+- **Animated SVG flow paths** — Seven branching paths with dashed strokes and a fade mask.
+- **Pulsing gradient beams** — Per-path `linearGradient` animated with Framer Motion for a continuous sweep effect.
+- **Staggered table reveal** — Rows fade and slide in sequentially with configurable delays.
+- **Zero dependencies beyond Framer Motion** — Pure React + SVG + Tailwind CSS.
+
+---
+
+## Usage
+
+```tsx
+import DataFeedingIn from "@/components/gammaui/data-feeding-in"
+
+export default function Page() {
+  return (
+    <div className="flex h-screen items-center justify-center bg-black">
+      <DataFeedingIn />
+    </div>
+  )
+}
+```
+
+---
+
+## Tips
+
+- Works best on a **dark background** — the paths and table use white/low-opacity strokes.
+- The component is self-contained with no props; customize colors by editing the `#716FFF` stop colors in the gradient defs or the Tailwind classes on the table panel.
+- Wrap it in a container with `overflow-hidden` if you need to clip the entry animation.

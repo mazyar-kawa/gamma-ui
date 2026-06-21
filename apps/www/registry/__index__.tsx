@@ -15,6 +15,40 @@ export const Index: Record<string, any> = {
     component: null,
     meta: {},
   },
+  "data-feeding-in": {
+    name: "data-feeding-in",
+    description: "An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal using Framer Motion.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/data-feeding-in.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/data-feeding-in.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "data-feeding-in"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "aurora-glass": {
+    name: "aurora-glass",
+    description: "A shimmering background of colorful glass tiles rendered with raw WebGL2, featuring directional ripple layers, per-tile bevel shading, and chromatic spread.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/aurora-glass.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/aurora-glass.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aurora-glass"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
   "live-waveform": {
     name: "live-waveform",
     description: "A customizable live audio waveform visualizer using the Web Audio API.",
@@ -453,6 +487,40 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/gammaui/usage-card.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "usage-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "data-feeding-in-demo": {
+    name: "data-feeding-in-demo",
+    description: "An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal using Framer Motion.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/data-feeding-in"],
+    files: [{
+      path: "registry/example/data-feeding-in-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/data-feeding-in-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "data-feeding-in-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "aurora-glass-demo": {
+    name: "aurora-glass-demo",
+    description: "A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/aurora-glass"],
+    files: [{
+      path: "registry/example/aurora-glass-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/aurora-glass-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aurora-glass-demo"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},

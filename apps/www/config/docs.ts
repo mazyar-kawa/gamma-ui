@@ -133,6 +133,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Data Feeding In",
+          href: `/docs/components/data-feeding-in`,
+          items: [],
+          label: "New",
+        },
       ],
     },
 
@@ -181,6 +187,12 @@ export const docsConfig: DocsConfig = {
           title: "Plasma",
           href: `/docs/components/plasma`,
           items: [],
+        },
+        {
+          title: "Aurora Glass",
+          href: `/docs/components/aurora-glass`,
+          items: [],
+          label: "New",
         },
       ],
     },

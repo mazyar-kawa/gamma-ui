@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-glass-demo",
+  "title": "Aurora Glass Demo",
+  "description": "A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread.",
+  "registryDependencies": [
+    "@gammaui/aurora-glass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/aurora-glass-demo.tsx",
+      "content": "\"use client\"\n\nimport AuroraGlass from \"@/registry/gammaui/aurora-glass\"\n\nexport const AuroraGlassDemo = () => {\n  return (\n    <div className=\"relative h-[600px] w-full overflow-hidden rounded-xl\">\n      <AuroraGlass\n        speed={1}\n        tileDensity={5}\n        rippleLayers={8}\n        warpStrength={0.33}\n        bandSharpness={3}\n        colorA=\"#001eff\"\n        colorB=\"#00bcff\"\n        backgroundColor=\"#000\"\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
