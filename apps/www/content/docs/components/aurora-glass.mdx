@@ -1,0 +1,131 @@
+---
+title: Aurora Glass
+date: 2026-06-21
+description: A shimmering background of colorful glass tiles rendered with raw WebGL2, featuring directional ripple layers, per-tile bevel shading, and chromatic spread.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="aurora-glass-demo"
+  title="Aurora Glass"
+  description="A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread."
+  justify="center"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/aurora-glass
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="aurora-glass"
+  title="components/gammaui/aurora-glass.tsx"
+/>
+
+<Step>Update the import paths to match your project structure.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+The `AuroraGlass` component renders an animated field of rounded glass tiles using a raw WebGL2 canvas.
+Broad directional ripple bands sweep continuously across the entire tile lattice, and each tile's bevel normal warps the sample point near its edges — giving a refraction-like effect as highlights flow from tile to tile.
+It accepts children, so you can layer any content above the animation.
+
+---
+
+## Props
+
+| Prop              | Type               | Default     | Description                                       |
+| ----------------- | ------------------ | ----------- | ------------------------------------------------- |
+| `width`           | `string \| number` | `"100%"`    | Container width                                   |
+| `height`          | `string \| number` | `"100%"`    | Container height                                  |
+| `className`       | `string`           | `""`        | Additional CSS classes                            |
+| `children`        | `ReactNode`        | `undefined` | Content rendered above the effect                 |
+| `speed`           | `number`           | `1`         | Animation speed multiplier (0–3)                  |
+| `tileDensity`     | `number`           | `4`         | Number of tiles across the shorter side (1–16)    |
+| `rippleLayers`    | `number`           | `6`         | Stacked ripple layers (1–8)                       |
+| `warpStrength`    | `number`           | `0.33`      | Per-tile inverse-distance refraction warp (0–0.6) |
+| `bandSharpness`   | `number`           | `3`         | Highlight peak sharpness (0.5–10)                 |
+| `chromaticSpread` | `number`           | `0`         | Per-channel RGB separation (0–1)                  |
+| `colorA`          | `string`           | `"#1E00FF"` | Gradient deep color stop                          |
+| `colorB`          | `string`           | `"#D765E6"` | Gradient bright color stop                        |
+| `backgroundColor` | `string`           | `"#FFFFFF"` | Fill color for gaps between tiles and dark areas  |
+| `opacity`         | `number`           | `1`         | Master alpha (0–1)                                |
+| `dpr`             | `number`           | `1.5`       | Max device pixel ratio (1–3)                      |
+
+---
+
+## Example Variants
+
+### Fullscreen Background
+
+```tsx
+<div className="fixed inset-0">
+  <AuroraGlass colorA="#1E00FF" colorB="#D765E6" tileDensity={6} />
+</div>
+```
+
+### Dark Mode Hero with Content
+
+```tsx
+<AuroraGlass
+  height="400px"
+  colorA="#001eff"
+  colorB="#00bcff"
+  backgroundColor="#000"
+  tileDensity={5}
+  rippleLayers={8}
+>
+  <div className="flex h-full items-center justify-center">
+    <h1 className="text-4xl font-bold text-white">Hello World</h1>
+  </div>
+</AuroraGlass>
+```
+
+### Chromatic Aberration Effect
+
+```tsx
+<AuroraGlass
+  colorA="#ff0080"
+  colorB="#7928ca"
+  chromaticSpread={0.6}
+  bandSharpness={5}
+  tileDensity={8}
+/>
+```
+
+---
+
+## Features
+
+- ⚡ **Raw WebGL2** — GPU-accelerated rendering with no external dependencies.
+- 🪟 **Glass Bevel Shading** — Per-tile surface normals derived from a domed height field, lit by a virtual studio light.
+- 🌊 **Continuous Ripple Field** — Highlight bands flow across tile boundaries rather than animating per-tile.
+- 🌈 **Chromatic Spread** — Optional per-channel RGB offset for a prismatic aberration look.
+- 📏 **Responsive** — Adapts to container size via `ResizeObserver`.
+- 🧩 **Composable** — Accepts `children` rendered above the canvas layer.
+
+---
+
+## Tips
+
+- Place the component inside a container with an explicit height (e.g. `h-[400px]`) — it fills available space automatically.
+- Increase `tileDensity` for a finer tile grid, or lower it for large bold tiles.
+- Set `chromaticSpread` above `0.3` combined with a high `bandSharpness` for a vivid neon look.
+- Use `opacity` to blend the effect over a solid background color.

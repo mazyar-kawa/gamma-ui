@@ -19,6 +19,37 @@
       "cssVars": {}
     },
     {
+      "name": "data-feeding-in",
+      "type": "registry:ui",
+      "title": "Data Feeding In",
+      "description": "An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal using Framer Motion.",
+      "dependencies": [
+        "react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/data-feeding-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aurora-glass",
+      "type": "registry:ui",
+      "title": "Aurora Glass",
+      "description": "A shimmering background of colorful glass tiles rendered with raw WebGL2, featuring directional ripple layers, per-tile bevel shading, and chromatic spread.",
+      "dependencies": [
+        "react"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/aurora-glass.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "live-waveform",
       "type": "registry:ui",
       "title": "Live Waveform",
@@ -429,6 +460,36 @@
         {
           "path": "registry/gammaui/usage-card.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "data-feeding-in-demo",
+      "type": "registry:example",
+      "title": "Data Feeding In Demo",
+      "description": "An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal using Framer Motion.",
+      "registryDependencies": [
+        "@gammaui/data-feeding-in"
+      ],
+      "files": [
+        {
+          "path": "registry/example/data-feeding-in-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "aurora-glass-demo",
+      "type": "registry:example",
+      "title": "Aurora Glass Demo",
+      "description": "A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread.",
+      "registryDependencies": [
+        "@gammaui/aurora-glass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/aurora-glass-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

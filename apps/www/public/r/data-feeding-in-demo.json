@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-feeding-in-demo",
+  "title": "Data Feeding In Demo",
+  "description": "An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal using Framer Motion.",
+  "registryDependencies": [
+    "@gammaui/data-feeding-in"
+  ],
+  "files": [
+    {
+      "path": "registry/example/data-feeding-in-demo.tsx",
+      "content": "import DataFeedingIn from \"@/registry/gammaui/data-feeding-in\"\n\nexport const DataFeedingInDemo = () => {\n  return (\n    <div className=\"flex h-full min-h-[400px] w-full items-center justify-center\">\n      <DataFeedingIn />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

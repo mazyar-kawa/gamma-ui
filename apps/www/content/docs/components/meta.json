@@ -1,0 +1,32 @@
+{
+  "title": "Components",
+  "pages": [
+    "cloud-flow",
+    "macbook-keyboard",
+    "cpu-architecture",
+    "shadcn-ui",
+    "location-map",
+    "3d-folder",
+    "live-waveform",
+    "radial-intro",
+    "animated-list",
+    "text-roll",
+    "logo-timeline",
+    "pricing-interaction",
+    "activity-dropdown",
+    "badge",
+    "logo-cloud",
+    "wave-path",
+    "support-box",
+    "inverted-cursor",
+    "usage-card",
+    "data-feeding-in",
+    "overlay-button",
+    "border-button",
+    "pixel-button",
+    "magnetize-button",
+    "wavy-text-block",
+    "plasma",
+    "aurora-glass"
+  ]
+}

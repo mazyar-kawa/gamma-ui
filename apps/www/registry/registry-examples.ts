@@ -2,6 +2,36 @@ import { type Registry } from "@/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "data-feeding-in-demo",
+    type: "registry:example",
+    title: "Data Feeding In Demo",
+    description:
+      "An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal using Framer Motion.",
+    registryDependencies: ["@gammaui/data-feeding-in"],
+    files: [
+      {
+        path: "example/data-feeding-in-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "aurora-glass-demo",
+    type: "registry:example",
+    title: "Aurora Glass Demo",
+    description:
+      "A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread.",
+    registryDependencies: ["@gammaui/aurora-glass"],
+    files: [
+      {
+        path: "example/aurora-glass-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
     name: "live-waveform-demo",
     type: "registry:example",
     title: "Live Waveform Demo",
