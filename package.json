@@ -24,6 +24,7 @@
     "preinstall": "npx only-allow bun",
     "dev": "bunx turbo run dev --parallel",
     "build": "bunx turbo run build",
+    "build:www": "bunx turbo run build --filter=www",
     "start": "bunx turbo run start",
     "lint": "bunx turbo run lint",
     "lint:fix": "bunx turbo run lint:fix",
