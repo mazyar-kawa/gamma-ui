@@ -34,7 +34,7 @@ export const Index: Record<string, any> = {
   },
   "aurora-glass": {
     name: "aurora-glass",
-    description: "A shimmering background of colorful glass tiles rendered with raw WebGL2, featuring directional ripple layers, per-tile bevel shading, and chromatic spread.",
+    description: "A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.",
     type: "registry:ui",
     registryDependencies: [],
     files: [{
@@ -491,6 +491,35 @@ export const Index: Record<string, any> = {
     }),
     meta: {},
   },
+  "voxel-wall": {
+    name: "voxel-wall",
+    description: "A dark voxel tunnel with volumetric light rays, drifting cubes, and mouse-driven camera parallax.",
+    type: "registry:ui",
+    registryDependencies: [],
+    files: [{
+      path: "registry/gammaui/voxel-wall/scene.tsx",
+      type: "registry:ui",
+      target: ""
+    },{
+      path: "registry/gammaui/voxel-wall/wall.tsx",
+      type: "registry:ui",
+      target: ""
+    },{
+      path: "registry/gammaui/voxel-wall/light-rays.tsx",
+      type: "registry:ui",
+      target: ""
+    },{
+      path: "registry/gammaui/voxel-wall/camera-rig.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/gammaui/voxel-wall/scene.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "voxel-wall"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
   "data-feeding-in-demo": {
     name: "data-feeding-in-demo",
     description: "An animated data ingestion visualization with flowing SVG paths, pulsing gradient beams, and a staggered table reveal using Framer Motion.",
@@ -510,7 +539,7 @@ export const Index: Record<string, any> = {
   },
   "aurora-glass-demo": {
     name: "aurora-glass-demo",
-    description: "A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread.",
+    description: "A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.",
     type: "registry:example",
     registryDependencies: ["@gammaui/aurora-glass"],
     files: [{
@@ -980,6 +1009,23 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/usage-card-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "usage-card-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: {},
+  },
+  "voxel-wall-demo": {
+    name: "voxel-wall-demo",
+    description: "A dark voxel tunnel with volumetric light rays, drifting cubes, and subtle camera parallax — ideal for hero backgrounds.",
+    type: "registry:example",
+    registryDependencies: ["@gammaui/voxel-wall"],
+    files: [{
+      path: "registry/example/voxel-wall-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/voxel-wall-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "voxel-wall-demo"
       return { default: mod.default || mod[exportName] }
     }),
     meta: {},

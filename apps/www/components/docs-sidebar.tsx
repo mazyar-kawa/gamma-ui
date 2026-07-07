@@ -92,11 +92,11 @@ export function DocsSidebar({
 
   return (
     <Sidebar
-      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)+2rem)] max-h-screen bg-transparent lg:flex"
+      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--header-height)-1px)] max-h-[calc(100svh-var(--header-height)-1px)] w-(--sidebar-width) self-start bg-transparent lg:flex"
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="no-scrollbar overflow-x-hidden px-2 pb-12">
+      <SidebarContent className="no-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto px-2 pb-12">
         <div className="h-(--top-spacing) shrink-0" />
         {docsConfig.sidebarNav.map((section) => {
           return (

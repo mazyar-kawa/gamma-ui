@@ -1,7 +1,7 @@
 ---
 title: Aurora Glass
 date: 2026-06-21
-description: A shimmering background of colorful glass tiles rendered with raw WebGL2, featuring directional ripple layers, per-tile bevel shading, and chromatic spread.
+description: A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.
 author: mazyar
 published: true
 ---
@@ -9,7 +9,7 @@ published: true
 <ComponentPreview
   name="aurora-glass-demo"
   title="Aurora Glass"
-  description="A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread."
+  description="A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread."
   justify="center"
 />
 
@@ -43,7 +43,7 @@ npx shadcn@latest add @gammaui/aurora-glass
 </TabsContent>
 </CodeTabs>
 
-The `AuroraGlass` component renders an animated field of rounded glass tiles using a raw WebGL2 canvas.
+The `AuroraGlass` component renders an animated field of rounded glass tiles.
 Broad directional ripple bands sweep continuously across the entire tile lattice, and each tile's bevel normal warps the sample point near its edges — giving a refraction-like effect as highlights flow from tile to tile.
 It accepts children, so you can layer any content above the animation.
 
@@ -114,7 +114,7 @@ It accepts children, so you can layer any content above the animation.
 
 ## Features
 
-- ⚡ **Raw WebGL2** — GPU-accelerated rendering with no external dependencies.
+- ⚡ **High-performance rendering** — GPU-accelerated animation with no external dependencies.
 - 🪟 **Glass Bevel Shading** — Per-tile surface normals derived from a domed height field, lit by a virtual studio light.
 - 🌊 **Continuous Ripple Field** — Highlight bands flow across tile boundaries rather than animating per-tile.
 - 🌈 **Chromatic Spread** — Optional per-channel RGB offset for a prismatic aberration look.

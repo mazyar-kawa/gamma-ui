@@ -43,7 +43,15 @@ export async function ComponentSource({
     return null
   }
 
-  const lang = language ?? title?.split(".").pop() ?? "tsx"
+  const extension = title?.split(".").pop()
+  const lang =
+    language ??
+    (extension &&
+    ["tsx", "ts", "jsx", "js", "css", "md", "json", "bash", "sh"].includes(
+      extension
+    )
+      ? extension
+      : "tsx")
   const highlightedCode = await highlightCode(code, lang)
 
   if (!collapsible) {

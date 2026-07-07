@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "aurora-glass-demo",
   "title": "Aurora Glass Demo",
-  "description": "A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread.",
+  "description": "A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.",
   "registryDependencies": [
     "@gammaui/aurora-glass"
   ],

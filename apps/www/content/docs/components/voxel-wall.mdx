@@ -1,0 +1,117 @@
+---
+title: Voxel Wall
+date: 2026-07-07
+description: A dark voxel tunnel with volumetric light rays, drifting cubes, and mouse-driven camera parallax.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="voxel-wall-demo"
+  title="Voxel Wall"
+  description="A dark voxel tunnel with volumetric light rays and mouse-driven camera parallax."
+  justify="center"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/voxel-wall
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Install dependencies.</Step>
+
+```bash
+npm install three @react-three/fiber @react-three/postprocessing postprocessing
+npm install -D @types/three
+```
+
+<Step>Copy and paste the following files into your project.</Step>
+
+<ComponentSource
+  src="registry/gammaui/voxel-wall/scene.tsx"
+  title="components/gammaui/voxel-wall/scene.tsx"
+/>
+
+<ComponentSource
+  src="registry/gammaui/voxel-wall/wall.tsx"
+  title="components/gammaui/voxel-wall/wall.tsx"
+/>
+
+<ComponentSource
+  src="registry/gammaui/voxel-wall/light-rays.tsx"
+  title="components/gammaui/voxel-wall/light-rays.tsx"
+/>
+
+<ComponentSource
+  src="registry/gammaui/voxel-wall/camera-rig.tsx"
+  title="components/gammaui/voxel-wall/camera-rig.tsx"
+/>
+
+<Step>Update the import paths to match your project structure.</Step>
+
+```tsx
+import VoxelWallScene from "@/components/gammaui/voxel-wall/scene"
+```
+
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+The `VoxelWallScene` component renders a full-screen voxel tunnel: thousands of instanced cubes form a room with a rectangular light portal at the far end. Cubes subtly drift toward the light, god rays and bloom add atmosphere, and the camera responds to pointer movement.
+
+---
+
+## Props
+
+| Prop        | Type               | Default  | Description                                      |
+| ----------- | ------------------ | -------- | ------------------------------------------------ |
+| `className` | `string`           | —        | Optional class name for the outer wrapper `div`. |
+| `height`    | `string \| number` | `"100%"` | Height of the canvas container.                  |
+
+---
+
+## Example Variants
+
+### Hero background
+
+```tsx
+<div className="fixed inset-0">
+  <VoxelWallScene />
+</div>
+```
+
+### Fixed-height preview
+
+```tsx
+<div className="h-[500px] w-full overflow-hidden rounded-xl">
+  <VoxelWallScene height="100%" />
+</div>
+```
+
+## Features
+
+- **Instanced voxel tunnel** — Procedurally generated room with a glowing portal opening.
+- **God rays & bloom** — Cinematic light rays and soft glow effects.
+- **Mouse parallax** — Camera sways and follows pointer movement.
+- **Drifting cubes** — Edge and debris cubes animate toward the light source.
+- **Dust motes** — Subtle particle field in the light beam.
+
+---
+
+## Tips
+
+- Always give the parent container an explicit height; the canvas fills its wrapper.
+- Performance scales with instance count; reduce debris in `wall.tsx` if needed on low-end devices.

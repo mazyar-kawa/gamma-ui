@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "voxel-wall-demo",
+  "title": "Voxel Wall Demo",
+  "description": "A dark voxel tunnel with volumetric light rays, drifting cubes, and subtle camera parallax — ideal for hero backgrounds.",
+  "registryDependencies": [
+    "@gammaui/voxel-wall"
+  ],
+  "files": [
+    {
+      "path": "registry/example/voxel-wall-demo.tsx",
+      "content": "import VoxelWallScene from \"@/registry/gammaui/voxel-wall/scene\"\n\nexport default function VoxelWallDemo() {\n  return (\n    <div className=\"relative h-[600px] w-full overflow-hidden rounded-xl\">\n      <VoxelWallScene />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

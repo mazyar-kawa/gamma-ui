@@ -194,6 +194,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Voxel Wall",
+          href: `/docs/components/voxel-wall`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],

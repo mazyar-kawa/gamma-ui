@@ -38,7 +38,7 @@
       "name": "aurora-glass",
       "type": "registry:ui",
       "title": "Aurora Glass",
-      "description": "A shimmering background of colorful glass tiles rendered with raw WebGL2, featuring directional ripple layers, per-tile bevel shading, and chromatic spread.",
+      "description": "A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.",
       "dependencies": [
         "react"
       ],
@@ -464,6 +464,40 @@
       ]
     },
     {
+      "name": "voxel-wall",
+      "type": "registry:ui",
+      "title": "Voxel Wall",
+      "description": "A dark voxel tunnel with volumetric light rays, drifting cubes, and mouse-driven camera parallax.",
+      "dependencies": [
+        "react",
+        "three",
+        "@react-three/fiber",
+        "@react-three/postprocessing",
+        "postprocessing"
+      ],
+      "devDependencies": [
+        "@types/three"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/voxel-wall/scene.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/gammaui/voxel-wall/wall.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/gammaui/voxel-wall/light-rays.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/gammaui/voxel-wall/camera-rig.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "data-feeding-in-demo",
       "type": "registry:example",
       "title": "Data Feeding In Demo",
@@ -482,7 +516,7 @@
       "name": "aurora-glass-demo",
       "type": "registry:example",
       "title": "Aurora Glass Demo",
-      "description": "A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread.",
+      "description": "A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.",
       "registryDependencies": [
         "@gammaui/aurora-glass"
       ],
@@ -894,6 +928,21 @@
       "files": [
         {
           "path": "registry/example/usage-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "voxel-wall-demo",
+      "type": "registry:example",
+      "title": "Voxel Wall Demo",
+      "description": "A dark voxel tunnel with volumetric light rays, drifting cubes, and subtle camera parallax — ideal for hero backgrounds.",
+      "registryDependencies": [
+        "@gammaui/voxel-wall"
+      ],
+      "files": [
+        {
+          "path": "registry/example/voxel-wall-demo.tsx",
           "type": "registry:example"
         }
       ]
