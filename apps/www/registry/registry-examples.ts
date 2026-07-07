@@ -21,7 +21,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Aurora Glass Demo",
     description:
-      "A shimmering WebGL2 glass tile background with directional ripple layers, bevel shading, and chromatic spread.",
+      "A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.",
     registryDependencies: ["@gammaui/aurora-glass"],
     files: [
       {
@@ -420,6 +420,20 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/usage-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "voxel-wall-demo",
+    type: "registry:example",
+    title: "Voxel Wall Demo",
+    description:
+      "A dark voxel tunnel with volumetric light rays, drifting cubes, and subtle camera parallax — ideal for hero backgrounds.",
+    registryDependencies: ["@gammaui/voxel-wall"],
+    files: [
+      {
+        path: "example/voxel-wall-demo.tsx",
         type: "registry:example",
       },
     ],

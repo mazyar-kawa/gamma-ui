@@ -173,7 +173,7 @@ export default async function DocPage({ params }: DocPageProps) {
       />
       <div
         data-slot="docs"
-        className="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full"
+        className="flex items-start text-[1.05rem] sm:text-[15px] xl:w-full"
       >
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
@@ -291,10 +291,10 @@ export default async function DocPage({ params }: DocPageProps) {
             )}
           </div>
         </div>
-        <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] max-h-screen w-84 flex-col gap-4 overflow-hidden overscroll-none xl:flex">
+        <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-1px)] max-h-[calc(100svh-var(--header-height)-1px)] w-84 shrink-0 flex-col gap-4 self-start overflow-hidden overscroll-none xl:flex">
           <div className="h-(--top-spacing) shrink-0" />
           {doc.toc?.length ? (
-            <div className="no-scrollbar overflow-y-auto px-8">
+            <div className="no-scrollbar min-h-0 flex-1 overflow-x-hidden overflow-y-auto px-8">
               <DocsTableOfContents toc={doc.toc} />
               <Contribute page={page} />
               {/* <div className="h-8" />

@@ -21,7 +21,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Aurora Glass",
     description:
-      "A shimmering background of colorful glass tiles rendered with raw WebGL2, featuring directional ripple layers, per-tile bevel shading, and chromatic spread.",
+      "A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.",
     dependencies: ["react"],
     files: [
       {
@@ -405,6 +405,39 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "gammaui/usage-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "voxel-wall",
+    type: "registry:ui",
+    title: "Voxel Wall",
+    description:
+      "A dark voxel tunnel with volumetric light rays, drifting cubes, and mouse-driven camera parallax.",
+    dependencies: [
+      "react",
+      "three",
+      "@react-three/fiber",
+      "@react-three/postprocessing",
+      "postprocessing",
+    ],
+    devDependencies: ["@types/three"],
+    files: [
+      {
+        path: "gammaui/voxel-wall/scene.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "gammaui/voxel-wall/wall.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "gammaui/voxel-wall/light-rays.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "gammaui/voxel-wall/camera-rig.tsx",
         type: "registry:ui",
       },
     ],

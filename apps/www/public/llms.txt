@@ -9,7 +9,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [3D Folder](https://gammaui.com/docs/components/3d-folder): A 3D animated folder component that reveals project cards on hover and expands into a smooth image lightbox with keyboard navigation.
 - [Activity Dropdown](https://gammaui.com/docs/components/activity-dropdown): A modern activity/notification dropdown with smooth animations and responsive motion.
 - [Animated List](https://gammaui.com/docs/components/animated-list): A dynamic list component with smooth animations that forms a column and scrolls through items continuously.
-- [Aurora Glass](https://gammaui.com/docs/components/aurora-glass): A shimmering background of colorful glass tiles rendered with raw WebGL2, featuring directional ripple layers, per-tile bevel shading, and chromatic spread.
+- [Aurora Glass](https://gammaui.com/docs/components/aurora-glass): A shimmering glass tile background with ripple layers, bevel shading, and chromatic spread.
 - [Badge](https://gammaui.com/docs/components/badge): A flexible and customizable Badge component for labels, statuses, and indicators.
 - [Border Button](https://gammaui.com/docs/components/border-button): A reactive border animation button that follows cursor movement using Framer Motion and CSS masks.
 - [Cloud Flow](https://gammaui.com/docs/components/cloud-flow): An interactive cloud architecture visualization component featuring animated SVG flow paths, glowing data particles, node badges, and a central hub with layered motion effects—ideal for showcasing distributed systems, API traffic, and real-time infrastructure flows.
@@ -32,6 +32,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Support Box](https://gammaui.com/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
 - [Text Roll](https://gammaui.com/docs/components/text-roll): A rolling hover-animated text component built with Motion One.
 - [Usage Card](https://gammaui.com/docs/components/usage-card): An animated system monitor card that displays a title, percentage, and neon-lit pill indicators driven by Motion.
+- [Voxel Wall](https://gammaui.com/docs/components/voxel-wall): A dark voxel tunnel with volumetric light rays, drifting cubes, and mouse-driven camera parallax.
 - [Wave Path](https://gammaui.com/docs/components/wave-path): A dynamic interactive SVG wave component that responds to pointer movement.
 - [Wavy Text Block](https://gammaui.com/docs/components/wavy-text-block): A scroll-triggered wavy text animation component that creates flowing motion effects using Framer Motion and scroll context.
 
@@ -66,6 +67,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Location Map Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/location-map-demo.tsx): Example usage
 - [3D Folder Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/3d-folder-demo.tsx): Example usage
 - [Usage Card Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/usage-card-demo.tsx): Example usage
+- [Voxel Wall Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/voxel-wall-demo.tsx): Example usage
 
 ## Optional
 
