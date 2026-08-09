@@ -26,6 +26,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Quick Start",
+          href: "/docs/quick-start",
+          items: [],
+        },
+        {
           title: "Install Next.js",
           href: "/docs/nextjs-installation",
           items: [],

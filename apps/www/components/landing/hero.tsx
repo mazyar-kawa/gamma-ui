@@ -1,74 +1,63 @@
 import Link from "next/link"
-import { IconChevronRight } from "@tabler/icons-react"
+import { IconArrowRight, IconSparkles } from "@tabler/icons-react"
 
-import { Button } from "../ui/button"
-import { AnimatedGridBackground } from "./animated-grid-background"
+import { Button } from "@/components/ui/button"
+
+import { HeroPreview } from "./hero-preview"
 import { Stacks } from "./stacks"
 
-const Hero = () => {
+function Hero() {
   return (
-    <div className="relative bg-white transition-colors duration-300 dark:bg-black">
-      <AnimatedGridBackground>
-        <div className="relative mx-auto flex h-[calc(100vh-2rem)] w-full max-w-7xl flex-col items-center justify-center sm:py-20">
-          <h1 className="max-w-2xl bg-linear-to-br from-gray-900 to-gray-700 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:text-5xl md:text-6xl dark:from-neutral-100 dark:via-neutral-100 dark:to-neutral-100/30">
-            The UI Library Developers Deserve
-          </h1>
-          <p className="my-6 max-w-sm bg-linear-to-br from-black/70 via-black/70 to-black/30 bg-clip-text text-center text-[0.87rem] text-balance text-transparent sm:max-w-3xl md:text-[1.15rem] dark:from-white/70 dark:via-white/70 dark:to-white/30">
-            150+ React.js components powered by{" "}
-            <span className="font-semibold">Tailwind CSS</span> and{" "}
-            <span className="font-semibold">Motion</span>. Fully open-source,
-            production-ready.
-            <br /> Perfect companion for
-            <span className="font-semibold"> shadcn/ui</span>.
-          </p>
-          <div className="flex gap-8">
-            <Link
-              href={"/components"}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium capitalize transition-colors md:text-base"
-            >
-              browse components
-              <IconChevronRight className="h-4 w-4" />
-            </Link>
-            <a
-              className="group flex items-center gap-1.5 text-[0.75rem] text-black md:gap-2 md:text-[1rem] dark:text-white"
-              href="/docs/introduction"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-book-open h-3.5 w-3.5 translate-y-px md:h-4 md:w-4"
-              >
-                <path d="M12 7v14"></path>
-                <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
-              </svg>
-              Documentation
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-chevron-right mt-0.5 h-3.5 w-3.5 transition-all duration-200 ease-in-out group-hover:translate-x-2 md:h-4 md:w-4 md:group-hover:translate-x-3"
-              >
-                <path d="m9 18 6-6-6-6"></path>
-              </svg>
-            </a>
+    <section className="relative overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,var(--border)_1px,transparent_0)] mask-[radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)] bg-size-[24px_24px] opacity-60"
+      />
+
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-12 pb-20 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8 lg:pt-16 lg:pb-28">
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div className="border-border/70 bg-muted/50 text-muted-foreground mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium">
+            <IconSparkles className="text-primary size-3.5" stroke={2} />
+            Open source component library
           </div>
-          <Stacks />
+
+          <h1 className="text-foreground max-w-xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            Interface craft for{" "}
+            <span className="from-primary via-chart-2 to-primary bg-linear-to-r bg-clip-text text-transparent">
+              modern React
+            </span>{" "}
+            teams
+          </h1>
+
+          <p className="text-muted-foreground mt-6 max-w-lg text-base leading-relaxed text-pretty sm:text-lg">
+            Gamma UI pairs Tailwind and Motion with a shadcn-compatible CLI.
+            Copy production-ready blocks — from WebGL backgrounds to dense app
+            chrome — without fighting your stack.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button asChild size="lg" className="h-11 rounded-full px-7">
+              <Link href="/components">
+                Browse components
+                <IconArrowRight className="size-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="h-11 rounded-full px-7"
+            >
+              <Link href="/docs/introduction">Documentation</Link>
+            </Button>
+          </div>
+
+          <Stacks variant="row" className="mt-10 w-full lg:justify-start" />
         </div>
-      </AnimatedGridBackground>
-    </div>
+
+        <HeroPreview />
+      </div>
+    </section>
   )
 }
 

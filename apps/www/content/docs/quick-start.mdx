@@ -1,0 +1,74 @@
+---
+title: "Quick Start"
+description: "Set up a Next.js app, initialize shadcn/ui, and add your first Gamma UI component in minutes."
+---
+
+# Quick Start
+
+Get **Gamma UI** running in a new or existing **Next.js** project. This guide matches the workflow on the homepage: scaffold → shadcn → add components → compose → ship.
+
+If you do not have a Next.js app yet, start with [Install Next.js](/docs/nextjs-installation) first.
+
+import { CodeBlockCommand } from "@/components/code-block-command"
+import { Dependencies } from "@/components/dependencies"
+
+<Dependencies step={1} title="Initialize shadcn/ui">
+  From your project root, run the shadcn CLI if you have not already:
+
+  <CodeBlockCommand
+    __npm__="npx shadcn@latest init"
+    __pnpm__="pnpm dlx shadcn@latest init"
+    __yarn__="yarn shadcn init"
+    __bun__="bunx shadcn@latest init"
+  />
+
+  Accept the defaults or match your stack (App Router, Tailwind, `@/` alias). Gamma UI components assume the same layout shadcn/ui uses.
+</Dependencies>
+
+<Dependencies step={2} title="Add a Gamma UI component">
+  Install any block from the registry with the `@gammaui` namespace. For example:
+
+  <CodeBlockCommand
+    __npm__="npx shadcn@latest add @gammaui/cloud-flow"
+    __pnpm__="pnpm dlx shadcn@latest add @gammaui/cloud-flow"
+    __yarn__="yarn shadcn add @gammaui/cloud-flow"
+    __bun__="bunx shadcn@latest add @gammaui/cloud-flow"
+  />
+
+  Files are copied into your repo (for example under `components/`) so you can edit them like any shadcn component. Browse [Components](/docs/components) for the full list and `add` commands.
+</Dependencies>
+
+<Dependencies step={3} title="Use the component">
+  Import the component and render it on a page:
+
+```tsx showLineNumbers
+import CloudFlow from "@/components/gammaui/cloud-flow"
+
+export default function Page() {
+  return (
+    <main className="flex min-h-screen items-center justify-center p-8">
+      <CloudFlow />
+    </main>
+  )
+}
+```
+
+  Adjust the import path if your shadcn config uses a different folder.
+</Dependencies>
+
+<Dependencies step={4} title="Run the dev server">
+  <CodeBlockCommand
+    __npm__="npm run dev"
+    __pnpm__="pnpm dev"
+    __yarn__="yarn dev"
+    __bun__="bun dev"
+  />
+
+  Open [http://localhost:3000](http://localhost:3000) and confirm the component renders. Tweak styles with Tailwind utilities or your theme tokens in `globals.css`.
+</Dependencies>
+
+## Next steps
+
+- Read the [Introduction](/docs/introduction) for philosophy and design goals.
+- Open any component doc for props, examples, and manual installation tabs.
+- Return to the [homepage](/) to explore live previews in the library section.

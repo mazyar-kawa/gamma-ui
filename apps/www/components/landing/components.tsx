@@ -3,6 +3,10 @@ import CloudFlow from "@/registry/gammaui/cloud-flow"
 import CpuArchitecture from "@/registry/gammaui/cpu-architecture"
 import ShadCnUI from "@/registry/gammaui/shadcn-ui"
 
+import { cn } from "@/lib/utils"
+
+import { SectionHeader } from "./section-header"
+
 const notifications = [
   { name: "Location", message: "Thomas has arrived home", time: "2h ago" },
   { name: "Fitness", message: "Daily step goal reached!", time: "1h ago" },
@@ -14,40 +18,54 @@ const notifications = [
   { name: "Tasks", message: "3 tasks due today", time: "1d ago" },
   { name: "Health", message: "Heart rate elevated", time: "3h ago" },
   { name: "Email", message: "New message from manager", time: "5m ago" },
-  { name: "Social", message: "Video got 1000 likes!", time: "2d ago" },
-  { name: "Family", message: "How are you doing?", time: "1w ago" },
-  { name: "Friends", message: "Coffee tomorrow?", time: "2d ago" },
-  { name: "Movies", message: "Did you see the new movie?", time: "4h ago" },
 ]
 
-const Components = () => {
+function ShowcaseCell({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   return (
-    <div className="mx-auto my-10 flex max-w-7xl flex-col items-center px-4 sm:px-6 lg:px-8">
-      {/* Header Section */}
-      <div className="mb-12 w-full max-w-4xl text-center">
-        <h1 className="mb-4 bg-linear-to-br from-gray-900 to-gray-700 bg-clip-text text-3xl font-extrabold text-transparent sm:text-4xl md:text-5xl lg:text-6xl dark:from-neutral-100 dark:via-neutral-100 dark:to-neutral-100/30">
-          Create Stunning Interfaces. No Restrictions.
-        </h1>
-        <p className="mx-auto max-w-2xl bg-linear-to-br from-black/70 via-black/70 to-black/30 bg-clip-text text-sm text-balance text-transparent sm:text-base md:text-lg dark:from-white/70 dark:via-white/70 dark:to-white/30">
-          Gamma UI delivers high-performance, accessible, and fully customizable
-          components so you can ship beautiful, responsive designs with ease.
-        </p>
-      </div>
+    <div
+      className={cn(
+        "border-border/70 bg-background/80 relative overflow-hidden rounded-2xl border p-4 shadow-sm backdrop-blur-sm sm:p-6",
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
+}
 
-      {/* Grid Section */}
-      <div className="w-full max-w-7xl">
-        <div className="grid grid-cols-1 place-items-center gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
-          <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
+function Components() {
+  return (
+    <section className="bg-muted/30 border-border/60 border-y">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div className="mb-14 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeader
+            label="01 — Library"
+            title="Components that feel designed, not assembled"
+            description="Live previews from the registry — motion, 3D, and product UI patterns you can install in one command."
+          />
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-12 lg:gap-5">
+          <ShowcaseCell className="flex min-h-[260px] items-center justify-center lg:col-span-7 lg:min-h-[320px]">
             <CloudFlow />
-          </div>
-          <div className="col-span-12 flex w-full justify-center rounded-md border px-10 py-2 sm:col-span-6">
+          </ShowcaseCell>
+
+          <ShowcaseCell className="flex items-center justify-center lg:col-span-5">
             <CpuArchitecture />
-          </div>
-          <div className="col-span-12 flex w-full justify-center rounded-md border px-10 py-5 sm:col-span-6">
+          </ShowcaseCell>
+
+          <ShowcaseCell className="flex items-center justify-center lg:col-span-5">
             <ShadCnUI />
-          </div>
-          <div className="col-span-12 flex w-full justify-center rounded-md border px-10">
-            <div className="bg-background relative h-[400px] w-full overflow-hidden">
+          </ShowcaseCell>
+
+          <ShowcaseCell className="p-2 lg:col-span-7 lg:p-4">
+            <div className="relative h-[360px] w-full overflow-hidden rounded-xl sm:h-[400px]">
               <AnimatedList
                 stackGap={20}
                 columnGap={70}
@@ -58,32 +76,32 @@ const Components = () => {
                 {notifications.map((notification, index) => (
                   <div
                     key={index}
-                    className="bg-card flex w-full max-w-[350px] items-center gap-4 rounded-2xl border p-4 shadow-sm"
+                    className="bg-card flex w-full max-w-[340px] items-center gap-4 rounded-2xl border p-4 shadow-sm"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500 text-sm font-medium text-white">
+                    <div className="bg-primary text-primary-foreground flex size-10 shrink-0 items-center justify-center rounded-full text-sm font-medium">
                       {notification.name.charAt(0)}
                     </div>
-                    <div className="flex flex-1 flex-col">
-                      <div className="flex items-center justify-between">
-                        <span className="text-muted-foreground text-sm font-medium">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-foreground truncate text-sm font-medium">
                           {notification.name}
                         </span>
-                        <span className="text-muted-foreground text-xs">
+                        <span className="text-muted-foreground shrink-0 text-xs">
                           {notification.time}
                         </span>
                       </div>
-                      <span className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground truncate text-sm">
                         {notification.message}
-                      </span>
+                      </p>
                     </div>
                   </div>
                 ))}
               </AnimatedList>
             </div>
-          </div>
+          </ShowcaseCell>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
