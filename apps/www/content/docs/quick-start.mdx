@@ -15,27 +15,29 @@ import { Dependencies } from "@/components/dependencies"
 <Dependencies step={1} title="Initialize shadcn/ui">
   From your project root, run the shadcn CLI if you have not already:
 
-  <CodeBlockCommand
-    __npm__="npx shadcn@latest init"
-    __pnpm__="pnpm dlx shadcn@latest init"
-    __yarn__="yarn shadcn init"
-    __bun__="bunx shadcn@latest init"
-  />
+<CodeBlockCommand
+  __npm__="npx shadcn@latest init"
+  __pnpm__="pnpm dlx shadcn@latest init"
+  __yarn__="yarn shadcn init"
+  __bun__="bunx shadcn@latest init"
+/>
 
-  Accept the defaults or match your stack (App Router, Tailwind, `@/` alias). Gamma UI components assume the same layout shadcn/ui uses.
+Accept the defaults or match your stack (App Router, Tailwind, `@/` alias). Gamma UI components assume the same layout shadcn/ui uses.
+
 </Dependencies>
 
 <Dependencies step={2} title="Add a Gamma UI component">
   Install any block from the registry with the `@gammaui` namespace. For example:
 
-  <CodeBlockCommand
-    __npm__="npx shadcn@latest add @gammaui/cloud-flow"
-    __pnpm__="pnpm dlx shadcn@latest add @gammaui/cloud-flow"
-    __yarn__="yarn shadcn add @gammaui/cloud-flow"
-    __bun__="bunx shadcn@latest add @gammaui/cloud-flow"
-  />
+<CodeBlockCommand
+  __npm__="npx shadcn@latest add @gammaui/cloud-flow"
+  __pnpm__="pnpm dlx shadcn@latest add @gammaui/cloud-flow"
+  __yarn__="yarn shadcn add @gammaui/cloud-flow"
+  __bun__="bunx shadcn@latest add @gammaui/cloud-flow"
+/>
 
-  Files are copied into your repo (for example under `components/`) so you can edit them like any shadcn component. Browse [Components](/docs/components) for the full list and `add` commands.
+Files are copied into your repo (for example under `components/`) so you can edit them like any shadcn component. Browse [Components](/docs/components) for the full list and `add` commands.
+
 </Dependencies>
 
 <Dependencies step={3} title="Use the component">
@@ -53,7 +55,8 @@ export default function Page() {
 }
 ```
 
-  Adjust the import path if your shadcn config uses a different folder.
+Adjust the import path if your shadcn config uses a different folder.
+
 </Dependencies>
 
 <Dependencies step={4} title="Run the dev server">
@@ -64,7 +67,8 @@ export default function Page() {
     __bun__="bun dev"
   />
 
-  Open [http://localhost:3000](http://localhost:3000) and confirm the component renders. Tweak styles with Tailwind utilities or your theme tokens in `globals.css`.
+Open [http://localhost:3000](http://localhost:3000) and confirm the component renders. Tweak styles with Tailwind utilities or your theme tokens in `globals.css`.
+
 </Dependencies>
 
 ## Next steps
