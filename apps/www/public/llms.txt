@@ -27,6 +27,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Pixel Button](https://gammaui.com/docs/components/pixel-button): A pixelated button animation effect built with Tailwind CSS and React.
 - [Plasma](https://gammaui.com/docs/components/plasma): A mesmerizing plasma shader animation rendered with WebGL, perfect for dynamic backgrounds and previews.
 - [Pricing Interaction](https://gammaui.com/docs/components/pricing-interaction): An interactive pricing switcher with animated numbers, selectable plans, and monthly/yearly billing modes.
+- [Rabbit Mascot](https://gammaui.com/docs/components/rabbit-mascot): An expressive rabbit boy mascot with round glasses and mood-driven face animations.
 - [Radial Intro](https://gammaui.com/docs/components/radial-intro): A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.
 - [Shadcn UI](https://gammaui.com/docs/components/shadcn-ui): Animated ShadCN UI SVG with glowing masked paths, motion shapes, and dynamic shimmering text with customizable props.
 - [Support Box](https://gammaui.com/docs/components/support-box): A collapsible animated support widget for quick help actions using Framer Motion.
@@ -68,6 +69,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [3D Folder Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/3d-folder-demo.tsx): Example usage
 - [Usage Card Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/usage-card-demo.tsx): Example usage
 - [Voxel Wall Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/voxel-wall-demo.tsx): Example usage
+- [Rabbit Mascot Demo](https://github.com/mazyar-kawa/gamma-ui/blob/main/registry/example/rabbit-mascot-demo.tsx): Example usage
 
 ## Optional
 

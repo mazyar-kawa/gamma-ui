@@ -442,4 +442,30 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "rabbit-mascot",
+    type: "registry:ui",
+    title: "Rabbit Mascot",
+    description:
+      "An expressive rabbit boy mascot with round glasses and mood-driven face animations.",
+    dependencies: ["react"],
+    files: [
+      {
+        path: "gammaui/rabbit-mascot.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "gammaui/rabbit-mascot-moods.ts",
+        type: "registry:ui",
+      },
+      {
+        path: "gammaui/rabbit-mascot-blink.ts",
+        type: "registry:ui",
+      },
+      {
+        path: "gammaui/rabbit-mascot-arm.ts",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

@@ -438,4 +438,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "rabbit-mascot-demo",
+    type: "registry:example",
+    title: "Rabbit Mascot Demo",
+    description:
+      "Interactive rabbit boy mascot with moods like happy, sad, love, winky, and more.",
+    registryDependencies: ["@gammaui/rabbit-mascot"],
+    files: [
+      {
+        path: "example/rabbit-mascot-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
