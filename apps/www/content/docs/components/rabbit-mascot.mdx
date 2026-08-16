@@ -1,0 +1,94 @@
+---
+title: Rabbit Mascot
+date: 2026-08-13
+description: An expressive rabbit boy mascot with round glasses and mood-driven face animations.
+author: mazyar
+published: true
+---
+
+<ComponentPreview
+  name="rabbit-mascot-demo"
+  title="Rabbit Mascot"
+  description="Interactive rabbit boy mascot with moods like happy, sad, love, winky, and more."
+  justify="center"
+/>
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @gammaui/rabbit-mascot
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps>
+<Step>Copy the component files into your project.</Step>
+
+<ComponentSource name="rabbit-mascot" title="components/rabbit-mascot.tsx" />
+
+<Step>Add `public/rabbit.svg` to your app (the mascot loads this asset at runtime).</Step>
+
+<Step>Ensure the import paths match your project structure.</Step>
+</Steps>
+</TabsContent>
+</CodeTabs>
+
+---
+
+## Usage
+
+```tsx
+"use client"
+
+import { useState } from "react"
+
+import { RabbitMascot, type RabbitMood } from "@/components/rabbit-mascot"
+
+export default function Example() {
+  const [mood, setMood] = useState<RabbitMood>("neutral")
+
+  return (
+    <RabbitMascot
+      mood={mood}
+      size={280}
+      onClick={() => setMood("happy")}
+    />
+  )
+}
+```
+
+---
+
+## Moods
+
+| Mood | Description |
+| ---- | ----------- |
+| `neutral` | Default smile with round glasses |
+| `happy` | Arc eyes, open mouth, sparkles |
+| `sad` | Furrowed brows and tears |
+| `love` | Star eyes and heart twinkles |
+| `winky` | One-eye wink |
+| `surprised` | Small O mouth |
+| `thinking` | Half-closed lids |
+| `side-eye` | Side glance |
+| `shy` | Peeking / password face |
+
+---
+
+## Props
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `mood` | `RabbitMood` | `"neutral"` | Current facial expression |
+| `size` | `number` | `280` | Width in pixels |
+| `className` | `string` | — | Extra CSS classes |
+| `onClick` | `() => void` | — | Optional click handler |

@@ -7022,6 +7022,582 @@ export default function PricingInteractionDemo() {
 
 
 
+===== COMPONENT: rabbit-mascot =====
+Title: Rabbit Mascot
+Description: An expressive rabbit boy mascot with round glasses and mood-driven face animations.
+
+--- file: gammaui/rabbit-mascot-arm.ts ---
+function setOpacity(el: Element | null, opacity: number) {
+  if (!el) return
+  el.setAttribute("opacity", String(opacity))
+}
+
+export function applyRabbitArmReach(
+  root: ParentNode | null,
+  reaching: boolean
+) {
+  if (!root) return
+
+  const rightArm = root.querySelector("#right-arm")
+  const reachArm = root.querySelector("#right-arm-reach")
+
+  if (rightArm instanceof SVGElement) {
+    rightArm.style.transition = reaching ? "none" : "opacity 0.2s ease"
+  }
+
+  setOpacity(rightArm, reaching ? 0 : 1)
+  setOpacity(reachArm, 0)
+}
+
+--- file: gammaui/rabbit-mascot-blink.ts ---
+import {
+  getRabbitMoodLayers,
+  type RabbitMood,
+} from "@/registry/gammaui/rabbit-mascot-moods"
+
+const BLINK_CLOSE_MS = 140
+const BLINK_MIN_INTERVAL_MS = 2600
+const BLINK_MAX_INTERVAL_MS = 5200
+
+interface BlinkEyeState {
+  left: boolean
+  right: boolean
+}
+
+/** Moods where both round eyes stay open (not arcs, winks, or alternate face art). */
+export function supportsRabbitBlink(mood: RabbitMood): boolean {
+  const layers = getRabbitMoodLayers(mood)
+
+  return (
+    layers.leftDefaultEye === 1 &&
+    layers.rightDefaultEye === 1 &&
+    layers.leftHappyArc === 0 &&
+    layers.rightHappyArc === 0 &&
+    layers.shyFace === 0 &&
+    layers.sideEye === 0 &&
+    layers.passwordFace === 0 &&
+    layers.leftWink === 0 &&
+    layers.rightWink === 0
+  )
+}
+
+function getBlinkEyeState(mood: RabbitMood): BlinkEyeState {
+  if (!supportsRabbitBlink(mood)) return { left: false, right: false }
+  return { left: true, right: true }
+}
+
+function setBlinkLayerOpacity(el: Element | null | undefined, opacity: number) {
+  if (!el) return
+  el.setAttribute("opacity", String(opacity))
+}
+
+export function triggerRabbitBlink(root: ParentNode | null, mood: RabbitMood) {
+  if (!root || !supportsRabbitBlink(mood)) return
+
+  const { left, right } = getBlinkEyeState(mood)
+  if (!left && !right) return
+
+  const blinkLids = root.querySelector("#blink-lids")
+  const leftBlinkLid = root.querySelector("#left-blink-lid")
+  const rightBlinkLid = root.querySelector("#right-blink-lid")
+  const leftEye = root.querySelector("#left-eye")
+  const rightEye = root.querySelector("#right-eye")
+  const leftEyeContent = leftEye?.querySelector(":scope > g > g > g")
+  const rightEyeContent = rightEye?.querySelector(":scope > g > g > g")
+  const leftEyeStar = root.querySelector("#left-eye-star")
+  const rightEyeStar = root.querySelector("#right-eye-star")
+  const leftWantTwinkle = root.querySelector("#left-eye-want-twinkle")
+  const rightWantTwinkle = root.querySelector("#right-eye-want-twinkle")
+
+  setBlinkLayerOpacity(blinkLids, 1)
+  setBlinkLayerOpacity(leftBlinkLid, 1)
+  setBlinkLayerOpacity(rightBlinkLid, 1)
+  setBlinkLayerOpacity(leftEyeContent, 0)
+  setBlinkLayerOpacity(rightEyeContent, 0)
+  setBlinkLayerOpacity(leftEyeStar, 0)
+  setBlinkLayerOpacity(rightEyeStar, 0)
+  setBlinkLayerOpacity(leftWantTwinkle, 0)
+  setBlinkLayerOpacity(rightWantTwinkle, 0)
+
+  window.setTimeout(() => {
+    const layers = getRabbitMoodLayers(mood)
+
+    setBlinkLayerOpacity(blinkLids, 0)
+    setBlinkLayerOpacity(leftBlinkLid, 0)
+    setBlinkLayerOpacity(rightBlinkLid, 0)
+    setBlinkLayerOpacity(leftEyeContent, layers.leftDefaultEye)
+    setBlinkLayerOpacity(rightEyeContent, layers.rightDefaultEye)
+    setBlinkLayerOpacity(leftEyeStar, layers.leftEyeStar)
+    setBlinkLayerOpacity(rightEyeStar, layers.rightEyeStar)
+    setBlinkLayerOpacity(leftWantTwinkle, layers.leftWantTwinkle)
+    setBlinkLayerOpacity(rightWantTwinkle, layers.rightWantTwinkle)
+  }, BLINK_CLOSE_MS)
+}
+
+function randomBlinkDelayMs() {
+  return (
+    BLINK_MIN_INTERVAL_MS +
+    Math.random() * (BLINK_MAX_INTERVAL_MS - BLINK_MIN_INTERVAL_MS)
+  )
+}
+
+export function startRabbitBlinkLoop(
+  root: ParentNode | null,
+  getMood: () => RabbitMood
+) {
+  if (!root) return () => {}
+
+  let timeoutId = window.setTimeout(function scheduleBlink() {
+    const mood = getMood()
+    if (supportsRabbitBlink(mood)) triggerRabbitBlink(root, mood)
+    timeoutId = window.setTimeout(scheduleBlink, randomBlinkDelayMs())
+  }, randomBlinkDelayMs())
+
+  return () => window.clearTimeout(timeoutId)
+}
+
+--- file: gammaui/rabbit-mascot-moods.ts ---
+export const RABBIT_MOODS = [
+  "neutral",
+  "happy",
+  "sad",
+  "love",
+  "winky",
+  "surprised",
+  "thinking",
+  "side-eye",
+  "shy",
+] as const
+
+export type RabbitMood = (typeof RABBIT_MOODS)[number]
+
+export const RABBIT_MOOD_LABELS: Record<RabbitMood, string> = {
+  neutral: "Neutral",
+  happy: "Happy",
+  sad: "Sad",
+  love: "Love",
+  winky: "Winky",
+  surprised: "Surprised",
+  thinking: "Thinking",
+  "side-eye": "Side eye",
+  shy: "Shy",
+}
+
+interface RabbitMoodLayers {
+  leftDefaultEye: number
+  rightDefaultEye: number
+  defaultMouth: number
+  sadMouth: number
+  leftHappyArc: number
+  rightHappyArc: number
+  passwordFace: number
+  shyFace: number
+  sideEye: number
+  hmmLids: number
+  sadBrows: number
+  happyOpenMouth: number
+  mouthOh: number
+  leftEyeStar: number
+  rightEyeStar: number
+  leftWantTwinkle: number
+  rightWantTwinkle: number
+  emotionFx: number
+  sadTears: number
+  happyTwinkle: number
+  cheekOpacity: number
+  leftWink: number
+  rightWink: number
+  spectacles: number
+}
+
+const NEUTRAL_LAYERS: RabbitMoodLayers = {
+  leftDefaultEye: 1,
+  rightDefaultEye: 1,
+  defaultMouth: 1,
+  sadMouth: 0,
+  leftHappyArc: 0,
+  rightHappyArc: 0,
+  passwordFace: 0,
+  shyFace: 0,
+  sideEye: 0,
+  hmmLids: 0,
+  sadBrows: 0,
+  happyOpenMouth: 0,
+  mouthOh: 0,
+  leftEyeStar: 0,
+  rightEyeStar: 0,
+  leftWantTwinkle: 0,
+  rightWantTwinkle: 0,
+  emotionFx: 0,
+  sadTears: 0,
+  happyTwinkle: 0,
+  cheekOpacity: 0.65,
+  leftWink: 0,
+  rightWink: 0,
+  spectacles: 1,
+}
+
+const MOOD_LAYER_MAP: Record<RabbitMood, Partial<RabbitMoodLayers>> = {
+  neutral: {},
+  happy: {
+    leftDefaultEye: 0,
+    rightDefaultEye: 0,
+    defaultMouth: 0,
+    leftHappyArc: 1,
+    rightHappyArc: 1,
+    happyOpenMouth: 1,
+    happyTwinkle: 1,
+    emotionFx: 1,
+    cheekOpacity: 0.85,
+  },
+  sad: {
+    sadBrows: 1,
+    sadTears: 1,
+    emotionFx: 1,
+    defaultMouth: 0,
+    sadMouth: 1,
+    cheekOpacity: 0.45,
+    spectacles: 0,
+  },
+  love: {
+    leftEyeStar: 1,
+    rightEyeStar: 1,
+    leftWantTwinkle: 1,
+    rightWantTwinkle: 1,
+    happyTwinkle: 1,
+    emotionFx: 1,
+    cheekOpacity: 0.95,
+  },
+  winky: {
+    leftDefaultEye: 0,
+    rightDefaultEye: 1,
+    leftWink: 1,
+    happyTwinkle: 0.8,
+    cheekOpacity: 0.75,
+    spectacles: 0,
+  },
+  surprised: {
+    defaultMouth: 0,
+    mouthOh: 1,
+  },
+  thinking: {
+    hmmLids: 1,
+    defaultMouth: 0.6,
+  },
+  "side-eye": {
+    leftDefaultEye: 0,
+    rightDefaultEye: 0,
+    sideEye: 1,
+    defaultMouth: 0.7,
+  },
+  shy: {
+    leftDefaultEye: 0,
+    rightDefaultEye: 0,
+    defaultMouth: 0,
+    passwordFace: 0,
+    shyFace: 1,
+    spectacles: 0,
+    cheekOpacity: 1,
+  },
+}
+
+export function getRabbitMoodLayers(mood: RabbitMood): RabbitMoodLayers {
+  return { ...NEUTRAL_LAYERS, ...MOOD_LAYER_MAP[mood] }
+}
+
+function setOpacity(el: Element | null, opacity: number) {
+  if (!el) return
+  el.setAttribute("opacity", String(opacity))
+}
+
+function setStyleTransform(el: Element | null, transform: string) {
+  if (!(el instanceof SVGElement)) return
+  el.style.transform = transform
+  el.style.transformBox = "fill-box"
+  el.style.transformOrigin = "50% 50%"
+}
+
+function setTransition(el: Element | null) {
+  if (!(el instanceof SVGElement)) return
+  el.style.transition =
+    "opacity 0.28s ease, transform 0.28s ease, stroke-opacity 0.28s ease"
+}
+
+export function applyRabbitMood(root: ParentNode | null, mood: RabbitMood) {
+  if (!root) return
+
+  const layers = getRabbitMoodLayers(mood)
+
+  const leftEye = root.querySelector("#left-eye")
+  const rightEye = root.querySelector("#right-eye")
+  const leftEyeContent = leftEye?.querySelector(":scope > g > g > g")
+  const rightEyeContent = rightEye?.querySelector(":scope > g > g > g")
+
+  if (leftEyeContent instanceof SVGElement) {
+    setTransition(leftEyeContent)
+    setOpacity(leftEyeContent, layers.leftDefaultEye)
+  }
+
+  if (rightEyeContent instanceof SVGElement) {
+    setTransition(rightEyeContent)
+    setOpacity(rightEyeContent, layers.rightDefaultEye)
+  }
+
+  const targets: [string, number][] = [
+    ["#password-face", layers.passwordFace],
+    ["#shy-face", layers.shyFace],
+    ["#side-eye-eyes", layers.sideEye],
+    ["#hmm-lids", layers.hmmLids],
+    ["#sad-brows", layers.sadBrows],
+    ["#happy-open-mouth", layers.happyOpenMouth],
+    ["#mouth", layers.defaultMouth],
+    ["#mouth-sad", layers.sadMouth],
+    ["#mouth-oh", layers.mouthOh],
+    ["#emotion-fx", layers.emotionFx],
+    ["#sad-tears", layers.sadTears],
+    ["#left-wink", layers.leftWink],
+    ["#right-wink", layers.rightWink],
+    ["#left-cheek", layers.cheekOpacity],
+    ["#right-cheek", layers.cheekOpacity],
+    ["#spectacles", layers.spectacles],
+  ]
+
+  for (const [selector, opacity] of targets) {
+    const el = root.querySelector(selector)
+    setTransition(el)
+    setOpacity(el, opacity)
+  }
+
+  const sadTearPaths = root.querySelectorAll("#sad-tears path")
+  sadTearPaths.forEach((path) => {
+    setTransition(path)
+    setOpacity(path, layers.sadTears)
+  })
+
+  const emotionSparkles = root.querySelector("#emotion-fx > g:not(#sad-tears)")
+  if (emotionSparkles) {
+    setTransition(emotionSparkles)
+    setOpacity(emotionSparkles, layers.emotionFx)
+  }
+
+  const arcTargets: [string, number][] = [
+    ["#left-eye-happy-arc", layers.leftHappyArc],
+    ["#right-eye-happy-arc", layers.rightHappyArc],
+  ]
+
+  for (const [selector, active] of arcTargets) {
+    const el = root.querySelector(selector)
+    setTransition(el)
+    setOpacity(el, active)
+    setStyleTransform(el, active ? "scaleY(1)" : "scaleY(0.4)")
+  }
+
+  const starTargets: [string, number][] = [
+    ["#left-eye-star", layers.leftEyeStar],
+    ["#right-eye-star", layers.rightEyeStar],
+    ["#left-eye-want-twinkle", layers.leftWantTwinkle],
+    ["#right-eye-want-twinkle", layers.rightWantTwinkle],
+    ["#happy-twinkle", layers.happyTwinkle],
+  ]
+
+  for (const [selector, active] of starTargets) {
+    const el = root.querySelector(selector)
+    setTransition(el)
+    setOpacity(el, active)
+    setStyleTransform(el, active ? "scale(1)" : "scale(0.5)")
+  }
+
+  setStyleTransform(
+    root.querySelector("#mouth-oh"),
+    layers.mouthOh ? "scale(1)" : "scaleX(0.72) scaleY(0.35)"
+  )
+
+  const ariaLabel = `Cute rabbit boy mascot, ${RABBIT_MOOD_LABELS[mood].toLowerCase()}`
+  const svg = root instanceof SVGSVGElement ? root : root.querySelector("svg")
+  svg?.setAttribute("aria-label", ariaLabel)
+
+  setOpacity(root.querySelector("#blink-lids"), 0)
+  setOpacity(root.querySelector("#left-blink-lid"), 0)
+  setOpacity(root.querySelector("#right-blink-lid"), 0)
+}
+
+--- file: gammaui/rabbit-mascot.tsx ---
+"use client"
+
+import { useEffect, useId, useRef, useState } from "react"
+
+import { cn } from "@/lib/utils"
+import { applyRabbitArmReach } from "@/registry/gammaui/rabbit-mascot-arm"
+import { startRabbitBlinkLoop } from "@/registry/gammaui/rabbit-mascot-blink"
+import {
+  applyRabbitMood,
+  type RabbitMood,
+} from "@/registry/gammaui/rabbit-mascot-moods"
+
+interface RabbitMascotProps {
+  mood?: RabbitMood
+  className?: string
+  size?: number
+  blink?: boolean
+  armReach?: boolean
+  onClick?: () => void
+  onReady?: () => void
+}
+
+export function RabbitMascot({
+  mood = "neutral",
+  className,
+  size = 280,
+  blink = true,
+  armReach = false,
+  onClick,
+  onReady,
+}: RabbitMascotProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const moodRef = useRef(mood)
+  const onReadyRef = useRef(onReady)
+  const isLoadedRef = useRef(false)
+  const instanceId = useId().replace(/:/g, "")
+  const idPrefix = `rabbit-${instanceId}-`
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  moodRef.current = mood
+  onReadyRef.current = onReady
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadMascot() {
+      const response = await fetch("/rabbit.svg")
+      if (!response.ok || cancelled || !containerRef.current) return
+
+      const markup = (await response.text()).replace(/_r_0_/g, idPrefix)
+      containerRef.current.innerHTML = markup
+
+      const svg = containerRef.current.querySelector("svg")
+      if (!svg) return
+
+      svg.style.display = "block"
+      svg.style.overflow = "visible"
+      svg.style.width = "100%"
+      svg.style.height = "100%"
+      if (onClick) svg.style.cursor = "pointer"
+
+      applyRabbitMood(svg, moodRef.current)
+      applyRabbitArmReach(svg, armReach)
+
+      isLoadedRef.current = true
+      setIsLoaded(true)
+      onReadyRef.current?.()
+    }
+
+    loadMascot()
+
+    return () => {
+      cancelled = true
+      isLoadedRef.current = false
+    }
+  }, [idPrefix, onClick])
+
+  useEffect(() => {
+    if (!isLoaded || !containerRef.current) return
+    applyRabbitMood(containerRef.current, mood)
+  }, [isLoaded, mood])
+
+  useEffect(() => {
+    if (!isLoaded || !containerRef.current) return
+    applyRabbitArmReach(containerRef.current, armReach)
+  }, [isLoaded, armReach])
+
+  useEffect(() => {
+    if (!isLoaded || !blink || !containerRef.current) return
+
+    return startRabbitBlinkLoop(containerRef.current, () => moodRef.current)
+  }, [isLoaded, blink])
+
+  return (
+    <div
+      ref={containerRef}
+      role="img"
+      aria-live="polite"
+      aria-label={`Rabbit mascot, ${mood} mood`}
+      className={cn(
+        "form-companion-mascot inline-block select-none",
+        className
+      )}
+      style={{ width: size, height: size * (720 / 900) }}
+      onClick={onClick}
+      onKeyDown={
+        onClick
+          ? (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault()
+                onClick()
+              }
+            }
+          : undefined
+      }
+      tabIndex={onClick ? 0 : undefined}
+    />
+  )
+}
+
+export {
+  RABBIT_MOODS,
+  RABBIT_MOOD_LABELS,
+  type RabbitMood,
+} from "@/registry/gammaui/rabbit-mascot-moods"
+
+
+===== EXAMPLE: rabbit-mascot-demo =====
+Title: Rabbit Mascot Demo
+
+--- file: example/rabbit-mascot-demo.tsx ---
+"use client"
+
+import { useState } from "react"
+
+import { Button } from "@/components/ui/button"
+import {
+  RABBIT_MOOD_LABELS,
+  RABBIT_MOODS,
+  RabbitMascot,
+  type RabbitMood,
+} from "@/registry/gammaui/rabbit-mascot"
+
+export function RabbitMascotDemo() {
+  const [mood, setMood] = useState<RabbitMood>("neutral")
+
+  return (
+    <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-6">
+      <RabbitMascot mood={mood} size={320} />
+
+      <p className="text-muted-foreground text-sm">
+        Current mood:{" "}
+        <span className="text-foreground font-medium">
+          {RABBIT_MOOD_LABELS[mood]}
+        </span>
+      </p>
+
+      <div className="flex flex-wrap justify-center gap-2">
+        {RABBIT_MOODS.map((item) => (
+          <Button
+            key={item}
+            type="button"
+            size="sm"
+            variant={mood === item ? "default" : "outline"}
+            onClick={() => setMood(item)}
+          >
+            {RABBIT_MOOD_LABELS[item]}
+          </Button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+
+
 ===== COMPONENT: radial-intro =====
 Title: Radial Intro
 Description: A dynamic radial orbit animation built with Motion and React, featuring upright spinning image nodes.

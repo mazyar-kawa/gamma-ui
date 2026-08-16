@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rabbit-mascot-demo",
+  "title": "Rabbit Mascot Demo",
+  "description": "Interactive rabbit boy mascot with moods like happy, sad, love, winky, and more.",
+  "registryDependencies": [
+    "@gammaui/rabbit-mascot"
+  ],
+  "files": [
+    {
+      "path": "registry/example/rabbit-mascot-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport {\n  RABBIT_MOOD_LABELS,\n  RABBIT_MOODS,\n  RabbitMascot,\n  type RabbitMood,\n} from \"@/registry/gammaui/rabbit-mascot\"\n\nexport function RabbitMascotDemo() {\n  const [mood, setMood] = useState<RabbitMood>(\"neutral\")\n\n  return (\n    <div className=\"mx-auto flex w-full max-w-xl flex-col items-center gap-6\">\n      <RabbitMascot mood={mood} size={320} />\n\n      <p className=\"text-muted-foreground text-sm\">\n        Current mood:{\" \"}\n        <span className=\"text-foreground font-medium\">\n          {RABBIT_MOOD_LABELS[mood]}\n        </span>\n      </p>\n\n      <div className=\"flex flex-wrap justify-center gap-2\">\n        {RABBIT_MOODS.map((item) => (\n          <Button\n            key={item}\n            type=\"button\"\n            size=\"sm\"\n            variant={mood === item ? \"default\" : \"outline\"}\n            onClick={() => setMood(item)}\n          >\n            {RABBIT_MOOD_LABELS[item]}\n          </Button>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

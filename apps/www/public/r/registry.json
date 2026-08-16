@@ -498,6 +498,33 @@
       ]
     },
     {
+      "name": "rabbit-mascot",
+      "type": "registry:ui",
+      "title": "Rabbit Mascot",
+      "description": "An expressive rabbit boy mascot with round glasses and mood-driven face animations.",
+      "dependencies": [
+        "react"
+      ],
+      "files": [
+        {
+          "path": "registry/gammaui/rabbit-mascot.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/gammaui/rabbit-mascot-moods.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/gammaui/rabbit-mascot-blink.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/gammaui/rabbit-mascot-arm.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "data-feeding-in-demo",
       "type": "registry:example",
       "title": "Data Feeding In Demo",
@@ -943,6 +970,21 @@
       "files": [
         {
           "path": "registry/example/voxel-wall-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "rabbit-mascot-demo",
+      "type": "registry:example",
+      "title": "Rabbit Mascot Demo",
+      "description": "Interactive rabbit boy mascot with moods like happy, sad, love, winky, and more.",
+      "registryDependencies": [
+        "@gammaui/rabbit-mascot"
+      ],
+      "files": [
+        {
+          "path": "registry/example/rabbit-mascot-demo.tsx",
           "type": "registry:example"
         }
       ]

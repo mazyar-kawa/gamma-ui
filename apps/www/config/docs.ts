@@ -139,6 +139,12 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Rabbit Mascot",
+          href: `/docs/components/rabbit-mascot`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Data Feeding In",
           href: `/docs/components/data-feeding-in`,
           items: [],

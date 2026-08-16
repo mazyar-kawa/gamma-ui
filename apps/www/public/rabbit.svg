@@ -1,0 +1,413 @@
+<svg
+  class="form-companion-mascot"
+  viewBox="0 0 900 720"
+  role="img"
+  aria-label="Cute rabbit boy mascot with glasses, neutral"
+  style="display: block; overflow: visible; cursor: pointer;"
+>
+  <defs>
+    <radialGradient id="_r_0_-bodyFill" cx="345" cy="220" r="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="var(--rabbit-body-top, #fff9f7)" />
+      <stop offset="0.32" stop-color="var(--rabbit-body-mid, #f5ebe8)" />
+      <stop offset="0.67" stop-color="var(--rabbit-body-deep, #e8ddd8)" />
+      <stop offset="1" stop-color="var(--rabbit-body-rim, #f0e4df)" />
+    </radialGradient>
+    <linearGradient id="_r_0_-bodyEdge" x1="215" y1="180" x2="735" y2="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="var(--rabbit-outline-light, #e8d5cf)" />
+      <stop offset="0.55" stop-color="var(--rabbit-outline, #d4b8ae)" />
+      <stop offset="1" stop-color="var(--rabbit-outline-light, #dfc9c0)" />
+    </linearGradient>
+    <radialGradient id="_r_0_-earFill" cx="0.45" cy="0.2" r="0.85">
+      <stop offset="0" stop-color="var(--rabbit-ear-light, #fff5f2)" />
+      <stop offset="0.55" stop-color="var(--rabbit-ear-mid, #f0e0da)" />
+      <stop offset="1" stop-color="var(--rabbit-ear-deep, #ddc8c0)" />
+    </radialGradient>
+    <radialGradient id="_r_0_-earInnerFill" cx="0.5" cy="0.35" r="0.65">
+      <stop offset="0" stop-color="var(--rabbit-ear-inner-light, #dceeff)" />
+      <stop offset="0.6" stop-color="var(--rabbit-ear-inner, #b8d4f0)" />
+      <stop offset="1" stop-color="var(--rabbit-ear-inner-deep, #98b8d8)" />
+    </radialGradient>
+    <radialGradient id="_r_0_-pawFill" cx="0.45" cy="0.25" r="0.8">
+      <stop offset="0" stop-color="var(--rabbit-paw-light, #fff5f2)" />
+      <stop offset="0.55" stop-color="var(--rabbit-paw-mid, #f0e0da)" />
+      <stop offset="1" stop-color="var(--rabbit-paw-deep, #d4b8ae)" />
+    </radialGradient>
+    <radialGradient id="_r_0_-cheekFill" cx="0.34" cy="0.28" r="0.78">
+      <stop offset="0" stop-color="var(--rabbit-cheek-light, #ffe8dc)" />
+      <stop offset="0.6" stop-color="var(--rabbit-cheek, #f5c8b0)" />
+      <stop offset="1" stop-color="var(--rabbit-cheek-deep, #e8b898)" />
+    </radialGradient>
+    <radialGradient id="_r_0_-eyeFill" cx="0.38" cy="0.28" r="0.85">
+      <stop offset="0" stop-color="var(--rabbit-eye-light, #6b4560)" />
+      <stop offset="0.45" stop-color="var(--rabbit-eye, #3d2235)" />
+      <stop offset="1" stop-color="var(--rabbit-eye-deep, #120810)" />
+    </radialGradient>
+    <radialGradient id="_r_0_-eyeIris" cx="0.42" cy="0.38" r="0.62">
+      <stop offset="0" stop-color="var(--rabbit-iris-light, #90c8f0)" />
+      <stop offset="0.55" stop-color="var(--rabbit-iris, #4a90c8)" />
+      <stop offset="1" stop-color="var(--rabbit-iris-deep, #2d6090)" />
+    </radialGradient>
+    <linearGradient id="_r_0_-lensTint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--rabbit-lens-tint, #b8e0ff)" stop-opacity="0.14" />
+      <stop offset="1" stop-color="var(--rabbit-lens-tint, #b8e0ff)" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="_r_0_-eyeGlass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.72" />
+      <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.28" />
+      <stop offset="0.65" stop-color="#ffffff" stop-opacity="0.06" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="_r_0_-eyeGlassStreak" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="0.42" stop-color="#ffffff" stop-opacity="0.55" />
+      <stop offset="0.58" stop-color="#ffffff" stop-opacity="0.45" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <radialGradient id="_r_0_-eyeGlassGlow" cx="0.35" cy="0.22" r="0.55">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="_r_0_-shadowFill" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="var(--rabbit-shadow, var(--rabbit-outline, #c9a99e))" stop-opacity="0.38" />
+      <stop offset="0.58" stop-color="var(--rabbit-shadow-light, var(--rabbit-outline-light, #d8bdb4))" stop-opacity="0.17" />
+      <stop offset="1" stop-color="var(--rabbit-shadow-light, var(--rabbit-outline-light, #d8bdb4))" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="_r_0_-bellyGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="var(--rabbit-belly-glow, #d8ecff)" stop-opacity="0.55" />
+      <stop offset="0.7" stop-color="var(--rabbit-belly-glow, #d8ecff)" stop-opacity="0.22" />
+      <stop offset="1" stop-color="var(--rabbit-belly-glow, #d8ecff)" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="_r_0_-tailFill" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="var(--rabbit-tail-light, #ffffff)" />
+      <stop offset="0.6" stop-color="var(--rabbit-tail-mid, #f5ebe8)" />
+      <stop offset="1" stop-color="var(--rabbit-tail-deep, #e8ddd8)" />
+    </radialGradient>
+    <clipPath id="_r_0_-bodyClip" clipPathUnits="userSpaceOnUse">
+      <path d="M450 188 C535 186 605 212 648 268 C682 312 698 372 696 438 C694 498 676 548 632 582 C588 612 522 622 450 622 C378 622 312 612 268 582 C224 548 206 498 204 438 C202 372 218 312 252 268 C295 212 365 186 450 188 Z" />
+    </clipPath>
+    <filter id="_r_0_-shadowBlur" x="-40%" y="-80%" width="180%" height="260%">
+      <feGaussianBlur stdDeviation="16" />
+    </filter>
+    <filter id="_r_0_-softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" />
+    </filter>
+    <filter id="_r_0_-wideSoftBlur" x="-45%" y="-45%" width="190%" height="190%">
+      <feGaussianBlur stdDeviation="14" />
+    </filter>
+    <filter id="_r_0_-fluffyBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+    <clipPath id="_r_0_-leftEyeClip">
+      <ellipse cx="360" cy="352" rx="36" ry="44" />
+    </clipPath>
+    <clipPath id="_r_0_-rightEyeClip">
+      <ellipse cx="544" cy="352" rx="36" ry="44" />
+    </clipPath>
+    <clipPath id="_r_0_-leftLensClip">
+      <ellipse cx="360" cy="352" rx="42" ry="50" />
+    </clipPath>
+    <clipPath id="_r_0_-rightLensClip">
+      <ellipse cx="544" cy="352" rx="42" ry="50" />
+    </clipPath>
+  </defs>
+
+  <g id="bottom-shadow-glow">
+    <ellipse cx="450" cy="610" rx="195" ry="28" opacity="0.46" fill="url(#_r_0_-shadowFill)" filter="url(#_r_0_-shadowBlur)" />
+    <ellipse cx="450" cy="604" rx="125" ry="14" opacity="0.14" fill="var(--rabbit-shadow, var(--rabbit-outline, #c9a99e))" filter="url(#_r_0_-softBlur)" />
+  </g>
+
+  <g style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+    <g id="typing-nod" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+
+      <!-- Fluffy tail -->
+      <g id="tail" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+        <circle cx="668" cy="520" r="38" fill="url(#_r_0_-tailFill)" stroke="var(--rabbit-outline-light, #dfc9c0)" stroke-width="4" filter="url(#_r_0_-fluffyBlur)" />
+        <circle cx="658" cy="512" r="22" fill="#ffffff" opacity="0.45" filter="url(#_r_0_-softBlur)" />
+        <circle cx="678" cy="528" r="14" fill="#ffffff" opacity="0.3" filter="url(#_r_0_-softBlur)" />
+      </g>
+
+      <!-- Paws (arms) -->
+      <g id="arms">
+        <g transform="translate(2 5) rotate(3 229 420)">
+          <g id="left-arm" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+            <g style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+              <path id="left-arm-base" d="M218 395 C200 395 188 408 188 424 C188 442 200 454 218 454 C236 454 248 442 248 424 C248 408 236 395 218 395 Z" fill="url(#_r_0_-pawFill)" stroke="var(--rabbit-paw-deep, #c9a99e)" stroke-width="5" stroke-linejoin="round" />
+              <ellipse cx="204" cy="418" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+              <ellipse cx="218" cy="422" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+              <ellipse cx="232" cy="418" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+              <ellipse id="left-arm-small-highlight" cx="198" cy="408" rx="5" ry="7" fill="#ffffff" opacity="0.55" transform="rotate(20 198 408)" />
+            </g>
+          </g>
+        </g>
+        <g transform="translate(-2 -2) rotate(-5 671 420)">
+          <g id="right-arm" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+            <g style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+              <path id="right-arm-base" d="M682 395 C700 395 712 408 712 424 C712 442 700 454 682 454 C664 454 652 442 652 424 C652 408 664 395 682 395 Z" fill="url(#_r_0_-pawFill)" stroke="var(--rabbit-paw-deep, #c9a99e)" stroke-width="5" stroke-linejoin="round" />
+              <ellipse cx="668" cy="418" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+              <ellipse cx="682" cy="422" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+              <ellipse cx="696" cy="418" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+              <ellipse id="right-arm-small-highlight" cx="702" cy="408" rx="5" ry="7" fill="#ffffff" opacity="0.55" transform="rotate(-20 702 408)" />
+            </g>
+          </g>
+        </g>
+        <g id="right-arm-reach" pointer-events="none" opacity="0">
+          <path d="M688 422 C735 415 795 398 855 382" fill="none" stroke="var(--rabbit-paw-mid, #f0e0da)" stroke-width="26" stroke-linecap="round" />
+          <path d="M688 422 C735 415 795 398 855 382" fill="none" stroke="var(--rabbit-paw-deep, #c9a99e)" stroke-width="16" stroke-linecap="round" opacity="0.35" />
+          <ellipse cx="858" cy="380" rx="28" ry="32" fill="url(#_r_0_-pawFill)" stroke="var(--rabbit-paw-deep, #c9a99e)" stroke-width="5.5" stroke-linejoin="round" />
+          <ellipse cx="696" cy="418" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+          <ellipse cx="710" cy="422" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+          <ellipse cx="724" cy="418" rx="4" ry="5" fill="var(--rabbit-paw-deep, #c9a99e)" opacity="0.35" />
+          <ellipse cx="864" cy="372" rx="9" ry="12" fill="#ffffff" opacity="0.55" transform="rotate(-18 864 372)" />
+        </g>
+      </g>
+
+      <!-- Ears -->
+      <g id="ears" style="transform-box: fill-box; transform-origin: 50% 30%; transform: none;">
+        <g id="left-ear" style="transform-box: fill-box; transform-origin: 50% 100%; transform: none;">
+          <path
+            d="M362 218 C348 208 328 130 322 88 C318 58 332 38 352 44 C368 50 378 72 384 108 C390 148 388 182 380 212 C376 222 368 224 362 218 Z"
+            fill="url(#_r_0_-earFill)"
+            stroke="var(--rabbit-outline, #d4b8ae)"
+            stroke-width="5"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M352 205 C342 175 335 120 338 78 C340 55 350 45 358 55 C365 65 368 100 368 140 C368 170 362 195 352 205 Z"
+            fill="url(#_r_0_-earInnerFill)"
+            opacity="0.85"
+          />
+          <ellipse cx="348" cy="82" rx="8" ry="12" fill="#b8d4f0" opacity="0.35" transform="rotate(-8 348 82)" filter="url(#_r_0_-softBlur)" />
+          <ellipse cx="348" cy="90" rx="8" ry="14" fill="#ffffff" opacity="0.35" transform="rotate(-8 348 90)" />
+        </g>
+        <g id="right-ear" style="transform-box: fill-box; transform-origin: 50% 100%; transform: none;">
+          <path
+            d="M538 218 C552 208 572 130 578 88 C582 58 568 38 548 44 C532 50 522 72 516 108 C510 148 512 182 520 212 C524 222 532 224 538 218 Z"
+            fill="url(#_r_0_-earFill)"
+            stroke="var(--rabbit-outline, #d4b8ae)"
+            stroke-width="5"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M548 205 C558 175 565 120 562 78 C560 55 550 45 542 55 C535 65 532 100 532 140 C532 170 538 195 548 205 Z"
+            fill="url(#_r_0_-earInnerFill)"
+            opacity="0.85"
+          />
+          <ellipse cx="552" cy="82" rx="8" ry="12" fill="#b8d4f0" opacity="0.35" transform="rotate(8 552 82)" filter="url(#_r_0_-softBlur)" />
+          <ellipse cx="552" cy="90" rx="8" ry="14" fill="#ffffff" opacity="0.35" transform="rotate(8 552 90)" />
+        </g>
+      </g>
+
+      <!-- Body -->
+      <g id="body" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+        <path
+          id="body-main-shape"
+          fill="url(#_r_0_-bodyFill)"
+          stroke="url(#_r_0_-bodyEdge)"
+          stroke-width="5.8"
+          stroke-linejoin="round"
+          d="M450 188 C535 186 605 212 648 268 C682 312 698 372 696 438 C694 498 676 548 632 582 C588 612 522 622 450 622 C378 622 312 612 268 582 C224 548 206 498 204 438 C202 372 218 312 252 268 C295 212 365 186 450 188 Z"
+        />
+        <g id="body-shading-clipped" clip-path="url(#_r_0_-bodyClip)">
+          <path id="left-inner-shine" d="M310 260 C275 340 270 460 295 530" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" opacity="0.16" filter="url(#_r_0_-wideSoftBlur)" />
+          <path id="right-inner-shade" d="M660 290 C688 370 675 500 610 545" fill="none" stroke="var(--rabbit-outline, #c4a498)" stroke-width="22" stroke-linecap="round" opacity="0.12" filter="url(#_r_0_-wideSoftBlur)" />
+          <ellipse id="top-soft-sheen" cx="465" cy="230" rx="78" ry="24" fill="#ffffff" opacity="0.18" transform="rotate(2 465 230)" filter="url(#_r_0_-softBlur)" />
+          <ellipse id="right-body-shine" cx="580" cy="290" rx="14" ry="32" fill="#ffffff" opacity="0.14" transform="rotate(-22 580 290)" filter="url(#_r_0_-softBlur)" />
+        </g>
+        <g id="lower-jelly-belly" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <ellipse id="bottom-belly-glow" cx="450" cy="510" rx="210" ry="58" fill="url(#_r_0_-bellyGlow)" opacity="0.95" />
+        </g>
+        <g id="highlights" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <g id="head-gloss" opacity="0.92" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+            <g id="head-gloss-gaze" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;">
+              <ellipse id="large-highlight" cx="378" cy="255" rx="34" ry="19" fill="#ffffff" opacity="0.88" transform="rotate(-32 378 255)" />
+              <g id="small-highlights">
+                <circle id="small-head-highlight" cx="330" cy="305" r="11" fill="#ffffff" opacity="0.82" />
+                <circle id="top-dot-highlight" cx="428" cy="218" r="9" fill="#ffffff" opacity="0.8" />
+              </g>
+            </g>
+          </g>
+          <ellipse id="left-side-faint-gloss" cx="268" cy="480" rx="15" ry="50" fill="#ffffff" opacity="0.1" transform="rotate(-6 268 480)" filter="url(#_r_0_-softBlur)" />
+          <ellipse id="right-side-faint-gloss" cx="632" cy="480" rx="15" ry="50" fill="#ffffff" opacity="0.1" transform="rotate(8 632 480)" filter="url(#_r_0_-softBlur)" />
+        </g>
+      </g>
+
+      <!-- Face -->
+      <g id="face" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+        <!-- Nose -->
+        <ellipse id="nose" cx="452" cy="398" rx="7.5" ry="6" fill="var(--rabbit-nose, #f0a8b8)" stroke="var(--rabbit-nose-outline, #d890a0)" stroke-width="1.5" />
+        <ellipse cx="449.5" cy="396" rx="2.5" ry="1.8" fill="#ffffff" opacity="0.55" />
+
+        <g id="left-cheek" opacity="0.65" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <ellipse id="left-cheek-base" cx="310" cy="430" rx="32" ry="22" fill="url(#_r_0_-cheekFill)" opacity="0.5" filter="url(#_r_0_-softBlur)" />
+          <ellipse id="left-cheek-highlight-large" cx="294" cy="420" rx="6.5" ry="4.5" fill="#ffffff" opacity="0.35" transform="rotate(-20 294 420)" />
+          <ellipse id="left-cheek-highlight-small" cx="318" cy="419" rx="6" ry="4" fill="#ffffff" opacity="0.25" transform="rotate(22 318 419)" />
+        </g>
+        <g id="right-cheek" opacity="0.65" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <ellipse id="right-cheek-base" cx="616" cy="430" rx="32" ry="22" fill="url(#_r_0_-cheekFill)" opacity="0.5" filter="url(#_r_0_-softBlur)" />
+          <ellipse id="right-cheek-highlight-large" cx="606" cy="420" rx="6.5" ry="4.5" fill="#ffffff" opacity="0.35" transform="rotate(-20 606 420)" />
+          <ellipse id="right-cheek-highlight-small" cx="630" cy="419" rx="6" ry="4" fill="#ffffff" opacity="0.25" transform="rotate(22 630 419)" />
+        </g>
+
+        <g id="eyes" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <g id="left-eye" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+            <g opacity="1">
+              <g style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+                <g style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+                  <ellipse id="left-eye-base" cx="360" cy="352" rx="36" ry="44" fill="url(#_r_0_-eyeFill)" />
+                  <ellipse id="left-eye-iris" cx="360" cy="358" rx="24" ry="28" fill="url(#_r_0_-eyeIris)" opacity="0.92" />
+                  <ellipse id="left-eye-lower-shade" cx="360" cy="374" rx="26" ry="14" fill="var(--rabbit-eye-deep, #120810)" opacity="0.35" />
+                  <g id="left-eye-glass" clip-path="url(#_r_0_-leftEyeClip)">
+                    <ellipse cx="360" cy="328" rx="34" ry="28" fill="url(#_r_0_-eyeGlassGlow)" opacity="0.55" />
+                    <ellipse cx="360" cy="338" rx="36" ry="40" fill="url(#_r_0_-eyeGlass)" />
+                    <ellipse cx="360" cy="348" rx="28" ry="6" fill="url(#_r_0_-eyeGlassStreak)" opacity="0.7" transform="rotate(-8 360 348)" />
+                    <path d="M328 318 C348 308 372 308 392 318" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.42" />
+                  </g>
+                  <circle id="left-eye-main-highlight" cx="372" cy="332" r="11.5" fill="#ffffff" opacity="0.98" />
+                  <ellipse cx="378" cy="328" rx="5" ry="3.2" fill="#ffffff" opacity="0.75" transform="rotate(-20 378 328)" />
+                  <circle id="left-eye-secondary-highlight" cx="366" cy="326" r="4.2" fill="#ffffff" opacity="0.65" />
+                  <circle cx="352" cy="338" r="2.2" fill="#ffffff" opacity="0.45" />
+                  <circle id="left-eye-violet-sparkle" cx="344" cy="372" r="6" fill="var(--rabbit-eye-sparkle, #90d0ff)" opacity="0.65" />
+                  <circle cx="368" cy="382" r="2.8" fill="#ffffff" opacity="0.35" />
+                  <path id="left-eye-star" d="M372 318 C374.4 327.4 375.6 328.6 385 331 C375.6 333.4 374.4 334.6 372 344 C369.6 334.6 368.4 333.4 359 331 C368.4 328.6 369.6 327.4 372 318 Z" fill="#ffffff" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scale(0.5);" />
+                  <path id="left-eye-want-twinkle" d="M342 360 C343.4 365.4 344.1 366.1 349.5 367.5 C344.1 368.9 343.4 369.6 342 375 C340.6 369.6 339.9 368.9 334.5 367.5 C339.9 366.1 340.6 365.4 342 360 Z" fill="#ffffff" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scale(0.5);" />
+                </g>
+              </g>
+            </g>
+            <path id="left-eye-happy-arc" d="M326 358 C344 308 372 308 394 358" fill="none" stroke="url(#_r_0_-eyeFill)" stroke-width="11" stroke-linecap="round" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scaleY(0.4);" />
+          </g>
+          <g id="right-eye" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+            <g opacity="1">
+              <g style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+                <g style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+                  <ellipse id="right-eye-base" cx="544" cy="352" rx="36" ry="44" fill="url(#_r_0_-eyeFill)" />
+                  <ellipse id="right-eye-iris" cx="544" cy="358" rx="24" ry="28" fill="url(#_r_0_-eyeIris)" opacity="0.92" />
+                  <ellipse id="right-eye-lower-shade" cx="544" cy="374" rx="26" ry="14" fill="var(--rabbit-eye-deep, #120810)" opacity="0.35" />
+                  <g id="right-eye-glass" clip-path="url(#_r_0_-rightEyeClip)">
+                    <ellipse cx="544" cy="328" rx="34" ry="28" fill="url(#_r_0_-eyeGlassGlow)" opacity="0.55" />
+                    <ellipse cx="544" cy="338" rx="36" ry="40" fill="url(#_r_0_-eyeGlass)" />
+                    <ellipse cx="544" cy="348" rx="28" ry="6" fill="url(#_r_0_-eyeGlassStreak)" opacity="0.7" transform="rotate(8 544 348)" />
+                    <path d="M512 318 C532 308 556 308 576 318" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.42" />
+                  </g>
+                  <circle id="right-eye-main-highlight" cx="532" cy="332" r="11.5" fill="#ffffff" opacity="0.98" />
+                  <ellipse cx="526" cy="328" rx="5" ry="3.2" fill="#ffffff" opacity="0.75" transform="rotate(20 526 328)" />
+                  <circle id="right-eye-secondary-highlight" cx="538" cy="326" r="4.2" fill="#ffffff" opacity="0.65" />
+                  <circle cx="552" cy="338" r="2.2" fill="#ffffff" opacity="0.45" />
+                  <circle id="right-eye-violet-sparkle" cx="560" cy="372" r="6" fill="var(--rabbit-eye-sparkle, #90d0ff)" opacity="0.65" />
+                  <circle cx="536" cy="382" r="2.8" fill="#ffffff" opacity="0.35" />
+                  <path id="right-eye-star" d="M532 318 C534.4 327.4 535.6 328.6 545 331 C535.6 333.4 534.4 334.6 532 344 C529.6 334.6 528.4 333.4 519 331 C528.4 328.6 529.6 327.4 532 318 Z" fill="#ffffff" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scale(0.5);" />
+                  <path id="right-eye-want-twinkle" d="M562 360 C563.4 365.4 564.1 366.1 569.5 367.5 C564.1 368.9 563.4 369.6 562 375 C560.6 369.6 559.9 368.9 554.5 367.5 C559.9 366.1 560.6 365.4 562 360 Z" fill="#ffffff" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scale(0.5);" />
+                </g>
+              </g>
+            </g>
+            <path id="right-eye-happy-arc" d="M510 358 C528 308 556 308 578 358" fill="none" stroke="url(#_r_0_-eyeFill)" stroke-width="11" stroke-linecap="round" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scaleY(0.4);" />
+          </g>
+        </g>
+
+        <!-- Round glasses -->
+        <g id="spectacles" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <ellipse cx="360" cy="352" rx="42" ry="50" fill="url(#_r_0_-lensTint)" clip-path="url(#_r_0_-leftLensClip)" />
+          <ellipse cx="544" cy="352" rx="42" ry="50" fill="url(#_r_0_-lensTint)" clip-path="url(#_r_0_-rightLensClip)" />
+          <ellipse cx="360" cy="352" rx="42" ry="50" fill="none" stroke="var(--rabbit-glasses, #2c4a7c)" stroke-width="7.5" />
+          <ellipse cx="360" cy="352" rx="38" ry="46" fill="none" stroke="var(--rabbit-glasses-light, #5a88b8)" stroke-width="2" opacity="0.5" />
+          <ellipse cx="544" cy="352" rx="42" ry="50" fill="none" stroke="var(--rabbit-glasses, #2c4a7c)" stroke-width="7.5" />
+          <ellipse cx="544" cy="352" rx="38" ry="46" fill="none" stroke="var(--rabbit-glasses-light, #5a88b8)" stroke-width="2" opacity="0.5" />
+          <path d="M402 352 C418 346 434 344 452 346 C470 344 486 346 502 352" fill="none" stroke="var(--rabbit-glasses, #2c4a7c)" stroke-width="7" stroke-linecap="round" />
+          <path d="M318 352 C296 350 274 346 254 342" fill="none" stroke="var(--rabbit-glasses, #2c4a7c)" stroke-width="6" stroke-linecap="round" />
+          <path d="M586 352 C608 350 630 346 650 342" fill="none" stroke="var(--rabbit-glasses, #2c4a7c)" stroke-width="6" stroke-linecap="round" />
+          <path d="M332 322 C350 312 370 310 388 318" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.38" />
+          <path d="M516 322 C534 312 554 310 572 318" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.38" />
+        </g>
+
+        <!-- Blink lids (cover eyes when closed) -->
+        <g id="blink-lids" pointer-events="none" opacity="0">
+          <g id="left-blink-lid" opacity="0">
+            <ellipse cx="360" cy="352" rx="38" ry="45" fill="var(--rabbit-body-mid, #f5ebe8)" stroke="var(--rabbit-outline, #d4b8ae)" stroke-width="4.5" />
+            <path d="M326 348 C346 340 374 340 394 348" fill="none" stroke="var(--rabbit-outline, #c4a498)" stroke-width="3" stroke-linecap="round" opacity="0.45" />
+          </g>
+          <g id="right-blink-lid" opacity="0">
+            <ellipse cx="544" cy="352" rx="38" ry="45" fill="var(--rabbit-body-mid, #f5ebe8)" stroke="var(--rabbit-outline, #d4b8ae)" stroke-width="4.5" />
+            <path d="M510 348 C530 340 558 340 578 348" fill="none" stroke="var(--rabbit-outline, #c4a498)" stroke-width="3" stroke-linecap="round" opacity="0.45" />
+          </g>
+        </g>
+
+        <!-- Whisker lines -->
+        <g id="whiskers" opacity="0.45">
+          <path d="M290 388 C310 386 328 390 345 395" fill="none" stroke="var(--rabbit-whisker, #c9a99e)" stroke-width="2.2" stroke-linecap="round" />
+          <path d="M285 408 C308 406 328 410 342 412" fill="none" stroke="var(--rabbit-whisker, #c9a99e)" stroke-width="2.2" stroke-linecap="round" />
+          <path d="M292 428 C312 426 330 428 344 430" fill="none" stroke="var(--rabbit-whisker, #c9a99e)" stroke-width="2.2" stroke-linecap="round" />
+          <path d="M610 388 C590 386 572 390 555 395" fill="none" stroke="var(--rabbit-whisker, #c9a99e)" stroke-width="2.2" stroke-linecap="round" />
+          <path d="M615 408 C592 406 572 410 558 412" fill="none" stroke="var(--rabbit-whisker, #c9a99e)" stroke-width="2.2" stroke-linecap="round" />
+          <path d="M608 428 C588 426 570 428 556 430" fill="none" stroke="var(--rabbit-whisker, #c9a99e)" stroke-width="2.2" stroke-linecap="round" />
+        </g>
+
+        <g id="password-face" pointer-events="none" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <path id="left-password-eye" d="M320 348 C336 360 358 360 374 348" fill="none" stroke="#2a1825" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92" />
+          <path id="right-password-eye" d="M530 348 C546 360 568 360 584 348" fill="none" stroke="#2a1825" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92" />
+          <ellipse id="password-dot-mouth" cx="452" cy="410" rx="12" ry="8" fill="#2a1825" opacity="0.92" />
+        </g>
+
+        <g id="shy-face" pointer-events="none" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <path id="left-shy-eye" d="M326 358 C346 376 374 376 394 358" fill="none" stroke="#2a1825" stroke-width="10" stroke-linecap="round" opacity="0.9" />
+          <path id="right-shy-eye" d="M506 358 C526 376 554 376 574 358" fill="none" stroke="#2a1825" stroke-width="10" stroke-linecap="round" opacity="0.9" />
+          <ellipse id="left-shy-blush-line" cx="318" cy="388" rx="14" ry="3" fill="none" stroke="#e8a0a8" stroke-width="3" stroke-linecap="round" opacity="0.55" transform="rotate(-8 318 388)" />
+          <ellipse id="right-shy-blush-line" cx="586" cy="388" rx="14" ry="3" fill="none" stroke="#e8a0a8" stroke-width="3" stroke-linecap="round" opacity="0.55" transform="rotate(8 586 388)" />
+          <path id="mouth-shy" d="M438 418 C444 414 452 416 460 414 C464 418 468 414 466 418" fill="none" stroke="#3d2235" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" />
+          <path id="shy-sweat" d="M284 312 C284 324 296 328 296 316 C296 308 290 306 284 312 Z" fill="#c8ecff" stroke="#98d4f0" stroke-width="1.5" opacity="0.9" />
+          <ellipse cx="290" cy="316" rx="2.5" ry="4" fill="#ffffff" opacity="0.5" />
+        </g>
+
+        <g id="wink-overlays" pointer-events="none">
+          <path id="left-wink" d="M320 348 C336 360 358 360 374 348" fill="none" stroke="#2a1825" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0" />
+          <path id="right-wink" d="M530 348 C546 360 568 360 584 348" fill="none" stroke="#2a1825" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0" />
+        </g>
+
+        <g id="side-eye-eyes" pointer-events="none" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;">
+          <path id="left-side-eye" d="M320 352 C336 334 356 333 374 346" fill="none" stroke="#2a1825" stroke-width="10" stroke-linecap="round" opacity="0.92" />
+          <ellipse id="left-side-eye-blob" cx="375" cy="355" rx="10" ry="12.5" fill="#2a1825" opacity="0.92" transform="rotate(-14 375 355)" />
+          <path id="right-side-eye" d="M530 352 C546 334 566 333 584 346" fill="none" stroke="#2a1825" stroke-width="10" stroke-linecap="round" opacity="0.92" />
+          <ellipse id="right-side-eye-blob" cx="585" cy="355" rx="10" ry="12.5" fill="#2a1825" opacity="0.92" transform="rotate(-14 585 355)" />
+        </g>
+
+        <g id="hmm-lids" pointer-events="none" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: translateY(2px);">
+          <path id="left-hmm-lid" d="M330 338 C346 330 368 331 384 338" fill="none" stroke="#2a1825" stroke-width="6" stroke-linecap="round" opacity="0.62" />
+          <path id="right-hmm-lid" d="M520 338 C538 330 560 331 576 338" fill="none" stroke="#2a1825" stroke-width="6" stroke-linecap="round" opacity="0.62" />
+        </g>
+
+        <g id="sad-brows" pointer-events="none" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: translateY(-2px);">
+          <path id="left-sad-brow" d="M324 332 C346 318 372 315 392 322" fill="none" stroke="#2a1825" stroke-width="6.5" stroke-linecap="round" opacity="0.58" />
+          <path id="right-sad-brow" d="M512 322 C534 315 560 318 582 332" fill="none" stroke="#2a1825" stroke-width="6.5" stroke-linecap="round" opacity="0.58" />
+        </g>
+
+        <g id="happy-open-mouth" opacity="0" style="transform-box: fill-box; transform-origin: center center;">
+          <path id="open-mouth-fill" d="M422 408 C440 392 462 392 480 408 C468 448 436 448 422 408 Z" fill="#3a1528" stroke="none" />
+          <path id="open-mouth-tongue" d="M438 428 C440 444 462 444 464 428 C460 422 444 422 438 428 Z" fill="var(--rabbit-cheek, #ff8fc0)" stroke="none" />
+          <ellipse id="open-mouth-tongue-shine" cx="452" cy="431" rx="8" ry="3" fill="#ffc2dc" opacity="0.7" />
+        </g>
+
+        <!-- Cute tiny smile -->
+        <path id="mouth" d="M438 412 C444 422 460 422 466 412" fill="none" stroke="#3d2235" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;" />
+        <path id="mouth-sad" d="M438 422 C444 412 460 412 466 422" fill="none" stroke="#3d2235" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: none;" />
+        <path id="mouth-oh" d="M443 410 C448 405 456 405 461 410 C464 416 460 422 452 422 C444 422 440 416 443 410 Z" fill="#2a1825" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scaleX(0.72) scaleY(0.35);" />
+      </g>
+
+      <g id="emotion-fx" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scale(0.9);">
+        <g id="sad-tears" opacity="0">
+          <path d="M336 378 C346 385 356 386 364 382" fill="none" stroke="#bfeeff" stroke-width="5.5" stroke-linecap="round" opacity="0" />
+          <path d="M548 378 C558 386 568 386 576 381" fill="none" stroke="#bfeeff" stroke-width="5.5" stroke-linecap="round" opacity="0" />
+        </g>
+        <g opacity="0" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;">
+          <path d="M612 278 L632 262 M628 284 L650 279 M624 304 L646 318" stroke="var(--rabbit-outline, #d4b8ae)" stroke-width="8" stroke-linecap="round" opacity="0.86" />
+          <circle cx="268" cy="298" r="12" fill="var(--rabbit-body-rim, #f0e4df)" opacity="0.55" />
+          <circle cx="250" cy="284" r="7.5" fill="var(--rabbit-body-rim, #f0e4df)" opacity="0.45" />
+          <circle cx="678" cy="296" r="12" fill="var(--rabbit-body-rim, #f0e4df)" opacity="0.55" />
+          <circle cx="698" cy="282" r="7.5" fill="var(--rabbit-body-rim, #f0e4df)" opacity="0.45" />
+        </g>
+      </g>
+
+      <g id="happy-decor" style="transform-box: fill-box; transform-origin: center center;">
+        <path id="happy-twinkle" d="M628 294 C630 305 633 308 643 310 C633 312 630 315 628 326 C626 315 623 312 613 310 C623 308 626 305 628 294 Z" fill="#ffe07a" opacity="0" style="transform-box: fill-box; transform-origin: 50% 50%; transform: scale(0.8);" />
+      </g>
+    </g>
+  </g>
+</svg>
